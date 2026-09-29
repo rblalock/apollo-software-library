@@ -1,0 +1,168 @@
+{
+  "provenance": {
+    "sources": [
+      {
+        "url": "https://ntrs.nasa.gov/api/citations/19720017950/downloads/19720017950.pdf",
+        "retrieved": "2026-09-29",
+        "sha256": "a839dacb1b3990f770fcff85a3c62a7e9a32564b1ae54bec36cf17043a8cd5ea"
+      }
+    ],
+    "method": "TN D-6853 PDF p. 10 rendered at 300 dpi (pdftoppm) and cropped (scripts/extract-figures.ts). The frame is registered from its ±50° border lines; each labeled glyph is snapped to the nearest detected dark blob from a hand-read approximate position (data/manual/fig3a-names.json); glyphs touching the frame line or the reticle (Sirius, Navi, Venus, Saturn) are measured by eye on a 4× zoom (method: manual).",
+    "script": "scripts/digitize-fig3a.ts",
+    "generated": "2026-09-29"
+  },
+  "image": {
+    "path": "data/derived/scans/tnd6853-fig3a.png",
+    "widthPx": 1080,
+    "heightPx": 1040
+  },
+  "frame": {
+    "leftX": 172.0338747099768,
+    "rightX": 986.6842778014486,
+    "topY": 174.41176470588235,
+    "bottomY": 937.5476439790576
+  },
+  "extentDeg": 50,
+  "points": [
+    {
+      "id": "Sirius",
+      "kind": "navStar",
+      "px": [
+        208,
+        176
+      ],
+      "xDeg": -45.585084699702186,
+      "yDeg": 49.791880405933696,
+      "method": "manual"
+    },
+    {
+      "id": "Rigel",
+      "kind": "navStar",
+      "px": [
+        317.74,
+        320.35
+      ],
+      "xDeg": -32.11459805648229,
+      "yDeg": 30.876043885310356,
+      "method": "blob",
+      "area": 198
+    },
+    {
+      "id": "Capella",
+      "kind": "navStar",
+      "px": [
+        786.86,
+        275.47
+      ],
+      "xDeg": 25.471637564087445,
+      "yDeg": 36.75734659745651,
+      "method": "blob",
+      "area": 191
+    },
+    {
+      "id": "Aldebaran",
+      "kind": "navStar",
+      "px": [
+        537.92,
+        349.94
+      ],
+      "xDeg": -5.086414424310888,
+      "yDeg": 26.999676737482527,
+      "method": "blob",
+      "area": 155
+    },
+    {
+      "id": "Venus",
+      "kind": "planet",
+      "px": [
+        564,
+        311
+      ],
+      "xDeg": -1.8853579642785903,
+      "yDeg": 32.101714910297915,
+      "method": "manual"
+    },
+    {
+      "id": "Mirfak",
+      "kind": "navStar",
+      "px": [
+        836.53,
+        422.69
+      ],
+      "xDeg": 31.56814546429578,
+      "yDeg": 17.46633558647366,
+      "method": "blob",
+      "area": 189
+    },
+    {
+      "id": "Menkar",
+      "kind": "navStar",
+      "px": [
+        479.57,
+        543.79
+      ],
+      "xDeg": -12.249040036660496,
+      "yDeg": 1.5974632807452096,
+      "method": "blob",
+      "area": 180
+    },
+    {
+      "id": "Saturn",
+      "kind": "planet",
+      "px": [
+        564,
+        588
+      ],
+      "xDeg": -1.8853579642785903,
+      "yDeg": -4.195883921488104,
+      "method": "manual"
+    },
+    {
+      "id": "Navi",
+      "kind": "navStar",
+      "px": [
+        985,
+        550
+      ],
+      "xDeg": 49.79325146160156,
+      "yDeg": 0.7835700698760419,
+      "method": "manual"
+    },
+    {
+      "id": "Earth",
+      "kind": "earth",
+      "px": [
+        598.92,
+        729.3
+      ],
+      "xDeg": 2.4009673898529087,
+      "yDeg": -22.711547790113613,
+      "method": "blob",
+      "area": 307
+    },
+    {
+      "id": "Alpheratz",
+      "kind": "navStar",
+      "px": [
+        799.25,
+        759.29
+      ],
+      "xDeg": 26.992363614791174,
+      "yDeg": -26.641700434670852,
+      "method": "blob",
+      "area": 202
+    },
+    {
+      "id": "Diphda",
+      "kind": "navStar",
+      "px": [
+        393.82,
+        848.1
+      ],
+      "xDeg": -22.774787777365695,
+      "yDeg": -38.279512102110914,
+      "method": "blob",
+      "area": 182
+    }
+  ]
+}

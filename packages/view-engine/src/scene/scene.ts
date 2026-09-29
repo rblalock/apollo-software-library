@@ -14,8 +14,8 @@ const TEXT_DEG = 2.4;
 
 /**
  * The 0–50 scale along the SCT reticle's vertical diameter, as drawn on TN D-6853 Fig 3
- * and 69-FM-197 Fig 9.3-8. Neither document explains it. 0 sits 25° below the center
- * (measured from the scans in Task 11).
+ * and 69-FM-197 Fig 9.3-8. Neither document explains it. 0 sits 25° below the center:
+ * on the TN D-6853 scan the '0' tick measures −24.9° and the '5' tick −20.2°.
  */
 export const SCT_SCALE = { zeroAtYDeg: -25, stepDeg: 5, max: 50 } as const;
 
