@@ -15,6 +15,7 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const documents = await Promise.all(entry.data.documents.map((d) => getEntry(d)));
 const exhibits = await Promise.all(entry.data.exhibits.map((e) => getEntry(e)));
+const limits = await getEntry('limits', entry.id);
 // The film's card carries a still from its first reel, drawn at build time.
 const reel = REELS[0]!;
 const poster = renderSvg(reel.frame(0).dl, { style: 'microfilm', title: `${reel.label}, a still from the film` });
@@ -44,6 +45,12 @@ const poster = renderSvg(reel.frame(0).dl, { style: 'microfilm', title: `${reel.
         </li>
       )))}
     </ul>
+    {limits && (
+      <p class="mt-4 max-w-3xl text-sm text-stone-700 dark:text-stone-300">
+        <a class="font-mono text-xs uppercase tracking-wide text-accent underline" href={`/${entry.id}/limits/`}>Limits</a>:
+        {limits.data.summary}
+      </p>
+    )}
   </section>
 
   <div class="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_18rem]">

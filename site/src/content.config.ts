@@ -51,4 +51,10 @@ const entries = defineCollection({
   }),
 });
 
-export const collections = { documents, exhibits, entries };
+/** One page per entry (the file name is the entry id): what the recreation can't reproduce, and why. */
+const limits = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/limits' }),
+  schema: z.object({ title: z.string(), summary: z.string() }),
+});
+
+export const collections = { documents, exhibits, entries, limits };

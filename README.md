@@ -63,6 +63,9 @@ The miss that keeps coming back is the horizon. On Figs 1, 2 and 3b the 1969 pro
 horizon as a clean circle much smaller than the true one, and the rule it used has not been recovered. On the descent
 frames the drawn horizon comes close early in the burn, and the Earth's disc in Fig 6 matches.
 
+Everything the recreation can't reproduce, what doesn't survive from 1969, and what's still unknown is listed on the
+site's [Limits page](https://apollo-software-library.vercel.app/view-program/limits/).
+
 ## Run it locally
 
 You need [Bun](https://bun.sh) 1.3.

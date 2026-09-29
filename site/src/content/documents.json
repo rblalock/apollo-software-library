@@ -51,6 +51,14 @@
       "fig5": {
         "page": 12,
         "label": "Figure 5 – Views during the descent phase (printed p. 7)"
+      },
+      "fig8": {
+        "page": 15,
+        "label": "Figure 8 – View of Rima Prinz, a candidate site (printed p. 10)"
+      },
+      "fig9": {
+        "page": 15,
+        "label": "Figure 9 – Preflight view of an abort at LOI plus 2 hours, Apollo 13 (printed p. 10)"
       }
     }
   },
