@@ -31,10 +31,10 @@ VIEW PROGRAM PRINTER PLOT   SCANNING TELESCOPE, REV 30                          
        I.                  .                             .                             .                . .I
        I.                  .    .    .    .  * .    .    .    .    .    .    .    .  . .                  *I
    0.0 I..                 ...................MENKAR....................................                 ..I
-       I.                  .    .    .    .    .    .    .    .    .    .    .    .    .                  .I
+       I.                  .    .    .    .    .    .    .    .    .    .    .    .    .             NAVI .I
        I.                  .                           O .                             .                . .I
        I                   ..                           ...-20      .                 ..                   I
-       I.    .              .                            SATURN                       .                   .I
+       I.    .              .                           SATURN                        .                   .I
        I.                   .                            .        .                   .                   .I
  -10.0 I..                  ..                          ...-15                       ..                  ..I
        I.                    ..                          .                          ..                    .I
@@ -45,7 +45,7 @@ VIEW PROGRAM PRINTER PLOT   SCANNING TELESCOPE, REV 30                          
  -20.0 I..                        ..                    ...-5                  ..                        ..I
        I.                          ...                   .                   ...                          .I
        I.                            ...                 .  O              ...                            .I
-       I                               ....             ...-0 EARTH     ....                               I
+       I                               ....             ...-0EARTH      ....                               I
        I.                                 ....           .           ....           *                     .I
        I.                                    ......      .      ......               ALPHERATZ            .I
  -30.0 I..                                        ...............                                        ..I
