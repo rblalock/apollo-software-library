@@ -11,3 +11,5 @@ export * from './ephemeris/ephemeris';
 export * from './scene/types';
 export * from './scene/scene';
 export * from './plotter/svg';
+export * from './fit/eigen';
+export * from './fit/fit';
