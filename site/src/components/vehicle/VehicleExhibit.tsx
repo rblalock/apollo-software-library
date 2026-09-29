@@ -69,7 +69,7 @@ export default function VehicleExhibit() {
         </div>
         <div className="overflow-hidden rounded border border-stone-300 dark:border-stone-700 [&>svg]:block [&>svg]:h-auto [&>svg]:w-full"
           dangerouslySetInnerHTML={{ __html: svg }} />
-        <p className="font-mono text-xs text-stone-500">{segments} visible edge segments</p>
+        <p className="font-mono text-xs text-muted">{segments} visible edge segments</p>
       </div>
       <aside className="space-y-5">
         <div className="space-y-3">
@@ -81,7 +81,7 @@ export default function VehicleExhibit() {
           Azimuth is measured from the vehicle's front (+Z, the LM's hatch) toward its right (+Y); elevation is above the plane of the landing gear.
         </p>
         <div>
-          <h2 className="font-mono text-xs uppercase tracking-widest text-stone-500">Model sources</h2>
+          <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Model sources</h2>
           <ul className="mt-2 list-disc space-y-2 pl-5 text-sm text-stone-700 dark:text-stone-300">
             {v.sources.map((s) => <li key={s}>{s}</li>)}
           </ul>

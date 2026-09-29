@@ -66,9 +66,9 @@ describe('simplifyLine (Douglas–Peucker)', () => {
 });
 
 describe('derived geodata (data/derived, from scripts/fetch-geodata.ts)', async () => {
-  const coast = (await import('../../data/derived/earth-coastline.json')).default as { lines: [number, number][][] };
+  const coast = (await import('../../data/derived/earth-coastline.json')).default as unknown as { lines: [number, number][][] };
   const moon = (await import('../../data/derived/moon-features.json')).default as { craters: { name: string; lat: number; lon: number; diamKm: number }[]; areas: { name: string; lat: number; lon: number }[] };
-  const maria = (await import('../../data/derived/moon-maria.json')).default as { outlines: { name: string; ring: [number, number][] }[] };
+  const maria = (await import('../../data/derived/moon-maria.json')).default as unknown as { outlines: { name: string; ring: [number, number][] }[] };
   const inside = (p: [number, number], ring: [number, number][]) => {
     let c = false;
     for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {

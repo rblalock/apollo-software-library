@@ -27,3 +27,4 @@ export * from './globe/globe';
 export * from './globe/bodies';
 export * from './trajectory/descent';
 export * from './plotter/printer';
+export * from './scene/labels';

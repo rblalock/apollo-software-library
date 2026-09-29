@@ -1,11 +1,9 @@
 import {
-  APOLLO_11, buildScene, createMissionEphemeris, descentPosition, formatGet, type DescentProfile, getToUtc, parseGet, stateToEarthEvent, type EventTable, type GimbalAngles, type VehicleId, FIG_3A_SPEC, resolveVerifiedCatalog, type VerifiedCatalogFile, FIG_3B_SPEC, FIG_3C_SIGN_CORRECTED_SPEC, fig4Spec, fitPlotAxes, impliedSctAngles,
-  resolveCatalog, type Agc37File, type BscFile, type DisplayList, type Primitive, type RtccFile, type Underlay, type ViewSpec,
+  APOLLO_11, buildScene, createMissionEphemeris, descentPosition, formatGet, type DescentProfile, getToUtc, parseGet, stateToEarthEvent, type EventTable, type GimbalAngles, type VehicleId, FIG_3A_SPEC, FIG_3B_SPEC, FIG_3C_SIGN_CORRECTED_SPEC, fig4Spec, fitPlotAxes, impliedSctAngles,
+  type DisplayList, type Primitive, type ResolvedStar, type Underlay, type ViewSpec,
 } from '@asl/view-engine';
-import bsc from '../../../data/derived/bsc45.json';
-import agc from '../../../data/derived/agc37.json';
-import rtcc from '../../../data/derived/rtcc1970.json';
-import cat1078 from '../../../data/derived/cat1078.json';
+// Star directions resolved at build time (scripts/build-site-data.ts): the catalogues themselves stay off the client.
+import siteStars from '../../../data/derived/site-stars.json';
 import p3a from '../../../data/derived/fig3a-points.json';
 import p3b from '../../../data/derived/fig3b-points.json';
 import p3c from '../../../data/derived/fig3c-points.json';
@@ -28,13 +26,13 @@ import pdiP from '../../../data/derived/pdi-p-points.json';
 
 export const TOLERANCE = { rmsDeg: 1.0, maxDeg: 2.0 } as const;
 
-export const stars = resolveCatalog(rtcc as RtccFile, bsc as BscFile, agc as Agc37File, APOLLO_11.referenceEpochJd);
+export const stars = siteStars.rtcc as unknown as ResolvedStar[];
 
 /** The 1,078-star catalogue of 69-FM-107 Table I: the rows verified so far (826). */
-export const stars1078 = resolveVerifiedCatalog(cat1078 as VerifiedCatalogFile, agc as Agc37File, APOLLO_11.referenceEpochJd);
+export const stars1078 = siteStars.cat1078 as unknown as ResolvedStar[];
 export const CATALOGS = {
   rtcc: { label: 'RTCC 148', stars },
-  cat1078: { label: `1,078 (${cat1078.stars.length} read)`, stars: stars1078 },
+  cat1078: { label: `1,078 (${stars1078.length} read)`, stars: stars1078 },
 } as const;
 export type CatalogId = keyof typeof CATALOGS;
 
@@ -58,10 +56,23 @@ export interface FigureConfig {
   scanHref: string;
   /** How the attitude was obtained, shown in the inputs panel. */
   attitudeNote: string;
+  /** The page the figure (and its printed inputs) comes from. */
+  printedOn: { doc: string; page: number; label: string };
 }
 
+const PRINTED: Record<string, FigureConfig['printedOn']> = {
+  fig1: { doc: 'tn-d-6853', page: 9, label: 'TN D-6853, Figure 1' }, fig2: { doc: 'tn-d-6853', page: 9, label: 'TN D-6853, Figure 2' },
+  fig3a: { doc: 'tn-d-6853', page: 10, label: 'TN D-6853, Figure 3(a)' }, fig3b: { doc: 'tn-d-6853', page: 10, label: 'TN D-6853, Figure 3(b)' },
+  fig3c: { doc: 'tn-d-6853', page: 10, label: 'TN D-6853, Figure 3(c)' }, fig4a: { doc: 'tn-d-6853', page: 10, label: 'TN D-6853, Figure 4(a)' },
+  fig4b: { doc: 'tn-d-6853', page: 11, label: 'TN D-6853, Figure 4(b)' }, fig4c: { doc: 'tn-d-6853', page: 11, label: 'TN D-6853, Figure 4(c)' },
+  fig4d: { doc: 'tn-d-6853', page: 11, label: 'TN D-6853, Figure 4(d)' }, fig4e: { doc: 'tn-d-6853', page: 11, label: 'TN D-6853, Figure 4(e)' },
+  fig4f: { doc: 'tn-d-6853', page: 12, label: 'TN D-6853, Figure 4(f)' },
+  pdiA: { doc: '69-fm-197', page: 131, label: '69-FM-197, Figure 6.2.2-1(a)' }, pdiE: { doc: '69-fm-197', page: 135, label: '69-FM-197, Figure 6.2.2-1(e)' },
+  pdiJ: { doc: '69-fm-197', page: 140, label: '69-FM-197, Figure 6.2.2-1(j)' }, pdiP: { doc: '69-fm-197', page: 146, label: '69-FM-197, Figure 6.2.2-1(p)' },
+};
+
 const fig = (id: string, label: string, spec: ViewSpec, points: PointsFile, attitudeNote: string, observer?: VehicleId, scan = `tnd6853-${id}.png`): FigureConfig =>
-  ({ id, label, spec, points, scanHref: `/scans/${scan}`, attitudeNote, observer });
+  ({ id, label, spec, points, scanHref: `/scans/${scan}`, attitudeNote, observer, printedOn: PRINTED[id]! });
 
 const SCT_PRINTED = 'Gimbal angles as printed on the figure.';
 

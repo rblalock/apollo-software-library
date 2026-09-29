@@ -2,6 +2,7 @@ import { mxv, type Mat3 } from '../math/mat';
 import { add, cross, dot, norm, scale, sub, toDeg, toRad, unit, type Vec3 } from '../math/vec';
 import { clipToSquare, projectGnomonic, unprojectGnomonic, type PlotAxes, type PlotPoint } from '../projection/projection';
 import type { Primitive } from '../scene/types';
+import { placeLabels, type LabelRequest } from '../scene/labels';
 
 /** A body seen from an observer, all vectors inertial (km, or unit where stated). */
 export interface GlobeScene {
@@ -164,12 +165,16 @@ export function globePrimitives(s: GlobeScene, features: GlobeFeatures, opts: Gl
       return add(scale(centre, Math.cos(al)), scale(add(scale(u, Math.cos(t)), scale(v, Math.sin(t))), Math.sin(al)));
     }), true));
   }
+  const requests: LabelRequest[] = [];
   for (const l of features.labels ?? []) {
     const p = scale(surface(l.lon, l.lat), R);
     if (!visible(p)) continue;
     const q = plot(p);
     if (!q || Math.abs(q[0]) > e || Math.abs(q[1]) > e) continue;
-    out.push({ kind: 'text', x: q[0], y: q[1], text: l.text, anchor: 'start', sizeDeg: e * 0.05, boxed: false, layer: 'annotation' });
+    requests.push({ text: l.text, x: q[0], y: q[1], r: e * 0.01, sizeDeg: e * 0.05 });
+  }
+  for (const l of placeLabels(requests, requests.map((q) => ({ x: q.x, y: q.y, r: q.r })), e)) {
+    out.push({ kind: 'text', x: l.x, y: l.y, text: l.text, anchor: l.anchor, sizeDeg: l.sizeDeg, boxed: false, layer: 'annotation' });
   }
   return out;
 }

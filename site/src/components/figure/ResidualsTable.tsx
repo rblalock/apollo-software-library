@@ -8,7 +8,7 @@ export function ResidualsTable({ rows, rmsDeg, maxDeg, tolerance }: Props) {
   const met = rmsDeg <= tolerance.rmsDeg && maxDeg <= tolerance.maxDeg;
   return (
     <section aria-labelledby="residuals-heading">
-      <h2 id="residuals-heading" className="font-mono text-xs uppercase tracking-widest text-stone-500">
+      <h2 id="residuals-heading" className="font-mono text-xs uppercase tracking-widest text-muted">
         Residuals: recreation vs. 1972 scan (at the figure's own inputs)
       </h2>
       <div className="mt-2 overflow-x-auto">

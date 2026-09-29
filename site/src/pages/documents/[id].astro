@@ -12,14 +12,14 @@ const { doc } = Astro.props;
 const anchors = Object.values(doc.data.anchors);
 ---
 <Base title={doc.data.reportNumber} description={doc.data.title}>
-  <p class="font-mono text-xs uppercase tracking-widest text-stone-500">Primary source</p>
+  <p class="font-mono text-xs uppercase tracking-widest text-muted">Primary source</p>
   <h1 class="mt-2 max-w-4xl text-3xl font-semibold tracking-tight">{doc.data.title}</h1>
   <dl class="mt-4 grid max-w-3xl grid-cols-[max-content_1fr] gap-x-6 gap-y-1 text-sm">
-    <dt class="text-stone-500">Report</dt><dd>{doc.data.reportNumber}</dd>
-    <dt class="text-stone-500">Date</dt><dd>{doc.data.date}</dd>
-    <dt class="text-stone-500">Authors</dt><dd>{doc.data.authors.join(', ')}</dd>
-    <dt class="text-stone-500">Pages</dt><dd>{doc.data.pageCount}</dd>
-    <dt class="text-stone-500">Source</dt><dd><a class="underline break-all" href={doc.data.sourceUrl} rel="noopener">{doc.data.sourceUrl}</a></dd>
+    <dt class="text-muted">Report</dt><dd>{doc.data.reportNumber}</dd>
+    <dt class="text-muted">Date</dt><dd>{doc.data.date}</dd>
+    <dt class="text-muted">Authors</dt><dd>{doc.data.authors.join(', ')}</dd>
+    <dt class="text-muted">Pages</dt><dd>{doc.data.pageCount}</dd>
+    <dt class="text-muted">Source</dt><dd><a class="underline break-all" href={doc.data.sourceUrl} rel="noopener">{doc.data.sourceUrl}</a></dd>
   </dl>
   <nav aria-label="Pages cited by the library" class="mt-6">
     <ul class="flex flex-wrap gap-2 text-sm">

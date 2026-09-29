@@ -10,6 +10,7 @@ import { AOT_FIELD_OF_VIEW_DEG, aotPlotAxes, aotReticleAngleDeg } from '../frame
 import { clipToSquare, projectAzimuthalEquidistant, type PlotAxes, type PlotPoint } from '../projection/projection';
 import { getToUtc } from '../time/time';
 import type { DisplayList, Layer, PlacedBody, Primitive, ViewSpec } from './types';
+import { placeLabels, type LabelRequest, type Obstacle } from './labels';
 
 export interface SceneData { stars: ResolvedStar[] }
 
@@ -123,6 +124,7 @@ export function buildScene(spec: ViewSpec, data: SceneData): DisplayList {
   const outlines: Primitive[] = (spec.outlines ?? []).map((points) => ({ kind: 'polyline', points, closed: true }));
   const primitives: Primitive[] = [...frame(e), ...reticle, ...outlines];
   const placed: PlacedBody[] = [];
+  const navLabels: LabelRequest[] = [], bodyLabels: (LabelRequest & { boxed: boolean })[] = [], glyphs: Obstacle[] = [];
 
   // Where each body is: from the observer body's centre, or from the spacecraft position when one is given.
   const pos = spec.observerPositionKm;
@@ -145,7 +147,9 @@ export function buildScene(spec: ViewSpec, data: SceneData): DisplayList {
     if (!inside(p)) continue;
     if (s.navStar !== null) {
       // TN D-6853 appendix: the 37 prime navigation stars "are identified by name on the microfilm".
-      primitives.push({ kind: 'navMark', x: p.x, y: p.y }, text(p.x + 1.2, p.y - 2.2, s.name ?? `Star ${s.navStar}`, 'start', 'machine'));
+      primitives.push({ kind: 'navMark', x: p.x, y: p.y });
+      navLabels.push({ text: s.name ?? `Star ${s.navStar}`, x: p.x, y: p.y, r: 0.8, sizeDeg: TEXT_DEG });
+      glyphs.push({ x: p.x, y: p.y, r: 0.8 });
       placed.push({ id: `nav-${s.navStar}`, label: s.name, kind: 'navStar', x: p.x, y: p.y, direction });
     } else {
       primitives.push({ kind: 'dot', x: p.x, y: p.y });
@@ -165,12 +169,18 @@ export function buildScene(spec: ViewSpec, data: SceneData): DisplayList {
     }
     if (!inside(p)) continue;
     const r = isDisc ? Math.max(radiusDeg, 0.9) : 0.6;
-    primitives.push(
-      { kind: 'disc', x: p.x, y: p.y, r, filled: body === 'earth' },
-      text(p.x + r + 0.8, p.y - r - 1.2, BODY_LABEL[body], 'start', 'annotation', { boxed: !isDisc }),
-    );
+    primitives.push({ kind: 'disc', x: p.x, y: p.y, r, filled: body === 'earth' });
+    bodyLabels.push({ text: BODY_LABEL[body], x: p.x, y: p.y, r, sizeDeg: TEXT_DEG, boxed: !isDisc });
+    glyphs.push({ x: p.x, y: p.y, r });
     placed.push({ id: body, label: BODY_LABEL[body], kind: kindOf(body), x: p.x, y: p.y, direction });
   }
+
+  // Names beside their glyphs, placed so they neither overlap each other nor sit on another glyph.
+  const labelled = placeLabels([...navLabels, ...bodyLabels], glyphs, e);
+  labelled.forEach((l, i) => {
+    const body = i >= navLabels.length ? bodyLabels[i - navLabels.length]! : null;
+    primitives.push(text(l.x, l.y, l.text, l.anchor, body ? 'annotation' : 'machine', { boxed: body?.boxed ?? false }));
+  });
 
   if (inst.kind === 'sct') primitives.push(...header(spec));
   const notes = pos
