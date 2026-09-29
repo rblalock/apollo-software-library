@@ -35,3 +35,25 @@ export function resolveCatalog(rtcc: RtccFile, bsc: BscFile, agc: Agc37File, epo
     return { seq: row.seq, hr: row.hr, navStar: nav?.navStar ?? null, name: nav?.name ?? null, mag: row.mag, direction };
   });
 }
+
+/** A transcribed catalogue whose rows carry their BSC5 star (J2000 position and proper motion). */
+export interface VerifiedCatalogFile {
+  epoch: string;
+  stars: Array<{ hr: number; mag: number | null; bsc: Omit<CatalogStar, 'hr' | 'name'> & Partial<Pick<CatalogStar, 'name'>> }>;
+}
+
+/**
+ * Directions for a verified catalogue (e.g. the 1,078-star 69-FM-107 Table I). Apollo navigation stars keep
+ * their Apollo names (and AGC vectors at the AGC epoch); `seq` is the row's rank in the list.
+ */
+export function resolveVerifiedCatalog(cat: VerifiedCatalogFile, agc: Agc37File, epochJd: number): ResolvedStar[] {
+  const navByHr = new Map(agc.stars.map((s) => [s.hr, s]));
+  const useAgcVectors = Math.abs(epochJd - agc.epochJd) < 1;
+  const p = precessionMatrix(epochJd);
+  return cat.stars.map((row, i) => {
+    const nav = navByHr.get(row.hr);
+    const star: CatalogStar = { hr: row.hr, name: row.bsc.name ?? '', ...row.bsc };
+    const direction = nav && useAgcVectors ? unit(toVec3(nav.vector)) : starDirection(star, epochJd, p);
+    return { seq: i + 1, hr: row.hr, navStar: nav?.navStar ?? null, name: nav?.name ?? null, mag: row.mag, direction };
+  });
+}
