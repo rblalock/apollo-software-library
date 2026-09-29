@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react';
-import { buildScene, InvalidGetError, parseGet, renderSvg, type GimbalAngles } from '@asl/view-engine';
+import { buildScene, InvalidGetError, parseGet, printerPlot, renderSvg, type GimbalAngles } from '@asl/view-engine';
 import { baselineScene, CATALOGS, displaySpec, FIGURES, observerNote, recoveredSct, residualArrows, residuals, scanUnderlay, TOLERANCE, type CatalogId } from '../../lib/figures';
 import { parseAngleDraft } from '../../lib/inputs';
 import { Segmented } from '../ui/Segmented';
 import { InputsPanel } from './InputsPanel';
 import { ResidualsTable } from './ResidualsTable';
 
-type Mode = 'recreation' | 'original' | 'overlay';
+type Mode = 'recreation' | 'original' | 'overlay' | 'printer';
 type Style = 'microfilm' | 'print';
 type GimbalKey = keyof GimbalAngles;
 const GIMBAL_KEYS: GimbalKey[] = ['inner', 'middle', 'outer'];
@@ -74,6 +74,8 @@ export default function FigureExhibit({ figureIds }: { figureIds: string[] }) {
     });
   }, [dl, mode, style, labels, opacity, isBaseline, figure, figureResiduals]);
 
+  const printed = useMemo(() => (mode === 'printer' ? printerPlot(dl, { title: figure.label, get: validGet }) : ''), [mode, dl, figure, validGet]);
+
   const tryIt = spec.instrument.kind === 'sct'
     ? { getText, getError, onGetText, gimbalDrafts, gimbalErrors, onGimbalDraft, onReset: () => resetTo(figureId), atBaseline }
     : null;
@@ -87,7 +89,7 @@ export default function FigureExhibit({ figureIds }: { figureIds: string[] }) {
         )}
         <div className="flex flex-wrap items-center gap-4">
           <Segmented label="View" value={mode} onChange={setMode}
-            options={[['recreation', 'Recreation'], ['original', '1972 original'], ['overlay', 'Overlay']] as const} />
+            options={[['recreation', 'Recreation'], ['original', '1972 original'], ['overlay', 'Overlay'], ['printer', 'Printer plot']] as const} />
           <Segmented label="Style" value={style} onChange={setStyle}
             options={[['microfilm', 'Microfilm'], ['print', 'Report print']] as const} />
           <label className="flex items-center gap-2 text-sm">
@@ -107,10 +109,20 @@ export default function FigureExhibit({ figureIds }: { figureIds: string[] }) {
             <input type="range" min={0} max={1} step={0.05} value={opacity} onChange={(e) => setOpacity(Number(e.target.value))} className="w-48" />
           </label>
         )}
-        <div
-          className="overflow-hidden rounded border border-stone-300 dark:border-stone-700 [&>svg]:block [&>svg]:h-auto [&>svg]:w-full"
-          dangerouslySetInnerHTML={{ __html: svg }}
-        />
+        {mode === 'printer' ? (
+          <figure>
+            <pre className="max-h-[80vh] overflow-auto rounded border border-stone-300 bg-[#f7f3e8] p-3 font-mono text-[9px] leading-[1.35] text-stone-900 dark:border-stone-700"
+              aria-label={`${figure.label} as a line-printer plot`}>{printed}</pre>
+            <figcaption className="mt-2 text-sm text-stone-600 dark:text-stone-400">
+              The same display list on a 132-column line printer: the "crude printer-plot images" the report says the program could print for a quick look before the microfilm came back.
+            </figcaption>
+          </figure>
+        ) : (
+          <div
+            className="overflow-hidden rounded border border-stone-300 dark:border-stone-700 [&>svg]:block [&>svg]:h-auto [&>svg]:w-full"
+            dangerouslySetInnerHTML={{ __html: svg }}
+          />
+        )}
         {mode === 'overlay' && (isBaseline
           ? <p className="text-sm text-stone-600 dark:text-stone-400">Orange arrows run from each body's position on the 1972 scan toward its recomputed position, magnified ×5.</p>
           : <p className="text-sm text-amber-700 dark:text-amber-400">The inputs differ from the figure's, so the overlay no longer lines up. Reset to compare.</p>)}
