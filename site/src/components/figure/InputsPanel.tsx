@@ -22,7 +22,9 @@ interface Props {
 
 export function InputsPanel({ figure, utc, recovered, tryIt }: Props) {
   const inst = figure.spec.instrument;
-  const matrix = inst.kind === 'sct' ? figure.spec.refsmmat : inst.lmBodyFromRef;
+  const matrix = inst.kind === 'sct' ? figure.spec.refsmmat : inst.kind === 'aot' ? inst.lmBodyFromRef : [inst.axes.ex, inst.axes.ey, inst.axes.ez];
+  const attitudeTitle = inst.kind === 'sct' ? 'Platform: Lunar lift-off REFSMMAT'
+    : inst.kind === 'aot' ? 'LM attitude on the surface (reference → LM body)' : 'Plot axes x, y and boresight (B1970 reference frame)';
   const gimbalInput = (key: GimbalKey, label: string) => {
     if (!tryIt) return null;
     const error = tryIt.gimbalErrors[key];
@@ -53,14 +55,14 @@ export function InputsPanel({ figure, utc, recovered, tryIt }: Props) {
             <dd className="text-stone-500">Range zero {APOLLO_11.rangeZeroUtc}</dd>
           </div>
           <div>
-            <dt className="font-medium">{inst.kind === 'sct' ? 'Platform: Lunar lift-off REFSMMAT' : 'LM attitude on the surface (reference → LM body)'}</dt>
+            <dt className="font-medium">{attitudeTitle}</dt>
             <dd>
               <table className="mt-1 font-mono text-xs"><tbody>
                 {matrix.map((row, i) => <tr key={i}>{row.map((v, j) => <td key={j} className="pr-3 text-right">{v.toFixed(8)}</td>)}</tr>)}
               </tbody></table>
             </dd>
             <dd className="text-stone-500">{figure.attitudeNote}</dd>
-            <dd><a className="underline" href={docLink('69-fm-197', 38)}>69-FM-197, Table II (REFSMMATs)</a></dd>
+            {inst.kind !== 'fixed' && <dd><a className="underline" href={docLink('69-fm-197', 38)}>69-FM-197, Table II (REFSMMATs)</a></dd>}
           </div>
           <div>
             <dt className="font-medium">Instrument</dt>
@@ -69,8 +71,10 @@ export function InputsPanel({ figure, utc, recovered, tryIt }: Props) {
                 <dd>CSM scanning telescope: 60° field, shaft 0°, trunnion 0°.</dd>
                 {recovered && <dd className="text-stone-500">A free fit of the scan recovers shaft {recovered.shaftDeg.toFixed(1)}°, trunnion {recovered.trunnionDeg.toFixed(1)}°.</dd>}
               </>
-            ) : (
+            ) : inst.kind === 'aot' ? (
               <dd>LM alignment optical telescope, detent at {inst.detentDeg}° azimuth, 45° from the LM +X axis; 60° field. The image turns with the telescope head (−{inst.detentDeg}°), as the drawn reticle shows.</dd>
+            ) : (
+              <dd>The commander's view through the CSM window as a 100° plot. The window outlines for the left and right eye are traced from Fig 2; the plot is fixed to the spacecraft, so the same outlines fit Fig 1 within a degree.</dd>
             )}
           </div>
           <div>

@@ -1,0 +1,137 @@
+{
+  "_comment": "Digitizing config for TN D-6853 Fig 2 (view at entry, Apollo 11), CM window view, 100\u00b0 field. bodies: approxPx snaps to the nearest blob within 20 px; manualPx is used as-is for glyphs touching lines. outlineVerticesPx: corners of the commander's window outlines (left and right eye), read on 3\u00d7 gridded zooms (scripts/zoom-grid.ts).",
+  "id": "fig2",
+  "scan": "tnd6853-fig2.png",
+  "source": {
+    "file": "tn-d-6853.pdf",
+    "page": 9,
+    "dpi": 300,
+    "crop": {
+      "x": 1250,
+      "y": 1700,
+      "w": 980,
+      "h": 860
+    }
+  },
+  "extentDeg": 50,
+  "bodies": {
+    "Moon": {
+      "kind": "moon",
+      "approxPx": [
+        423.6,
+        214.5
+      ]
+    },
+    "Atria": {
+      "kind": "star",
+      "approxPx": [
+        726.3,
+        421.4
+      ]
+    },
+    "Peacock": {
+      "kind": "star",
+      "approxPx": [
+        645.7,
+        617.4
+      ]
+    },
+    "Altair": {
+      "kind": "star",
+      "manualPx": [
+        100.4,
+        663.3
+      ],
+      "note": "Touches the frame's inset band (x = \u221247\u00b0); read by hand on a 12\u00d7 zoom."
+    },
+    "Dabih": {
+      "kind": "star",
+      "approxPx": [
+        308.1,
+        715.4
+      ]
+    },
+    "Mars": {
+      "kind": "planet",
+      "manualPx": [
+        409.9,
+        246.4
+      ],
+      "note": "The middle of three dots above the label, touching a leader line; read on an 8\u00d7 zoom (the nearest-blob snap caught a letter)."
+    },
+    "Antares": {
+      "kind": "star",
+      "approxPx": [
+        409.3,
+        300.8
+      ],
+      "note": "Label placement is ambiguous; the dot is the one nearest the position predicted by the stars-only fit of the unambiguous labels."
+    },
+    "Acrux": {
+      "kind": "star",
+      "approxPx": [
+        834.0,
+        247.8
+      ],
+      "note": "Label placement is ambiguous; the dot is the one nearest the position predicted by the stars-only fit of the unambiguous labels."
+    },
+    "Nunki": {
+      "kind": "star",
+      "approxPx": [
+        377.1,
+        550.3
+      ],
+      "note": "Label placement is ambiguous; the dot is the one nearest the position predicted by the stars-only fit of the unambiguous labels."
+    }
+  },
+  "arcs": {
+    "horizon": {
+      "seed": [
+        [
+          -30,
+          41.3
+        ],
+        [
+          12,
+          33.6
+        ]
+      ],
+      "xRange": [
+        -48,
+        46
+      ],
+      "yRange": [
+        30.5,
+        49.3
+      ],
+      "maxGap": 12,
+      "prefer": "lowest"
+    }
+  },
+  "outlineVerticesPx": {
+    "left-eye top-left": [
+      435.0,
+      118.3
+    ],
+    "left-eye top-right": [
+      469.0,
+      120.7
+    ],
+    "right-eye top-left": [
+      517.3,
+      120.7
+    ],
+    "right-eye top-right": [
+      545.0,
+      119.3
+    ],
+    "left-eye bottom": [
+      373.3,
+      383.3
+    ],
+    "right-eye bottom": [
+      430.0,
+      384.0
+    ]
+  }
+}

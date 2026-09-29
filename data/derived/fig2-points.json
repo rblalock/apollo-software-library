@@ -1,0 +1,181 @@
+{
+  "provenance": {
+    "sources": [
+      {
+        "url": "https://ntrs.nasa.gov/api/citations/19720017950/downloads/19720017950.pdf",
+        "retrieved": "2026-09-29",
+        "sha256": "a839dacb1b3990f770fcff85a3c62a7e9a32564b1ae54bec36cf17043a8cd5ea"
+      }
+    ],
+    "method": "tn-d-6853.pdf PDF p. 9 rendered at 300 dpi (pdftoppm) and cropped (scripts/extract-figures.ts, data/manual/figures/fig2.json). The frame is registered from its ±50° border lines; each labeled glyph is snapped to the nearest detected dark blob from a hand-read approximate position, or measured by eye on a 4× zoom where it touches the frame or reticle (method: manual). Unlabeled plotter dots are detected as small filled discs (isRoundDot).",
+    "script": "scripts/digitize-figure.ts",
+    "generated": "2026-09-29"
+  },
+  "image": {
+    "path": "data/derived/scans/tnd6853-fig2.png",
+    "widthPx": 980,
+    "heightPx": 860
+  },
+  "frame": {
+    "leftX": 93.90542193232776,
+    "rightX": 883.4408514121981,
+    "topY": 31.337998600419873,
+    "bottomY": 798.1040428061831
+  },
+  "extentDeg": 50,
+  "points": [
+    {
+      "id": "Moon",
+      "kind": "moon",
+      "px": [
+        422.72,
+        222.08
+      ],
+      "xDeg": -8.353428618103088,
+      "yDeg": 25.12339830717301,
+      "method": "blob",
+      "area": 564
+    },
+    {
+      "id": "Atria",
+      "kind": "star",
+      "px": [
+        727.93,
+        421.24
+      ],
+      "xDeg": 30.304105047452182,
+      "yDeg": -0.8500780362845575,
+      "method": "blob",
+      "area": 46
+    },
+    {
+      "id": "Peacock",
+      "kind": "star",
+      "px": [
+        646.57,
+        618.61
+      ],
+      "xDeg": 19.99888618085015,
+      "yDeg": -26.59106069385919,
+      "method": "blob",
+      "area": 49
+    },
+    {
+      "id": "Altair",
+      "kind": "star",
+      "note": "Touches the frame's inset band (x = −47°); read by hand on a 12× zoom.",
+      "px": [
+        100.4,
+        663.3
+      ],
+      "xDeg": -49.17741777947182,
+      "yDeg": -32.41914286308587,
+      "method": "manual"
+    },
+    {
+      "id": "Dabih",
+      "kind": "star",
+      "px": [
+        307.23,
+        714.92
+      ],
+      "xDeg": -22.981105499613587,
+      "yDeg": -39.150878971735864,
+      "method": "blob",
+      "area": 48
+    },
+    {
+      "id": "Mars",
+      "kind": "planet",
+      "note": "The middle of three dots above the label, touching a leader line; read on an 8× zoom (the nearest-blob snap caught a letter).",
+      "px": [
+        409.9,
+        246.4
+      ],
+      "xDeg": -9.97715032549673,
+      "yDeg": 21.952070253404724,
+      "method": "manual"
+    },
+    {
+      "id": "Antares",
+      "kind": "star",
+      "note": "Label placement is ambiguous; the dot is the one nearest the position predicted by the stars-only fit of the unambiguous labels.",
+      "px": [
+        408.38,
+        299.9
+      ],
+      "xDeg": -10.16966860184582,
+      "yDeg": 14.974713808856286,
+      "method": "blob",
+      "area": 50
+    },
+    {
+      "id": "Acrux",
+      "kind": "star",
+      "note": "Label placement is ambiguous; the dot is the one nearest the position predicted by the stars-only fit of the unambiguous labels.",
+      "px": [
+        838.43,
+        246.61
+      ],
+      "xDeg": 44.29889042303272,
+      "yDeg": 21.924389724309435,
+      "method": "blob",
+      "area": 49
+    },
+    {
+      "id": "Nunki",
+      "kind": "star",
+      "note": "Label placement is ambiguous; the dot is the one nearest the position predicted by the stars-only fit of the unambiguous labels.",
+      "px": [
+        374.62,
+        549.73
+      ],
+      "xDeg": -14.445319385499289,
+      "yDeg": -17.60801924528117,
+      "method": "blob",
+      "area": 45
+    }
+  ],
+  "dots": [
+    {
+      "px": [
+        611.42,
+        191.3
+      ],
+      "xDeg": 15.546720102047885,
+      "yDeg": 29.138095301902283
+    },
+    {
+      "px": [
+        596.2,
+        223.44
+      ],
+      "xDeg": 13.619004203341916,
+      "yDeg": 24.946464720074488
+    },
+    {
+      "px": [
+        396.26,
+        241.16
+      ],
+      "xDeg": -11.704748542208264,
+      "yDeg": 22.635459931338072
+    },
+    {
+      "px": [
+        553.2,
+        259.54
+      ],
+      "xDeg": 8.172763490834875,
+      "yDeg": 20.23837934347264
+    },
+    {
+      "px": [
+        408.38,
+        299.9
+      ],
+      "xDeg": -10.16966860184582,
+      "yDeg": 14.974713808856286
+    }
+  ]
+}

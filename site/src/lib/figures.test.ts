@@ -23,3 +23,17 @@ describe('display specs', () => {
     expect(Number.isFinite(menkar.dist)).toBe(true);
   });
 });
+
+describe('CM window views (Figs 1–2)', () => {
+  it('are seen from the spacecraft at the printed altitude, attitude fitted from their stars', () => {
+    const s = FIGURES.fig1!.spec;
+    expect(s.instrument.kind).toBe('fixed');
+    expect(s.observerPositionKm).toBeDefined();
+    expect(s.get.startsWith('02:49:5')).toBe(true);
+  });
+  it('lands the labelled stars within 1° and shows the Sun off by the recorded 3.5°', () => {
+    const rows = residuals(FIGURES.fig1!).rows;
+    for (const id of ['Capella', 'Mirfak', 'Dnoces', 'Sirius', 'Rigel', 'Procyon', 'Aldebaran']) expect(rows.find((r) => r.id === id)!.dist, id).toBeLessThan(1);
+    expect(rows.find((r) => r.id === 'Sun')!.dist).toBeGreaterThan(3);
+  });
+});

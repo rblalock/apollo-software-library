@@ -2,6 +2,7 @@ import type { Mat3 } from '../math/mat';
 import type { Vec3 } from '../math/vec';
 import type { GimbalAngles } from '../frames/frames';
 import type { BodyName, Observer } from '../ephemeris/ephemeris';
+import type { PlotAxes } from '../projection/projection';
 
 export interface ViewSpec {
   rangeZeroUtc: string;
@@ -20,10 +21,14 @@ export interface ViewSpec {
   /**
    * 'sct': CSM scanning telescope, attitude from `refsmmat` + `gimbals`.
    * 'aot': LM alignment optical telescope at a detent azimuth, attitude given directly as reference → LM body.
+   * 'fixed': plot axes given directly in the reference frame (a window view whose attitude was fitted).
    */
   instrument:
     | { kind: 'sct'; shaftDeg: number; trunnionDeg: number }
-    | { kind: 'aot'; detentDeg: number; lmBodyFromRef: Mat3 };
+    | { kind: 'aot'; detentDeg: number; lmBodyFromRef: Mat3 }
+    | { kind: 'fixed'; axes: PlotAxes };
+  /** Outlines fixed in the plot (window frames), in plot degrees, drawn closed. */
+  outlines?: ReadonlyArray<ReadonlyArray<readonly [number, number]>>;
   /** Half-width of the square plot in degrees (the 1969 figures use ±50°). */
   extentDeg: number;
   bodies: BodyName[];
