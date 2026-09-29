@@ -2,10 +2,16 @@
   "name": "apollo-software-library",
   "private": true,
   "type": "module",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*",
+    "site"
+  ],
   "scripts": {
     "test": "vitest run",
-    "typecheck": "tsc -p packages/view-engine --noEmit"
+    "typecheck": "tsc -p packages/view-engine --noEmit",
+    "dev": "bun scripts/sync-public.ts && cd site && bun run dev",
+    "build": "bun scripts/sync-public.ts && cd site && bun run build",
+    "check:site": "cd site && bun run check"
   },
   "devDependencies": {
     "@types/bun": "^1.4.2",

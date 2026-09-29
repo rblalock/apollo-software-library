@@ -1,0 +1,45 @@
+[
+  {
+    "id": "tn-d-6853",
+    "title": "Apollo Experience Report – The Application of a Computerized Visualization Capability to Lunar Missions",
+    "reportNumber": "NASA TN D-6853",
+    "date": "June 1972",
+    "authors": ["Charles T. Hyle", "Alfred N. Lunde"],
+    "pdf": "/docs/tn-d-6853.pdf",
+    "sourceUrl": "https://ntrs.nasa.gov/citations/19720017950",
+    "pageCount": 19,
+    "anchors": {
+      "cover": { "page": 1, "label": "Cover" },
+      "fig3a": { "page": 10, "label": "Figure 3 – Views through the scanning telescope (printed p. 5)" },
+      "appendix": { "page": 17, "label": "Appendix – Lunar-mission view-program capabilities (printed p. 12)" }
+    }
+  },
+  {
+    "id": "69-fm-197",
+    "title": "Revision 1 to Views from the CM and LM During the Flight of Apollo 11 (Mission G)",
+    "reportNumber": "MSC Internal Note 69-FM-197",
+    "date": "3 July 1969",
+    "authors": ["A. N. Lunde"],
+    "pdf": "/docs/69-fm-197.pdf",
+    "sourceUrl": "https://www.ibiblio.org/apollo/Documents/19740073250.pdf",
+    "pageCount": 321,
+    "anchors": {
+      "refsmmat": { "page": 38, "label": "Table II – Mission REFSMMATs (printed p. 21)" },
+      "fig-9-3-8": { "page": 290, "label": "Figure 9.3-8 – Scanning telescope, rev 30 (printed p. 272)" },
+      "rtcc-catalogue": { "page": 309, "label": "RTCC star catalogue for Besselian year 1970 (printed p. 291)" }
+    }
+  },
+  {
+    "id": "69-fm-107",
+    "title": "Views from the Spacecraft During Apollo 10 (Mission F)",
+    "reportNumber": "MSC Internal Note 69-FM-107",
+    "date": "22 April 1969",
+    "authors": ["Mission Planning and Analysis Division, MSC"],
+    "pdf": "/docs/69-fm-107.pdf",
+    "sourceUrl": "https://web.archive.org/web/20250615183849/https://www.nasa.gov/wp-content/uploads/static/history/afj/ap10fj/pdf/a10-views-from-sc-1969-05-18-launch-19690422.pdf",
+    "pageCount": 145,
+    "anchors": {
+      "star-catalogue": { "page": 14, "label": "Table I – Star identification catalogue (1,078 stars)" }
+    }
+  }
+]
