@@ -1,8 +1,14 @@
-# Ledger — plan: docs/superpowers/plans/2026-09-29-view-program-roadmap.md
-Spec: docs/superpowers/specs/2026-09-29-view-program-roadmap-design.md
-Mode: fully autonomous (user choice, 2026-09-29).
+# Ledger
 
-Roadmap: Ruling: tracked task-level plan without pre-written code — the user asked for autonomy and throughput; each task still names its tests and acceptance — cost if wrong: less step-by-step guidance if a different executor resumes.
+Every decision and measurement made while building the view-program recreation, in the order they were made.
+
+- Item numbers follow the design document, [design/roadmap.md](design/roadmap.md).
+- **PRE-REGISTERED** fixes a test's threshold before the data it is checked against was measured.
+- **GOLDEN** records a comparison with a scanned original that passed. **MISSED** records one that failed and was left failing, with its analysis.
+- **Ruling** records a judgement call: what was decided, why, and what it costs if it is wrong.
+- **Final** lines come from the independent review of the finished work.
+
+Roadmap: Ruling: tracked task-level plan without pre-written code — the maintainer asked for autonomy and throughput; each task still names its tests and acceptance — cost if wrong: less step-by-step guidance if a different executor resumes.
 Roadmap: Ruling: order 1 → 7 → 5 → 2 → 3 → 4 → 6 → 8 → 9 (dependency order; Earth/window/descent views need spacecraft positions from item 5) — cost if wrong: none.
 Roadmap: Ruling: a missed golden test is recorded and marked it.skip with a ledger pointer rather than left red — keeps the suite usable for later items — cost if wrong: a miss could be overlooked (mitigated: reported prominently at the end).
 Item 1.1: golden dots — 23 round scan dots all within 0.82° of a recreated star (median 0.26°); 23/30 unlabeled recreated stars matched directly, 7 confirmed by eye as merged dots (Orion's belt pair, 2 on the SCT circle, 1 touching '-40', 2 double-struck) and listed as exclusions; the test fails if the unmatched set changes.
@@ -108,7 +114,7 @@ Item 8.3: Every figure's inputs now link to the page it is printed on (TN D-6853
 Item 8.5: Accessibility: skip link; visible focus outline in the accent colour; low-contrast grey text (stone-500 measured 4.35:1 on the new paper) replaced by the muted token (≈5.3:1); labels for all controls were already present. `bun run typecheck:scripts` added (scripts/tsconfig.json); two errors fixed. No page scrolls horizontally at 390 px (checked in a browser: fig-3a, fig-6, documents).
 Item 8.6: Hosting preparation (no deploy): site/public/_headers (immutable /_astro, a week for PDFs and scans, basic security headers); README rewritten with results, commands, the data pipeline and deploy notes (static build, 37 MB of which 32 MB PDFs, largest file 11.8 MB).
 Item 8: complete.
-Item 9: Outreach drafts in docs/outreach/ (not sent — for the maintainer): National Archives at Fort Worth (the film, program listings and microfilm, the Apollo 12–17 views notes); JSC History Office (code, people, oral histories, crediting); the film's YouTube uploader (Barry Rosen's role, link/embed permission — he stays uncredited on the site until confirmed); ALSJ/AFJ editors (the recreation and the document errors it found). Contact addresses are left for the maintainer to check.
+Item 9: Outreach drafts for the maintainer, kept outside the repository and not sent: National Archives at Fort Worth (the film, program listings and microfilm, the Apollo 12–17 views notes); JSC History Office (code, people, oral histories, crediting); the film's YouTube uploader (Barry Rosen's role, link/embed permission — he stays uncredited on the site until confirmed); ALSJ/AFJ editors (the recreation and the document errors it found). Contact addresses are left for the maintainer to check.
 Item 9: complete.
 
 ## Final whole-roadmap review (fresh reviewer, e53f83d..main)
@@ -132,3 +138,6 @@ Final: minor (deferred): weak or vacuous tests — scene-observer 'without a pos
 Final: minor (deferred): site performance/a11y — figures.ts runs ~120 propagations and the PDI star fits at module load (~140 ms); the film frame cache never evicts; vehicle auto-rotate recomputes while off-screen; aria-label on the printer-plot <pre> is not announced; Play/Rotate buttons change label and set aria-pressed (announced twice).
 Final: minor (deferred): data scripts — fetch-geodata records sha256 but never checks it and reads moving URLs; shapefile reader would misalign attributes after a null shape, ignores deleted DBF rows, and has no bound on the descriptor loop; fitCircle has no guard for < 3 or collinear points; digitize-limb output has no provenance block; build-cat1078 comment says 0.05° (code 20″); the ledger's "max 19.4″" is 19.58″; README rebuild steps omit the 400-dpi OCR pass; digitize-arcs method text misdescribes edge/prefer options; cat1078 magnitudes are unflagged OCR noise (569 of 826 null).
 Final: minor (deferred, carried from the Fig 3a review): agc37.json provenance should list the ALSJ star-name source; the page does not say the middle/outer gimbal handling rests on the CALCGA round trip; labels can still overlap reticle marks (label placement avoids glyphs and other labels, not reticle lines).
+Open source: Ruling: per-task plans removed; design documents and ledgers moved to docs/; outreach drafts kept out of the repository — the drafts are addressed to people who have not yet been contacted — cost if wrong: the drafts must be added back by hand.
+Open source: Ruling: the film is the first exhibit, has its own nav link, and plays on the home page unless the reader's system asks for reduced motion — the maintainer asked for the film "at the top and front and center" — cost if wrong: the home page loads the film's script (about 0.7 MB before compression).
+Open source: Ruling: vercel.json replaces site/public/_headers (same cache and security headers) — the site deploys on Vercel from GitHub — cost if wrong: another host needs the headers set again (README "Deploying").

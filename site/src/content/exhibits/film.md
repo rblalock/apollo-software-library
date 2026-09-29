@@ -16,7 +16,7 @@ The view program drew one frame for every chosen step of the trajectory integrat
 - **Scanning telescope, rev 30** — Figure 3a's attitude held for two hours: the stars stand still and the Moon's horizon sweeps through as the command module orbits.
 - **LM, turning** — the hidden-line lunar module, 3° a frame.
 
-Nothing plays until you press Play. "Film grain" lays a light grain over the frame; it is decoration, not data.
+The film starts on its own unless your system is set to reduce motion. "Film grain" lays a light grain over the frame; it is decoration, not data.
 
 ## Limits
 

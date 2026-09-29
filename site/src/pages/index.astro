@@ -2,26 +2,48 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import ProvenanceBadge from '../components/ProvenanceBadge.astro';
+import FilmExhibit from '../components/film/FilmExhibit';
 
 const entries = await getCollection('entries');
 ---
 <Base title="Home">
-  <section class="max-w-3xl">
-    <h1 class="text-4xl font-semibold tracking-tight">Apollo Software Library</h1>
-    <p class="mt-4 text-lg text-stone-700 dark:text-stone-300">
-      Working recreations of the software that planned and flew the Apollo missions, each shown with its history
-      and primary sources. Every entry says how close it is to the original: emulated from surviving code, rebuilt
-      from documented algorithms, or rebuilt from documents and output.
-    </p>
+  <section class="grid items-start gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]" aria-labelledby="intro">
+    <div class="lg:pt-2">
+      <h1 id="intro" class="text-4xl font-semibold tracking-tight">Apollo Software Library</h1>
+      <p class="mt-4 text-lg text-stone-700 dark:text-stone-300">
+        Working recreations of the software that planned and flew the Apollo missions, with the documents they came
+        from.
+      </p>
+      <p class="mt-4 text-stone-700 dark:text-stone-300">
+        The first entry rebuilds the <strong class="font-semibold text-ink">view program</strong>. NASA's Manned
+        Spacecraft Center used it to draw what Apollo crews would see through their windows and telescopes, and filmed
+        its output frame by frame. The film here is the recreation's output, computed in your browser one frame at a
+        time.
+      </p>
+      <ul class="mt-6 space-y-2 font-mono text-sm">
+        <li><a class="text-accent underline" href="/view-program/film/">Open the full film player</a></li>
+        <li><a class="text-accent underline" href="/view-program/fig-3a/">Compare a frame with the 1972 original</a></li>
+        <li><a class="text-accent underline" href="/view-program/">How the view program worked</a></li>
+      </ul>
+    </div>
+    <FilmExhibit client:load autoplay compact />
   </section>
-  <ul class="mt-12 grid gap-6 md:grid-cols-2">
-    {entries.map((entry) => (
-      <li class="rounded border border-stone-300 p-6 dark:border-stone-700">
-        <p class="font-mono text-xs uppercase tracking-widest text-muted">{entry.data.era}</p>
-        <h2 class="mt-2 text-2xl font-semibold"><a href={`/${entry.id}/`} class="hover:underline">{entry.data.title}</a></h2>
-        <p class="mt-3 text-stone-700 dark:text-stone-300">{entry.data.summary}</p>
-        <div class="mt-4"><ProvenanceBadge tier={entry.data.provenanceTier} /></div>
-      </li>
-    ))}
-  </ul>
+
+  <section class="mt-16" aria-labelledby="entries">
+    <h2 id="entries" class="font-mono text-xs uppercase tracking-widest text-muted">Entries</h2>
+    <p class="mt-2 max-w-3xl text-sm text-stone-700 dark:text-stone-300">
+      Each entry says how close it is to the original: emulated from surviving code, rebuilt from documented
+      algorithms, or rebuilt from documents and output.
+    </p>
+    <ul class="mt-4 grid gap-6 md:grid-cols-2">
+      {entries.map((entry) => (
+        <li class="rounded border border-stone-300 p-6 dark:border-stone-700">
+          <p class="font-mono text-xs uppercase tracking-widest text-muted">{entry.data.era}</p>
+          <h3 class="mt-2 text-2xl font-semibold"><a href={`/${entry.id}/`} class="hover:underline">{entry.data.title}</a></h3>
+          <p class="mt-3 text-stone-700 dark:text-stone-300">{entry.data.summary}</p>
+          <div class="mt-4"><ProvenanceBadge tier={entry.data.provenanceTier} /></div>
+        </li>
+      ))}
+    </ul>
+  </section>
 </Base>

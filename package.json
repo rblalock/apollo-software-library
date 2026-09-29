@@ -1,6 +1,13 @@
 {
   "name": "apollo-software-library",
   "private": true,
+  "description": "Working recreations of Apollo-era software, starting with the MSC view program (NASA TN D-6853).",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rblalock/apollo-software-library.git"
+  },
+  "homepage": "https://github.com/rblalock/apollo-software-library#readme",
   "type": "module",
   "workspaces": [
     "packages/*",

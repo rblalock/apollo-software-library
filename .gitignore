@@ -7,3 +7,6 @@ dist/
 tmp/
 site/public/docs/
 site/public/scans/
+
+# Local notes that are not part of the published project
+private/

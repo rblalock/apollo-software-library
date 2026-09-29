@@ -1,7 +1,7 @@
 # View Program Roadmap: Design
 
 - **Date:** 2026-09-29
-- **Status:** Approved for autonomous execution (the user chose "fully autonomous": no approval pauses, one report at the end)
+- **Status:** Approved for autonomous execution (the maintainer chose "fully autonomous": no approval pauses, one report at the end)
 - **Builds on:** `2026-09-29-view-program-fig3a-design.md` (the Fig 3a POC, merged into `main`)
 
 ## 1. Goal
@@ -30,7 +30,7 @@ The spec's §10 list is reordered by dependency. The Earth, window and descent v
 | 4 | LM descent: front and docking windows, the LPD scale, crater models (Figs 5, 8, 69-FM-197 PDI frames) | 2, 3, 5 |
 | 6 | Film playback of frame sequences, plus line-printer "printer-plot" output | 1–4 |
 | 8 | Design pass, label placement, source links, bundle size, hosting preparation (no deploy) | all |
-| 9 | Outreach drafts (NARA, JSC History Office, Roush and Rosen), prepared for the user to send | none |
+| 9 | Outreach drafts (NARA, JSC History Office, Roush and Rosen), prepared for the maintainer to send | none |
 
 ## 3. Items
 
@@ -107,7 +107,7 @@ The spec's §10 list is reordered by dependency. The Earth, window and descent v
 
 ### Item 9: Outreach drafts
 
-Letters and emails in `docs/outreach/` for the user to review and send:
+Letters and emails for the maintainer to review and send (kept outside the repository):
 - a NARA Fort Worth reference request (the 35 mm film and any listings);
 - the JSC History Office;
 - a VTC Media inquiry about Barry Rosen, to confirm his role;
@@ -116,6 +116,6 @@ Letters and emails in `docs/outreach/` for the user to review and send:
 ## 4. Cross-cutting rules
 
 - The engine stays framework-free; data scripts write provenance; every golden threshold is fixed before digitizing.
-- Each item appends its decisions to `docs/superpowers/ledgers/roadmap.md` as `Ruling:` lines and records its golden result.
+- Each item appends its decisions to `docs/ledger.md` as `Ruling:` lines and records its golden result.
 - The provenance tier stays at 3 ("rebuilt from documents and output").
 - The stop rule: if a golden test misses, never tune inputs. Record the measured misfit and its analysis in the ledger. Mark the assertion `it.skip('… — see ledger: <item>')` so the suite stays usable for later items, keep a passing test that records the measured values, and report the miss prominently at the end. Continue with independent items.

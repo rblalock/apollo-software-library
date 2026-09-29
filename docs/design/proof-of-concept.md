@@ -12,7 +12,7 @@ The program's source code is not publicly available. The recreation is therefore
 
 This proof of concept answers one question: **can we recompute a published view-program frame from period inputs and real star data, to within the precision of the scan?** It also stands up the library shell the answer will live in.
 
-### Constraints the user stated
+### Constraints the maintainer stated
 
 - Get as close to the original as possible. Where 1969 data is not recoverable (coastlines, crater sets, the 391-star catalog), our own reproduction is acceptable.
 - Work from a written plan that is tracked and worked down.
@@ -76,7 +76,7 @@ apollo-experience-report/
     sources/                   original public-domain PDFs + SOURCES.md (URL, retrieval date, checksum)
     derived/                   generated JSON; every file carries a `provenance` block
   scripts/                     Bun TypeScript data-build scripts
-  docs/superpowers/{specs,plans}/
+  docs/                        design documents and ledgers
 ```
 
 The package manager is Bun, with Vitest as the test runner. `pdftoppm` (poppler) is a system dependency, used only by the figure-extraction script.
@@ -168,7 +168,7 @@ interface ViewSpec {
 
 - `extract-figures` crops Fig 3a from TN D-6853 at 300 dpi into `site/public/scans/tnd6853-fig3a.png`.
 - `digitize-fig3a` detects dot and asterisk blobs, and registers pixels to degrees from the ±50° axis ticks (affine).
-- Name matching is done by hand (by me, reviewable by the user) and stored in `data/derived/fig3a-points.json`. The file holds pixel and degree coordinates, the registration, and the provenance.
+- Name matching is done by hand (reviewable by the maintainer) and stored in `data/derived/fig3a-points.json`. The file holds pixel and degree coordinates, the registration, and the provenance.
 
 ## 7. Data pipeline and provenance
 

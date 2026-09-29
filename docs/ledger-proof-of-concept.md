@@ -1,5 +1,7 @@
-# SDD ledger — plan: docs/superpowers/plans/2026-09-29-view-program-fig3a.md
-Spec: docs/superpowers/specs/2026-09-29-view-program-fig3a-design.md
+# Ledger: proof of concept
+
+Decisions and measurements from the first exhibit (TN D-6853 Figure 3a), made before the rest of the roadmap. The design is in [design/proof-of-concept.md](design/proof-of-concept.md). The later work is in [ledger.md](ledger.md).
+
 Setup: Ruling: work on branch feat/view-program-fig3a in place (no separate worktree) — fresh repo with only spec+plan commits, user said "go ahead and implement"; a branch keeps main clean — cost if wrong: none (branch can be moved to a worktree later).
 
 Pre-flight (shared interfaces):
@@ -58,4 +60,4 @@ Final: minor (deferred): typed labels overlap reticle marks on the plot (own bro
 Final: Ruling: declined-to-judge — favicon.ico 404: we ship /favicon.svg via <link rel=icon>; the ico probe is harmless — cost if wrong: a console line
 Final: Ruling: declined-to-judge — server.fs.allow ['..'] is dev-only; revisit at hosting — cost if wrong: none now
 Final: Ruling: declined-to-judge — visual polish → roadmap 8; 1972 print's broken horizontal reticle line is a print artifact (1969 version is continuous) — keep full line; ephemeris aberration/nutation/light-time at arcsecond level stay out; grid 4096 not exposed in UI → film mode (roadmap 6); REFSMMAT digits and range zero were verified from the page image during planning; tesseract-version drift is now caught because every row (incl. overrides) is position-verified; bun.lock not reviewed — cost if wrong: low
-Final: Ruling: ledger copied to docs/superpowers/ledgers/ before deleting the git-ignored workspace — the user chose fully autonomous roadmap execution with one report at the end, so the rulings must survive context compaction — cost if wrong: one extra doc file
+Final: Ruling: ledger copied into docs/ before deleting the git-ignored workspace — the maintainer chose fully autonomous roadmap execution with one report at the end, so the rulings must survive context compaction — cost if wrong: one extra doc file

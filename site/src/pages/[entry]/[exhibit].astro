@@ -33,7 +33,7 @@ const refs = await Promise.all(exhibit.data.figureRefs.map(async (r) => {
   </ul>
   <div class="mt-8">
     {exhibit.data.component === 'vehicle' ? <VehicleExhibit client:load />
-      : exhibit.data.component === 'film' ? <FilmExhibit client:load />
+      : exhibit.data.component === 'film' ? <FilmExhibit client:load autoplay />
       : exhibit.data.component === 'globe' ? <GlobeExhibit client:load panelIds={exhibit.data.figures} />
       : <FigureExhibit client:load figureIds={exhibit.data.figures} />}
   </div>

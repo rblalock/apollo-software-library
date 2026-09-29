@@ -1,7 +1,9 @@
 ---
 import { getCollection, getEntry, render, type CollectionEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import { renderSvg } from '@asl/view-engine';
 import ProvenanceBadge from '../../components/ProvenanceBadge.astro';
+import { REELS } from '../../lib/reels';
 
 export async function getStaticPaths() {
   const entries = await getCollection('entries');
@@ -13,6 +15,9 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const documents = await Promise.all(entry.data.documents.map((d) => getEntry(d)));
 const exhibits = await Promise.all(entry.data.exhibits.map((e) => getEntry(e)));
+// The film's card carries a still from its first reel, drawn at build time.
+const reel = REELS[0]!;
+const poster = renderSvg(reel.frame(0).dl, { style: 'microfilm', title: `${reel.label}, a still from the film` });
 ---
 <Base title={entry.data.title} description={entry.data.summary}>
   <p class="font-mono text-xs uppercase tracking-widest text-muted">{entry.data.era}</p>
@@ -23,12 +28,21 @@ const exhibits = await Promise.all(entry.data.exhibits.map((e) => getEntry(e)));
   <section class="mt-10" aria-labelledby="exhibits">
     <h2 id="exhibits" class="font-mono text-xs uppercase tracking-widest text-muted">Exhibits</h2>
     <ul class="mt-3 grid gap-4 md:grid-cols-2">
-      {exhibits.map((x) => x && (
+      {exhibits.map((x) => x && (x.data.component === 'film' ? (
+        <li class="grid items-center gap-5 rounded border border-stone-300 p-5 sm:grid-cols-[12rem_minmax(0,1fr)] md:col-span-2 dark:border-stone-700">
+          <a href={`/${entry.id}/${x.id}/`} class="block overflow-hidden rounded [&>svg]:block [&>svg]:h-auto [&>svg]:w-full" aria-hidden="true" tabindex="-1" set:html={poster} />
+          <div>
+            <a href={`/${entry.id}/${x.id}/`} class="text-lg font-semibold hover:underline">{x.data.title}</a>
+            <p class="mt-2 text-sm text-stone-700 dark:text-stone-300">{x.data.summary}</p>
+            <p class="mt-3 font-mono text-xs uppercase tracking-wide"><a class="text-accent underline" href={`/${entry.id}/${x.id}/`}>Watch the film</a></p>
+          </div>
+        </li>
+      ) : (
         <li class="rounded border border-stone-300 p-5 dark:border-stone-700">
           <a href={`/${entry.id}/${x.id}/`} class="text-lg font-semibold hover:underline">{x.data.title}</a>
           <p class="mt-2 text-sm text-stone-700 dark:text-stone-300">{x.data.summary}</p>
         </li>
-      ))}
+      )))}
     </ul>
   </section>
 

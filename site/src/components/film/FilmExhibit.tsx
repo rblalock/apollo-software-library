@@ -26,7 +26,11 @@ function Grain() {
   return url ? <div className="pointer-events-none absolute inset-0 opacity-[0.08]" style={{ backgroundImage: `url(${url})` }} aria-hidden="true" /> : null;
 }
 
-export default function FilmExhibit() {
+/**
+ * The film player. `autoplay` starts playback after hydration unless the reader's system asks for reduced motion;
+ * `compact` drops the speed, style and grain controls (the home page).
+ */
+export default function FilmExhibit({ autoplay = false, compact = false }: { autoplay?: boolean; compact?: boolean }) {
   const [reelId, setReelId] = useState(REELS[0]!.id);
   const reel = REELS.find((r) => r.id === reelId)!;
   const [index, setIndex] = useState(0);
@@ -53,26 +57,32 @@ export default function FilmExhibit() {
   }, [reel, reelId, index, style]);
 
   useEffect(() => {
+    if (autoplay && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) setPlaying(true);
+  }, [autoplay]);
+
+  useEffect(() => {
     if (!playing) return;
     const id = window.setInterval(() => setIndex((i) => (i + 1) % reel.frames), 1000 / Number(speed));
     return () => window.clearInterval(id);
   }, [playing, speed, reel]);
 
   const step = (d: number) => { setPlaying(false); setIndex((i) => (i + d + reel.frames) % reel.frames); };
+  // On the home page the frame is held under 60% of the window height, so the controls stay on screen with it.
+  const width = compact ? 'max-w-[min(100%,60vh)]' : 'mx-auto max-w-3xl';
   const button = 'rounded border border-stone-400 px-3 py-1 font-mono text-xs uppercase tracking-wide dark:border-stone-600';
 
   return (
     <section className="space-y-4" aria-label="Film of computed frames">
-      <Segmented label="Reel" value={reelId} onChange={selectReel} options={REELS.map((r) => [r.id, r.label] as const)} />
-      <p className="max-w-3xl text-sm text-stone-700 dark:text-stone-300">{reel.description}</p>
-      <div className="relative mx-auto max-w-3xl overflow-hidden rounded border border-stone-300 dark:border-stone-700">
+      <Segmented label="Reel" value={reelId} onChange={selectReel} options={REELS.map((r) => [r.id, r.short] as const)} />
+      <p className={`text-sm text-stone-700 dark:text-stone-300 ${compact ? width : 'max-w-3xl'}`}>{reel.description}</p>
+      <div className={`relative overflow-hidden rounded ${width} border border-stone-300 dark:border-stone-700`}>
         {/* Server and browser JavaScript engines can round a borderline visibility or clipping test differently in the
             last bit, so the server's first frame may differ by one sample point; it is kept until the next change. */}
         <div className="[&>svg]:block [&>svg]:h-auto [&>svg]:w-full"
           suppressHydrationWarning dangerouslySetInnerHTML={{ __html: frame.svg }} />
         {grain && style === 'microfilm' && <Grain />}
       </div>
-      <div className="mx-auto flex max-w-3xl flex-wrap items-center gap-3">
+      <div className={`flex flex-wrap items-center gap-3 ${width}`}>
         <button type="button" className={button} onClick={() => step(-1)} aria-label="Previous frame">◀</button>
         <button type="button" className={button} aria-pressed={playing} onClick={() => setPlaying((p) => !p)}>{playing ? 'Pause' : 'Play'}</button>
         <button type="button" className={button} onClick={() => step(1)} aria-label="Next frame">▶</button>
@@ -84,11 +94,11 @@ export default function FilmExhibit() {
           FRAME {String(index + 1).padStart(3, '0')}/{reel.frames} · {frame.caption}
         </p>
       </div>
-      <div className="mx-auto flex max-w-3xl flex-wrap items-center gap-4">
+      {!compact && <div className="mx-auto flex max-w-3xl flex-wrap items-center gap-4">
         <Segmented label="Frames per second" value={speed} onChange={setSpeed} options={SPEEDS.map((s) => [s, `${s} fps`] as const)} />
         <Segmented label="Style" value={style} onChange={setStyle} options={[['microfilm', 'Microfilm'], ['print', 'Report print']] as const} />
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={grain} onChange={(e) => setGrain(e.target.checked)} /> Film grain</label>
-      </div>
+      </div>}
     </section>
   );
 }

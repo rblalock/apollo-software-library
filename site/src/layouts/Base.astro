@@ -6,10 +6,16 @@ const { title, description = 'Working recreations of Apollo-era software, each w
 const path = Astro.url.pathname;
 const nav = [
   { href: '/', label: 'Library' },
+  { href: '/view-program/film/', label: 'Film' },
   { href: '/view-program/', label: 'View program' },
   { href: '/documents/', label: 'Sources' },
 ];
-const current = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+const current = (href: string) => {
+  if (href === '/') return path === '/';
+  // The most specific item wins: on the film page only "Film" is current, not "View program" too.
+  const best = nav.filter((n) => n.href !== '/' && path.startsWith(n.href)).sort((x, y) => y.href.length - x.href.length)[0];
+  return best?.href === href;
+};
 ---
 <!doctype html>
 <html lang="en">
