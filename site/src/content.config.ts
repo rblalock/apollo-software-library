@@ -25,11 +25,14 @@ const exhibits = defineCollection({
     entry: z.string(),
     summary: z.string(),
     figureRefs: z.array(z.object({ document: reference('documents'), anchor: z.string() })),
-    /** 'figure' = a 1969 figure recomputed and compared (needs `figures`); 'vehicle' = the hidden-line models. */
-    component: z.enum(['figure', 'vehicle']).default('figure'),
-    /** Figure ids from site/src/lib/figures.ts shown by the exhibit (several = a panel switch). */
+    /**
+     * 'figure' = a star-field figure recomputed and compared (ids from site/src/lib/figures.ts);
+     * 'globe' = an Earth or Moon view (ids from site/src/lib/globes.ts); 'vehicle' = the hidden-line models.
+     */
+    component: z.enum(['figure', 'globe', 'vehicle']).default('figure'),
+    /** Panel ids shown by the exhibit (several = a panel switch). */
     figures: z.array(z.string()).default([]),
-  }).refine((d) => d.component !== 'figure' || d.figures.length > 0, { message: 'a figure exhibit needs at least one figure id', path: ['figures'] }),
+  }).refine((d) => d.component === 'vehicle' || d.figures.length > 0, { message: 'figure and globe exhibits need at least one panel id', path: ['figures'] }),
 });
 
 const entries = defineCollection({

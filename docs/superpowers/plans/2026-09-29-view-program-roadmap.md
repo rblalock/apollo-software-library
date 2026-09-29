@@ -58,7 +58,7 @@
 - [x] 2.3 **Globe renderer:** limb, terminator and hatching in the scene, from the observer state. Unit tests on limb radius and terminator geometry.
 - [x] 2.4 **Digitize Figs 6a–d and 7a–b:** limb circle, terminator ellipse and named features.
 - [x] 2.5 **Golden:** within 2% (disc and terminator) and 3% (features) of the diameter.
-- [ ] 2.6 **Exhibits, ledger and commit.**
+- [x] 2.6 **Exhibits, ledger and commit.**
 
 ## Item 3: CM windows and maneuver views
 

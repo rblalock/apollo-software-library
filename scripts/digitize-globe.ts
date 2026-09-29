@@ -1,7 +1,7 @@
 /**
- * Measure TN D-6853 Figs 6–7 (globe views) without reference to any model: the frame from its border lines, the
- * limb as a robust circle fit to the outermost ink along rays from the frame centre, and the hand-read landmarks
- * and terminator points of data/manual/globes/<id>.json. Writes data/derived/<id>-globe.json.
+ * Measure TN D-6853 Figs 6–7 (globe views) without reference to any model: the frame from its border lines and the
+ * limb as a robust circle fit to the outermost ink along rays from the frame centre. Writes
+ * data/derived/<id>-globe.json. (Features and the terminator are located by the golden tests; ledger Item 2.4.)
  */
 import { readFileSync } from 'node:fs';
 import { fitCircle } from './lib/circle';
@@ -17,8 +17,6 @@ interface GlobeConfig {
   body: 'earth' | 'moon';
   get: string;
   frameOverride?: Partial<Frame>;
-  landmarks: Record<string, { lat: number; lon: number; px: [number, number]; note?: string }>;
-  terminatorPx: [number, number][];
 }
 
 const sources = JSON.parse(readFileSync('data/sources/sources.json', 'utf8')) as Array<{ file: string; url: string; retrieved: string; sha256: string }>;
@@ -51,7 +49,7 @@ for (const id of ids.length ? ids : ['fig6a', 'fig6b', 'fig6c', 'fig6d', 'fig7a'
   writeJson(`data/derived/${id}-globe.json`, {
     provenance: {
       sources: [{ url: src.url, retrieved: src.retrieved, sha256: src.sha256 }],
-      method: `${cfg.source.file} PDF p. ${cfg.source.page} at ${cfg.source.dpi} dpi, cropped (scripts/extract-figures.ts). Frame from its border lines${cfg.frameOverride ? ` (override: ${JSON.stringify(cfg.frameOverride)})` : ''}, mapped to ±${cfg.extentDeg}° (the printed field of view). Limb: robust circle fit to the outermost dark pixel on each of 720 rays from the frame centre, ${FRAME_INSET_PX} px inside the frame. Landmarks and terminator points read by hand on 6× gridded zooms (scripts/zoom-grid.ts).`,
+      method: `${cfg.source.file} PDF p. ${cfg.source.page} at ${cfg.source.dpi} dpi, cropped (scripts/extract-figures.ts). Frame from its border lines${cfg.frameOverride ? ` (override: ${JSON.stringify(cfg.frameOverride)})` : ''}, mapped to ±${cfg.extentDeg}° (the printed field of view). Limb: robust circle fit to the outermost dark pixel on each of 720 rays from the frame centre, ${FRAME_INSET_PX} px inside the frame.`,
       script: 'scripts/digitize-globe.ts',
       generated: today(),
     },
@@ -61,8 +59,6 @@ for (const id of ids.length ? ids : ['fig6a', 'fig6b', 'fig6c', 'fig6d', 'fig7a'
     body: cfg.body,
     get: cfg.get,
     limb: { cxDeg: limb.cx, cyDeg: limb.cy, rDeg: limb.r, rmsDeg: limb.rms, used: limb.used, rays: limbPts.length },
-    landmarks: Object.entries(cfg.landmarks).map(([name, l]) => ({ name, lat: l.lat, lon: l.lon, px: l.px, ...deg(l.px[0], l.px[1]), ...(l.note ? { note: l.note } : {}) })),
-    terminator: cfg.terminatorPx.map(([x, y]) => ({ px: [x, y], ...deg(x, y) })),
   });
   console.log(`${id}: frame ${(frame.rightX - frame.leftX).toFixed(0)}×${(frame.bottomY - frame.topY).toFixed(0)} px; limb centre (${limb.cx.toFixed(3)}, ${limb.cy.toFixed(3)})°, radius ${limb.r.toFixed(4)}° (rms ${limb.rms.toFixed(4)}°, ${limb.used}/${limbPts.length} rays)`);
 }

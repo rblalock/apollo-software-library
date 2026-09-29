@@ -3,6 +3,7 @@ import { getCollection, getEntry, render, type CollectionEntry } from 'astro:con
 import Base from '../../layouts/Base.astro';
 import FigureExhibit from '../../components/figure/FigureExhibit';
 import VehicleExhibit from '../../components/vehicle/VehicleExhibit';
+import GlobeExhibit from '../../components/globe/GlobeExhibit';
 
 export async function getStaticPaths() {
   const exhibits = await getCollection('exhibits');
@@ -30,8 +31,8 @@ const refs = await Promise.all(exhibit.data.figureRefs.map(async (r) => {
     {refs.map((r) => <li><a class="underline" href={r.href}>{r.text}</a></li>)}
   </ul>
   <div class="mt-8">
-    {exhibit.data.component === 'vehicle'
-      ? <VehicleExhibit client:load />
+    {exhibit.data.component === 'vehicle' ? <VehicleExhibit client:load />
+      : exhibit.data.component === 'globe' ? <GlobeExhibit client:load panelIds={exhibit.data.figures} />
       : <FigureExhibit client:load figureIds={exhibit.data.figures} />}
   </div>
   <article class="prose-lite mt-12"><Content /></article>

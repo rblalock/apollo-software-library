@@ -35,6 +35,14 @@
       "fig4-f": {
         "page": 12,
         "label": "Figure 4(f) – AOT, right front detent (printed p. 7)"
+      },
+      "fig6": {
+        "page": 13,
+        "label": "Figure 6 – Earth views during translunar coast (printed pp. 8–9)"
+      },
+      "fig7": {
+        "page": 14,
+        "label": "Figure 7 – Moon views during translunar coast (printed p. 9)"
       }
     }
   },
