@@ -1,0 +1,38 @@
+{
+  "provenance": {
+    "sources": [
+      {
+        "url": "https://ntrs.nasa.gov/api/citations/19720017950/downloads/19720017950.pdf",
+        "retrieved": "2026-09-29",
+        "sha256": "a839dacb1b3990f770fcff85a3c62a7e9a32564b1ae54bec36cf17043a8cd5ea"
+      }
+    ],
+    "method": "tn-d-6853.pdf PDF p. 13 at 300 dpi, cropped (scripts/extract-figures.ts). Frame from its border lines, mapped to ±2° (the printed field of view). Limb: robust circle fit to the outermost dark pixel on each of 720 rays from the frame centre, 22 px inside the frame. Landmarks and terminator points read by hand on 6× gridded zooms (scripts/zoom-grid.ts).",
+    "script": "scripts/digitize-globe.ts",
+    "generated": "2026-09-29"
+  },
+  "image": {
+    "path": "data/derived/scans/tnd6853-fig6b.png",
+    "widthPx": 1000,
+    "heightPx": 1060
+  },
+  "frame": {
+    "leftX": 79.9331914893617,
+    "rightX": 954.9636163175303,
+    "topY": 147.47571942446044,
+    "bottomY": 994.1325301204819
+  },
+  "extentDeg": 2,
+  "body": "earth",
+  "get": "24:00:00",
+  "limb": {
+    "cxDeg": -0.015571052589094152,
+    "cyDeg": 0.007499676655955111,
+    "rDeg": 1.9004395350780576,
+    "rmsDeg": 0.008698133847138793,
+    "used": 693,
+    "rays": 720
+  },
+  "landmarks": [],
+  "terminator": []
+}

@@ -23,3 +23,5 @@ export * from './vehicles/solids';
 export * from './vehicles/hiddenline';
 export * from './vehicles/models';
 export * from './vehicles/view';
+export * from './globe/globe';
+export * from './globe/bodies';

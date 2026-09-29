@@ -1,0 +1,21 @@
+{
+  "_comment": "TN D-6853 Fig 6c: earth view during translunar coast at 25:00:00 GET. Crop in page pixels at 300 dpi. Landmarks and terminator points are read by hand on 6\u00d7 gridded zooms (scripts/zoom-grid.ts) of the committed scan; the limb circle is fitted automatically (scripts/digitize-globe.ts).",
+  "id": "fig6c",
+  "scan": "tnd6853-fig6c.png",
+  "source": {
+    "file": "tn-d-6853.pdf",
+    "page": 14,
+    "dpi": 300,
+    "crop": {
+      "x": 170,
+      "y": 180,
+      "w": 1000,
+      "h": 1080
+    }
+  },
+  "extentDeg": 2,
+  "body": "earth",
+  "get": "25:00:00",
+  "landmarks": {},
+  "terminatorPx": []
+}

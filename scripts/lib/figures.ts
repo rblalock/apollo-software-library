@@ -15,8 +15,8 @@ export interface FigureConfig {
 
 const DIR = 'data/manual/figures';
 
-export function loadFigureConfigs(ids?: string[]): FigureConfig[] {
-  const all = readdirSync(DIR).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(readFileSync(`${DIR}/${f}`, 'utf8')) as FigureConfig);
+export function loadFigureConfigs(ids?: string[], dir = DIR): FigureConfig[] {
+  const all = readdirSync(dir).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(readFileSync(`${dir}/${f}`, 'utf8')) as FigureConfig);
   if (!ids?.length) return all;
   const missing = ids.filter((id) => !all.some((c) => c.id === id));
   if (missing.length) throw new Error(`unknown figure ids: ${missing.join(', ')}`);

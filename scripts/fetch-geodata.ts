@@ -28,11 +28,19 @@ const NE = 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/maste
 const ne = await cached(NE, 'ne_110m_coastline.geojson');
 const coast = JSON.parse(new TextDecoder().decode(ne.bytes)) as { features: { geometry: { coordinates: [number, number][] } }[] };
 const lines = coast.features.map((f) => f.geometry.coordinates.map(([lon, lat]) => [r3(lon), r3(lat)]));
+// The 1969 Earth views also draw the large lakes (Victoria, Tanganyika, Malawi on Fig 6).
+const NE_LAKES = 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_lakes.geojson';
+const nl = await cached(NE_LAKES, 'ne_110m_lakes.geojson');
+type Poly = { type: 'Polygon'; coordinates: [number, number][][] } | { type: 'MultiPolygon'; coordinates: [number, number][][][] };
+const lakes = (JSON.parse(new TextDecoder().decode(nl.bytes)) as { features: { geometry: Poly }[] }).features
+  .flatMap((f) => (f.geometry.type === 'Polygon' ? [f.geometry.coordinates[0]!] : f.geometry.coordinates.map((p) => p[0]!)))
+  .map((ring) => ring.map(([lon, lat]) => [r3(lon), r3(lat)]));
 writeJson('data/derived/earth-coastline.json', {
-  provenance: { sources: [ne.source], method: 'Natural Earth 1:110m coastline LineStrings, coordinates rounded to 0.001°. Longitude east, latitude north (degrees).', script: 'scripts/fetch-geodata.ts', generated: today() },
+  provenance: { sources: [ne.source, nl.source], method: 'Natural Earth 1:110m coastline LineStrings and lake outer rings, coordinates rounded to 0.001°. Longitude east, latitude north (degrees).', script: 'scripts/fetch-geodata.ts', generated: today() },
   lines,
+  lakes,
 }, 0);
-console.log(`earth-coastline: ${lines.length} lines, ${lines.reduce((s, l) => s + l.length, 0)} points`);
+console.log(`earth-coastline: ${lines.length} lines, ${lines.reduce((s, l) => s + l.length, 0)} points; ${lakes.length} lakes`);
 
 // Moon: IAU nomenclature centre points (craters ≥ 20 km and the named maria, seas, lakes, bays and marshes).
 const NOMEN = 'https://asc-planetarynames-data.s3.us-west-2.amazonaws.com/MOON_nomenclature_center_pts.zip';

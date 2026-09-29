@@ -92,3 +92,20 @@ describe('derived geodata (data/derived, from scripts/fetch-geodata.ts)', async 
     expect(maria.outlines.filter((o) => o.name === 'Mare Serenitatis').some((o) => inside([centre.lon, centre.lat], o.ring))).toBe(true);
   });
 });
+
+describe('fitCircle (robust)', async () => {
+  const { fitCircle } = await import('../lib/circle');
+  it('recovers a circle from noisy points despite outliers', () => {
+    const pts: [number, number][] = [];
+    for (let i = 0; i < 200; i++) {
+      const a = (2 * Math.PI * i) / 200, n = 0.01 * Math.sin(17 * i);
+      pts.push([1.5 + (2 + n) * Math.cos(a), -0.5 + (2 + n) * Math.sin(a)]);
+    }
+    for (let i = 0; i < 30; i++) pts.push([1.5 + 0.3 * Math.cos(i), -0.5 + 0.3 * Math.sin(i)]); // ink inside the disc
+    const c = fitCircle(pts);
+    expect(c.cx).toBeCloseTo(1.5, 2);
+    expect(c.cy).toBeCloseTo(-0.5, 2);
+    expect(c.r).toBeCloseTo(2, 2);
+    expect(c.used).toBeGreaterThanOrEqual(190);
+  });
+});
