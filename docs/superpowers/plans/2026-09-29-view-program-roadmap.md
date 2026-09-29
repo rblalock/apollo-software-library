@@ -78,9 +78,9 @@
 
 ## Item 6: Film and printer plots
 
-- [ ] 6.1 **`plotter/printer.ts`:** a 132-column line-printer rendering, with snapshot tests.
-- [ ] 6.2 **Film player island:** frame sequences, playback controls, microfilm treatment.
-- [ ] 6.3 **Exhibit, ledger and commit.**
+- [x] 6.1 **`plotter/printer.ts`:** a 132-column line-printer rendering, with snapshot tests.
+- [x] 6.2 **Film player island:** frame sequences, playback controls, microfilm treatment.
+- [x] 6.3 **Exhibit, ledger and commit.**
 
 ## Item 8: Design and hosting preparation
 
