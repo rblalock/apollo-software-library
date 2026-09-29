@@ -34,6 +34,15 @@ describe('buildScene: Fig 3a', () => {
     }
     expect(allFinite(dl)).toBe(true);
   });
+  it('draws nav-star names as program output (named on the microfilm) and planet names as annotation', () => {
+    const texts = dl.primitives.filter((p) => p.kind === 'text');
+    expect(texts.find((t) => t.text === 'Sirius')?.layer).toBe('machine');
+    expect(texts.find((t) => t.text === 'Venus')?.layer).toBe('annotation');
+  });
+  it('labels the reticle scale −0 … −50 as printed on the 1969–72 figures', () => {
+    const labels = new Set(dl.primitives.flatMap((p) => (p.kind === 'text' && p.layer === 'machine' ? [p.text] : [])));
+    for (const t of ['-0', '-5', '-20', '-30', '-50']) expect(labels, t).toContain(t);
+  });
   it('converts 124:40:00 GET to 1969-07-21T18:12Z', () => {
     expect(dl.utc.toISOString()).toBe('1969-07-21T18:12:00.000Z');
   });

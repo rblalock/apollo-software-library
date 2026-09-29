@@ -20,7 +20,10 @@ export interface ViewSpec {
   headerLeft: string[];
 }
 
-/** 'machine' = drawn by the 1969 program; 'annotation' = typed or lettered onto the published figure. */
+/**
+ * 'machine' = drawn by the program on the microfilm (tick labels, reticle scale, nav-star names);
+ * 'annotation' = typed or lettered onto the published figure (planet and Earth names, headers, axis titles).
+ */
 export type Layer = 'machine' | 'annotation';
 
 export type Primitive =

@@ -13,7 +13,7 @@ const TICK_LABELS = [-50, -40, -20, 0, 20, 40, 50];
 const TEXT_DEG = 2.4;
 
 /**
- * The 0–50 scale along the SCT reticle's vertical diameter, as drawn on TN D-6853 Fig 3
+ * The −0…−50 scale along the SCT reticle's vertical diameter, as drawn on TN D-6853 Fig 3
  * and 69-FM-197 Fig 9.3-8. Neither document explains it. 0 sits 25° below the center:
  * on the TN D-6853 scan the '0' tick measures −24.9° and the '5' tick −20.2°.
  */
@@ -47,7 +47,7 @@ function sctReticle(): Primitive[] {
   for (let v = 0; v <= SCT_SCALE.max; v += SCT_SCALE.stepDeg) {
     const y = SCT_SCALE.zeroAtYDeg + v;
     out.push(line(-0.9, y, 0.9, y));
-    if (Math.abs(y) > 1) out.push(text(1.6, y, String(v), 'start', 'machine', { sizeDeg: 2 }));
+    if (Math.abs(y) > 1) out.push(text(1.6, y, `-${v}`, 'start', 'machine', { sizeDeg: 2 }));
   }
   for (let x = -25; x <= 25; x += 5) if (x !== 0) out.push(line(x, -0.9, x, 0.9));
   return out;
@@ -80,7 +80,8 @@ export function buildScene(spec: ViewSpec, data: SceneData): DisplayList {
     const p = projectAzimuthalEquidistant(direction, axes);
     if (!inside(p)) continue;
     if (s.navStar !== null) {
-      primitives.push({ kind: 'navMark', x: p.x, y: p.y }, text(p.x + 1.2, p.y - 2.2, s.name ?? `Star ${s.navStar}`, 'start', 'annotation'));
+      // TN D-6853 appendix: the 37 prime navigation stars "are identified by name on the microfilm".
+      primitives.push({ kind: 'navMark', x: p.x, y: p.y }, text(p.x + 1.2, p.y - 2.2, s.name ?? `Star ${s.navStar}`, 'start', 'machine'));
       placed.push({ id: `nav-${s.navStar}`, label: s.name, kind: 'navStar', x: p.x, y: p.y, direction });
     } else {
       primitives.push({ kind: 'dot', x: p.x, y: p.y });

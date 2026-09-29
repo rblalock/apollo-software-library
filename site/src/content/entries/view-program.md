@@ -1,6 +1,6 @@
 ---
 title: MSC View Program
-era: 1965–1972 · Gemini rendezvous studies through Apollo 17
+era: 1960s–1972 · Gemini rendezvous studies through the Apollo lunar missions
 provenanceTier: 3
 summary: A FORTRAN V program on a UNIVAC 1108 that drew, onto microfilm, what Apollo crews would see through their windows and optics at any moment of a mission.
 people:
@@ -33,7 +33,7 @@ The answer was a "somewhat dormant" program, originally written for early Gemini
 
 ## How it worked
 
-The program had two halves. The first integrated trajectories (by Encke's or Cowell's method) for up to four vehicles. The second drew what an observer would see: stars from a 37-, 391- or 1,078-star catalog, continents and craters, the day/night terminator shown with hatching, window outlines taken from engineering drawings at the astronaut's design eye position, and LM and S-IVB models with hidden lines removed. Inputs were the vehicle's position, velocity and attitude and the time, taken from each mission's operational trajectory document.
+The program had two halves. The first integrated trajectories (by Encke's or Cowell's method) for up to four vehicles. The second drew what an observer would see: stars from either a 391-star catalog (whose first 37, the Apollo navigation stars, were named on the film) or a 1,078-star catalog down to magnitude 4.5, continents and craters, the day/night terminator shown with hatching, window outlines taken from engineering drawings at the astronaut's design eye position, and LM and S-IVB models with hidden lines removed. Inputs were the vehicle's position, velocity and attitude and the time, taken from each mission's operational trajectory document.
 
 ## What is original here, and what is reconstructed
 

@@ -5,8 +5,8 @@ The first entry is the MSC **view program** (NASA TN D-6853, 1972). Its first ex
 TN D-6853 Figure 3a from 1969 inputs and measures the result against the 1972 scan.
 
 **Result:** recomputed with no fitted parameters, the 12 labeled bodies land within **0.62° RMS
-(max 1.60°)** of the 1972 figure. A free fit of the scan independently recovers the telescope at rest
-(trunnion 0.3°, shaft −0.4°).
+(max 1.60°)** of the 1972 figure. A free fit of the scan is consistent with the telescope-at-rest convention
+(trunnion 0.3°, shaft −0.4°); that convention was itself chosen by fitting this figure during planning.
 
 ## Layout
 

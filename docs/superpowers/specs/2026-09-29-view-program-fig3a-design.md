@@ -258,9 +258,8 @@ Render from the 1969 inputs plus the recovered optics angles, then compare every
 ### Data decisions made during implementation
 
 - **RTCC catalogue:**
-  - 18 of the 148 rows had OCR digits too garbled to match automatically. They are resolved in `data/manual/rtcc-overrides.json`, each confirmed by Bayer designation and by the corrected printed position (all < 0.002°).
-  - Row 104 (κ Vel) was read from the page image as 9:21:11.0, −54:52:56.
-  - The other 126 rows match BSC within 0.0084°.
+  - 22 of the 148 rows had OCR positions too garbled to use: 18 unmatched rows plus 4 nav-star rows (5, 7, 19, 35). Their HR numbers and printed positions were read from the page images into `data/manual/rtcc-overrides.json`. The build checks them against BSC like any other row.
+  - The build now verifies **every** row by position: max separation 0.0084°, and the data test requires this for all 148 rows.
 - **Fig 3a digitization:** 8 glyphs are detected as blobs. Four glyphs touch the frame line or the SCT reticle (Sirius, Navi, Venus, Saturn) and were measured by eye on a 4× zoom (±0.2°). They are marked `method: "manual"`.
 - **Crop box:** the Fig 3a crop is `{x:150, y:215, w:1080, h:1040}` at 300 dpi.
 
@@ -268,4 +267,13 @@ Render from the 1969 inputs plus the recovered optics angles, then compare every
 
 - **Fit to the scan:** 12 labeled bodies, **RMS 0.624°, max 1.595°** (Venus), meeting both targets.
 - **Per body:** Aldebaran 0.08°, Saturn 0.14°, Menkar 0.23°, Alpheratz 0.27°, Mirfak 0.35°, Rigel 0.34°, Capella 0.36°, Navi 0.43°, Earth 0.51°, Diphda 0.70°, Sirius 0.81°, Venus 1.60°.
-- **Free fit of the scan:** not mirrored, shaft −0.38°, trunnion 0.27°, RMS 0.508°. This confirms the SCT-at-rest convention independently.
+- **Free fit of the scan:** not mirrored, shaft −0.38°, trunnion 0.27°, RMS 0.508°. This is consistent with the SCT-at-rest convention, but not independent of it: the convention was chosen by fitting this same figure during planning. Figs 9.3-8(b) and (c) will be the independent test.
+- **Labels:** nav-star names are program output (TN D-6853 appendix: named on the microfilm) and are drawn on the machine layer. Planet names and headers are annotation.
+- **Reticle scale:** it is printed as −0…−50 and drawn that way.
+
+### Other differences from §5
+
+- `projection` provides only the azimuthal-equidistant projection and `axesFromBoresight(…, mirror)`. The gnomonic option of §5.1 was not needed.
+- `ViewSpec` (§5.2) uses `headerLeft: string[]` and `observer: 'earth' | 'moon'` only. `plot.projection`, `plot.mirror` and `catalogs` were dropped: the catalog is passed as `SceneData.stars`.
+- Dots carry no magnitude size classes, which matches the 1969–72 plots.
+- Barry Rosen is not credited on the site. The film's description does not name him, and his role is unverified.
