@@ -33,12 +33,12 @@
 
 ## Item 7: The 1,078-star catalog
 
-- [ ] 7.1 **Locate and OCR:** find the table pages in `69-fm-107.pdf` (PDF pp. 14–32), check the rotation, and OCR into `data/derived/cat1078-ocr.txt`.
-- [ ] 7.2 **Parser:** `scripts/lib/cat1078.ts` (SEQ, RA, Dec, magnitude, name), with fixture tests from real OCR lines.
-- [ ] 7.3 **Resolve and verify:** reuse the `resolveRtccRows` pattern (generalized), with `data/manual/cat1078-overrides.json`. Determine the table's epoch with the epoch test.
-- [ ] 7.4 **Data tests:** at least 1,000 rows verified within 0.05°, and the unresolved remainder listed.
-- [ ] 7.5 **Engine and exhibit:** `resolveCatalog` accepts either catalog; the exhibit gets a catalog switch.
-- [ ] 7.6 **Ledger and commit.**
+- [x] 7.1 **Locate and OCR:** find the table pages in `69-fm-107.pdf` (PDF pp. 14–32), check the rotation, and OCR into `data/derived/cat1078-ocr.txt`.
+- [x] 7.2 **Parser:** `scripts/lib/cat1078.ts` (SEQ, RA, Dec, magnitude, name), with fixture tests from real OCR lines.
+- [x] 7.3 **Resolve and verify:** reuse the `resolveRtccRows` pattern (generalized), with `data/manual/cat1078-overrides.json`. Determine the table's epoch with the epoch test.
+- [x] 7.4 **Data tests:** at least 1,000 rows verified within 0.05°, and the unresolved remainder listed.
+- [x] 7.5 **Engine and exhibit:** `resolveCatalog` accepts either catalog; the exhibit gets a catalog switch.
+- [x] 7.6 **Ledger and commit.**
 
 ## Item 5: Trajectory and vehicles
 

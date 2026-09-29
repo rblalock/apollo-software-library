@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { buildScene, InvalidGetError, parseGet, renderSvg, type GimbalAngles } from '@asl/view-engine';
-import { baselineScene, FIGURES, recoveredSct, residualArrows, residuals, scanUnderlay, stars, TOLERANCE } from '../../lib/figures';
+import { baselineScene, CATALOGS, FIGURES, recoveredSct, residualArrows, residuals, scanUnderlay, TOLERANCE, type CatalogId } from '../../lib/figures';
 import { parseAngleDraft } from '../../lib/inputs';
 import { InputsPanel } from './InputsPanel';
 import { ResidualsTable } from './ResidualsTable';
@@ -41,6 +41,7 @@ export default function FigureExhibit({ figureIds }: { figureIds: string[] }) {
   const [mode, setMode] = useState<Mode>('recreation');
   const [style, setStyle] = useState<Style>('microfilm');
   const [labels, setLabels] = useState(true);
+  const [catalog, setCatalog] = useState<CatalogId>('rtcc');
   const [opacity, setOpacity] = useState(0.55);
   const [getText, setGetText] = useState(spec.get);
   const [validGet, setValidGet] = useState(spec.get);
@@ -80,8 +81,8 @@ export default function FigureExhibit({ figureIds }: { figureIds: string[] }) {
   const figureResiduals = useMemo(() => residuals(figure), [figure]);
   const recovered = useMemo(() => recoveredSct(figure), [figure]);
   const dl = useMemo(
-    () => (isBaseline ? baseline : buildScene({ ...spec, get: validGet, gimbals }, { stars })),
-    [isBaseline, baseline, spec, validGet, gimbals],
+    () => (isBaseline && catalog === 'rtcc' ? baseline : buildScene({ ...spec, get: validGet, gimbals }, { stars: CATALOGS[catalog].stars })),
+    [isBaseline, catalog, baseline, spec, validGet, gimbals],
   );
   const svg = useMemo(() => {
     const arrows = mode === 'overlay' && isBaseline ? residualArrows(figureResiduals.rows) : [];
@@ -111,7 +112,14 @@ export default function FigureExhibit({ figureIds }: { figureIds: string[] }) {
           <label className="flex items-center gap-2 text-sm">
             <input type="checkbox" checked={labels} onChange={(e) => setLabels(e.target.checked)} /> Labels
           </label>
+          <Segmented label="Star catalog" value={catalog} onChange={setCatalog}
+            options={(Object.keys(CATALOGS) as CatalogId[]).map((id) => [id, CATALOGS[id].label] as const)} />
         </div>
+        {catalog === 'cat1078' && (
+          <p className="text-sm text-stone-600 dark:text-stone-400">
+            Drawing with the Apollo 10 note's 1,078-star catalogue (the 826 rows read so far). The Apollo 11 figures were drawn with the 148-star RTCC catalogue, so expect extra dots.
+          </p>
+        )}
         {mode === 'overlay' && (
           <label className="flex items-center gap-3 text-sm">
             Scan opacity

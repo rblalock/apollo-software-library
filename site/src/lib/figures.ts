@@ -1,10 +1,11 @@
 import {
-  APOLLO_11, buildScene, FIG_3A_SPEC, FIG_3B_SPEC, FIG_3C_SIGN_CORRECTED_SPEC, fig4Spec, fitPlotAxes, impliedSctAngles,
+  APOLLO_11, buildScene, FIG_3A_SPEC, resolveVerifiedCatalog, type VerifiedCatalogFile, FIG_3B_SPEC, FIG_3C_SIGN_CORRECTED_SPEC, fig4Spec, fitPlotAxes, impliedSctAngles,
   resolveCatalog, type Agc37File, type BscFile, type DisplayList, type Primitive, type RtccFile, type Underlay, type ViewSpec,
 } from '@asl/view-engine';
 import bsc from '../../../data/derived/bsc45.json';
 import agc from '../../../data/derived/agc37.json';
 import rtcc from '../../../data/derived/rtcc1970.json';
+import cat1078 from '../../../data/derived/cat1078.json';
 import p3a from '../../../data/derived/fig3a-points.json';
 import p3b from '../../../data/derived/fig3b-points.json';
 import p3c from '../../../data/derived/fig3c-points.json';
@@ -18,6 +19,14 @@ import p4f from '../../../data/derived/fig4f-points.json';
 export const TOLERANCE = { rmsDeg: 1.0, maxDeg: 2.0 } as const;
 
 export const stars = resolveCatalog(rtcc as RtccFile, bsc as BscFile, agc as Agc37File, APOLLO_11.referenceEpochJd);
+
+/** The 1,078-star catalogue of 69-FM-107 Table I: the rows verified so far (826). */
+export const stars1078 = resolveVerifiedCatalog(cat1078 as VerifiedCatalogFile, agc as Agc37File, APOLLO_11.referenceEpochJd);
+export const CATALOGS = {
+  rtcc: { label: 'RTCC 148', stars },
+  cat1078: { label: `1,078 (${cat1078.stars.length} read)`, stars: stars1078 },
+} as const;
+export type CatalogId = keyof typeof CATALOGS;
 
 interface PointsFile {
   image: { widthPx: number; heightPx: number };
