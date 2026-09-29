@@ -74,7 +74,9 @@ export function InputsPanel({ figure, utc, recovered, tryIt }: Props) {
             ) : inst.kind === 'aot' ? (
               <dd>LM alignment optical telescope, detent at {inst.detentDeg}° azimuth, 45° from the LM +X axis; 60° field. The image turns with the telescope head (−{inst.detentDeg}°), as the drawn reticle shows.</dd>
             ) : (
-              <dd>The commander's view through the CSM window as a 100° plot. The window outlines for the left and right eye are traced from Fig 2; the plot is fixed to the spacecraft, so the same outlines fit Fig 1 within a degree.</dd>
+              <dd>{figure.id.startsWith('pdi')
+                ? 'The LM docking (overhead) window as a 100° plot, with its outline and scribe traced from the first descent frame; the plot is fixed to the LM.'
+                : 'The commander\'s view through the CSM window as a 100° plot. The window outlines for the left and right eye are traced from Fig 2; the plot is fixed to the spacecraft, so the same outlines fit Fig 1 within a degree.'}</dd>
             )}
           </div>
           <div>

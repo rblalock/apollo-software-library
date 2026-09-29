@@ -1,0 +1,283 @@
+{
+  "provenance": {
+    "sources": [
+      {
+        "url": "https://www.ibiblio.org/apollo/Documents/19740073250.pdf",
+        "retrieved": "2026-09-29",
+        "sha256": "551f67583228c3141a9335eef22ab14ff1c33ebed92172de9bc430fb43a7c43d"
+      }
+    ],
+    "method": "69-fm-197.pdf PDF p. 140 rendered at 300 dpi (pdftoppm) and cropped (scripts/extract-figures.ts, data/manual/figures/pdi-j.json). The frame is registered from its ±50° border lines; each labeled glyph is snapped to the nearest detected dark blob from a hand-read approximate position, or measured by eye on a 4× zoom where it touches the frame or reticle (method: manual). Unlabeled plotter dots are detected as small filled discs (isRoundDot).",
+    "script": "scripts/digitize-figure.ts",
+    "generated": "2026-09-29"
+  },
+  "image": {
+    "path": "data/derived/scans/69fm197-pdi-j.png",
+    "widthPx": 1290,
+    "heightPx": 1330
+  },
+  "frame": {
+    "leftX": 61.32858570714642,
+    "rightX": 1222.0764292878637,
+    "topY": 96.9440414507772,
+    "bottomY": 1232.4224137931035
+  },
+  "extentDeg": 50,
+  "points": [
+    {
+      "id": "Procyon",
+      "kind": "star",
+      "px": [
+        455.8,
+        447.16
+      ],
+      "xDeg": -16.01600270690505,
+      "yDeg": 19.157018982524992,
+      "method": "blob",
+      "area": 69
+    },
+    {
+      "id": "Dnoces",
+      "kind": "star",
+      "px": [
+        1000.97,
+        385.9
+      ],
+      "xDeg": 30.951468829523208,
+      "yDeg": 24.552178508007206,
+      "method": "blob",
+      "area": 69
+    },
+    {
+      "id": "Sirius",
+      "kind": "star",
+      "px": [
+        184.95,
+        587.95
+      ],
+      "xDeg": -39.34945600536003,
+      "yDeg": 6.757388254706676,
+      "method": "blob",
+      "area": 66
+    },
+    {
+      "id": "Rigel",
+      "kind": "star",
+      "note": "Two dots flank the label; the one above it (labels sit below their dots in these frames) is 1.7 px from the position predicted by the other six stars.",
+      "px": [
+        277.92,
+        858.77
+      ],
+      "xDeg": -31.3403560910607,
+      "yDeg": -17.09324549361635,
+      "method": "blob",
+      "area": 75
+    },
+    {
+      "id": "Capella",
+      "kind": "star",
+      "px": [
+        914.9,
+        814.81
+      ],
+      "xDeg": 23.535998615844193,
+      "yDeg": -13.221032724170229,
+      "method": "blob",
+      "area": 77
+    },
+    {
+      "id": "Mirfak",
+      "kind": "star",
+      "px": [
+        1015.33,
+        1008.9
+      ],
+      "xDeg": 32.18813422433573,
+      "yDeg": -30.314282473316453,
+      "method": "blob",
+      "area": 86
+    },
+    {
+      "id": "Aldebaran",
+      "kind": "star",
+      "px": [
+        579.41,
+        961.29
+      ],
+      "xDeg": -5.366296780877043,
+      "yDeg": -26.122039215905943,
+      "method": "blob",
+      "area": 75
+    },
+    {
+      "id": "Venus",
+      "kind": "planet",
+      "px": [
+        616.58,
+        908.55
+      ],
+      "xDeg": -2.164158054153596,
+      "yDeg": -21.477204420984577,
+      "method": "blob",
+      "area": 67
+    },
+    {
+      "id": "Sun",
+      "kind": "sun",
+      "note": "Centre of the Sun glyph (ray ring) from its extent on a 5× zoom.",
+      "px": [
+        638.6,
+        414
+      ],
+      "xDeg": -0.2672852260430929,
+      "yDeg": 22.07732297928471,
+      "method": "manual"
+    }
+  ],
+  "dots": [
+    {
+      "px": [
+        455.8,
+        447.16
+      ],
+      "xDeg": -16.01600270690505,
+      "yDeg": 19.157018982524992
+    },
+    {
+      "px": [
+        723,
+        470.63
+      ],
+      "xDeg": 7.003889169563777,
+      "yDeg": 17.08979047134691
+    },
+    {
+      "px": [
+        762.49,
+        504.05
+      ],
+      "xDeg": 10.406205005058276,
+      "yDeg": 14.147083527836436
+    },
+    {
+      "px": [
+        184.95,
+        587.95
+      ],
+      "xDeg": -39.34945600536003,
+      "yDeg": 6.757388254706676
+    },
+    {
+      "px": [
+        166.84,
+        652.65
+      ],
+      "xDeg": -40.90999870587644,
+      "yDeg": 1.0595581564515868
+    },
+    {
+      "px": [
+        896.91,
+        729.94
+      ],
+      "xDeg": 21.986623418665886,
+      "yDeg": -5.747176735214275
+    },
+    {
+      "px": [
+        805.63,
+        732.36
+      ],
+      "xDeg": 14.122288494931198,
+      "yDeg": -5.96019915715808
+    },
+    {
+      "px": [
+        349.72,
+        784.22
+      ],
+      "xDeg": -25.154423692377435,
+      "yDeg": -10.5270307127794
+    },
+    {
+      "px": [
+        619.86,
+        791.99
+      ],
+      "xDeg": -1.8821861401302442,
+      "yDeg": -11.211334599163735
+    },
+    {
+      "px": [
+        358.79,
+        798.05
+      ],
+      "xDeg": -24.372981459188132,
+      "yDeg": -11.74521634882111
+    },
+    {
+      "px": [
+        369.06,
+        810.45
+      ],
+      "xDeg": -23.488306181681562,
+      "yDeg": -12.837751993228864
+    },
+    {
+      "px": [
+        130.74,
+        811.43
+      ],
+      "xDeg": -44.01986643183596,
+      "yDeg": -12.923658202658387
+    },
+    {
+      "px": [
+        448.97,
+        829.82
+      ],
+      "xDeg": -16.603819907081906,
+      "yDeg": -14.543205596738233
+    },
+    {
+      "px": [
+        769.1,
+        881.54
+      ],
+      "xDeg": 10.975591510456951,
+      "yDeg": -19.09794228971367
+    },
+    {
+      "px": [
+        579.41,
+        961.29
+      ],
+      "xDeg": -5.366296780877043,
+      "yDeg": -26.122039215905943
+    },
+    {
+      "px": [
+        1015.33,
+        1008.9
+      ],
+      "xDeg": 32.18813422433573,
+      "yDeg": -30.314282473316453
+    },
+    {
+      "px": [
+        784.9,
+        1031.97
+      ],
+      "xDeg": 12.336658068711472,
+      "yDeg": -32.346560700388
+    },
+    {
+      "px": [
+        694.88,
+        1071.11
+      ],
+      "xDeg": 4.581173350866145,
+      "yDeg": -35.79327360042733
+    }
+  ]
+}

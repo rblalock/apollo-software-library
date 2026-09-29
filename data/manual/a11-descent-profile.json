@@ -1,0 +1,17 @@
+{
+  "_comment": "Planned powered-descent profile of Apollo 11, read from 69-FM-197 Fig 6.2.0-1(b) (PDF p. 121, rendered at 200 dpi): surface range to the landing site (n.mi.) at each time-from-ignition tick, and the LM trajectory's height above the drawn surface (n.mi.) measured in page pixels at the same columns (10.66 px per n.mi., the figure's altitude scale). The drawing is schematic: heights scatter by about ±0.7 n.mi. PDI (TFI 0) is the note's planned 102:35:40 (Table I).",
+  "source": { "document": "69-fm-197", "page": 121, "figure": "6.2.0-1(b) Powered descent profile" },
+  "pdiGet": "102:35:40",
+  "points": [
+    { "tfiS": 0, "rangeNmi": 262, "altNmi": 7.5 },
+    { "tfiS": 60, "rangeNmi": 205.4, "altNmi": 7.3 },
+    { "tfiS": 120, "rangeNmi": 160.3, "altNmi": 7.6 },
+    { "tfiS": 180, "rangeNmi": 115.0, "altNmi": 7.8 },
+    { "tfiS": 240, "rangeNmi": 80.4, "altNmi": 6.6 },
+    { "tfiS": 300, "rangeNmi": 51.6, "altNmi": 4.8 },
+    { "tfiS": 360, "rangeNmi": 30.3, "altNmi": 4.6 },
+    { "tfiS": 420, "rangeNmi": 15.3, "altNmi": 3.8 },
+    { "tfiS": 480, "rangeNmi": 6.5, "altNmi": 3.0 },
+    { "tfiS": 714, "rangeNmi": 0, "altNmi": 0 }
+  ]
+}
