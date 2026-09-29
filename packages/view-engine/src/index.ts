@@ -6,3 +6,4 @@ export * from './catalog/stars';
 export * from './catalog/resolve';
 export * from './missions/apollo11';
 export * from './projection/projection';
+export * from './frames/frames';
