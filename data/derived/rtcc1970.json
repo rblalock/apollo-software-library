@@ -1,0 +1,1502 @@
+{
+  "provenance": {
+    "sources": [
+      {
+        "url": "https://www.ibiblio.org/apollo/Documents/19740073250.pdf",
+        "retrieved": "2026-09-29",
+        "sha256": "551f67583228c3141a9335eef22ab14ff1c33ebed92172de9bc430fb43a7c43d"
+      },
+      {
+        "url": "https://cdsarc.cds.unistra.fr/ftp/V/50/catalog.gz",
+        "retrieved": "2026-09-29",
+        "sha256": "3dc44b1e90be8fbe5bcc7656032560f51275f985c7e3f783c9028e1838ec7bed"
+      }
+    ],
+    "method": "OCR (tesseract) of the \"RTCC star catalogue for Besselian year 1970\", 69-FM-197 PDF pp. 309–313. Every row is verified by position: its printed B1970 position must lie within 0.05° of its BSC5 star (data/derived/bsc45.json, precessed to B1970 with proper motion). Rows 1–37 are pinned to the Apollo nav-star HR numbers; rows with unreadable OCR use data/manual/rtcc-overrides.json, whose HR and position were read from the page image and are checked the same way.",
+    "script": "scripts/build-rtcc-catalog.ts",
+    "generated": "2026-09-29"
+  },
+  "epoch": "B1970.0",
+  "stars": [
+    {
+      "seq": 1,
+      "hr": 15,
+      "mag": 2.1,
+      "printedRaDeg": 1.7079166666666667,
+      "printedDecDeg": 28.924722222222222,
+      "separationDeg": 0.00046491821682361194,
+      "via": "ocr",
+      "bscName": "21Alp And"
+    },
+    {
+      "seq": 2,
+      "hr": 188,
+      "mag": 2.2,
+      "printedRaDeg": 10.520833333333332,
+      "printedDecDeg": -18.15111111111111,
+      "separationDeg": 0.0003813803597542035,
+      "via": "ocr",
+      "bscName": "16Bet Cet"
+    },
+    {
+      "seq": 3,
+      "hr": 264,
+      "mag": null,
+      "printedRaDeg": 13.720833333333333,
+      "printedDecDeg": 60.55472222222222,
+      "separationDeg": 0.00013715546076413903,
+      "via": "ocr",
+      "bscName": "27Gam Cas"
+    },
+    {
+      "seq": 4,
+      "hr": 472,
+      "mag": 0.6,
+      "printedRaDeg": 24.149583333333336,
+      "printedDecDeg": -57.388888888888886,
+      "separationDeg": 0.00035065379646309007,
+      "via": "ocr",
+      "bscName": "Alp Eri"
+    },
+    {
+      "seq": 5,
+      "hr": 424,
+      "mag": null,
+      "printedRaDeg": 30.82875,
+      "printedDecDeg": 89.1261111111111,
+      "separationDeg": 0.00009242211986492913,
+      "via": "override",
+      "bscName": "1Alp UMi"
+    },
+    {
+      "seq": 6,
+      "hr": 897,
+      "mag": 3.4,
+      "printedRaDeg": 44.28083333333334,
+      "printedDecDeg": -40.424166666666665,
+      "separationDeg": 0.0000877581820530707,
+      "via": "ocr",
+      "bscName": "The1Eri"
+    },
+    {
+      "seq": 7,
+      "hr": 911,
+      "mag": 2.8,
+      "printedRaDeg": 45.177083333333336,
+      "printedDecDeg": 3.973055555555556,
+      "separationDeg": 0.0002700108772923481,
+      "via": "override",
+      "bscName": "92Alp Cet"
+    },
+    {
+      "seq": 8,
+      "hr": 1017,
+      "mag": 1.9,
+      "printedRaDeg": 50.54291666666667,
+      "printedDecDeg": 49.755833333333335,
+      "separationDeg": 0.00006207602275283224,
+      "via": "ocr",
+      "bscName": "33Alp Per"
+    },
+    {
+      "seq": 9,
+      "hr": 1457,
+      "mag": 1.1,
+      "printedRaDeg": 68.54916666666666,
+      "printedDecDeg": 16.450277777777778,
+      "separationDeg": 0.00011867255632811848,
+      "via": "ocr",
+      "bscName": "87Alp Tau"
+    },
+    {
+      "seq": 10,
+      "hr": 1713,
+      "mag": 0.3,
+      "printedRaDeg": 78.27375,
+      "printedDecDeg": -8.235,
+      "separationDeg": 0.0001558479878231678,
+      "via": "ocr",
+      "bscName": "19Bet Ori"
+    },
+    {
+      "seq": 11,
+      "hr": 1708,
+      "mag": 0.2,
+      "printedRaDeg": 78.61749999999999,
+      "printedDecDeg": 45.96944444444445,
+      "separationDeg": 0.00006949182217081769,
+      "via": "ocr",
+      "bscName": "13Alp Aur"
+    },
+    {
+      "seq": 12,
+      "hr": 2326,
+      "mag": -0.9,
+      "printedRaDeg": 95.82125,
+      "printedDecDeg": -52.678888888888885,
+      "separationDeg": 0.00006639975845698691,
+      "via": "ocr",
+      "bscName": "Alp Car"
+    },
+    {
+      "seq": 13,
+      "hr": 2491,
+      "mag": -1.6,
+      "printedRaDeg": 100.95666666666666,
+      "printedDecDeg": -16.67361111111111,
+      "separationDeg": 0.00023121117204370577,
+      "via": "ocr",
+      "bscName": "9Alp CMa"
+    },
+    {
+      "seq": 14,
+      "hr": 2943,
+      "mag": 0.5,
+      "printedRaDeg": 114.43291666666669,
+      "printedDecDeg": 5.303055555555555,
+      "separationDeg": 0.00013242544273195305,
+      "via": "ocr",
+      "bscName": "10Alp CMi"
+    },
+    {
+      "seq": 15,
+      "hr": 3207,
+      "mag": 1.9,
+      "printedRaDeg": 122.15166666666667,
+      "printedDecDeg": -47.2475,
+      "separationDeg": 0.00027002203567459384,
+      "via": "ocr",
+      "bscName": "Gam2Vel"
+    },
+    {
+      "seq": 16,
+      "hr": 3569,
+      "mag": 3.1,
+      "printedRaDeg": 134.29041666666666,
+      "printedDecDeg": 48.160555555555554,
+      "separationDeg": 0.0002390552790108753,
+      "via": "ocr",
+      "bscName": "9Iot UMa"
+    },
+    {
+      "seq": 17,
+      "hr": 3748,
+      "mag": 2.2,
+      "printedRaDeg": 141.52833333333334,
+      "printedDecDeg": -8.527777777777779,
+      "separationDeg": 0.0002485975918958596,
+      "via": "ocr",
+      "bscName": "30Alp Hya"
+    },
+    {
+      "seq": 18,
+      "hr": 3982,
+      "mag": 1.3,
+      "printedRaDeg": 151.69375,
+      "printedDecDeg": 12.114444444444445,
+      "separationDeg": 0.0001635516409964219,
+      "via": "ocr",
+      "bscName": "32Alp Leo"
+    },
+    {
+      "seq": 19,
+      "hr": 4534,
+      "mag": null,
+      "printedRaDeg": 176.8825,
+      "printedDecDeg": 14.739722222222222,
+      "separationDeg": 0.00020096267630073062,
+      "via": "override",
+      "bscName": "94Bet Leo"
+    },
+    {
+      "seq": 20,
+      "hr": 4662,
+      "mag": 2.8,
+      "printedRaDeg": 183.565,
+      "printedDecDeg": -17.375555555555557,
+      "separationDeg": 0.00029084448127512946,
+      "via": "ocr",
+      "bscName": "4Gam Crv"
+    },
+    {
+      "seq": 21,
+      "hr": 4730,
+      "mag": 1,
+      "printedRaDeg": 186.2475,
+      "printedDecDeg": -62.933055555555555,
+      "separationDeg": 0.008368601517047113,
+      "via": "ocr",
+      "bscName": "Alp1Cru"
+    },
+    {
+      "seq": 22,
+      "hr": 5056,
+      "mag": 1.2,
+      "printedRaDeg": 200.9025,
+      "printedDecDeg": -11.005277777777778,
+      "separationDeg": 0.0000689129896107103,
+      "via": "ocr",
+      "bscName": "67Alp Vir"
+    },
+    {
+      "seq": 23,
+      "hr": 5191,
+      "mag": 1.9,
+      "printedRaDeg": 206.59,
+      "printedDecDeg": 49.462500000000006,
+      "separationDeg": 0.0001367848023708571,
+      "via": "ocr",
+      "bscName": "85Eta UMa"
+    },
+    {
+      "seq": 24,
+      "hr": 5288,
+      "mag": 2.3,
+      "printedRaDeg": 211.22750000000002,
+      "printedDecDeg": -36.223055555555554,
+      "separationDeg": 0.00030741863298800983,
+      "via": "ocr",
+      "bscName": "5The Cen"
+    },
+    {
+      "seq": 25,
+      "hr": 5340,
+      "mag": 0.2,
+      "printedRaDeg": 213.57291666666666,
+      "printedDecDeg": 19.337777777777777,
+      "separationDeg": 0.00034791637500288625,
+      "via": "ocr",
+      "bscName": "16Alp Boo"
+    },
+    {
+      "seq": 26,
+      "hr": 5793,
+      "mag": 2.3,
+      "printedRaDeg": 233.35416666666669,
+      "printedDecDeg": 26.814722222222223,
+      "separationDeg": 0.00017646290067828337,
+      "via": "ocr",
+      "bscName": "5Alp CrB"
+    },
+    {
+      "seq": 27,
+      "hr": 6134,
+      "mag": 1.2,
+      "printedRaDeg": 246.89124999999999,
+      "printedDecDeg": -26.366944444444446,
+      "separationDeg": 0.00023072490161761558,
+      "via": "ocr",
+      "bscName": "21Alp Sco"
+    },
+    {
+      "seq": 28,
+      "hr": 6217,
+      "mag": 1.9,
+      "printedRaDeg": 251.36791666666667,
+      "printedDecDeg": -68.97527777777778,
+      "separationDeg": 0.00012682465470716052,
+      "via": "ocr",
+      "bscName": "Alp TrA"
+    },
+    {
+      "seq": 29,
+      "hr": 6556,
+      "mag": 2.1,
+      "printedRaDeg": 263.385,
+      "printedDecDeg": 12.580555555555556,
+      "separationDeg": 0.00039308657645858476,
+      "via": "ocr",
+      "bscName": "55Alp Oph"
+    },
+    {
+      "seq": 30,
+      "hr": 7001,
+      "mag": 0.1,
+      "printedRaDeg": 278.98041666666666,
+      "printedDecDeg": 38.75472222222222,
+      "separationDeg": 0.00011780106933069767,
+      "via": "ocr",
+      "bscName": "3Alp Lyr"
+    },
+    {
+      "seq": 31,
+      "hr": 7121,
+      "mag": 2.1,
+      "printedRaDeg": 283.35125,
+      "printedDecDeg": -26.335555555555555,
+      "separationDeg": 0.0002346168814952973,
+      "via": "ocr",
+      "bscName": "34Sig Sgr"
+    },
+    {
+      "seq": 32,
+      "hr": 7557,
+      "mag": 0.9,
+      "printedRaDeg": 297.32958333333335,
+      "printedDecDeg": 8.787777777777778,
+      "separationDeg": 0.00041198235501512063,
+      "via": "ocr",
+      "bscName": "53Alp Aql"
+    },
+    {
+      "seq": 33,
+      "hr": 7776,
+      "mag": 3.2,
+      "printedRaDeg": 304.83166666666665,
+      "printedDecDeg": -14.877222222222223,
+      "separationDeg": 0.0003383461718668658,
+      "via": "ocr",
+      "bscName": "9Bet Cap"
+    },
+    {
+      "seq": 34,
+      "hr": 7790,
+      "mag": 2.1,
+      "printedRaDeg": 305.8208333333333,
+      "printedDecDeg": -56.83277777777778,
+      "separationDeg": 0.0004003895497236584,
+      "via": "ocr",
+      "bscName": "Alp Pav"
+    },
+    {
+      "seq": 35,
+      "hr": 7924,
+      "mag": 1.3,
+      "printedRaDeg": 310.1016666666667,
+      "printedDecDeg": 45.1725,
+      "separationDeg": 0.00031457816476231315,
+      "via": "override",
+      "bscName": "50Alp Cyg"
+    },
+    {
+      "seq": 36,
+      "hr": 8308,
+      "mag": 2.5,
+      "printedRaDeg": 325.6779166666667,
+      "printedDecDeg": 9.736666666666666,
+      "separationDeg": 0.00035145056065495796,
+      "via": "ocr",
+      "bscName": "8Eps Peg"
+    },
+    {
+      "seq": 37,
+      "hr": 8728,
+      "mag": 1.3,
+      "printedRaDeg": 343.99875000000003,
+      "printedDecDeg": -29.781666666666666,
+      "separationDeg": 0.0006094205847633006,
+      "via": "ocr",
+      "bscName": "24Alp PsA"
+    },
+    {
+      "seq": 38,
+      "hr": 617,
+      "mag": 2.2,
+      "printedRaDeg": 31.369166666666672,
+      "printedDecDeg": 23.32138888888889,
+      "separationDeg": 0.0002385626001649348,
+      "via": "ocr",
+      "bscName": "13Alp Ari"
+    },
+    {
+      "seq": 39,
+      "hr": 963,
+      "mag": 3.9,
+      "printedRaDeg": 47.698750000000004,
+      "printedDecDeg": -29.104444444444447,
+      "separationDeg": 0.00034668054913634743,
+      "via": "ocr",
+      "bscName": "Alp For"
+    },
+    {
+      "seq": 40,
+      "hr": 2990,
+      "mag": 1.2,
+      "printedRaDeg": 115.87083333333334,
+      "printedDecDeg": 28.1,
+      "separationDeg": 0.00041343478293752857,
+      "via": "ocr",
+      "bscName": "78Bet Gem"
+    },
+    {
+      "seq": 41,
+      "hr": 3685,
+      "mag": 1.8,
+      "printedRaDeg": 138.22,
+      "printedDecDeg": -69.5936111111111,
+      "separationDeg": 0.00023001246192353404,
+      "via": "ocr",
+      "bscName": "Bet Car"
+    },
+    {
+      "seq": 42,
+      "hr": 4301,
+      "mag": 1.9,
+      "printedRaDeg": 165.47250000000003,
+      "printedDecDeg": 61.913333333333334,
+      "separationDeg": 0.00016080420159652914,
+      "via": "ocr",
+      "bscName": "50Alp UMa"
+    },
+    {
+      "seq": 43,
+      "hr": 4819,
+      "mag": null,
+      "printedRaDeg": 189.96333333333334,
+      "printedDecDeg": -48.79527777777778,
+      "separationDeg": 0.00006541784115594596,
+      "via": "ocr",
+      "bscName": "Gam Cen"
+    },
+    {
+      "seq": 44,
+      "hr": 5459,
+      "mag": 0.1,
+      "printedRaDeg": 219.38708333333335,
+      "printedDecDeg": -60.71277777777778,
+      "separationDeg": 0.00026129131522633584,
+      "via": "ocr",
+      "bscName": "Alp1Cen"
+    },
+    {
+      "seq": 45,
+      "hr": 2061,
+      "mag": null,
+      "printedRaDeg": 88.38666666666666,
+      "printedDecDeg": 7.402777777777779,
+      "separationDeg": 0.00002407127450263285,
+      "via": "ocr",
+      "bscName": "58Alp Ori"
+    },
+    {
+      "seq": 46,
+      "hr": 5267,
+      "mag": 0.9,
+      "printedRaDeg": 210.4225,
+      "printedDecDeg": -60.22916666666667,
+      "separationDeg": 0.00008954230843089281,
+      "via": "ocr",
+      "bscName": "Bet Cen"
+    },
+    {
+      "seq": 47,
+      "hr": 1790,
+      "mag": 1.7,
+      "printedRaDeg": 80.88000000000001,
+      "printedDecDeg": 6.323888888888889,
+      "separationDeg": 0.00032555214426531904,
+      "via": "ocr",
+      "bscName": "24Gam Ori"
+    },
+    {
+      "seq": 48,
+      "hr": 1791,
+      "mag": 1.8,
+      "printedRaDeg": 81.09833333333334,
+      "printedDecDeg": 28.58361111111111,
+      "separationDeg": 0.00018326634541100748,
+      "via": "ocr",
+      "bscName": "112Bet Tau"
+    },
+    {
+      "seq": 49,
+      "hr": 1903,
+      "mag": 1.7,
+      "printedRaDeg": 83.6725,
+      "printedDecDeg": -1.2197222222222224,
+      "separationDeg": 0.0000639214444114796,
+      "via": "override",
+      "bscName": "46Eps Ori"
+    },
+    {
+      "seq": 50,
+      "hr": 1948,
+      "mag": 2,
+      "printedRaDeg": 84.81083333333333,
+      "printedDecDeg": -1.9572222222222222,
+      "separationDeg": 0.00010777843108467797,
+      "via": "ocr",
+      "bscName": "50Zet Ori"
+    },
+    {
+      "seq": 51,
+      "hr": 2294,
+      "mag": 2,
+      "printedRaDeg": 95.34458333333333,
+      "printedDecDeg": -17.94,
+      "separationDeg": 0.00020585039192241912,
+      "via": "ocr",
+      "bscName": "2Bet CMa"
+    },
+    {
+      "seq": 52,
+      "hr": 2421,
+      "mag": 1.9,
+      "printedRaDeg": 98.995,
+      "printedDecDeg": 16.42638888888889,
+      "separationDeg": 0.0003705510339966005,
+      "via": "ocr",
+      "bscName": "24Gam Gem"
+    },
+    {
+      "seq": 53,
+      "hr": 2618,
+      "mag": 1.6,
+      "printedRaDeg": 104.36166666666666,
+      "printedDecDeg": -28.93027777777778,
+      "separationDeg": 0.00032014446119189133,
+      "via": "ocr",
+      "bscName": "21Eps CMa"
+    },
+    {
+      "seq": 54,
+      "hr": 2693,
+      "mag": 2,
+      "printedRaDeg": 106.79291666666666,
+      "printedDecDeg": -26.344444444444445,
+      "separationDeg": 0.00025437907828709897,
+      "via": "ocr",
+      "bscName": "25Del CMa"
+    },
+    {
+      "seq": 55,
+      "hr": 2891,
+      "mag": 1.6,
+      "printedRaDeg": 113.17166666666667,
+      "printedDecDeg": 31.955277777777777,
+      "separationDeg": 0.00028370917500714993,
+      "via": "ocr",
+      "bscName": "66Alp Gem"
+    },
+    {
+      "seq": 56,
+      "hr": 3307,
+      "mag": 1.7,
+      "printedRaDeg": 125.47500000000001,
+      "printedDecDeg": -59.4125,
+      "separationDeg": 0.00024336038490962287,
+      "via": "ocr",
+      "bscName": "Eps Car"
+    },
+    {
+      "seq": 57,
+      "hr": 3485,
+      "mag": 2,
+      "printedRaDeg": 130.96875,
+      "printedDecDeg": -54.59805555555556,
+      "separationDeg": 0.00012192200444035938,
+      "via": "ocr",
+      "bscName": "Del Vel"
+    },
+    {
+      "seq": 58,
+      "hr": 4763,
+      "mag": null,
+      "printedRaDeg": 187.37249999999997,
+      "printedDecDeg": -56.94555555555555,
+      "separationDeg": 0.000045830705171253726,
+      "via": "override",
+      "bscName": "Gam Cru"
+    },
+    {
+      "seq": 59,
+      "hr": 4853,
+      "mag": 1.5,
+      "printedRaDeg": 191.48875,
+      "printedDecDeg": -59.525,
+      "separationDeg": 0.00008550988572065377,
+      "via": "ocr",
+      "bscName": "Bet Cru"
+    },
+    {
+      "seq": 60,
+      "hr": 4905,
+      "mag": 1.7,
+      "printedRaDeg": 193.17833333333334,
+      "printedDecDeg": 56.12222222222222,
+      "separationDeg": 0.00008271221235029905,
+      "via": "ocr",
+      "bscName": "77Eps UMa"
+    },
+    {
+      "seq": 61,
+      "hr": 6527,
+      "mag": 1.7,
+      "printedRaDeg": 262.8920833333333,
+      "printedDecDeg": -37.08361111111111,
+      "separationDeg": 0.00023764848834645838,
+      "via": "override",
+      "bscName": "35Lam Sco"
+    },
+    {
+      "seq": 62,
+      "hr": 6553,
+      "mag": 2,
+      "printedRaDeg": 263.78999999999996,
+      "printedDecDeg": -42.980555555555554,
+      "separationDeg": 0.000456213359509988,
+      "via": "ocr",
+      "bscName": "The Sco"
+    },
+    {
+      "seq": 63,
+      "hr": 6879,
+      "mag": 1.9,
+      "printedRaDeg": 275.545,
+      "printedDecDeg": -34.400555555555556,
+      "separationDeg": 0.0001654372650875335,
+      "via": "ocr",
+      "bscName": "20Eps Sgr"
+    },
+    {
+      "seq": 64,
+      "hr": 21,
+      "mag": 2.4,
+      "printedRaDeg": 1.8912499999999999,
+      "printedDecDeg": 58.98444444444444,
+      "separationDeg": 0.000209779741856255,
+      "via": "ocr",
+      "bscName": "11Bet Cas"
+    },
+    {
+      "seq": 65,
+      "hr": 99,
+      "mag": null,
+      "printedRaDeg": 6.200833333333334,
+      "printedDecDeg": -42.46888888888889,
+      "separationDeg": 0.00024952194725769643,
+      "via": "ocr",
+      "bscName": "Alp Phe"
+    },
+    {
+      "seq": 66,
+      "hr": 337,
+      "mag": 2.4,
+      "printedRaDeg": 17.01125,
+      "printedDecDeg": 35.46194444444445,
+      "separationDeg": 0.00013796493854284167,
+      "via": "ocr",
+      "bscName": "43Bet And"
+    },
+    {
+      "seq": 67,
+      "hr": 603,
+      "mag": 2.3,
+      "printedRaDeg": 30.5125,
+      "printedDecDeg": 42.18666666666666,
+      "separationDeg": 0.00008943458212479445,
+      "via": "ocr",
+      "bscName": "57Gam1And"
+    },
+    {
+      "seq": 68,
+      "hr": 1852,
+      "mag": 2.5,
+      "printedRaDeg": 82.61833333333334,
+      "printedDecDeg": -0.32,
+      "separationDeg": 0.0001352419258537371,
+      "via": "ocr",
+      "bscName": "34Del Ori"
+    },
+    {
+      "seq": 69,
+      "hr": 2004,
+      "mag": 2.2,
+      "printedRaDeg": 86.58333333333333,
+      "printedDecDeg": -9.679166666666665,
+      "separationDeg": 0.0000978764741979911,
+      "via": "ocr",
+      "bscName": "53Kap Ori"
+    },
+    {
+      "seq": 70,
+      "hr": 2088,
+      "mag": 2.1,
+      "printedRaDeg": 89.33208333333333,
+      "printedDecDeg": 44.94638888888888,
+      "separationDeg": 0.00028440136421155934,
+      "via": "ocr",
+      "bscName": "34Bet Aur"
+    },
+    {
+      "seq": 71,
+      "hr": 2827,
+      "mag": 2.4,
+      "printedRaDeg": 110.72708333333333,
+      "printedDecDeg": -29.24361111111111,
+      "separationDeg": 0.00013458009299769193,
+      "via": "ocr",
+      "bscName": "31Eta CMa"
+    },
+    {
+      "seq": 72,
+      "hr": 3165,
+      "mag": 2.3,
+      "printedRaDeg": 120.6325,
+      "printedDecDeg": -39.91777777777777,
+      "separationDeg": 0.0002139341559125128,
+      "via": "ocr",
+      "bscName": "Zet Pup"
+    },
+    {
+      "seq": 73,
+      "hr": 3634,
+      "mag": 2.2,
+      "printedRaDeg": 136.72291666666666,
+      "printedDecDeg": -43.31083333333333,
+      "separationDeg": 0.00011556061001192145,
+      "via": "ocr",
+      "bscName": "Lam Vel"
+    },
+    {
+      "seq": 74,
+      "hr": 3699,
+      "mag": 2.2,
+      "printedRaDeg": 139.07208333333335,
+      "printedDecDeg": -59.149166666666666,
+      "separationDeg": 0.0002706476969999826,
+      "via": "ocr",
+      "bscName": "Iot Car"
+    },
+    {
+      "seq": 75,
+      "hr": 4295,
+      "mag": 2.4,
+      "printedRaDeg": 165.01041666666669,
+      "printedDecDeg": 56.54361111111111,
+      "separationDeg": 0.0001681589296511538,
+      "via": "ocr",
+      "bscName": "48Bet UMa"
+    },
+    {
+      "seq": 76,
+      "hr": 5054,
+      "mag": null,
+      "printedRaDeg": 200.68,
+      "printedDecDeg": 55.081388888888895,
+      "separationDeg": 0.00017838073065020864,
+      "via": "ocr",
+      "bscName": "79Zet UMa"
+    },
+    {
+      "seq": 77,
+      "hr": 5563,
+      "mag": 2.2,
+      "printedRaDeg": 222.69375000000002,
+      "printedDecDeg": 74.27805555555555,
+      "separationDeg": 0.00020017639903284872,
+      "via": "ocr",
+      "bscName": "7Bet UMi"
+    },
+    {
+      "seq": 78,
+      "hr": 6705,
+      "mag": 2.4,
+      "printedRaDeg": 268.9770833333333,
+      "printedDecDeg": 51.49166666666667,
+      "separationDeg": 0.00018681149462384007,
+      "via": "ocr",
+      "bscName": "33Gam Dra"
+    },
+    {
+      "seq": 79,
+      "hr": 7796,
+      "mag": 2.3,
+      "printedRaDeg": 305.2875,
+      "printedDecDeg": 40.15972222222222,
+      "separationDeg": 0.00023728854557824477,
+      "via": "ocr",
+      "bscName": "37Gam Cyg"
+    },
+    {
+      "seq": 80,
+      "hr": 8425,
+      "mag": 2.2,
+      "printedRaDeg": 331.58708333333334,
+      "printedDecDeg": -47.10722222222223,
+      "separationDeg": 0.00045773765471649125,
+      "via": "override",
+      "bscName": "Alp Gru"
+    },
+    {
+      "seq": 81,
+      "hr": 8636,
+      "mag": 2.2,
+      "printedRaDeg": 340.22041666666667,
+      "printedDecDeg": -47.04222222222222,
+      "separationDeg": 0.0005485393977055956,
+      "via": "ocr",
+      "bscName": "Bet Gru"
+    },
+    {
+      "seq": 82,
+      "hr": 168,
+      "mag": 2.3,
+      "printedRaDeg": 9.698333333333334,
+      "printedDecDeg": 56.37305555555555,
+      "separationDeg": 0.00017267357301557111,
+      "via": "ocr",
+      "bscName": "18Alp Cas"
+    },
+    {
+      "seq": 83,
+      "hr": 4554,
+      "mag": null,
+      "printedRaDeg": 178.065,
+      "printedDecDeg": 53.86138888888889,
+      "separationDeg": 0.0002053006162308565,
+      "via": "override",
+      "bscName": "64Gam UMa"
+    },
+    {
+      "seq": 84,
+      "hr": 5953,
+      "mag": 2.5,
+      "printedRaDeg": 239.63875,
+      "printedDecDeg": -22.53777777777778,
+      "separationDeg": 0.00030407795905829376,
+      "via": "ocr",
+      "bscName": "7Del Sco"
+    },
+    {
+      "seq": 85,
+      "hr": 6241,
+      "mag": null,
+      "printedRaDeg": 252.0541666666667,
+      "printedDecDeg": -34.24027777777778,
+      "separationDeg": 0.00015829513539490812,
+      "via": "override",
+      "bscName": "26Eps Sco"
+    },
+    {
+      "seq": 86,
+      "hr": 39,
+      "mag": 2.9,
+      "printedRaDeg": 2.922083333333333,
+      "printedDecDeg": 15.016944444444444,
+      "separationDeg": 0.0002567527514555896,
+      "via": "ocr",
+      "bscName": "88Gam Peg"
+    },
+    {
+      "seq": 87,
+      "hr": 6580,
+      "mag": 2.5,
+      "printedRaDeg": 265.1020833333333,
+      "printedDecDeg": -39.01638888888889,
+      "separationDeg": 0.0006229316467963158,
+      "via": "ocr",
+      "bscName": "Kap Sco"
+    },
+    {
+      "seq": 88,
+      "hr": 403,
+      "mag": null,
+      "printedRaDeg": 20.95916666666667,
+      "printedDecDeg": 60.080000000000005,
+      "separationDeg": 0.00017974100223220536,
+      "via": "override",
+      "bscName": "37Del Cas"
+    },
+    {
+      "seq": 89,
+      "hr": 553,
+      "mag": 2.7,
+      "printedRaDeg": 28.244583333333335,
+      "printedDecDeg": 20.661944444444444,
+      "separationDeg": 0.00019129835085704362,
+      "via": "ocr",
+      "bscName": "6Bet Ari"
+    },
+    {
+      "seq": 90,
+      "hr": 1165,
+      "mag": 3,
+      "printedRaDeg": 56.42416666666667,
+      "printedDecDeg": 24.01361111111111,
+      "separationDeg": 0.00025521669659659633,
+      "via": "ocr",
+      "bscName": "25Eta Tau"
+    },
+    {
+      "seq": 91,
+      "hr": 1203,
+      "mag": 2.9,
+      "printedRaDeg": 58.06041666666667,
+      "printedDecDeg": 31.795833333333334,
+      "separationDeg": 0.00015177699856349516,
+      "via": "ocr",
+      "bscName": "44Zet Per"
+    },
+    {
+      "seq": 92,
+      "hr": 1220,
+      "mag": 3,
+      "printedRaDeg": 58.95875,
+      "printedDecDeg": 39.925,
+      "separationDeg": 0.00017375556925110932,
+      "via": "ocr",
+      "bscName": "45Eps Per"
+    },
+    {
+      "seq": 93,
+      "hr": 1577,
+      "mag": 2.9,
+      "printedRaDeg": 73.75916666666666,
+      "printedDecDeg": 33.12027777777778,
+      "separationDeg": 0.00006696232338217117,
+      "via": "ocr",
+      "bscName": "3Iot Aur"
+    },
+    {
+      "seq": 94,
+      "hr": 1666,
+      "mag": null,
+      "printedRaDeg": 76.59333333333333,
+      "printedDecDeg": -5.123888888888889,
+      "separationDeg": 0.0001473304689231499,
+      "via": "override",
+      "bscName": "67Bet Eri"
+    },
+    {
+      "seq": 95,
+      "hr": 1829,
+      "mag": 3,
+      "printedRaDeg": 81.74000000000001,
+      "printedDecDeg": -20.78222222222222,
+      "separationDeg": 0.00031404013796651356,
+      "via": "ocr",
+      "bscName": "9Bet Lep"
+    },
+    {
+      "seq": 96,
+      "hr": 1865,
+      "mag": 2.7,
+      "printedRaDeg": 82.85166666666666,
+      "printedDecDeg": -17.842499999999998,
+      "separationDeg": 0.0001797931405747186,
+      "via": "override",
+      "bscName": "11Alp Lep"
+    },
+    {
+      "seq": 97,
+      "hr": 1899,
+      "mag": 2.9,
+      "printedRaDeg": 83.49125,
+      "printedDecDeg": -5.928333333333334,
+      "separationDeg": 0.00009096115011027194,
+      "via": "ocr",
+      "bscName": "44Iot Ori"
+    },
+    {
+      "seq": 98,
+      "hr": 1910,
+      "mag": 3,
+      "printedRaDeg": 83.9625,
+      "printedDecDeg": 21.125833333333333,
+      "separationDeg": 0.0001751628752839776,
+      "via": "ocr",
+      "bscName": "123Zet Tau"
+    },
+    {
+      "seq": 99,
+      "hr": 1956,
+      "mag": 2.7,
+      "printedRaDeg": 84.64041666666665,
+      "printedDecDeg": -34.08916666666667,
+      "separationDeg": 0.000166016721118075,
+      "via": "override",
+      "bscName": "Alp Col"
+    },
+    {
+      "seq": 100,
+      "hr": 2095,
+      "mag": null,
+      "printedRaDeg": 89.41875,
+      "printedDecDeg": 37.21222222222222,
+      "separationDeg": 0.00002045472113000952,
+      "via": "override",
+      "bscName": "37The Aur"
+    },
+    {
+      "seq": 101,
+      "hr": 2553,
+      "mag": 2.8,
+      "printedRaDeg": 102.2975,
+      "printedDecDeg": -50.57833333333333,
+      "separationDeg": 0.00028502614817139276,
+      "via": "ocr",
+      "bscName": "Tau Pup"
+    },
+    {
+      "seq": 102,
+      "hr": 2773,
+      "mag": 2.7,
+      "printedRaDeg": 109.02083333333334,
+      "printedDecDeg": -37.04277777777778,
+      "separationDeg": 0.000059355656634786567,
+      "via": "ocr",
+      "bscName": "Pi  Pup"
+    },
+    {
+      "seq": 103,
+      "hr": 3185,
+      "mag": 2.9,
+      "printedRaDeg": 121.56624999999998,
+      "printedDecDeg": -24.216944444444444,
+      "separationDeg": 0.0002118373661650088,
+      "via": "override",
+      "bscName": "15Rho Pup"
+    },
+    {
+      "seq": 104,
+      "hr": 3734,
+      "mag": 2.6,
+      "printedRaDeg": 140.29583333333332,
+      "printedDecDeg": -54.882222222222225,
+      "separationDeg": 0.00004304791164542094,
+      "via": "override",
+      "bscName": "Kap Vel"
+    },
+    {
+      "seq": 105,
+      "hr": 4057,
+      "mag": 2.6,
+      "printedRaDeg": 154.58041666666668,
+      "printedDecDeg": 19.99388888888889,
+      "separationDeg": 0.0003437881505071726,
+      "via": "override",
+      "bscName": "41Gam1Leo"
+    },
+    {
+      "seq": 106,
+      "hr": 4216,
+      "mag": 2.8,
+      "printedRaDeg": 161.36875,
+      "printedDecDeg": -49.26138888888889,
+      "separationDeg": 0.00022931850370544037,
+      "via": "ocr",
+      "bscName": "Mu  Vel"
+    },
+    {
+      "seq": 107,
+      "hr": 4357,
+      "mag": null,
+      "printedRaDeg": 168.12875,
+      "printedDecDeg": 20.688333333333333,
+      "separationDeg": 0.00005650562266836452,
+      "via": "override",
+      "bscName": "68Del Leo"
+    },
+    {
+      "seq": 108,
+      "hr": 4786,
+      "mag": 2.8,
+      "printedRaDeg": 188.20166666666665,
+      "printedDecDeg": -23.231111111111108,
+      "separationDeg": 0.0001824200765488436,
+      "via": "ocr",
+      "bscName": "9Bet Crv"
+    },
+    {
+      "seq": 109,
+      "hr": 4798,
+      "mag": null,
+      "printedRaDeg": 188.84416666666667,
+      "printedDecDeg": -68.97055555555556,
+      "separationDeg": 0.00013712675627255765,
+      "via": "override",
+      "bscName": "Alp Mus"
+    },
+    {
+      "seq": 110,
+      "hr": 4825,
+      "mag": 2.9,
+      "printedRaDeg": 190.03458333333333,
+      "printedDecDeg": -1.2852777777777777,
+      "separationDeg": 0.00014102415153456743,
+      "via": "ocr",
+      "bscName": "29Gam Vir"
+    },
+    {
+      "seq": 111,
+      "hr": 4915,
+      "mag": 2.9,
+      "printedRaDeg": 193.65666666666667,
+      "printedDecDeg": 38.480000000000004,
+      "separationDeg": 0.0001775721785772521,
+      "via": "ocr",
+      "bscName": "12Alp2CVn"
+    },
+    {
+      "seq": 112,
+      "hr": 4932,
+      "mag": 2.9,
+      "printedRaDeg": 195.17083333333332,
+      "printedDecDeg": 11.120000000000001,
+      "separationDeg": 0.00009545799076097144,
+      "via": "ocr",
+      "bscName": "47Eps Vir"
+    },
+    {
+      "seq": 113,
+      "hr": 5028,
+      "mag": 2.9,
+      "printedRaDeg": 199.72583333333336,
+      "printedDecDeg": -36.55472222222222,
+      "separationDeg": 0.0002750384651677908,
+      "via": "ocr",
+      "bscName": "Iot Cen"
+    },
+    {
+      "seq": 114,
+      "hr": 5132,
+      "mag": 2.6,
+      "printedRaDeg": 204.49375,
+      "printedDecDeg": -53.31444444444444,
+      "separationDeg": 0.0001131011519370387,
+      "via": "ocr",
+      "bscName": "Eps Cen"
+    },
+    {
+      "seq": 115,
+      "hr": 5235,
+      "mag": 2.8,
+      "printedRaDeg": 208.31375,
+      "printedDecDeg": 18.547500000000003,
+      "separationDeg": 0.00032291538528514944,
+      "via": "ocr",
+      "bscName": "8Eta Boo"
+    },
+    {
+      "seq": 116,
+      "hr": 5435,
+      "mag": 3,
+      "printedRaDeg": 217.7175,
+      "printedDecDeg": 38.43861111111111,
+      "separationDeg": 0.00033062313917098913,
+      "via": "override",
+      "bscName": "27Gam Boo"
+    },
+    {
+      "seq": 117,
+      "hr": 5440,
+      "mag": 2.6,
+      "printedRaDeg": 218.39833333333337,
+      "printedDecDeg": -42.026944444444446,
+      "separationDeg": 0.00014082877099047346,
+      "via": "ocr",
+      "bscName": "Eta Cen"
+    },
+    {
+      "seq": 118,
+      "hr": 5469,
+      "mag": 2.9,
+      "printedRaDeg": 219.98125000000002,
+      "printedDecDeg": -47.260555555555555,
+      "separationDeg": 0.0001441215658580657,
+      "via": "ocr",
+      "bscName": "Alp Lup"
+    },
+    {
+      "seq": 119,
+      "hr": 5506,
+      "mag": 2.7,
+      "printedRaDeg": 220.91916666666668,
+      "printedDecDeg": 27.199722222222224,
+      "separationDeg": 0.00020796375427279865,
+      "via": "ocr",
+      "bscName": "36Eps Boo"
+    },
+    {
+      "seq": 120,
+      "hr": 5531,
+      "mag": 2.9,
+      "printedRaDeg": 222.30375,
+      "printedDecDeg": -15.918055555555554,
+      "separationDeg": 0.0001136930314861156,
+      "via": "ocr",
+      "bscName": "9Alp2Lib"
+    },
+    {
+      "seq": 121,
+      "hr": 5571,
+      "mag": 2.8,
+      "printedRaDeg": 224.13958333333332,
+      "printedDecDeg": -43.01444444444444,
+      "separationDeg": 0.0002760599364033209,
+      "via": "ocr",
+      "bscName": "Bet Lup"
+    },
+    {
+      "seq": 122,
+      "hr": 5685,
+      "mag": 2.7,
+      "printedRaDeg": 228.84708333333333,
+      "printedDecDeg": -9.273333333333333,
+      "separationDeg": 0.0003344048621985075,
+      "via": "ocr",
+      "bscName": "27Bet Lib"
+    },
+    {
+      "seq": 123,
+      "hr": 5776,
+      "mag": null,
+      "printedRaDeg": 233.28333333333336,
+      "printedDecDeg": -41.06722222222223,
+      "separationDeg": 0.0005312100935338993,
+      "via": "override",
+      "bscName": "Gam Lup"
+    },
+    {
+      "seq": 124,
+      "hr": 5854,
+      "mag": 2.7,
+      "printedRaDeg": 235.69708333333332,
+      "printedDecDeg": 6.518888888888889,
+      "separationDeg": 0.00019678810196064656,
+      "via": "ocr",
+      "bscName": "24Alp Ser"
+    },
+    {
+      "seq": 125,
+      "hr": 5944,
+      "mag": 3,
+      "printedRaDeg": 239.25791666666666,
+      "printedDecDeg": -26.029166666666665,
+      "separationDeg": 0.0003152782754638037,
+      "via": "ocr",
+      "bscName": "6Pi  Sco"
+    },
+    {
+      "seq": 126,
+      "hr": 5984,
+      "mag": 2.9,
+      "printedRaDeg": 240.92208333333332,
+      "printedDecDeg": -19.72472222222222,
+      "separationDeg": 0.00021757888033433644,
+      "via": "ocr",
+      "bscName": "8Bet1Sco"
+    },
+    {
+      "seq": 127,
+      "hr": 6132,
+      "mag": 2.9,
+      "printedRaDeg": 245.895,
+      "printedDecDeg": 61.58166666666667,
+      "separationDeg": 0.000188977855777525,
+      "via": "ocr",
+      "bscName": "14Eta Dra"
+    },
+    {
+      "seq": 128,
+      "hr": 6148,
+      "mag": 2.8,
+      "printedRaDeg": 247.2320833333333,
+      "printedDecDeg": 21.55388888888889,
+      "separationDeg": 0.0002960536319938482,
+      "via": "ocr",
+      "bscName": "27Bet Her"
+    },
+    {
+      "seq": 129,
+      "hr": 6165,
+      "mag": 2.9,
+      "printedRaDeg": 248.50249999999997,
+      "printedDecDeg": -28.155277777777776,
+      "separationDeg": 0.0005752233723930635,
+      "via": "ocr",
+      "bscName": "23Tau Sco"
+    },
+    {
+      "seq": 130,
+      "hr": 6175,
+      "mag": 2.7,
+      "printedRaDeg": 248.8758333333333,
+      "printedDecDeg": -10.507777777777777,
+      "separationDeg": 0.0002601631688020887,
+      "via": "ocr",
+      "bscName": "13Zet Oph"
+    },
+    {
+      "seq": 131,
+      "hr": 6212,
+      "mag": null,
+      "printedRaDeg": 250.03875000000002,
+      "printedDecDeg": 31.65611111111111,
+      "separationDeg": 0.0002942580537011789,
+      "via": "ocr",
+      "bscName": "40Zet Her"
+    },
+    {
+      "seq": 132,
+      "hr": 6378,
+      "mag": 2.6,
+      "printedRaDeg": 257.16375,
+      "printedDecDeg": -15.689444444444444,
+      "separationDeg": 0.0005029280734897442,
+      "via": "ocr",
+      "bscName": "35Eta Oph"
+    },
+    {
+      "seq": 133,
+      "hr": 6461,
+      "mag": 2.8,
+      "printedRaDeg": 260.7,
+      "printedDecDeg": -55.50361111111111,
+      "separationDeg": 0.00033054590381925947,
+      "via": "ocr",
+      "bscName": "Bet Ara"
+    },
+    {
+      "seq": 134,
+      "hr": 6508,
+      "mag": 2.8,
+      "printedRaDeg": 262.18041666666664,
+      "printedDecDeg": -37.27361111111111,
+      "separationDeg": 0.000026848070521329978,
+      "via": "ocr",
+      "bscName": "34Ups Sco"
+    },
+    {
+      "seq": 135,
+      "hr": 6510,
+      "mag": 3,
+      "printedRaDeg": 262.37958333333336,
+      "printedDecDeg": -49.85444444444445,
+      "separationDeg": 0.00033898249087178185,
+      "via": "ocr",
+      "bscName": "Alp Ara"
+    },
+    {
+      "seq": 136,
+      "hr": 6536,
+      "mag": 3,
+      "printedRaDeg": 262.43833333333333,
+      "printedDecDeg": 52.32277777777778,
+      "separationDeg": 0.0002708135738218858,
+      "via": "ocr",
+      "bscName": "23Bet Dra"
+    },
+    {
+      "seq": 137,
+      "hr": 6603,
+      "mag": 2.9,
+      "printedRaDeg": 265.49708333333336,
+      "printedDecDeg": 4.578333333333333,
+      "separationDeg": 0.0005762101108143954,
+      "via": "ocr",
+      "bscName": "60Bet Oph"
+    },
+    {
+      "seq": 138,
+      "hr": 6859,
+      "mag": 2.8,
+      "printedRaDeg": 274.7683333333333,
+      "printedDecDeg": -29.842499999999998,
+      "separationDeg": 0.00027880418934645703,
+      "via": "ocr",
+      "bscName": "19Del Sgr"
+    },
+    {
+      "seq": 139,
+      "hr": 6913,
+      "mag": 2.9,
+      "printedRaDeg": 276.52958333333333,
+      "printedDecDeg": -25.44,
+      "separationDeg": 0.00023069254349903566,
+      "via": "ocr",
+      "bscName": "22Lam Sgr"
+    },
+    {
+      "seq": 140,
+      "hr": 7194,
+      "mag": 2.7,
+      "printedRaDeg": 285.17583333333334,
+      "printedDecDeg": -29.924722222222222,
+      "separationDeg": 0.000248769576070341,
+      "via": "ocr",
+      "bscName": "38Zet Sgr"
+    },
+    {
+      "seq": 141,
+      "hr": 7528,
+      "mag": 3,
+      "printedRaDeg": 296.00875,
+      "printedDecDeg": 45.056666666666665,
+      "separationDeg": 0.0004124763546302445,
+      "via": "ocr",
+      "bscName": "18Del Cyg"
+    },
+    {
+      "seq": 142,
+      "hr": 7525,
+      "mag": 2.8,
+      "printedRaDeg": 296.2079166666667,
+      "printedDecDeg": 10.53888888888889,
+      "separationDeg": 0.0005646000308932837,
+      "via": "ocr",
+      "bscName": "50Gam Aql"
+    },
+    {
+      "seq": 143,
+      "hr": 7949,
+      "mag": 2.6,
+      "printedRaDeg": 311.24875000000003,
+      "printedDecDeg": 33.856944444444444,
+      "separationDeg": 0.00042380011358925557,
+      "via": "ocr",
+      "bscName": "53Eps Cyg"
+    },
+    {
+      "seq": 144,
+      "hr": 8162,
+      "mag": 2.6,
+      "printedRaDeg": 319.46583333333336,
+      "printedDecDeg": 62.45805555555556,
+      "separationDeg": 0.00020845764940656986,
+      "via": "ocr",
+      "bscName": "5Alp Cep"
+    },
+    {
+      "seq": 145,
+      "hr": 8322,
+      "mag": 3,
+      "printedRaDeg": 326.34666666666664,
+      "printedDecDeg": -16.264166666666668,
+      "separationDeg": 0.000052170729240491964,
+      "via": "ocr",
+      "bscName": "49Del Cap"
+    },
+    {
+      "seq": 146,
+      "hr": 8502,
+      "mag": 2.9,
+      "printedRaDeg": 334.11499999999995,
+      "printedDecDeg": -60.41,
+      "separationDeg": 0.00021642682282187932,
+      "via": "ocr",
+      "bscName": "Alp Tuc"
+    },
+    {
+      "seq": 147,
+      "hr": 8775,
+      "mag": 2.6,
+      "printedRaDeg": 345.5791666666667,
+      "printedDecDeg": 27.919722222222223,
+      "separationDeg": 0.00026690951970549204,
+      "via": "ocr",
+      "bscName": "53Bet Peg"
+    },
+    {
+      "seq": 148,
+      "hr": 8781,
+      "mag": 2.6,
+      "printedRaDeg": 345.8158333333334,
+      "printedDecDeg": 15.043333333333333,
+      "separationDeg": 0.0006321876895712127,
+      "via": "ocr",
+      "bscName": "54Alp Peg"
+    }
+  ]
+}

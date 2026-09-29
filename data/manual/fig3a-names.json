@@ -1,0 +1,15 @@
+{
+  "_comment": "Pixel positions in data/derived/scans/tnd6853-fig3a.png of each labeled body's glyph (not its text). approxPx is read by eye from tmp/fig3a-blobs.png and snapped to the nearest detected blob within 20 px. manualPx is used as-is for glyphs that touch the frame line or the reticle (Sirius, Navi, Venus, Saturn), measured on a 4× zoom (±1.5 px ≈ ±0.2°).",
+  "Sirius": { "kind": "navStar", "manualPx": [208, 176] },
+  "Rigel": { "kind": "navStar", "approxPx": [317, 320] },
+  "Capella": { "kind": "navStar", "approxPx": [787, 275] },
+  "Aldebaran": { "kind": "navStar", "approxPx": [536, 349] },
+  "Venus": { "kind": "planet", "manualPx": [564, 311] },
+  "Mirfak": { "kind": "navStar", "approxPx": [836, 421] },
+  "Menkar": { "kind": "navStar", "approxPx": [480, 543] },
+  "Saturn": { "kind": "planet", "manualPx": [564, 588] },
+  "Navi": { "kind": "navStar", "manualPx": [985, 550] },
+  "Earth": { "kind": "earth", "approxPx": [599, 729] },
+  "Alpheratz": { "kind": "navStar", "approxPx": [797, 759] },
+  "Diphda": { "kind": "navStar", "approxPx": [393, 848] }
+}

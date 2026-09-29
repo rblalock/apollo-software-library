@@ -1,0 +1,26 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Fig3aExhibit from '../../components/fig3a/Fig3aExhibit';
+
+const exhibit = await getEntry('exhibits', 'fig-3a');
+if (!exhibit) throw new Error('exhibit fig-3a is missing');
+const { Content } = await render(exhibit);
+const refs = await Promise.all(exhibit.data.figureRefs.map(async (r) => {
+  const doc = await getEntry(r.document);
+  if (!doc) throw new Error(`unknown document ${r.document.id}`);
+  const anchor = doc.data.anchors[r.anchor];
+  if (!anchor) throw new Error(`unknown anchor ${r.anchor} in ${doc.id}`);
+  return { href: `/documents/${doc.id}/?page=${anchor.page}`, text: `${doc.data.reportNumber}: ${anchor.label}` };
+}));
+---
+<Base title={exhibit.data.title} description={exhibit.data.summary}>
+  <p class="font-mono text-xs uppercase tracking-widest text-stone-500"><a class="hover:underline" href="/view-program/">MSC View Program</a> / Exhibit</p>
+  <h1 class="mt-2 max-w-4xl text-3xl font-semibold tracking-tight">{exhibit.data.title}</h1>
+  <p class="mt-3 max-w-3xl text-stone-700 dark:text-stone-300">{exhibit.data.summary}</p>
+  <ul class="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm">
+    {refs.map((r) => <li><a class="underline" href={r.href}>{r.text}</a></li>)}
+  </ul>
+  <div class="mt-8"><Fig3aExhibit client:load /></div>
+  <article class="prose-lite mt-12"><Content /></article>
+</Base>

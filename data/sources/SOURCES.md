@@ -1,0 +1,9 @@
+# Primary sources
+
+All documents are U.S. Government works (NASA), in the public domain. Regenerate with `bun scripts/fetch-sources.ts`.
+
+| File | Document | URL | Retrieved | SHA-256 |
+|---|---|---|---|---|
+| `tn-d-6853.pdf` | NASA TN D-6853, Apollo Experience Report – The Application of a Computerized Visualization Capability to Lunar Missions (Hyle & Lunde, June 1972) | https://ntrs.nasa.gov/api/citations/19720017950/downloads/19720017950.pdf | 2026-09-29 | `a839dacb1b3990f770fcff85a3c62a7e9a32564b1ae54bec36cf17043a8cd5ea` |
+| `69-fm-197.pdf` | MSC IN 69-FM-197 Rev 1, Views from the CM and LM During the Flight of Apollo 11 (Mission G) (A. N. Lunde, 3 July 1969) | https://www.ibiblio.org/apollo/Documents/19740073250.pdf | 2026-09-29 | `551f67583228c3141a9335eef22ab14ff1c33ebed92172de9bc430fb43a7c43d` |
+| `69-fm-107.pdf` | MSC IN 69-FM-107, Views from the Spacecraft During Apollo 10 (Mission F) (22 April 1969) | https://web.archive.org/web/20250615183849id_/https://www.nasa.gov/wp-content/uploads/static/history/afj/ap10fj/pdf/a10-views-from-sc-1969-05-18-launch-19690422.pdf | 2026-09-29 | `58fbb495f6431ea8e8f0088fa7b8cdae5966ecf62c6b2646a6c4439fadcb515f` |
