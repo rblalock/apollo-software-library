@@ -7,7 +7,9 @@ import { crop, readGray, writeGray } from './lib/png';
 // frame plus its tick labels and headers.
 mkdirSync('tmp/extract', { recursive: true });
 mkdirSync('data/derived/scans', { recursive: true });
-for (const f of loadFigureConfigs(process.argv.slice(2))) {
+const ids = process.argv.slice(2);
+const configs = [...loadFigureConfigs(), ...loadFigureConfigs(undefined, 'data/manual/globes')];
+for (const f of ids.length ? configs.filter((c) => ids.includes(c.id)) : configs) {
   const prefix = `tmp/extract/${f.id}`;
   for (const old of readdirSync('tmp/extract').filter((n) => n.startsWith(`${f.id}-`))) rmSync(`tmp/extract/${old}`);
   execFileSync('pdftoppm', ['-r', String(f.source.dpi), '-gray', '-png', '-f', String(f.source.page), '-l', String(f.source.page), `data/sources/${f.source.file}`, prefix]);

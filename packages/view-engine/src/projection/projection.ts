@@ -54,3 +54,7 @@ export function clipToSquare(a: readonly [number, number], b: readonly [number, 
   const at = (t: number): [number, number] => [a[0] + t * dx, a[1] + t * dy];
   return [at(t0), at(t1)];
 }
+
+export function unprojectGnomonic(p: PlotPoint, axes: PlotAxes): Vec3 {
+  return unit(add(axes.ez, add(scale(axes.ex, toRad(p.x)), scale(axes.ey, toRad(p.y)))));
+}

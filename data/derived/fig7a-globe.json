@@ -1,0 +1,36 @@
+{
+  "provenance": {
+    "sources": [
+      {
+        "url": "https://ntrs.nasa.gov/api/citations/19720017950/downloads/19720017950.pdf",
+        "retrieved": "2026-09-29",
+        "sha256": "a839dacb1b3990f770fcff85a3c62a7e9a32564b1ae54bec36cf17043a8cd5ea"
+      }
+    ],
+    "method": "tn-d-6853.pdf PDF p. 14 at 300 dpi, cropped (scripts/extract-figures.ts). Frame from its border lines, mapped to ±3° (the printed field of view). Limb: robust circle fit to the outermost dark pixel on each of 720 rays from the frame centre, 22 px inside the frame.",
+    "script": "scripts/digitize-globe.ts",
+    "generated": "2026-09-29"
+  },
+  "image": {
+    "path": "data/derived/scans/tnd6853-fig7a.png",
+    "widthPx": 1010,
+    "heightPx": 1060
+  },
+  "frame": {
+    "leftX": 83.60995850622406,
+    "rightX": 941.0477505919495,
+    "topY": 167.4294670846395,
+    "bottomY": 982.2165853658537
+  },
+  "extentDeg": 3,
+  "body": "moon",
+  "get": "70:00:00",
+  "limb": {
+    "cxDeg": -0.012268657474732662,
+    "cyDeg": 0.02692400355691743,
+    "rDeg": 2.8421983156183495,
+    "rmsDeg": 0.009347020651092332,
+    "used": 644,
+    "rays": 720
+  }
+}

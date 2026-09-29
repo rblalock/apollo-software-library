@@ -1,0 +1,22 @@
+{
+  "_comment": "TN D-6853 Fig 7b: moon view during translunar coast at 72:00:00 GET. Crop in page pixels at 300 dpi. The limb circle is fitted automatically (scripts/digitize-globe.ts); features and the terminator are located on the scan by the golden tests' local matching (ledger Item 2.4).",
+  "id": "fig7b",
+  "scan": "tnd6853-fig7b.png",
+  "source": {
+    "file": "tn-d-6853.pdf",
+    "page": 14,
+    "dpi": 300,
+    "crop": {
+      "x": 1190,
+      "y": 1500,
+      "w": 1020,
+      "h": 1060
+    }
+  },
+  "extentDeg": 3,
+  "body": "moon",
+  "get": "72:00:00",
+  "frameOverride": {
+    "leftX": 77.0
+  }
+}
