@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { buildScene, InvalidGetError, parseGet, printerPlot, renderSvg, type GimbalAngles } from '@asl/view-engine';
-import { baselineScene, CATALOGS, displaySpec, FIGURES, observerNote, recoveredSct, residualArrows, residuals, scanUnderlay, TOLERANCE, type CatalogId } from '../../lib/figures';
+import { baselineScene, CATALOGS, displaySpec, FIGURES, observerNote, recoveredSct, residualArrows, residuals, scanUnderlay, TOLERANCE, verdict, type CatalogId } from '../../lib/figures';
 import { parseAngleDraft } from '../../lib/inputs';
 import { Segmented } from '../ui/Segmented';
 import { InputsPanel } from './InputsPanel';
@@ -70,7 +70,7 @@ export default function FigureExhibit({ figureIds }: { figureIds: string[] }) {
     return renderSvg({ ...dl, primitives: [...dl.primitives, ...arrows] }, {
       style, labels, showPrimitives: mode !== 'original',
       underlay: mode === 'recreation' ? undefined : scanUnderlay(figure, mode === 'original' ? 1 : opacity, style === 'microfilm'),
-      title: mode === 'original' ? `TN D-6853 ${figure.label}, 1972 scan` : `${figure.label} recomputed from 1969 inputs`,
+      title: mode === 'original' ? `${figure.label}, ${figure.scanLabel} scan` : `${figure.label} recomputed from its inputs`,
     });
   }, [dl, mode, style, labels, opacity, isBaseline, figure, figureResiduals]);
 
@@ -89,7 +89,7 @@ export default function FigureExhibit({ figureIds }: { figureIds: string[] }) {
         )}
         <div className="flex flex-wrap items-center gap-4">
           <Segmented label="View" value={mode} onChange={setMode}
-            options={[['recreation', 'Recreation'], ['original', '1972 original'], ['overlay', 'Overlay'], ['printer', 'Printer plot']] as const} />
+            options={[['recreation', 'Recreation'], ['original', `${figure.scanLabel.match(/\d{4}/)?.[0] ?? ''} original`], ['overlay', 'Overlay'], ['printer', 'Printer plot']] as const} />
           <Segmented label="Style" value={style} onChange={setStyle}
             options={[['microfilm', 'Microfilm'], ['print', 'Report print']] as const} />
           <label className="flex items-center gap-2 text-sm">
@@ -124,13 +124,13 @@ export default function FigureExhibit({ figureIds }: { figureIds: string[] }) {
           />
         )}
         {mode === 'overlay' && (isBaseline
-          ? <p className="text-sm text-stone-600 dark:text-stone-400">Orange arrows run from each body's position on the 1972 scan toward its recomputed position, magnified ×5.</p>
+          ? <p className="text-sm text-stone-600 dark:text-stone-400">Orange arrows run from each body's position on the {figure.scanLabel} scan toward its recomputed position, magnified ×5.</p>
           : <p className="text-sm text-amber-700 dark:text-amber-400">The inputs differ from the figure's, so the overlay no longer lines up. Reset to compare.</p>)}
         {[...dl.notes, ...(whereFrom ? [whereFrom] : [])].map((n) => <p key={n} className="text-sm text-stone-600 dark:text-stone-400">{n}</p>)}
       </div>
       <InputsPanel figure={figure} utc={dl.utc} recovered={recovered} tryIt={tryIt} />
       <div className="lg:col-span-2">
-        <ResidualsTable {...figureResiduals} tolerance={TOLERANCE} />
+        <ResidualsTable {...figureResiduals} tolerance={TOLERANCE} scanLabel={figure.scanLabel} verdict={verdict(figure, figureResiduals)} />
       </div>
     </section>
   );

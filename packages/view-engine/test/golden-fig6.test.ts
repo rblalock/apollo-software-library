@@ -5,7 +5,7 @@ import {
 } from '../src/index';
 import events from '../../../data/manual/a11-events.json';
 import coast from '../../../data/derived/earth-coastline.json';
-import { degToPx, loadInk, matchTranslation, normalOffsets, samplePx } from './helpers/scan';
+import { degToPx, loadInk, matchTranslation, parallelOffsets, samplePx } from './helpers/scan';
 
 // Pre-registered (roadmap item 2; ledger "Item 2"): disc and terminator within 2% of the disc diameter, named
 // features within 3%. Orientation: plot +y = the spacecraft's inertial velocity, identified on 6(a) (ledger
@@ -59,12 +59,36 @@ describe.each(PANELS)('golden: TN D-6853 %s (Earth, translunar coast)', async (i
     expect(dC).toBeLessThanOrEqual(TOL_DISC);
   });
 
+  /**
+   * The model terminator, optionally shifted along the projected Sun line by `shift` (fraction of the diameter), kept
+   * within 85% of the disc radius: a terminator meets the limb tangentially, so near its ends it cannot be told from
+   * the limb.
+   */
+  const terminatorPx = (shift = 0) => {
+    const d = shift * diameterDeg, [sx, sy] = geo.sunPlot;
+    const lines = polylines(globePrimitives(scene, {}, { limb: false, hatch: false })).map((l) => l.map(([x, y]) => [x + d * sx, y + d * sy] as const));
+    const [cx, cy] = toPx(geo.centre.x, geo.centre.y), rPx = geo.radiusDeg * pxPerDeg;
+    return samplePx(lines, toPx, 4).filter(([x, y]) => Math.hypot(x - cx, y - cy) <= 0.85 * rPx);
+  };
+  /** Median offset (fraction of the diameter) to the printed terminator, and the share of points that found it. */
+  const measureTerminator = (pts: [number, number][]) => {
+    const offs = parallelOffsets(ink, pts).filter((o): o is number => o !== null).map(Math.abs).sort((a, b) => a - b);
+    return { median: offs.length ? offs[Math.floor(offs.length / 2)]! / pxPerDeg / diameterDeg : Infinity, coverage: offs.length / pts.length };
+  };
+  const accepted = (m: { median: number; coverage: number }) => m.coverage >= 0.5 && m.median <= TOL_DISC;
+
+  it('the terminator measure rejects a misplaced terminator (mutation check)', () => {
+    for (const shift of [0.12, -0.08, 0.04]) {
+      const m = measureTerminator(terminatorPx(shift));
+      console.log(`${id}: terminator shifted ${100 * shift}%: median ${(100 * m.median).toFixed(2)}%, coverage ${(100 * m.coverage).toFixed(0)}%`);
+      expect(accepted(m), `shift ${shift}`).toBe(false);
+    }
+  });
+
   it('terminator within 2% of the diameter (median offset along its normals)', () => {
-    const pts = samplePx(polylines(globePrimitives(scene, {}, { limb: false, hatch: false })), toPx, 4);
-    const offs = normalOffsets(ink, pts).filter((o): o is number => o !== null).map(Math.abs).sort((a, b) => a - b);
-    const med = offs[Math.floor(offs.length / 2)]! / pxPerDeg / diameterDeg;
-    console.log(`${id}: terminator median offset ${(100 * med).toFixed(2)}% of the diameter over ${offs.length}/${pts.length} points`);
-    expect(med).toBeLessThanOrEqual(TOL_DISC);
+    const pts = terminatorPx(), m = measureTerminator(pts);
+    console.log(`${id}: terminator median offset ${(100 * m.median).toFixed(2)}% of the diameter, coverage ${(100 * m.coverage).toFixed(0)}% of ${pts.length} points`);
+    expect(accepted(m)).toBe(true);
   });
 
   const visible = LANDMARKS.filter((l) => {
