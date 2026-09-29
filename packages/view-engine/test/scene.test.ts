@@ -58,3 +58,17 @@ describe('buildScene: "try it" inputs', () => {
     expect(allFinite(buildScene({ ...FIG_3A_SPEC, get: '9999:00:00' }, { stars }))).toBe(true);
   });
 });
+
+import { fig4Spec } from '../src/index';
+
+describe('buildScene: LM AOT (Fig 4)', () => {
+  const dl = buildScene(fig4Spec('front'), { stars });
+  it('places the front-detent bodies of Fig 4(a) from the frozen LM attitude', () => {
+    const labels = new Set(dl.placed.map((b) => b.label));
+    for (const name of ['Earth', 'Saturn', 'Diphda', 'Alpheratz', 'Menkar', 'Fomalhaut', 'Enif']) expect(labels, name).toContain(name);
+    expect(allFinite(dl)).toBe(true);
+  });
+  it('draws no CSM gimbal header for the LM telescope', () => {
+    expect(dl.primitives.some((p) => p.kind === 'text' && p.text === 'Gimbal angles')).toBe(false);
+  });
+});

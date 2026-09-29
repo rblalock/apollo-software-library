@@ -23,7 +23,103 @@
     "bottomY": 817.2386172006745
   },
   "extentDeg": 50,
-  "points": [],
+  "points": [
+    {
+      "id": "Earth",
+      "kind": "earth",
+      "px": [
+        444.98,
+        133.83
+      ],
+      "xDeg": -10.671501707725788,
+      "yDeg": 38.937845168577454,
+      "method": "blob",
+      "area": 265
+    },
+    {
+      "id": "Saturn",
+      "kind": "planet",
+      "px": [
+        230.93,
+        268.38
+      ],
+      "xDeg": -37.25506396670122,
+      "yDeg": 21.42788178736658,
+      "method": "blob",
+      "area": 181
+    },
+    {
+      "id": "Menkar",
+      "kind": "navStar",
+      "px": [
+        231.82,
+        366.41
+      ],
+      "xDeg": -37.144850198521965,
+      "yDeg": 8.669456802648696,
+      "method": "blob",
+      "area": 179
+    },
+    {
+      "id": "Diphda",
+      "kind": "navStar",
+      "px": [
+        549.38,
+        281.67
+      ],
+      "xDeg": 2.293146189408091,
+      "yDeg": 19.69774506040013,
+      "method": "blob",
+      "area": 182
+    },
+    {
+      "id": "Fomalhaut",
+      "kind": "navStar",
+      "px": [
+        765.93,
+        258.53
+      ],
+      "xDeg": 29.186129219934017,
+      "yDeg": 22.709812036617837,
+      "method": "blob",
+      "area": 179
+    },
+    {
+      "id": "Acamar",
+      "kind": "navStar",
+      "px": [
+        517.73,
+        567.65
+      ],
+      "xDeg": -1.6375451830839793,
+      "yDeg": -17.518717012613706,
+      "method": "blob",
+      "area": 173
+    },
+    {
+      "id": "Achernar",
+      "kind": "navStar",
+      "px": [
+        698,
+        560
+      ],
+      "xDeg": 20.750273951969604,
+      "yDeg": -16.523500403621952,
+      "method": "manual"
+    },
+    {
+      "id": "Rigel",
+      "kind": "navStar",
+      "px": [
+        177.98,
+        658.3
+      ],
+      "xDeg": -43.83103383664267,
+      "yDeg": -29.315908741836907,
+      "method": "blob",
+      "area": 174
+    }
+  ],
   "dots": [
     {
       "px": [

@@ -23,7 +23,124 @@
     "bottomY": 807.7177966101694
   },
   "extentDeg": 50,
-  "points": [],
+  "points": [
+    {
+      "id": "Canopus",
+      "kind": "navStar",
+      "px": [
+        698.6,
+        150.92
+      ],
+      "xDeg": 23.864043648269046,
+      "yDeg": 35.33738378589679,
+      "method": "blob",
+      "area": 170
+    },
+    {
+      "id": "Acamar",
+      "kind": "navStar",
+      "px": [
+        396.33,
+        188.18
+      ],
+      "xDeg": -13.424217897338444,
+      "yDeg": 30.4971871916936,
+      "method": "blob",
+      "area": 182
+    },
+    {
+      "id": "Diphda",
+      "kind": "navStar",
+      "px": [
+        97,
+        238
+      ],
+      "xDeg": -50.3497178224765,
+      "yDeg": 24.023524088237664,
+      "method": "manual"
+    },
+    {
+      "id": "Rigel",
+      "kind": "navStar",
+      "px": [
+        541,
+        488
+      ],
+      "xDeg": 4.422406667235975,
+      "yDeg": -8.45901574493891,
+      "method": "manual"
+    },
+    {
+      "id": "Sirius",
+      "kind": "navStar",
+      "px": [
+        744.5,
+        450
+      ],
+      "xDeg": 29.52629705835419,
+      "yDeg": -3.521669690296072,
+      "method": "manual"
+    },
+    {
+      "id": "Menkar",
+      "kind": "navStar",
+      "px": [
+        280,
+        529
+      ],
+      "xDeg": -27.774720566581493,
+      "yDeg": -13.786152277579866,
+      "method": "manual"
+    },
+    {
+      "id": "Saturn",
+      "kind": "planet",
+      "px": [
+        199.55,
+        570.74
+      ],
+      "xDeg": -37.6992182019763,
+      "yDeg": -19.20932414537978,
+      "method": "blob",
+      "area": 184
+    },
+    {
+      "id": "Aldebaran",
+      "kind": "navStar",
+      "px": [
+        445.49,
+        671.84
+      ],
+      "xDeg": -7.359604124613199,
+      "yDeg": -32.34588694480436,
+      "method": "blob",
+      "area": 173
+    },
+    {
+      "id": "Venus",
+      "kind": "planet",
+      "px": [
+        473.22,
+        704.93
+      ],
+      "xDeg": -3.9385331575044233,
+      "yDeg": -36.64498310428114,
+      "method": "blob",
+      "area": 161
+    },
+    {
+      "id": "Procyon",
+      "kind": "navStar",
+      "px": [
+        826.9,
+        639.62
+      ],
+      "xDeg": 39.69135729814958,
+      "yDeg": -28.159298449808944,
+      "method": "blob",
+      "area": 172
+    }
+  ],
   "dots": [
     {
       "px": [

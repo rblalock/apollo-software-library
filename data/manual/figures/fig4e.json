@@ -14,5 +14,69 @@
     }
   },
   "extentDeg": 50,
-  "bodies": {}
+  "bodies": {
+    "Polaris": {
+      "kind": "navStar",
+      "manualPx": [
+        366,
+        242
+      ]
+    },
+    "Navi": {
+      "kind": "navStar",
+      "manualPx": [
+        585,
+        296
+      ]
+    },
+    "Alpheratz": {
+      "kind": "navStar",
+      "approxPx": [
+        844,
+        295
+      ]
+    },
+    "Mirfak": {
+      "kind": "navStar",
+      "approxPx": [
+        567,
+        473
+      ]
+    },
+    "Dnoces": {
+      "kind": "navStar",
+      "approxPx": [
+        153,
+        520
+      ]
+    },
+    "Capella": {
+      "kind": "navStar",
+      "manualPx": [
+        448,
+        571
+      ]
+    },
+    "Saturn": {
+      "kind": "planet",
+      "approxPx": [
+        837,
+        609
+      ]
+    },
+    "Venus": {
+      "kind": "planet",
+      "approxPx": [
+        563,
+        744
+      ]
+    },
+    "Aldebaran": {
+      "kind": "navStar",
+      "approxPx": [
+        609,
+        753
+      ]
+    }
+  }
 }

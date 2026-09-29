@@ -14,5 +14,83 @@
     }
   },
   "extentDeg": 50,
-  "bodies": {}
+  "bodies": {
+    "Sun": {
+      "kind": "sun",
+      "approxPx": [
+        516,
+        177
+      ]
+    },
+    "Procyon": {
+      "kind": "navStar",
+      "approxPx": [
+        383,
+        209
+      ]
+    },
+    "Dnoces": {
+      "kind": "navStar",
+      "approxPx": [
+        767,
+        173
+      ]
+    },
+    "Sirius": {
+      "kind": "navStar",
+      "approxPx": [
+        197,
+        319
+      ]
+    },
+    "Rigel": {
+      "kind": "navStar",
+      "approxPx": [
+        269,
+        497
+      ]
+    },
+    "Venus": {
+      "kind": "planet",
+      "approxPx": [
+        501,
+        520
+      ]
+    },
+    "Capella": {
+      "kind": "navStar",
+      "approxPx": [
+        703,
+        457
+      ]
+    },
+    "Aldebaran": {
+      "kind": "navStar",
+      "approxPx": [
+        477,
+        551
+      ]
+    },
+    "Mirfak": {
+      "kind": "navStar",
+      "approxPx": [
+        765,
+        591
+      ]
+    },
+    "Menkar": {
+      "kind": "navStar",
+      "approxPx": [
+        413,
+        743
+      ]
+    },
+    "Saturn": {
+      "kind": "planet",
+      "approxPx": [
+        503,
+        791
+      ]
+    }
+  }
 }

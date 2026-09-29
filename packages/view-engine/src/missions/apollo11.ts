@@ -1,6 +1,7 @@
 import type { Mat3 } from '../math/mat';
 import { besselianEpochToJd } from '../time/time';
 import type { ViewSpec } from '../scene/types';
+import { AOT_DETENTS, type AotDetent } from '../frames/aot';
 
 export const APOLLO_11 = {
   /** Range zero (T−0): 1969-07-16 13:32:00 UTC. */
@@ -65,3 +66,13 @@ export const FIG_4_LM_BODY_FROM_REF: Mat3 = [
   [-0.00125511, -0.39031751, 0.92067946],
   [0.6184229, -0.72381497, -0.30601472],
 ];
+
+/** TN D-6853 Fig 4 panel for an AOT detent: the LM on the surface, 2 h after landing, attitude frozen from panel (a). */
+export function fig4Spec(detent: AotDetent): ViewSpec {
+  return {
+    ...FIG_3A_SPEC,
+    get: FIG_4_GET,
+    instrument: { kind: 'aot', detentDeg: AOT_DETENTS[detent], lmBodyFromRef: FIG_4_LM_BODY_FROM_REF },
+    headerLeft: [],
+  };
+}

@@ -24,12 +24,16 @@ for (const cfg of loadFigureConfigs(process.argv.slice(2))) {
   writeGray(`tmp/${cfg.id}-blobs.png`, dbg);
 
   const points = Object.entries(cfg.bodies).map(([id, v]) => {
-    const label = v.actually ? { actually: v.actually, note: v.note } : {};
+    const label = { ...(v.actually ? { actually: v.actually } : {}), ...(v.note ? { note: v.note } : {}) };
     if ('manualPx' in v) {
       const [x, y] = v.manualPx;
       return { id, kind: v.kind, ...label, px: [x, y], ...pxToDeg(frame, x, y, cfg.extentDeg), method: 'manual' };
     }
     const b = snapToBlob(blobs, v.approxPx);
+    // A nav-star asterisk is ~150–210 px at 300 dpi; a smaller blob means the snap caught a letter or fragment.
+    if (v.kind === 'navStar' && b.area < 120 && !v.note) {
+      throw new Error(`${cfg.id} ${id}: snapped blob has area ${b.area} px (letter-sized); measure it manually or add a note`);
+    }
     return { id, kind: v.kind, ...label, px: [+b.cx.toFixed(2), +b.cy.toFixed(2)], ...pxToDeg(frame, b.cx, b.cy, cfg.extentDeg), method: 'blob', area: b.area };
   });
   const dots = blobs.filter(isRoundDot).map((b) => ({ px: [+b.cx.toFixed(2), +b.cy.toFixed(2)], ...pxToDeg(frame, b.cx, b.cy, cfg.extentDeg) }));

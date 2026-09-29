@@ -23,7 +23,113 @@
     "bottomY": 815.1472868217054
   },
   "extentDeg": 50,
-  "points": [],
+  "points": [
+    {
+      "id": "Polaris",
+      "kind": "navStar",
+      "px": [
+        366,
+        242
+      ],
+      "xDeg": -19.54817653557173,
+      "yDeg": 24.76927384738385,
+      "method": "manual"
+    },
+    {
+      "id": "Navi",
+      "kind": "navStar",
+      "px": [
+        585,
+        296
+      ],
+      "xDeg": 8.01833004351947,
+      "yDeg": 17.724765602132877,
+      "method": "manual"
+    },
+    {
+      "id": "Alpheratz",
+      "kind": "navStar",
+      "px": [
+        844.49,
+        296.95
+      ],
+      "xDeg": 40.68195554906076,
+      "yDeg": 17.60091700429092,
+      "method": "blob",
+      "area": 158
+    },
+    {
+      "id": "Mirfak",
+      "kind": "navStar",
+      "px": [
+        565.48,
+        475.91
+      ],
+      "xDeg": 5.56138806646851,
+      "yDeg": -5.745369346238448,
+      "method": "blob",
+      "area": 158
+    },
+    {
+      "id": "Dnoces",
+      "kind": "navStar",
+      "px": [
+        154.14,
+        521.03
+      ],
+      "xDeg": -46.21590877442137,
+      "yDeg": -11.631329338132161,
+      "method": "blob",
+      "area": 164
+    },
+    {
+      "id": "Capella",
+      "kind": "navStar",
+      "px": [
+        448,
+        571
+      ],
+      "xDeg": -9.226470875820688,
+      "yDeg": -18.15004490608966,
+      "method": "manual"
+    },
+    {
+      "id": "Saturn",
+      "kind": "planet",
+      "px": [
+        839.06,
+        609.22
+      ],
+      "xDeg": 39.99789088975059,
+      "yDeg": -23.135852352514846,
+      "method": "blob",
+      "area": 169
+    },
+    {
+      "id": "Venus",
+      "kind": "planet",
+      "px": [
+        562.92,
+        745.1
+      ],
+      "xDeg": 5.2383967241907,
+      "yDeg": -40.86180551232911,
+      "method": "blob",
+      "area": 153
+    },
+    {
+      "id": "Aldebaran",
+      "kind": "navStar",
+      "px": [
+        610.1,
+        753.3
+      ],
+      "xDeg": 11.178277483787376,
+      "yDeg": -41.93204125109949,
+      "method": "blob",
+      "area": 202
+    }
+  ],
   "dots": [
     {
       "px": [

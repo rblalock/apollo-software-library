@@ -23,7 +23,103 @@
     "bottomY": 799.0685959271168
   },
   "extentDeg": 50,
-  "points": [],
+  "points": [
+    {
+      "id": "Earth",
+      "kind": "earth",
+      "px": [
+        622.02,
+        149.55
+      ],
+      "xDeg": 8.819914859469094,
+      "yDeg": 35.943596021983375,
+      "method": "blob",
+      "area": 325
+    },
+    {
+      "id": "Saturn",
+      "kind": "planet",
+      "px": [
+        862.35,
+        232.59
+      ],
+      "xDeg": 38.76493195211809,
+      "yDeg": 24.956890348766503,
+      "method": "blob",
+      "area": 205
+    },
+    {
+      "id": "Enif",
+      "kind": "navStar",
+      "px": [
+        292.7,
+        255.14
+      ],
+      "xDeg": -32.21491550501953,
+      "yDeg": 21.97309439425094,
+      "method": "blob",
+      "area": 207
+    },
+    {
+      "id": "Alpheratz",
+      "kind": "navStar",
+      "px": [
+        591.04,
+        339
+      ],
+      "xDeg": 4.9592152853595195,
+      "yDeg": 10.87613801620924,
+      "method": "blob",
+      "area": 199
+    },
+    {
+      "id": "Deneb",
+      "kind": "navStar",
+      "note": "Drawn as a plain dot, not the nav-star asterisk. Taken as the dot directly above its label (labels sit just below their glyphs); an alternative dot inside the stippled blockage is at (390, 533).",
+      "px": [
+        334.22,
+        559.59
+      ],
+      "xDeg": -27.04143582479823,
+      "yDeg": -18.312384621112002,
+      "method": "blob",
+      "area": 88
+    },
+    {
+      "id": "Navi",
+      "kind": "navStar",
+      "px": [
+        654.5,
+        584
+      ],
+      "xDeg": 12.866391323979848,
+      "yDeg": -21.54218817690048,
+      "method": "manual"
+    },
+    {
+      "id": "Mirfak",
+      "kind": "navStar",
+      "px": [
+        847.27,
+        563.57
+      ],
+      "xDeg": 36.88549343948635,
+      "yDeg": -18.838642031601765,
+      "method": "blob",
+      "area": 213
+    },
+    {
+      "id": "Polaris",
+      "kind": "navStar",
+      "px": [
+        614,
+        798.5
+      ],
+      "xDeg": 7.820037023527654,
+      "yDeg": -49.92476355821492,
+      "method": "manual"
+    }
+  ],
   "dots": [
     {
       "px": [

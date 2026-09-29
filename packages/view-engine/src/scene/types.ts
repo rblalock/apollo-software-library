@@ -12,7 +12,13 @@ export interface ViewSpec {
   referenceEpochJd: number;
   refsmmat: Mat3;
   gimbals: GimbalAngles;
-  instrument: { kind: 'sct'; shaftDeg: number; trunnionDeg: number };
+  /**
+   * 'sct': CSM scanning telescope, attitude from `refsmmat` + `gimbals`.
+   * 'aot': LM alignment optical telescope at a detent azimuth, attitude given directly as reference → LM body.
+   */
+  instrument:
+    | { kind: 'sct'; shaftDeg: number; trunnionDeg: number }
+    | { kind: 'aot'; detentDeg: number; lmBodyFromRef: Mat3 };
   /** Half-width of the square plot in degrees (the 1969 figures use ±50°). */
   extentDeg: number;
   bodies: BodyName[];

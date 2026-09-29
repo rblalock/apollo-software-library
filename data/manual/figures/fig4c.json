@@ -14,5 +14,76 @@
     }
   },
   "extentDeg": 50,
-  "bodies": {}
+  "bodies": {
+    "Canopus": {
+      "kind": "navStar",
+      "approxPx": [
+        697,
+        151
+      ]
+    },
+    "Acamar": {
+      "kind": "navStar",
+      "approxPx": [
+        396,
+        187
+      ]
+    },
+    "Diphda": {
+      "kind": "navStar",
+      "manualPx": [
+        97,
+        238
+      ]
+    },
+    "Rigel": {
+      "kind": "navStar",
+      "manualPx": [
+        541,
+        488
+      ]
+    },
+    "Sirius": {
+      "kind": "navStar",
+      "manualPx": [
+        744.5,
+        450
+      ]
+    },
+    "Menkar": {
+      "kind": "navStar",
+      "manualPx": [
+        280,
+        529
+      ]
+    },
+    "Saturn": {
+      "kind": "planet",
+      "approxPx": [
+        197,
+        571
+      ]
+    },
+    "Aldebaran": {
+      "kind": "navStar",
+      "approxPx": [
+        445,
+        672
+      ]
+    },
+    "Venus": {
+      "kind": "planet",
+      "approxPx": [
+        473,
+        704
+      ]
+    },
+    "Procyon": {
+      "kind": "navStar",
+      "approxPx": [
+        827,
+        641
+      ]
+    }
+  }
 }

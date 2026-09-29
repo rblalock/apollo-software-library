@@ -14,5 +14,62 @@
     }
   },
   "extentDeg": 50,
-  "bodies": {}
+  "bodies": {
+    "Earth": {
+      "kind": "earth",
+      "approxPx": [
+        445,
+        133
+      ]
+    },
+    "Saturn": {
+      "kind": "planet",
+      "approxPx": [
+        231,
+        268
+      ]
+    },
+    "Menkar": {
+      "kind": "navStar",
+      "approxPx": [
+        231,
+        363
+      ]
+    },
+    "Diphda": {
+      "kind": "navStar",
+      "approxPx": [
+        548,
+        280
+      ]
+    },
+    "Fomalhaut": {
+      "kind": "navStar",
+      "approxPx": [
+        765,
+        257
+      ]
+    },
+    "Acamar": {
+      "kind": "navStar",
+      "approxPx": [
+        519,
+        567
+      ]
+    },
+    "Achernar": {
+      "kind": "navStar",
+      "manualPx": [
+        698,
+        560
+      ]
+    },
+    "Rigel": {
+      "kind": "navStar",
+      "approxPx": [
+        179,
+        659
+      ]
+    }
+  }
 }
