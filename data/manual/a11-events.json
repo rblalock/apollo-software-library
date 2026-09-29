@@ -1,0 +1,12 @@
+{
+  "_comment": "Apollo 11 Mission Report (MSC-00171, Nov 1969), Table 7-II 'Trajectory parameters', PDF p. 117 of data/sources/a11-mission-report.pdf, transcribed from the page image (the text layer is unreadable). Definitions per Table 7-I: geodetic (Earth) or selenographic (Moon) latitude; longitude east +; altitude in nautical miles above the oblate Earth or above the radius of Landing Site 2; space-fixed velocity ft/s; space-fixed flight-path angle and heading (deg east of north) relative to the body-centered local horizontal.",
+  "events": [
+    { "id": "tli", "label": "Translunar injection", "body": "earth", "get": "2:50:13.2", "latDeg": 9.98, "lonDeg": -164.84, "altNmi": 180.6, "speedFps": 35546, "fpaDeg": 7.37, "headingDeg": 60.07 },
+    { "id": "mcc1-cutoff", "label": "First midcourse correction, cutoff", "body": "earth", "get": "26:45:01.8", "latDeg": 6.0, "lonDeg": -11.17, "altNmi": 109477.2, "speedFps": 5010.0, "fpaDeg": 76.88, "headingDeg": 120.87 },
+    { "id": "loi-ignition", "label": "Lunar orbit insertion, ignition", "body": "moon", "get": "75:49:50.4", "latDeg": -1.57, "lonDeg": -169.58, "altNmi": 86.7, "speedFps": 8250.0, "fpaDeg": -9.99, "headingDeg": -62.8 },
+    { "id": "loi-cutoff", "label": "Lunar orbit insertion, cutoff", "body": "moon", "get": "75:55:48.0", "latDeg": 0.16, "lonDeg": 167.13, "altNmi": 60.1, "speedFps": 5479.0, "fpaDeg": -0.2, "headingDeg": -66.89 },
+    { "id": "loc-cutoff", "label": "Lunar orbit circularization, cutoff", "body": "moon", "get": "80:11:53.5", "latDeg": -0.02, "lonDeg": 169.16, "altNmi": 61.6, "speedFps": 5338.3, "fpaDeg": 0.32, "headingDeg": -66.77 },
+    { "id": "undocking", "label": "Undocking", "body": "moon", "get": "100:12:00.0", "latDeg": 1.11, "lonDeg": 116.21, "altNmi": 62.9, "speedFps": 5333.8, "fpaDeg": 0.16, "headingDeg": -89.13 },
+    { "id": "csm-separation-cutoff", "label": "CSM separation maneuver, cutoff", "body": "moon", "get": "100:40:01.9", "latDeg": 1.05, "lonDeg": 31.41, "altNmi": 62.5, "speedFps": 5332.2, "fpaDeg": -0.16, "headingDeg": -106.9 }
+  ]
+}

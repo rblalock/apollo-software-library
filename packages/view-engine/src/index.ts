@@ -15,3 +15,6 @@ export * from './fit/eigen';
 export * from './fit/fit';
 export * from './frames/aot';
 export * from './ephemeris/moonframe';
+export * from './trajectory/gravity';
+export * from './trajectory/propagate';
+export * from './trajectory/states';

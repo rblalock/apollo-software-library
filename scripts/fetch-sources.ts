@@ -13,6 +13,11 @@ const SOURCES = [
     url: 'https://www.ibiblio.org/apollo/Documents/19740073250.pdf',
   },
   {
+    file: 'a11-mission-report.pdf',
+    title: 'Apollo 11 Mission Report, MSC-00171 (NASA Manned Spacecraft Center, November 1969)',
+    url: 'https://www.ibiblio.org/apollo/Documents/A11_MissionReport.pdf',
+  },
+  {
     file: '69-fm-107.pdf',
     title: 'MSC IN 69-FM-107, Views from the Spacecraft During Apollo 10 (Mission F) (22 April 1969)',
     url: 'https://web.archive.org/web/20250615183849id_/https://www.nasa.gov/wp-content/uploads/static/history/afj/ap10fj/pdf/a10-views-from-sc-1969-05-18-launch-19690422.pdf',
