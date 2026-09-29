@@ -10,3 +10,7 @@ site/public/scans/
 
 # Local notes that are not part of the published project
 private/
+
+# Vercel CLI link and pulled environment
+.vercel
+.env*
