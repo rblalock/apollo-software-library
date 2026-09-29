@@ -1,4 +1,4 @@
-import type { ResidualRow } from '../../lib/fig3a';
+import type { ResidualRow } from '../../lib/figures';
 
 interface Props { rows: ResidualRow[]; rmsDeg: number; maxDeg: number; tolerance: { rmsDeg: number; maxDeg: number } }
 
@@ -9,7 +9,7 @@ export function ResidualsTable({ rows, rmsDeg, maxDeg, tolerance }: Props) {
   return (
     <section aria-labelledby="residuals-heading">
       <h2 id="residuals-heading" className="font-mono text-xs uppercase tracking-widest text-stone-500">
-        Residuals: recreation vs. 1972 scan
+        Residuals: recreation vs. 1972 scan (at the figure's own inputs)
       </h2>
       <div className="mt-2 overflow-x-auto">
         <table className="w-full text-sm tabular-nums">
@@ -25,7 +25,7 @@ export function ResidualsTable({ rows, rmsDeg, maxDeg, tolerance }: Props) {
           <tbody>
             {rows.map((r) => (
               <tr key={r.id} className="border-b border-stone-200 dark:border-stone-800">
-                <td className="py-1 pr-4">{r.id}</td>
+                <td className="py-1 pr-4">{r.id}{r.actually && <span className="text-amber-700 dark:text-amber-400"> (printed label; actually {r.actually})</span>}</td>
                 <td className="pr-4 font-mono">{f(r.scanX)}, {f(r.scanY)}</td>
                 <td className="pr-4 font-mono">{f(r.modelX)}, {f(r.modelY)}</td>
                 <td className="pr-4 font-mono">{f(r.dist)}</td>

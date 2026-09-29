@@ -25,6 +25,8 @@ const exhibits = defineCollection({
     entry: z.string(),
     summary: z.string(),
     figureRefs: z.array(z.object({ document: reference('documents'), anchor: z.string() })),
+    /** Figure ids from site/src/lib/figures.ts shown by the exhibit (several = a panel switch). */
+    figures: z.array(z.string()).min(1),
   }),
 });
 
