@@ -94,4 +94,4 @@
 
 ## Item 9: Outreach drafts
 
-- [ ] 9.1 Write the drafts in `docs/outreach/` (NARA, JSC History Office, VTC Media about Rosen, ALSJ/AFJ editors).
+- [x] 9.1 Write the drafts in `docs/outreach/` (NARA, JSC History Office, VTC Media about Rosen, ALSJ/AFJ editors).
