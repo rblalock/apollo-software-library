@@ -37,3 +37,25 @@ describe('CM window views (Figs 1–2)', () => {
     expect(rows.find((r) => r.id === 'Sun')!.dist).toBeGreaterThan(3);
   });
 });
+
+describe('what a residuals table may claim', async () => {
+  const { verdict } = await import('./figures');
+  const good = { rmsDeg: 0.3, maxDeg: 0.6 };
+  it('states acceptance only for predictions', () => {
+    expect(verdict(FIGURES.fig3b!, good)).toMatch(/met/);
+    expect(verdict(FIGURES.fig4c!, { rmsDeg: 1.9, maxDeg: 3 })).toMatch(/not met/);
+  });
+  it.each(['fig1', 'fig2', 'fig4a', 'pdiA', 'pdiP'])('%s: attitude fitted to the scored stars, so no acceptance claim', (id) => {
+    const v = verdict(FIGURES[id]!, good);
+    expect(v).toMatch(/fitted/);
+    expect(v).not.toMatch(/\bmet\b/);
+  });
+  it('flags the calibration and consistency figures', () => {
+    expect(verdict(FIGURES.fig3a!, good)).toMatch(/calibration/);
+    expect(verdict(FIGURES.fig3c!, good)).toMatch(/consistency/);
+  });
+  it('names each scan’s own source and year', () => {
+    expect(FIGURES.pdiA!.scanLabel).toMatch(/69-FM-197.*1969/);
+    expect(FIGURES.fig3a!.scanLabel).toMatch(/TN D-6853.*1972/);
+  });
+});

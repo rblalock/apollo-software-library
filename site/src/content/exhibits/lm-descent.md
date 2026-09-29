@@ -17,7 +17,7 @@ The Apollo 11 note gave the crew a frame every 20 to 40 seconds of the twelve-mi
 
 1. **When.** The note's planned ignition, 102:35:40, plus the frame's time into the burn.
 2. **Where.** The LM on the note's planned descent profile: surface range to the landing site and altitude against time, read from its Figure 6.2.0-1(b), along the great circle from the Mission Report's ignition point to the landing point.
-3. **Which way it points.** Fitted from the labelled stars in each frame alone: 3 to 8 stars, 0.04° to 0.15° RMS.
+3. **Which way it points.** Fitted from the labelled stars in each frame alone: 3 to 8 stars, 0.04° to 0.15° RMS. Those residuals show the quality of the fit; the Sun, the planets and the horizon are predicted from it.
 4. **The window.** The docking-window outline and scribe are traced from the first frame and reused; the plot is fixed to the LM.
 
 ## How close it comes
@@ -26,12 +26,14 @@ Tests set before measuring:
 
 | Frame | Sun (limit 2°) | Lunar horizon (limit 1.0° RMS) |
 |---|---|---|
-| (a) begin burn | 0.43° | 1.17° RMS, max 3.7° — missed |
-| (e) 2:06 | 0.26° | 1.0025° RMS, max 1.6° — missed by 0.0025° |
-| (j) 5:26 | 0.60° | 4.76° RMS, max 9.3° — missed |
+| (a) begin burn | 0.43° | 0.72° RMS but max 4.2° — missed |
+| (e) 2:06 | 0.26° | 0.49° RMS, max 1.0° — pass |
+| (j) 5:26 | 0.60° | 4.15° RMS, max 8.6° — missed |
 | (p) 8:06 | 0.42° | (no horizon in view) |
 
-Venus and Saturn land within 1°. The Sun's agreement shows these charts were drawn for the real date, unlike Figure 1. Early in the burn the drawn horizon sits about 1° from the geometric one, within what the schematic profile's altitude allows; after the yaw it does not. The horizon is where every view of this program parts from the geometry (see Figures 1, 2 and 3b), and the rule it used is still unknown.
+Venus and Saturn land within 1°. The Sun's agreement shows these charts were drawn for the real date, unlike Figure 1. Early in the burn the drawn horizon lies close to the geometric one; after the yaw to windows-up it does not. On Figures 1, 2 and 3b the program's horizon also parts from the geometry, and the rule it used is still unknown.
+
+The first run of this test put the LM on the landing site's radius (the datum its altitudes are measured from) but drew the horizon on the Moon's mean radius, 2 km larger. The final review caught the mismatch; with one datum, frame (e) passes. Both sets of numbers are in the ledger.
 
 ## Limits
 

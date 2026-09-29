@@ -15,6 +15,8 @@ export interface ViewSpec {
    * Moon drawn at their true angular size (as a limb when large), and stars and planets behind them hidden.
    */
   observerPositionKm?: Vec3;
+  /** Body radii overriding the defaults (e.g. the Moon at a landing-site datum when altitudes are measured from it). */
+  bodyRadiusKm?: Partial<Record<BodyName, number>>;
   referenceEpochJd: number;
   refsmmat: Mat3;
   gimbals: GimbalAngles;

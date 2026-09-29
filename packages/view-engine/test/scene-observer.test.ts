@@ -57,3 +57,16 @@ describe('occultation of disc bodies', () => {
     expect(buildScene(s, { stars: [] }).placed.map((b) => b.id)).not.toContain('moon');
   });
 });
+
+describe('body radius override', () => {
+  it('draws the limb on the radius the spec gives (a local datum)', () => {
+    const limbPoint = (r?: number) => {
+      const dl = buildScene({ ...spec, bodyRadiusKm: r ? { moon: r } : undefined }, { stars: [] });
+      const line = dl.primitives.find((p) => p.kind === 'polyline' && !p.closed && p.points.length > 20);
+      const [x, y] = line!.kind === 'polyline' ? line!.points[0]! : [0, 0];
+      return toDeg(angleBetween(unprojectAzimuthalEquidistant({ x, y }, axes), mxv(toOptics, toMoonRef)));
+    };
+    expect(limbPoint(1735.4)).toBeCloseTo(toDeg(Math.asin(1735.4 / 1850)), 3);
+    expect(limbPoint()).toBeCloseTo(rho, 3);
+  });
+});

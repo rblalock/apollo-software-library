@@ -1,15 +1,14 @@
 import type { ResidualRow } from '../../lib/figures';
 
-interface Props { rows: ResidualRow[]; rmsDeg: number; maxDeg: number; tolerance: { rmsDeg: number; maxDeg: number } }
+interface Props { rows: ResidualRow[]; rmsDeg: number; maxDeg: number; tolerance: { rmsDeg: number; maxDeg: number }; scanLabel: string; verdict: string }
 
 const f = (n: number) => (Number.isFinite(n) ? n.toFixed(2) : 'n/a');
 
-export function ResidualsTable({ rows, rmsDeg, maxDeg, tolerance }: Props) {
-  const met = rmsDeg <= tolerance.rmsDeg && maxDeg <= tolerance.maxDeg;
+export function ResidualsTable({ rows, rmsDeg, maxDeg, tolerance, scanLabel, verdict }: Props) {
   return (
     <section aria-labelledby="residuals-heading">
       <h2 id="residuals-heading" className="font-mono text-xs uppercase tracking-widest text-muted">
-        Residuals: recreation vs. 1972 scan (at the figure's own inputs)
+        Residuals: recreation vs. the {scanLabel} scan (at the figure's own inputs)
       </h2>
       <div className="mt-2 overflow-x-auto">
         <table className="w-full text-sm tabular-nums">
@@ -36,8 +35,7 @@ export function ResidualsTable({ rows, rmsDeg, maxDeg, tolerance }: Props) {
         </table>
       </div>
       <p className="mt-3 text-sm">
-        RMS <span className="font-mono">{rmsDeg.toFixed(2)}°</span>, max <span className="font-mono">{maxDeg.toFixed(2)}°</span>.
-        Acceptance is RMS ≤ {tolerance.rmsDeg}° and max ≤ {tolerance.maxDeg}°: <strong>{met ? 'met' : 'not met'}</strong>.
+        RMS <span className="font-mono">{rmsDeg.toFixed(2)}°</span>, max <span className="font-mono">{maxDeg.toFixed(2)}°</span>. {verdict}
       </p>
     </section>
   );

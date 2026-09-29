@@ -1,5 +1,5 @@
 import {
-  APOLLO_11, buildScene, createMissionEphemeris, descentPosition, formatGet, type DescentProfile, getToUtc, parseGet, stateToEarthEvent, type EventTable, type GimbalAngles, type VehicleId, FIG_3A_SPEC, FIG_3B_SPEC, FIG_3C_SIGN_CORRECTED_SPEC, fig4Spec, fitPlotAxes, impliedSctAngles,
+  APOLLO_11, buildScene, createMissionEphemeris, descentPosition, LANDING_SITE_2_RADIUS_KM, formatGet, type DescentProfile, getToUtc, parseGet, stateToEarthEvent, type EventTable, type GimbalAngles, type VehicleId, FIG_3A_SPEC, FIG_3B_SPEC, FIG_3C_SIGN_CORRECTED_SPEC, fig4Spec, fitPlotAxes, impliedSctAngles,
   type DisplayList, type Primitive, type ResolvedStar, type Underlay, type ViewSpec,
 } from '@asl/view-engine';
 // Star directions resolved at build time (scripts/build-site-data.ts): the catalogues themselves stay off the client.
@@ -58,6 +58,14 @@ export interface FigureConfig {
   attitudeNote: string;
   /** The page the figure (and its printed inputs) comes from. */
   printedOn: { doc: string; page: number; label: string };
+  /**
+   * What the residuals can claim: 'prediction' (nothing fitted to the scored bodies), 'fit' (the attitude was fitted
+   * to the figure's labelled stars), 'calibration' (the plotting convention was chosen on it), 'consistency' (an input
+   * was inferred from it).
+   */
+  role: 'prediction' | 'fit' | 'calibration' | 'consistency';
+  /** The scanned original's source and year, e.g. "TN D-6853 (1972)". */
+  scanLabel: string;
 }
 
 const PRINTED: Record<string, FigureConfig['printedOn']> = {
@@ -71,8 +79,27 @@ const PRINTED: Record<string, FigureConfig['printedOn']> = {
   pdiJ: { doc: '69-fm-197', page: 140, label: '69-FM-197, Figure 6.2.2-1(j)' }, pdiP: { doc: '69-fm-197', page: 146, label: '69-FM-197, Figure 6.2.2-1(p)' },
 };
 
+const ROLE: Record<string, FigureConfig['role']> = {
+  fig3a: 'calibration', fig3c: 'consistency', fig4a: 'fit', fig1: 'fit', fig2: 'fit', pdiA: 'fit', pdiE: 'fit', pdiJ: 'fit', pdiP: 'fit',
+};
+
 const fig = (id: string, label: string, spec: ViewSpec, points: PointsFile, attitudeNote: string, observer?: VehicleId, scan = `tnd6853-${id}.png`): FigureConfig =>
-  ({ id, label, spec, points, scanHref: `/scans/${scan}`, attitudeNote, observer, printedOn: PRINTED[id]! });
+  ({
+    id, label, spec, points, scanHref: `/scans/${scan}`, attitudeNote, observer, printedOn: PRINTED[id]!,
+    role: ROLE[id] ?? 'prediction', scanLabel: PRINTED[id]!.doc === '69-fm-197' ? '69-FM-197 (1969)' : 'TN D-6853 (1972)',
+  });
+
+/** The sentence a residuals table may print about its figure. */
+export function verdict(f: FigureConfig, r: { rmsDeg: number; maxDeg: number }): string {
+  const met = r.rmsDeg <= TOLERANCE.rmsDeg && r.maxDeg <= TOLERANCE.maxDeg ? 'met' : 'not met';
+  const acceptance = `RMS ≤ ${TOLERANCE.rmsDeg}° and max ≤ ${TOLERANCE.maxDeg}°: ${met}`;
+  switch (f.role) {
+    case 'prediction': return `Nothing was fitted to these bodies. Acceptance is ${acceptance}.`;
+    case 'fit': return 'The attitude was fitted to this figure\'s labelled stars, so their residuals show the quality of that fit, not a prediction; the Sun, Moon and planets are predicted from it.';
+    case 'calibration': return `The plotting convention was chosen by fitting this figure, so this is a calibration, not an independent test (${acceptance}).`;
+    case 'consistency': return `An input was inferred from this figure, so this is a consistency check, not independent validation (${acceptance}).`;
+  }
+}
 
 const SCT_PRINTED = 'Gimbal angles as printed on the figure.';
 
@@ -120,6 +147,7 @@ function descentSpec(points: PointsFile, tfiS: number): { spec: ViewSpec; note: 
       get: formatGet(t),
       observer: 'moon',
       observerPositionKm: lm,
+      bodyRadiusKm: { moon: LANDING_SITE_2_RADIUS_KM }, // the datum the descent profile's altitudes are measured from
       gimbals: { inner: 0, middle: 0, outer: 0 },
       instrument: { kind: 'fixed', axes: fit.axes },
       bodies: ['moon', 'earth', 'sun', 'venus', 'mars', 'jupiter', 'saturn'],

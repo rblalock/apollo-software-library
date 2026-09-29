@@ -10,8 +10,8 @@ figures: [fig1, fig2]
 
 ## How it is recomputed
 
-1. **When.** The figures print only the altitude. The time is where the reconstructed trajectory reaches it: 2 h 49 min 56 s (inside the TLI burn, 192 statute miles) and 195 h 00 min 05 s (302 statute miles, fourteen minutes after the service module was jettisoned).
-2. **Which way the spacecraft points.** Not printed. It is fitted from the labelled stars alone: 7 on each figure, landing within 0.41° RMS (Fig 1) and 0.36° (Fig 2).
+1. **When.** The figures print only the altitude. The time is where the reconstructed trajectory reaches it: 2 h 49 min 56 s (inside the TLI burn, 192 statute miles) and 195 h 00 min 05 s (302 statute miles, eleven minutes after the service module was jettisoned).
+2. **Which way the spacecraft points.** Not printed. It is fitted from the labelled stars alone: 7 on each figure, landing within 0.41° RMS (Fig 1) and 0.36° (Fig 2). Because the stars set the attitude, their residuals show the quality of that fit, not a prediction; the window outline, the Sun, the Moon, the planets and the horizon are predicted.
 3. **The window.** Both figures draw the commander's window outline, for the left and the right eye. The plot is fixed to the spacecraft, so the same outline appears in the same place on both: the corners agree within 0.96° (test set before measuring: 2°). The outlines here are traced from Fig 2 and reused.
 4. **The Earth.** Drawn from the spacecraft's position at that moment; stars behind it are hidden.
 

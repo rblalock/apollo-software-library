@@ -22,12 +22,12 @@ Thresholds were set before any measurement: disc and terminator within 2% of the
 
 | Panel | Disc | Terminator | Features (worst of 7–8) |
 |---|---|---|---|
-| (a) 23 h | 0.57% | 0.42% | 0.74% |
+| (a) 23 h | 0.57% | 0.30% | 0.74% |
 | (b) 24 h | 0.78% | 0.18% | 0.77% |
 | (c) 25 h | 1.54% | 0.19% | 1.02% |
 | (d) 26 h | 1.11% | 0.00% | 1.05% |
 
-The features are Cape Agulhas, Cape Guardafui, Madagascar, Lake Victoria, Ras al Hadd, the tip of India, Cape Verde and Cabo de São Roque, wherever they are on the visible side. Each is found on the scan by sliding the modern coastline around it until it lies on the printed ink, and the slide is the error. Panel (a) was used to recover the "up" rule, so only (b) to (d) are true predictions; they do as well.
+The terminator is measured on its middle (within 85% of the disc's radius), counting only printed lines that run alongside it for 30 pixels, so that hatching and coastlines crossing it do not count; the test is checked to reject a terminator displaced by 4%, 8% or 12% of the diameter. The features are Cape Agulhas, Cape Guardafui, Madagascar, Lake Victoria, Ras al Hadd, the tip of India, Cape Verde and Cabo de São Roque, wherever they are on the visible side. Each is found on the scan by sliding the modern coastline around it until it lies on the printed ink, and the slide is the error. Panel (a) was used to recover the "up" rule, so only (b) to (d) are true predictions; they do as well.
 
 The printed R_E is the spacecraft's distance from the Earth's centre, not its altitude as the report's text defines it: R_E − h_E is exactly the Earth's radius on every panel.
 

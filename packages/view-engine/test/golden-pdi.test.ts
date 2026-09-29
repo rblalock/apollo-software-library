@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
-  angleBetween, APOLLO_11, bodyVectorFromPointKm, descentPosition, fitPlotAxes, getToUtc, moonState, mxv, norm, parseGet, precessionMatrix,
+  angleBetween, APOLLO_11, bodyVectorFromPointKm, descentPosition, LANDING_SITE_2_RADIUS_KM, NMI_KM, fitPlotAxes, getToUtc, moonState, mxv, norm, parseGet, precessionMatrix,
   projectAzimuthalEquidistant, resolveCatalog, scale, sub, toDeg, unit, unprojectAzimuthalEquidistant,
   type Agc37File, type BodyName, type BscFile, type DescentProfile, type RtccFile,
 } from '../src/index';
@@ -20,6 +20,8 @@ import hj from '../../../data/derived/pdi-j-arcs.json';
 // Pre-registered (ledger "Item 4"): attitude from the labelled stars; time = planned PDI 102:35:40 + the frame's
 // offset; LM on the planned profile between the Mission Report PDI point and the landing point. Zero-parameter tests:
 // the Sun within 2°; the lunar horizon within RMS 1.0°, max 2.0°.
+/** The sphere the horizon is computed on (the Moon's surface near the landing site). */
+const HORIZON_RADIUS_KM = LANDING_SITE_2_RADIUS_KM; // the datum the profile altitudes (and Table 7-II) are measured from
 const stars = resolveCatalog(rtcc as RtccFile, bsc as BscFile, agc as Agc37File, APOLLO_11.referenceEpochJd);
 const P = precessionMatrix(APOLLO_11.referenceEpochJd);
 const pdiRow = events.events.find((e) => e.id === 'pdi')!;
@@ -27,10 +29,11 @@ const landing = { latDeg: events.surface.latDeg, lonDeg: events.surface.lonDeg }
 type Points = { points: { id: string; kind: string; xDeg: number; yDeg: number }[] };
 type Arcs = { arcs: { horizon: { xDeg: number; yDeg: number }[] } };
 
-// MISSED (ledger: "Item 4"): the horizon is close at the start of the burn — (a) RMS 1.17°, max 3.70°; (e) RMS 1.0025°
-// (the 1.0° limit missed by 0.0025°), max 1.57°; both with a mean offset near −1°, within the schematic profile's
-// ±0.7 n.mi. altitude reading — but (j), after the yaw to windows up, misses by 4.76° RMS (max 9.25°). Recorded, not tuned.
-const HORIZON_RMS: Record<string, number> = { 'pdi-a': 1.1699, 'pdi-e': 1.0025, 'pdi-j': 4.7601 };
+// MISSED (ledger: "Item 4", "Final"): (a) RMS 0.72° but max 4.24°, and (j), after the yaw to windows up, RMS 4.15°
+// (max 8.55°). (e) passes (RMS 0.49°, max 1.03°). These are the numbers with one lunar datum throughout; the first run
+// computed the horizon on the 1737.4 km mean sphere while the LM sat on the 1735.4 km landing-site datum (a bug found
+// after the result by the final review; ledger "Final"). Recorded, not tuned.
+const HORIZON_MISSES: Record<string, number> = { 'pdi-a': 0.7195, 'pdi-j': 4.1549 };
 
 describe.each([
   ['pdi-a', pa as Points, 0, ha as Arcs],
@@ -61,12 +64,19 @@ describe.each([
     expect(d).toBeLessThanOrEqual(2);
   });
 
-  if (arcs) it('lunar horizon: records the model (regression guard)', () => {
-    const rel = sub(lm, moonState(utc).r), nadir = unit(mxv(P, scale(rel, -1))), rho = toDeg(Math.asin(1737.4 / norm(rel)));
+  it('puts the LM at the profile altitude above the sphere its horizon is computed on (one datum)', () => {
+    const pts = profile.points, i = Math.max(0, pts.findIndex((q) => q.tfiS > tfi) - 1), a = pts[i]!, b = pts[i + 1]!;
+    const altKm = (a.altNmi + ((tfi - a.tfiS) / (b.tfiS - a.tfiS)) * (b.altNmi - a.altNmi)) * NMI_KM;
+    expect(norm(sub(lm, moonState(utc).r)) - HORIZON_RADIUS_KM).toBeCloseTo(altKm, 6);
+  });
+
+  if (arcs) it(id in HORIZON_MISSES ? 'lunar horizon: records the model (regression guard)' : 'lunar horizon within RMS 1.0°, max 2.0° (zero parameters)', () => {
+    const rel = sub(lm, moonState(utc).r), nadir = unit(mxv(P, scale(rel, -1))), rho = toDeg(Math.asin(HORIZON_RADIUS_KM / norm(rel)));
     const res = arcs.arcs.horizon.map((p) => toDeg(angleBetween(unprojectAzimuthalEquidistant({ x: p.xDeg, y: p.yDeg }, fit.axes), nadir)) - rho);
     const rms = Math.sqrt(res.reduce((s, r) => s + r * r, 0) / res.length), max = Math.max(...res.map(Math.abs));
     console.log(`${id}: horizon radius ${rho.toFixed(2)}°, nadir ${toDeg(angleBetween(nadir, fit.axes.ez)).toFixed(2)}° from the plot centre; residual RMS ${rms.toFixed(4)}°, max ${max.toFixed(2)}°, mean ${(res.reduce((s, r) => s + r, 0) / res.length).toFixed(2)}° over ${res.length} points`);
-    expect(rms).toBeCloseTo(HORIZON_RMS[id]!, 3);
+    if (id in HORIZON_MISSES) expect(rms).toBeCloseTo(HORIZON_MISSES[id]!, 3);
+    else { expect(rms).toBeLessThanOrEqual(1.0); expect(max).toBeLessThanOrEqual(2.0); }
   });
-  if (arcs) it.skip('lunar horizon within RMS 1.0°, max 2.0° — MISSED, see ledger: Item 4', () => {});
+  if (arcs && id in HORIZON_MISSES) it.skip('lunar horizon within RMS 1.0°, max 2.0° — MISSED, see ledger: Item 4', () => {});
 });

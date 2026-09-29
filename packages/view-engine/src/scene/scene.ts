@@ -132,7 +132,7 @@ export function buildScene(spec: ViewSpec, data: SceneData): DisplayList {
   const geometry = (body: BodyName): { body: BodyName; direction: Vec3; radiusDeg: number; distanceKm: number } => {
     if (!pos) return { body, direction: mxv(toOptics, bodyDirection(body, spec.observer, utc, spec.referenceEpochJd)), radiusDeg: bodyAngularRadiusDeg(body, spec.observer, utc), distanceKm: Infinity };
     const v = bodyVectorFromPointKm(body, pos, utc);
-    return { body, direction: mxv(toOptics, unit(mxv(P, v))), radiusDeg: toDeg(Math.asin(Math.min(1, BODY_RADIUS_KM[body] / norm(v)))), distanceKm: norm(v) };
+    return { body, direction: mxv(toOptics, unit(mxv(P, v))), radiusDeg: toDeg(Math.asin(Math.min(1, (spec.bodyRadiusKm?.[body] ?? BODY_RADIUS_KM[body]) / norm(v)))), distanceKm: norm(v) };
   };
   const drawn = spec.bodies.filter((b) => pos || b !== spec.observer);
   const occulters = pos ? drawn.filter((b) => b === 'earth' || b === 'moon').map(geometry) : [];

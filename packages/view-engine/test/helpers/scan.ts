@@ -66,3 +66,23 @@ export function normalOffsets(ink: Ink, pts: [number, number][], win = 40): (num
     return null;
   });
 }
+
+/**
+ * Like normalOffsets, but a hit counts only where the ink runs parallel to the curve: at the same offset, at 5, 10
+ * and 15 px along the tangent on both sides (`supportPx` = the outermost), ink must lie within 1.5 px. Strokes
+ * crossing the curve (hatching) or wandering (coastlines) do not qualify, so a misplaced curve finds little or nothing
+ * instead of the nearest crossing stroke.
+ */
+export function parallelOffsets(ink: Ink, pts: [number, number][], win = 40, supportPx = 15): (number | null)[] {
+  const near = (x: number, y: number, nx: number, ny: number) => [-1.5, -0.75, 0, 0.75, 1.5].some((k) => ink.ink(x + k * nx, y + k * ny));
+  return pts.map((p, i) => {
+    const a = pts[Math.max(0, i - 2)]!, b = pts[Math.min(pts.length - 1, i + 2)]!;
+    const tx0 = b[0] - a[0], ty0 = b[1] - a[1], tl = Math.hypot(tx0, ty0) || 1, tx = tx0 / tl, ty = ty0 / tl, nx = -ty, ny = tx;
+    for (let s = 0; s <= win; s += 0.5) for (const sg of [1, -1]) {
+      const x = p[0] + sg * s * nx, y = p[1] + sg * s * ny;
+      const steps = [supportPx / 3, (2 * supportPx) / 3, supportPx];
+      if (ink.ink(x, y) && steps.every((d) => near(x + d * tx, y + d * ty, nx, ny) && near(x - d * tx, y - d * ty, nx, ny))) return sg * s;
+    }
+    return null;
+  });
+}

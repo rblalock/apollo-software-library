@@ -42,4 +42,4 @@ The program's source code is not known to survive in public. This entry is there
 - **Original:** the 1969 inputs (mission times, REFSMMATs, gimbal angles), the RTCC star catalogue the plots were drawn from, and the guidance computer's own star vectors and optics geometry (Comanche055).
 - **Reconstructed:** the projection and plot conventions, which were recovered by fitting the published figures, the renderer, and star positions from the Yale Bright Star Catalog matched to the 1969 catalogue.
 
-Each exhibit compares the recreation against a scan of the original and reports the difference in degrees.
+Each figure exhibit compares the recreation against a scan of the original and reports the difference: in degrees for star fields and window views, as a share of the disc's diameter for the Earth and Moon views. The hidden-line models and the film are recreations to look at, not comparisons.
