@@ -45,3 +45,38 @@ describe('matchRow', () => {
     expect(matchRow(row, candidates, 0.05)).toBeNull();
   });
 });
+
+import { resolveRtccRows, type RtccOcrRow } from '../lib/rtcc';
+
+describe('resolveRtccRows', () => {
+  const pos = (ra: number, dec: number) => radecToVec(ra, dec);
+  const stars = new Map([[15, pos(1.7, 28.9)], [188, pos(10.5, -18.2)], [911, pos(45.2, 4.0)], [1457, pos(68.6, 16.4)]]);
+  const row = (seq: number, raDeg: number | null, decAbsDeg: number | null, decSign: 1 | -1 | null): RtccOcrRow =>
+    ({ seq, line: `row ${seq} text`, raDeg, decAbsDeg, decSign, mag: 2 });
+  const navHr = (seq: number) => ({ 1: 15, 2: 188 } as Record<number, number>)[seq] ?? null;
+
+  it('verifies OCR rows, pinned nav rows and overrides, recording a separation for every row', () => {
+    const { resolved, failures } = resolveRtccRows(
+      [row(1, 1.7, 28.9, 1), row(2, 10.5, 18.2, null), row(3, null, null, null), row(4, 68.6, 16.4, 1)],
+      { stars, navHr, tolDeg: 0.05, overrides: { '3': { hr: 911, ra: '3:00:48.0', dec: '+4:00:00', reason: 'test' } } },
+    );
+    expect(failures).toEqual([]);
+    expect(resolved.map((r) => [r.seq, r.hr, r.via])).toEqual([[1, 15, 'ocr'], [2, 188, 'ocr'], [3, 911, 'override'], [4, 1457, 'ocr']]);
+    for (const r of resolved) expect(r.separationDeg).toBeLessThanOrEqual(0.05);
+    expect(resolved[1]!.printedDecDeg).toBeCloseTo(-18.2, 9); // unknown OCR sign resolved by the match
+  });
+  it('fails, naming the row, when a nav row has an unreadable position and no override', () => {
+    const { failures } = resolveRtccRows([row(1, 1.7, null, null)], { stars, navHr, tolDeg: 0.05, overrides: {} });
+    expect(failures).toEqual([expect.stringMatching(/^row 1: nav star HR 15 .*unreadable/)]);
+  });
+  it('fails, naming the row, when an override does not match its HR star', () => {
+    const { failures } = resolveRtccRows([row(3, null, null, null)], {
+      stars, navHr, tolDeg: 0.05, overrides: { '3': { hr: 911, ra: '9:00:00.0', dec: '+4:00:00', reason: 'wrong' } },
+    });
+    expect(failures).toEqual([expect.stringMatching(/^row 3: override HR 911 is .*° from its corrected printed position/)]);
+  });
+  it('fails, naming the row, when nothing matches and there is no override', () => {
+    const { failures } = resolveRtccRows([row(9, 200, 10, 1)], { stars, navHr, tolDeg: 0.05, overrides: {} });
+    expect(failures).toEqual([expect.stringMatching(/^row 9: no BSC match/)]);
+  });
+});

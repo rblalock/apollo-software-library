@@ -9,8 +9,13 @@ describe('rtcc1970.json', () => {
     expect(rtcc.stars.map((s) => s.seq)).toEqual(Array.from({ length: 148 }, (_, i) => i + 1));
     expect(new Set(rtcc.stars.map((s) => s.hr)).size).toBe(148);
   });
-  it('matches every printed position to its BSC star within 0.05°', () => {
-    for (const s of rtcc.stars) if (s.separationDeg !== null) expect(s.separationDeg).toBeLessThanOrEqual(0.05);
+  it('verifies every row: a printed position within 0.05° of its BSC star', () => {
+    for (const s of rtcc.stars) {
+      expect(s.printedRaDeg, `row ${s.seq}`).not.toBeNull();
+      expect(s.printedDecDeg, `row ${s.seq}`).not.toBeNull();
+      expect(s.separationDeg, `row ${s.seq}`).not.toBeNull();
+      expect(s.separationDeg!, `row ${s.seq}`).toBeLessThanOrEqual(0.05);
+    }
   });
   it('rows 1–37 are the Apollo nav stars', () => {
     for (const n of agc.stars) expect(rtcc.stars[n.navStar - 1]!.hr).toBe(n.hr);

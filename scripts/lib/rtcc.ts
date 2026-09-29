@@ -64,3 +64,82 @@ export function matchRow(
   }
   return best;
 }
+
+/** A row whose OCR was unreadable: its HR number and the position read from the page image. */
+export interface RtccOverride { hr: number; ra: string; dec: string; reason: string }
+
+export interface ResolvedRtccRow {
+  seq: number;
+  hr: number;
+  mag: number | null;
+  /** The printed B1970 position (from OCR, or from the override's reading of the page image). */
+  printedRaDeg: number;
+  printedDecDeg: number;
+  /** Separation between the printed position and the BSC star, degrees. Always verified ≤ tolDeg. */
+  separationDeg: number;
+  via: 'ocr' | 'override';
+}
+
+/** "h:mm:ss.s" → degrees. */
+export function parseHms(s: string): number {
+  const m = /^(\d{1,2}):(\d{2}):(\d{2}(?:\.\d+)?)$/.exec(s.trim());
+  if (!m) throw new Error(`bad RA "${s}"`);
+  return (Number(m[1]) + Number(m[2]) / 60 + Number(m[3]) / 3600) * 15;
+}
+
+/** "±d:mm:ss" → degrees. */
+export function parseDms(s: string): number {
+  const m = /^([+-])(\d{1,2}):(\d{2}):(\d{2}(?:\.\d+)?)$/.exec(s.trim());
+  if (!m) throw new Error(`bad Dec "${s}"`);
+  return (m[1] === '-' ? -1 : 1) * (Number(m[2]) + Number(m[3]) / 60 + Number(m[4]) / 3600);
+}
+
+/**
+ * Resolve every OCR row to a BSC star and verify it by position. Nav rows (navHr ≠ null) are pinned to
+ * their Apollo star; overrides supply HR and position for unreadable rows. Nothing is accepted unchecked:
+ * each failure names its row.
+ */
+export function resolveRtccRows(
+  rows: RtccOcrRow[],
+  opts: { stars: ReadonlyMap<number, Vec3>; navHr: (seq: number) => number | null; overrides: Readonly<Record<string, RtccOverride>>; tolDeg: number },
+): { resolved: ResolvedRtccRow[]; failures: string[] } {
+  const { stars, navHr, overrides, tolDeg } = opts;
+  const candidates = [...stars].map(([hr, direction]) => ({ hr, direction }));
+  const resolved: ResolvedRtccRow[] = [];
+  const failures: string[] = [];
+  const sepTo = (raDeg: number, decDeg: number, hr: number) => toDeg(angleBetween(radecToVec(raDeg, decDeg), stars.get(hr)!));
+
+  for (const row of rows) {
+    const override = overrides[String(row.seq)];
+    if (override) {
+      if (!stars.has(override.hr)) { failures.push(`row ${row.seq}: override HR ${override.hr} is not in the catalog`); continue; }
+      const ra = parseHms(override.ra), dec = parseDms(override.dec);
+      const sep = sepTo(ra, dec, override.hr);
+      if (sep > tolDeg) { failures.push(`row ${row.seq}: override HR ${override.hr} is ${sep.toFixed(3)}° from its corrected printed position`); continue; }
+      resolved.push({ seq: row.seq, hr: override.hr, mag: row.mag, printedRaDeg: ra, printedDecDeg: dec, separationDeg: sep, via: 'override' });
+      continue;
+    }
+    const pinned = navHr(row.seq);
+    if (pinned !== null) {
+      if (!stars.has(pinned)) { failures.push(`row ${row.seq}: nav star HR ${pinned} is not in the catalog`); continue; }
+      if (row.raDeg === null || row.decAbsDeg === null) {
+        failures.push(`row ${row.seq}: nav star HR ${pinned} has an unreadable OCR position; add an override — "${row.line}"`);
+        continue;
+      }
+      const signs = row.decSign === null ? [1, -1] : [row.decSign];
+      const [sep, sign] = signs.map((s) => [sepTo(row.raDeg!, s * row.decAbsDeg!, pinned), s] as const).sort((a, b) => a[0] - b[0])[0]!;
+      if (sep > tolDeg) { failures.push(`row ${row.seq}: nav star HR ${pinned} is ${sep.toFixed(3)}° from the printed position — "${row.line}"`); continue; }
+      resolved.push({ seq: row.seq, hr: pinned, mag: row.mag, printedRaDeg: row.raDeg, printedDecDeg: sign * row.decAbsDeg, separationDeg: sep, via: 'ocr' });
+      continue;
+    }
+    const m = matchRow(row, candidates, tolDeg);
+    if (!m) { failures.push(`row ${row.seq}: no BSC match within ${tolDeg}°; add an override — "${row.line}"`); continue; }
+    const sign = row.decSign ?? (sepTo(row.raDeg!, row.decAbsDeg!, m.hr) <= sepTo(row.raDeg!, -row.decAbsDeg!, m.hr) ? 1 : -1);
+    resolved.push({ seq: row.seq, hr: m.hr, mag: row.mag, printedRaDeg: row.raDeg!, printedDecDeg: sign * row.decAbsDeg!, separationDeg: m.sepDeg, via: 'ocr' });
+  }
+
+  const hrs = resolved.map((r) => r.hr);
+  const dupes = [...new Set(hrs.filter((h, i) => hrs.indexOf(h) !== i))];
+  if (dupes.length) failures.push(`duplicate HR numbers: ${dupes.join(', ')}`);
+  return { resolved, failures };
+}
