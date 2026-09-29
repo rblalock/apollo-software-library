@@ -18,3 +18,4 @@ export * from './ephemeris/moonframe';
 export * from './trajectory/gravity';
 export * from './trajectory/propagate';
 export * from './trajectory/states';
+export * from './trajectory/mission';

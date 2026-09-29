@@ -93,5 +93,27 @@
         "label": "Table I – Star identification catalogue (1,078 stars)"
       }
     }
+  },
+  {
+    "id": "a11-mission-report",
+    "title": "Apollo 11 Mission Report",
+    "reportNumber": "MSC-00171",
+    "date": "November 1969",
+    "authors": [
+      "Mission Evaluation Team, MSC"
+    ],
+    "pdf": "/docs/a11-mission-report.pdf",
+    "sourceUrl": "https://www.ibiblio.org/apollo/Documents/A11_MissionReport.pdf",
+    "pageCount": 359,
+    "anchors": {
+      "table-7-i": {
+        "page": 116,
+        "label": "Table 7-I – Definition of trajectory and orbital parameters (printed p. 7-8)"
+      },
+      "table-7-ii": {
+        "page": 117,
+        "label": "Table 7-II – Trajectory parameters (printed p. 7-9)"
+      }
+    }
   }
 ]

@@ -36,7 +36,7 @@ describe('golden: translunar coast vs TN D-6853 Fig 6 (propagated from the Missi
 // state to 0.08%, so the misfit is in the figure's time labels. Recorded, not tuned.
 describe('golden: lunar approach vs TN D-6853 Fig 7 (propagated from the first midcourse correction)', () => {
   const measured = { '70:00:00': { h: 17108, v: 4009 }, '72:00:00': { h: 11594, v: 4199 } } as const;
-  it.each([['70:00:00', 20876, 3794], ['72:00:00', 15593, 3927]] as const)('%s GET: records the model (regression guard)', (get) => {
+  it.each([['70:00:00'], ['72:00:00']] as const)('%s GET: records the model (regression guard)', (get) => {
     const s = relativeToMoon(at('mcc1-cutoff', get), utcOf(get));
     const h = (norm(s.r) - MOON_MEAN_RADIUS_KM) / STAT_MI_KM, vFps = norm(s.v) / FT_KM;
     expect(h).toBeCloseTo(measured[get].h, -1);

@@ -46,7 +46,7 @@
 - [x] 5.2 **Cowell integrator:** adaptive RK (Dormand–Prince 5(4)) in `trajectory/propagate.ts`. Test: Kepler orbit propagation against the analytic solution.
 - [x] 5.3 **Initial states:** transcribe the Mission Report trajectory-parameter tables into `data/manual/a11-events.json`, with a converter from geodetic/selenographic data to an inertial state. Test: round trip.
 - [x] 5.4 **Validation golden:** TN D-6853 Figs 6–7 R_E/V_i and h_M within 1%; later Mission Report events within 1%.
-- [ ] 5.5 **Multi-vehicle state service:** `missionState(get) → { csm, lm?, sivb? }` positions.
+- [x] 5.5 **Multi-vehicle state service:** `missionState(get) → { csm, lm?, sivb? }` positions.
 - [ ] 5.6 **Hidden-line solids:** `vehicles/solids.ts` (LM, S-IVB) and `vehicles/hiddenline.ts`. Tests: cube and occluded-edge cases.
 - [ ] 5.7 **Exhibit:** a rotating LM hidden-line view, plus Fig 3b's Moon limb from the CSM position (update its limitation note).
 - [ ] 5.8 **Ledger and commit.**
