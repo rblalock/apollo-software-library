@@ -1,0 +1,206 @@
+# OCR of data/sources/69-fm-197.pdf (sha256 551f67583228c3141a9335eef22ab14ff1c33ebed92172de9bc430fb43a7c43d), PDF pages 309, 310, 311, 312, 313
+# pdftoppm -r 300 -gray; tesseract --psm 6 (original page orientation). Generated 2026-09-29 by scripts/ocr-rtcc.ts
+=== page 309 ===
+® O o o @O
+) <wr__ STAR AND PLANET CATALOGUE...: I -
+' : (a) RTCC star catalogue for Besselian year 1970
+Name Right :
+. Star IAU Relative brightness ascension, | Declination,
+’ no. designaticn and constellation@ Common name hr:min:sec deg:min:sec Magnitude
+1 ¢ And o  Andromedae Alpheratz 0:06:49.9 | +28:55:29 2.1
+2 B Cet 8 Ceti ‘| Diphda 0:42:05.0 | -18:09:0k 2.2
+3 y Cas y Casseopeiae - 0:54:53.0 | +60:33:17 Varies ]
+N a Eri o Eridani | " ‘Acnernar 1:36:35.9 | ~57:23:20 , 0.6
+5 a UMi a Ursae Minoris Polaris 2:03:18.9 | +89:07:3k4 2.1
+6 8 Eri 8 Eridani _ Acamar 2:57:07.4 | -40:25:27 3.4 .
+7 o Cet a Ceti . ‘| Menkar 3:00:Lk2.5 | +3:58:23 2.8
+8 & Per o« Percei Mirfak 3:22:10.3 | +k9:U5:21 1.9 ¢ :
+- - 9 « Tau .a Tauri - . Aldebaran 4:34:11.8 | +16:27:01 1.1
+. . 10 B8 Ori |8 Orionis | Rigel.- 5:13:05.7 | -8:14:06 0.3 .
+11 . a Aur a Aurigae - Capella 5:14:28.2 | +45:58:10 0.2
+| 12 a .Car a Carinae . Canopus 6:23:17.1 | -52:40:hk -0.9
+‘| 13 ] « CMa a Canis Majoris | sirius 6:43:49.6 | ~16:40:25 : -1.6 .
+|1k @ CMi _|a Canis Minoris Procyon 7:37:43.9 +5:18:11 0.5 n
+S - | 15 ¥2 Vel v2 Velorum - 8:08:36.4 | -47:14:51 1.9 . 5 S
+| 186 | 1 UMa 1 Ursar Majoris - - 8:57:09.7 | +48:09:38 3.1 -
+‘ 17 . a Hys a Hydrae Alphard 9:26:06.8 -8:31:40 2.2
+. 18 a Leo a Leois Regulus 10:06:46.5 | +12:06:52 1.3
+19 B Leo _|B |Leois, . Denebola 11:47:31.8 -] +14:L4L:23 2.2 .
+' 20 Yy Crv |y Corvi - 12:14:15.6 | -17:22:32 2.8
+: ] 22 al. cru al Crucis Acrux 12:24:59.4 | -62:55:59 | 1.0
+22 a Vir |a Virginis ) Spica 13:23:36.6 °| -11:00:19 . 1.2
+1 23 n Ma n Ursae Majoris . Mkaid .+ | 13:46:21.6 | +49:27:45 1.9
+24 6 Cen 8 Centauri Menkent = | 14:0b:5h.6 | -36:13:23 . | . 2.3
+25 a Boo a  BobBtis Arcturus 14:14:17.5 | +19:20:16 0.2 .
+1 26 a CrB a Coronae Borealis Alphecca | 15:33:25.0 | +26:U8:53 2.3
+’ 27 - [} Sco o Scorpii . - - Antares © | 16:27:33.9 -26:22:01 1.2
+28 a TrA |a Trianguli Australid Atria 16:45:28.3 | -68:58:31 1.9
+: : ]l 29 | o« oph a -Ophiuchi 1 Rasalague 17:33:32.4 | +12:34:50 2.1
+1 30 o Lyr ..{a- Lyrae ' _ Vega 18:35:55.3 | +38:45:17 | . 0.1
+1 o . .Sgr o . Sagittarii - Nunki .} 18:53:24.3 .| -26:20:08 2.1
+A4 32 | o Aq a .Aquilae o Altair - 19:49:19.1 | +8:47:16 0.9 : _
+o33 B. Cap g . Capricorni . | -— 20:19:19.6 | -14:52:38 3.2
+3k a Pav a Pavonis Peacock 20:23:17.0 | -56:49:58 2.1
+35 a Cyg . |o <Cygni- : Deneb 20:40:2L .4 | +45:10:21 1.3 ‘
+a‘I‘he earlier Greek letters_ are assigned to the stars roughly in order of brightness; .
+’ there are exceptions. Magnitudes should be used for mission planning.
+
+=== page 310 ===
+' TABLE STAR AND PLANET CATALOGUE - Continued.inued o
+v (a) RTCC star catalogue for Besselian year 1970 - Continued ' '
+- Right
+. Star IAU. Relative brightness ascension, Declination,
+. no. designation and constellation® Common name | hr:min:sec deg:min:sec Magnitude
+36 e Peg e Pegasi Enif 21:42:42.7| +9:hh:12 2.5
+37 a PsA a Piscis Austrini Formalhaut 22:55:59.7| -29:46:54 1.3
+38 a Ari a Arietis . Hamal 2:05:28.6 | +23:19:17 2.2
+.39 a  For a * Fornacis - - 3:10:47.7| -29:06:16 : 3.9 -
+' Lo B Gem 8  Geminorum Pollux 7:43:29.0| +28:06:00 1.2
+b1 B Car "B Carinae . . Miaplacidus 9:12:52.8 | -69:35:37 1.8 .
+L2 a UMa a Ursae Majoris Dubhe 11:01:53.4) +61:5L:48 1.9
+: L3 Y Cen Y Centauri - | 12:39:51.2] -L8:47:L3 2.h
+_ - Ly a Cen a. Centauri Rigil Kent 14:37:32.9| -60:42:46 0.1
+: o s a Ori a Orionis Betelgeuse 5:53:32.8 +T:24:10 0 to 1.°
+L6 B Cen B8 Centauri Hadar 14:01:41.4 | -60:13:45 0.9
+g Yy Ori y Orionis Bellatrix 5:23:31.2 +6:19:26 1.7
+48 8 Tau 8 Tauri < El Nath 5:24:23.6| +28:35:01 1.8 ' ™
+. : L9 € Ori € Orionis " Alni Lam 5:3h4:41.4 -1:13:11 1.7 N0
+50 ¢ oOri ¢ Orionis Alnitak 5:39:14.6| -1:5T:26 2.0 IN{
+51 B CMa 8 Canis Majoris Murzim 6:21:22.7| -17:56:24 2.0
+. 52 y Gem y Geminorum Alhena’ 6:35:58.8|  +16:25:35 1.9 . o
+, 53 € CMa € Canis Majoris Adhera " 6:57:26.8| -28:55:49 1.6 '
+Sy |© 6 CMa § Canis Majoris A Wazor 7:07:10.3| -26:20:40 2.0
+: 55 a Gem o  Geminorum Castor 7:32:41.2| +31:57:19 1.6 :
+56 € Car € Carinae Avior . 8:21:54.0] -59:24:45° 1.7 -
+57 § Vel § Velorum - 8:43:52.5| -54:35:53 2.0
+58 y Cru Yy Crucis Gacrux 12:29:29.4 | -56:56:L44 1.6
+59 8 Cru B Crucis Becrux | 12:45:57.3| -59:31:30 1.5
+60 e UMa e Ursae Majoris Alioth 12:52:42.8| +56:07:20 1.7
+. 61 . A Sco ‘A Scorpii Shaula . 17:31:34k.1| -37:05:01 1.7
+62 8 Sco '8 Scorpii - 17:35:09.6 | .-42:58:50 2.0
+63 e Sgr € Sagittarii Kaus Aust 18:22:10.8| -34:24:02 1.9
+) 64 B8 Cas B Cassiopeiae Caph ) 0:07:33.9| +58:59:04 2.4
+) 65 a Phe o Phoenicis Ankaa 0:2h:48.2| -L42:28:08 2.h
+66 8 And 8  Andromedae Mirach 1:08:02.7| +35:27:43 2.4 .
+67 v! Ana v! Andromedae Almach 2:02:03.0] +hk2:11:12 2.3
+- 68 § ori 8§ Orionis Mintaka . 5:30:28.4 -0:19:12 2.5
+69 k oOri k  Orionis Saiph 5:46:20.0| -9:40:45 2.2
+. T0 8 Aur B Aurigae Menkalinan 5:57:19.7| +Lh:56:47 2.1
+®The earlier Greek letters are assigned to the stars roughly in order of brightness;
+there are exceptions. Magnitudes should be used for mission planning.
+
+=== page 311 ===
+® O o @ @O
+G. #..:STAR AND PLANET CATALOGUE - Continued ..auzd
+(a) RTCC star catalogue for Besselian year 1970 - Continued
+‘ Right
+Star TAU Relative brightness ascension, Dec¢lination,
+no. designation and constellation® Common name hr:min:sec deg:min:sec Magnitude
+. 71 | n CMa n Canis Majoris Aludra 7:22:54.5 | -29:14:37 2.4
+T2 ¢t Pup ¢  Puppis - . " 8:02:31.8 | -39:55:0h 2.3
+73 A Vel A Velorum Suhail - 9:06:53.5 | -43:18:39 2.2
+TS 1 Car 1 Carinae ) - 9:16:17.3. | -59:08:57 _ 2.2
+.15 B UMa B Ursae Majoris Merak ..~ 11:00:02.5 | +56:32:37 2.4
+.76 z UMa ¢z Ursae Majoris Mizar . 13:22:43,2 | +55:04:53 . 2. . .
+77 | B UMi 8 Ursae Minoris Kochab . 14:50:46.5 | +7h:16:41 2.2
+T8 Yy Dra Y Draconis Eltenin ° 17:55:54.5 +51:29:30 2.4
+- 719 Y Cyg Y Cygni Sadr 20:21:09.0. | +40:09:35 2.3
+‘ . 80 a Gru @  Gruis Al Na'ir 22:06:20.9 | -4T7:06:26 2.2
+81, | B Gru |.B Gruis, -- 22:40:52.9 | -47:02:32 2.2
+4 82‘ a Cas a Cassiopeiae Schedar 0:38:47.6 +56:22:23- 2.3
+83. y. UMa Y Ursae Majoris Phecda 11:52:15.6 | +53:5L:L41 2.5 ; _
+: - 8k §- Sco 8§ Scorpii . - 15:58:33.3 | -22:32:16 2.5 : . N
+' 85 e Sco |['e Scorpii == 16:48:13.0 | -34:1k:25. 2.4 ‘ 8;
+o 86 Y Peg Y Pegasi, . - - 0:11:41.3 | +15:01:01 2.9 ' L
+. 87 k  Sco x  Scorpii . -= - |.17:40:24.5 | -39:00:59 2.5 : '
+88 6. Cas 8§ Cassiopeiae - 1:23:50.2 | +60:0L4:48 2.8 ' o
+89 B Ari B Arietis = . | 1:52:58.7 | +20:39:43 2.7
+90 n  Tau n  Taurui -- G| 3:45:41.8- | +24:00:49 3.0 .
+- 91 r  Per t Persei. - v 3:52:14.5 | +31:47:k5 - 2.9
+92 € Per € Persei -~ 7 |. 3:55:50.1 | +39:55:30 3.0
+- 93 1 Aur .1 Aurigae -— e 4:55:02.2 | +33:07:13 2.9 )
+94 B Eri B Eridani - : 5:06:22.4 ~5:07:26. 2.9
+95 B Lep B Leporis - 5:26:57.6 | -20:46:56 3.0
+96 o Lep a« Leporis - 5:3L:24. % | -17:50:33 2.7
+: 97 1 Ori v  Orionis - - ’ 5:33:57.9 | -5:55:42 2.9 :
+98 ¢ Tau ¢. Tauri - . 5:35:51.0 | +21:07:33 3.0 . :
+. 99 | a Col .« Columbae . - 5:38:33.7 | =-3b4:05:21 2.7
+100 | 6 Aur .6 Aurigae’ . T "7 == . .|, 5:57:40.5 | +37:12:4h4 2.7
+. . 101 | t Pup | t. Puppis. ... [ - P 6:49:11,h. | -50:3k:42 2.8
+‘ i 102 m  Pup .| ® Puppis.. ceeed o= 0 L0) P T:16:05.0 | -37:02:34 2.7 .
+_ 103 p Pup p Puppis - A I |.. 8:06:15.9 | -2k4:13:01 2.9
+104 ! k, Velorum e o L], 920100 | -5b:52:56 2.6
+105 Yy Leo y Leois Co R S dmsTE 70T 1 710118:19.3 | +19:59:38° 2.6
+106 u Vel ¥ Velorum -- 10:45:28.5 | -49:15:41 2.8
+' #The earlier Greek letters are assigned to the stars roughly in order of brightnkss; :
+there are exceptions. Magnitudes should be used for mission planning.
+
+=== page 312 ===
+. . - TR STAR AND PLANET CATALOGUE - Continued tinued
+' (a) RTCC star catalogue for Besselian year 1970 - Continued
+. Rignt
+. Star IAU Relative brightness ) ascension, | Declination,
+107 § Leo 6 Leois - 11:12:30,9| +20:L41:18 2.6
+108 8 Crv B ' Corvi -- | 12:32:48,4 ) -23:13:52 2.8 - -
+109 a Mus a - Muscae ) - 12:35:22,6| -68:58:1k4 2.9
+110 Yy Vir y Virgo - 12:40:08,3| -1:17:07 2.9
+111 a2 CVn a2 Canes Venatici - 12:54:37.6| +38:28:48 : 2.9
+112 e Vir € Virginis _ ] - . 13:00:41.0] +11:07:12 2.9 .-
+113 1 Cen 1 Centauri - 13:18:54,2( -36:33:17 2.9 ‘
+114 € Cen € Centauri - | 13:37:58.5| -53:18:52 2.6 _
+| 15 n Boo n  Bobtis - 13:53:15.3 | +18:32:51 2.8
+) . 116 Yy Boo Y Bobtis - 1k4:30:52,2| +38:26:19 3.0
+117 n Cen n Centauri - 14:33:35.6 | -L2:01:37 2.6
+118 a Lup a Luporis - 14:39:55.5| -L47:15:38 2.9
+119 € Boo € BoStis - 14:43:40.6| +27:11:59 2.7 ; —_
+' : 120 a2 Lib a2 Librae: Zuben'ubi 14:49:12.9| -15:55:05 2.9 Y B
+. 1 121 8 Lup 8 Lupi - 14:56:33.5 [ -43:00:52 2.8 NENRE
+122 B Lidb 8 Librae - : 15:15:23.3 -9:16:24 2.7 h i
+123 y Lup y Lupi - © | 15:33:08.0 | -b1:0L4:02 2.9 \ o
+. 124 a Ser a  Serpentis -— 15:42:47.3 +6:31:08 2.7 '
+125 m  Sco m  Scorpii e 15:57:01.9 | -26:01:45 3.0
+126 gl Sco gl Scorpii - 16:03:41.3 | -19:43:29 2.9
+127 n Dra n Draconis - 16:23:34,8 | +61:34:54" 2.9
+‘ 128 B  Her B  Herculis - 16:28:55.7 | +21:33:14° 2.8
+129 T Sco T Scorpii - 16:34:00.6 | -28:09:19 2.9
+130 ¢ Oph ¢  Ophiuchi - © | 16:35:30.2 | -10:30:28 2.7 '
+131 ¢ Her ¢ Herculis -- 16:40:09.3 | +31:39:22 3.0. |-
+132 n Oph n  Ophiuchi Sabik 17:08:39.3 | -15:k1:22 2.6
+‘ 133 B Ara 8 Arae - ' 17:22:48.0 | -55:30:13 2.8
+: 13k v Sco v Scorpii . - 17:28:43.3 | -37:16:25 2.8
+: | 135 o Ara a - Arae - 17:29:31.1 | -49:51:16 7 3.0
+136 8 Dra 8 Draconis - 17:29:45,2 | +52:19:22 3.0
+137 8 Oph 8  Ophiuchi - 17:41:59.3 | +4:34:k2 2.9 .
+: ‘ 138 § Sgr § . Sagittarii ) -- 18:19:04.4 | -29:50:33 2.8
+1 139 A Sgr A Sagittarii -— . . {18:26:07.1 | -25:26:24 2.9
+i Lo ¢z Sgr ¢z Sagittarii - 19:00:42.2 [ -29:55:29 2.7 )
+3 1k 5§ Cyg § Cygni : - 19:44:02.1 | +45:03:2L 3.0
+o142 Y Aql Y Aquilae - 19:44:49.9 [ +10:32:20 2.8
+¥The earlier Greek. letters. are assigned.to.the.stars .roughly in order of brightness;
+there are éexcéptions. Magnitudes. should be.used for mission planning.
+o o o . @ ®
+
+=== page 313 ===
+' “+ . -STAR AND PLANET CATALOGUE - Concluded . -
+‘ (a) RTCC star catalogue for Besselian year 1970 - Concluded
+Right ,
+) . Star TAU a'Relative brightness ascension, Declination,
+) no. designation and constellation Common name hr:min:sec deg:min:sec Magnitude
+143 e Cyg e Cygni - 20:44:59.7| +33:51:25 2.6 .
+1hk a Cep a  Cephei -- 21:17:51.8| +62:27:29 2.6 :
+145 § Cap 8§ Capricorni | - 21:45:23.2] -16:15:51 3.0 .
+1k6 a Tuc a  Tucanae - 22:16:27.6| -60:24:36 2.9
+147 B Peg B  Pegasi -- 23:02:19.0| +27:55:11 2.6
+148 a Peg a  Pegasi Markab 23:03:15.8| +15:02:36 2.6
+| (b) Planets : : ,
+‘ ' Right } '
+ascension, Declination,
+Name hr:min:sec hr:min:sec =
+N
+. . O
+< 1 Venus 4:52:16.98 20:01:45.2 w
+_ ' 2 Mars 15:59:22.95 | -24:01:01.5 . :
+. 3 Jupiter 12:04:13.881 0:52:22.31
+_ I Saturn 2:25:56.208 11:54:00.30
+_ , a"I‘he earlier Greek letters are assigned to the stars roughly in order of brightness;
+there are exceptions. Magnitudes should be used for mission planning. :

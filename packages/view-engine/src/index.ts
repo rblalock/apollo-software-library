@@ -3,3 +3,5 @@ export * from './math/mat';
 export * from './time/time';
 export * from './catalog/precession';
 export * from './catalog/stars';
+export * from './catalog/resolve';
+export * from './missions/apollo11';

@@ -1,0 +1,21 @@
+{
+  "_comment": "Rows whose OCR could not be matched automatically. Key = RTCC star number; value = HR number read from the page image (69-FM-197 PDF pp. 309–313) plus a reason. Each HR was confirmed by BSC designation and by the corrected printed B1970 position (separation < 0.002°).",
+  "49": { "hr": 1903, "reason": "ε Ori (Alnilam): OCR '5:3h4:41.4' = 5:34:41.4, -1:13:11" },
+  "58": { "hr": 4763, "reason": "γ Cru (Gacrux): OCR '-56:56:L44' = -56:56:44" },
+  "61": { "hr": 6527, "reason": "λ Sco (Shaula): OCR '17:31:34k.1' = 17:31:34.1" },
+  "80": { "hr": 8425, "reason": "α Gru (Al Na'ir): OCR '-4T7:06:26' = -47:06:26" },
+  "83": { "hr": 4554, "reason": "γ UMa (Phecda): OCR '+53:5L:L41' = +53:51:41" },
+  "85": { "hr": 6241, "reason": "ε Sco: OCR '-34:1k:25.' = -34:14:25" },
+  "88": { "hr": 403, "reason": "δ Cas: OCR '+60:0L4:48' = +60:04:48" },
+  "94": { "hr": 1666, "reason": "β Eri: OCR '~5:07:26.' = -5:07:26" },
+  "96": { "hr": 1865, "reason": "α Lep: OCR '5:3L:24. %' = 5:31:24.x" },
+  "99": { "hr": 1956, "reason": "α Col: OCR '=-3b4:05:21' = -34:05:21" },
+  "100": { "hr": 2095, "reason": "θ Aur: OCR '+37:12:4h4' = +37:12:44" },
+  "103": { "hr": 3185, "reason": "ρ Pup: OCR '-2k4:13:01' = -24:13:01" },
+  "104": { "hr": 3734, "reason": "κ Vel: OCR '920100' = 9:21:11.0 (read from page image), -54:52:56" },
+  "105": { "hr": 4057, "reason": "γ¹ Leo: OCR '710118:19.3' = 10:18:19.3" },
+  "107": { "hr": 4357, "reason": "δ Leo: OCR '+20:L41:18' = +20:41:18" },
+  "109": { "hr": 4798, "reason": "α Mus: OCR '-68:58:1k4' = -68:58:14" },
+  "116": { "hr": 5435, "reason": "γ Boo: OCR '1k4:30:52,2' = 14:30:52.2" },
+  "123": { "hr": 5776, "reason": "γ Lup: OCR '-b1:0L4:02' = -41:04:02" }
+}

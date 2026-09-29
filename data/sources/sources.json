@@ -1,0 +1,26 @@
+[
+  {
+    "file": "tn-d-6853.pdf",
+    "title": "NASA TN D-6853, Apollo Experience Report – The Application of a Computerized Visualization Capability to Lunar Missions (Hyle & Lunde, June 1972)",
+    "url": "https://ntrs.nasa.gov/api/citations/19720017950/downloads/19720017950.pdf",
+    "retrieved": "2026-09-29",
+    "sha256": "a839dacb1b3990f770fcff85a3c62a7e9a32564b1ae54bec36cf17043a8cd5ea",
+    "bytes": 949554
+  },
+  {
+    "file": "69-fm-197.pdf",
+    "title": "MSC IN 69-FM-197 Rev 1, Views from the CM and LM During the Flight of Apollo 11 (Mission G) (A. N. Lunde, 3 July 1969)",
+    "url": "https://www.ibiblio.org/apollo/Documents/19740073250.pdf",
+    "retrieved": "2026-09-29",
+    "sha256": "551f67583228c3141a9335eef22ab14ff1c33ebed92172de9bc430fb43a7c43d",
+    "bytes": 7946096
+  },
+  {
+    "file": "69-fm-107.pdf",
+    "title": "MSC IN 69-FM-107, Views from the Spacecraft During Apollo 10 (Mission F) (22 April 1969)",
+    "url": "https://web.archive.org/web/20250615183849id_/https://www.nasa.gov/wp-content/uploads/static/history/afj/ap10fj/pdf/a10-views-from-sc-1969-05-18-launch-19690422.pdf",
+    "retrieved": "2026-09-29",
+    "sha256": "58fbb495f6431ea8e8f0088fa7b8cdae5966ecf62c6b2646a6c4439fadcb515f",
+    "bytes": 4250030
+  }
+]
