@@ -231,3 +231,41 @@ Render from the 1969 inputs plus the recovered optics angles, then compare every
 7. Text recognition of the 1,078-star catalog from 69-FM-107 Table I, replacing the stand-in catalog.
 8. Visual-design pass for the library; hosting and deployment.
 9. Archival outreach: NARA Fort Worth (the 35 mm film and any listings), G. B. Roush and Barry Rosen.
+
+## 11. Amendments during planning and implementation
+
+### Established during planning (verified before implementation)
+
+- **AGC star epoch:** the Comanche055 star vectors are the mean equator and equinox of **B1970.0**, with proper motion. They match BSC5 at 2.6″ RMS and 3.6″ max; the next-best epoch, B1969.75, is 10″ RMS.
+- **AGC star order:** stars 34–37 are Peacock, Deneb, Enif and Fomalhaut.
+- **Catalog:** the stand-in catalog of §3, BSC ≤ 4.5, is replaced for Apollo 11 exhibits by the note's own **RTCC star catalogue for Besselian year 1970**. It has 148 stars (69-FM-197 PDF pp. 309–313) and was transcribed by OCR. BSC remains the position source, and the 37 nav stars use the AGC vectors.
+- **SCT plot convention**, which resolves §5.4:
+  - the boresight is the optics line of sight at trunnion 0, i.e. the shaft axis;
+  - plot +y is the direction of increasing trunnion;
+  - plot +x = boresight × up, the as-seen view.
+
+  Fig 3a therefore needs **no free parameters**.
+- **Reticle scale:** the 0–50 scale inside the SCT circle has 0 at y = −25°. The TN D-6853 scan measures the "0" tick at −24.9° and the "5" tick at −20.2°. Its meaning is still unexplained.
+- **Gimbal order and optics mounting** are taken from `CALCGA` and `NB1NB2` (32.523°).
+- **Ephemeris:** astronomy-engine agrees with JPL Horizons to about 4″ (Venus, Saturn) and 14″ (Earth). IAU 1976 precession reproduces Meeus Example 21.b.
+
+### Changes to the design
+
+- **Fit (§5.1):** simplified to rotation and handedness only (Davenport q-method), because frame registration absorbs scale and offset. It still returns per-point residuals and the implied SCT angles.
+- **Content:** plain `.md`, not MDX. No component is embedded in prose.
+- **PDFs:** they live once in `data/sources/` and are copied to `site/public/docs/` by `scripts/sync-public.ts` (git-ignored), rather than duplicated in git.
+
+### Data decisions made during implementation
+
+- **RTCC catalogue:**
+  - 18 of the 148 rows had OCR digits too garbled to match automatically. They are resolved in `data/manual/rtcc-overrides.json`, each confirmed by Bayer designation and by the corrected printed position (all < 0.002°).
+  - Row 104 (κ Vel) was read from the page image as 9:21:11.0, −54:52:56.
+  - The other 126 rows match BSC within 0.0084°.
+- **Fig 3a digitization:** 8 glyphs are detected as blobs. Four glyphs touch the frame line or the SCT reticle (Sirius, Navi, Venus, Saturn) and were measured by eye on a 4× zoom (±0.2°). They are marked `method: "manual"`.
+- **Crop box:** the Fig 3a crop is `{x:150, y:215, w:1080, h:1040}` at 300 dpi.
+
+### Result (§8.2 golden test)
+
+- **Fit to the scan:** 12 labeled bodies, **RMS 0.624°, max 1.595°** (Venus), meeting both targets.
+- **Per body:** Aldebaran 0.08°, Saturn 0.14°, Menkar 0.23°, Alpheratz 0.27°, Mirfak 0.35°, Rigel 0.34°, Capella 0.36°, Navi 0.43°, Earth 0.51°, Diphda 0.70°, Sirius 0.81°, Venus 1.60°.
+- **Free fit of the scan:** not mirrored, shaft −0.38°, trunnion 0.27°, RMS 0.508°. This confirms the SCT-at-rest convention independently.
