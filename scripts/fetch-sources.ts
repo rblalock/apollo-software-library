@@ -22,6 +22,16 @@ const SOURCES = [
     title: 'MSC IN 69-FM-107, Views from the Spacecraft During Apollo 10 (Mission F) (22 April 1969)',
     url: 'https://web.archive.org/web/20250615183849id_/https://www.nasa.gov/wp-content/uploads/static/history/afj/ap10fj/pdf/a10-views-from-sc-1969-05-18-launch-19690422.pdf',
   },
+  {
+    file: 'a11-press-kit-1.pdf',
+    title: 'Apollo 11 Lunar Landing Mission Press Kit, Part 1 (NASA Release 69-83K, 6 July 1969)',
+    url: 'https://www.ibiblio.org/apollo/Documents/APOLLO11pt1.pdf',
+  },
+  {
+    file: 'a11-press-kit-2.pdf',
+    title: 'Apollo 11 Lunar Landing Mission Press Kit, Part 2 (NASA Release 69-83K, 6 July 1969)',
+    url: 'https://www.ibiblio.org/apollo/Documents/APOLLO11pt2.pdf',
+  },
 ];
 
 mkdirSync('data/sources', { recursive: true });

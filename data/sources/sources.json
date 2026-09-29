@@ -30,5 +30,21 @@
     "retrieved": "2026-09-29",
     "sha256": "58fbb495f6431ea8e8f0088fa7b8cdae5966ecf62c6b2646a6c4439fadcb515f",
     "bytes": 4250030
+  },
+  {
+    "file": "a11-press-kit-1.pdf",
+    "title": "Apollo 11 Lunar Landing Mission Press Kit, Part 1 (NASA Release 69-83K, 6 July 1969)",
+    "url": "https://www.ibiblio.org/apollo/Documents/APOLLO11pt1.pdf",
+    "retrieved": "2026-09-29",
+    "sha256": "f59c7da267240ab1d3f73eeb4e65d57c2061a1bc3beac61eeaebef5217b021ed",
+    "bytes": 3077096
+  },
+  {
+    "file": "a11-press-kit-2.pdf",
+    "title": "Apollo 11 Lunar Landing Mission Press Kit, Part 2 (NASA Release 69-83K, 6 July 1969)",
+    "url": "https://www.ibiblio.org/apollo/Documents/APOLLO11pt2.pdf",
+    "retrieved": "2026-09-29",
+    "sha256": "0cd2cde5cedc85312c145f5a28e48a236951e4f7ee3666908b057183e9db8904",
+    "bytes": 4819131
   }
 ]

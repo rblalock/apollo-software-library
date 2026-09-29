@@ -30,3 +30,13 @@ export function axesFromBoresight(boresight: Vec3, upHint: Vec3, mirror = false)
   const ex = cross(ez, ey);
   return { ex: mirror ? scale(ex, -1) : ex, ey, ez };
 }
+
+/**
+ * Gnomonic (true perspective): straight lines stay straight. Coordinates are the tangent-plane offsets scaled to
+ * degrees at the boresight, so small angles read as degrees. Null for directions at or behind the eye's plane.
+ */
+export function projectGnomonic(v: Vec3, axes: PlotAxes): PlotPoint | null {
+  const z = dot(v, axes.ez);
+  if (z <= 0) return null;
+  return { x: toDeg(dot(v, axes.ex) / z), y: toDeg(dot(v, axes.ey) / z) };
+}

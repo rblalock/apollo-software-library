@@ -19,3 +19,7 @@ export * from './trajectory/gravity';
 export * from './trajectory/propagate';
 export * from './trajectory/states';
 export * from './trajectory/mission';
+export * from './vehicles/solids';
+export * from './vehicles/hiddenline';
+export * from './vehicles/models';
+export * from './vehicles/view';

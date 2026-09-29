@@ -115,5 +115,49 @@
         "label": "Table 7-II – Trajectory parameters (printed p. 7-9)"
       }
     }
+  },
+  {
+    "id": "a11-press-kit-1",
+    "title": "Apollo 11 Lunar Landing Mission Press Kit, Part 1",
+    "reportNumber": "NASA Release 69-83K",
+    "date": "6 July 1969",
+    "authors": [
+      "NASA Office of Public Affairs"
+    ],
+    "pdf": "/docs/a11-press-kit-1.pdf",
+    "sourceUrl": "https://www.ibiblio.org/apollo/Documents/APOLLO11pt1.pdf",
+    "pageCount": 106,
+    "anchors": {
+      "sla": {
+        "page": 94,
+        "label": "Spacecraft-LM adapter structure"
+      },
+      "lm-structures": {
+        "page": 102,
+        "label": "Lunar module structures and weight; ascent stage"
+      }
+    }
+  },
+  {
+    "id": "a11-press-kit-2",
+    "title": "Apollo 11 Lunar Landing Mission Press Kit, Part 2",
+    "reportNumber": "NASA Release 69-83K",
+    "date": "6 July 1969",
+    "authors": [
+      "NASA Office of Public Affairs"
+    ],
+    "pdf": "/docs/a11-press-kit-2.pdf",
+    "sourceUrl": "https://www.ibiblio.org/apollo/Documents/APOLLO11pt2.pdf",
+    "pageCount": 150,
+    "anchors": {
+      "descent-stage": {
+        "page": 3,
+        "label": "Descent stage, landing gear and footpads"
+      },
+      "s-ivb": {
+        "page": 13,
+        "label": "S-IVB stage and instrument unit"
+      }
+    }
   }
 ]
