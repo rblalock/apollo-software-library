@@ -1,0 +1,49 @@
+import { describe, expect, it } from 'vitest';
+import { RotationAxis, Body } from 'astronomy-engine';
+import {
+  AOT_DETENTS, angleBetween, aotLineOfSight, aotPlotAxes, besselianEpochToJd, bodyDirection, cross, dot, J2000_JD,
+  moonFixedToJ2000, mxv, norm, orthonormalityError, siteFrame, toDeg,
+} from '../src/index';
+
+describe('LM alignment optical telescope (AOT)', () => {
+  it('has six detents 60° apart, each 45° from the LM +X axis', () => {
+    expect(Object.values(AOT_DETENTS).sort((a, b) => a - b)).toEqual([0, 60, 120, 180, 240, 300]);
+    for (const az of Object.values(AOT_DETENTS)) {
+      const los = aotLineOfSight(az);
+      expect(norm(los)).toBeCloseTo(1, 12);
+      expect(toDeg(angleBetween(los, [1, 0, 0]))).toBeCloseTo(45, 9);
+    }
+    expect(aotLineOfSight(AOT_DETENTS.front)[2]).toBeCloseTo(Math.SQRT1_2, 12); // front looks forward (+Z)
+    expect(aotLineOfSight(AOT_DETENTS.rightFront)[1]).toBeGreaterThan(0); // right is +Y
+  });
+  it('plots each detent with up toward LM +X (the surface at the bottom) and as-seen handedness', () => {
+    for (const az of Object.values(AOT_DETENTS)) {
+      const a = aotPlotAxes(az);
+      expect(dot(a.ey, [1, 0, 0])).toBeGreaterThan(0.7);
+      expect(dot(a.ey, a.ez)).toBeCloseTo(0, 12);
+      expect(dot(cross(a.ez, a.ey), a.ex)).toBeCloseTo(1, 12);
+    }
+  });
+});
+
+describe('Moon-fixed frame and landing-site frame', () => {
+  const utc = new Date('1969-07-21T16:00:00Z');
+  it('rotates the Moon-fixed pole onto the IAU north pole (J2000)', () => {
+    const m = moonFixedToJ2000(utc);
+    expect(orthonormalityError(m)).toBeLessThan(1e-12);
+    const pole = mxv(m, [0, 0, 1]);
+    const n = RotationAxis(Body.Moon, utc).north;
+    expect(toDeg(angleBetween(pole, [n.x, n.y, n.z]))).toBeLessThan(1e-9);
+  });
+  it('gives an orthonormal up/east/north frame whose (0°, 0°) vertical points near Earth', () => {
+    const epochJd = besselianEpochToJd(1970);
+    const f = siteFrame(0, 0, utc, epochJd);
+    for (const v of [f.up, f.east, f.north]) expect(norm(v)).toBeCloseTo(1, 12);
+    expect(dot(cross(f.east, f.north), f.up)).toBeCloseTo(1, 12);
+    expect(toDeg(angleBetween(f.up, bodyDirection('earth', 'moon', utc, epochJd)))).toBeLessThan(10); // libration
+  });
+  it('is expressed in the platform epoch (precessed from J2000)', () => {
+    const a = siteFrame(0.67, 23.47, utc, J2000_JD).up, b = siteFrame(0.67, 23.47, utc, besselianEpochToJd(1970)).up;
+    expect(toDeg(angleBetween(a, b))).toBeGreaterThan(0.3); // ~30 years of precession
+  });
+});
