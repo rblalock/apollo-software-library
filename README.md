@@ -1,5 +1,11 @@
 # Apollo Software Library
 
+<p align="center">
+  <img src="docs/images/earth-reel.gif" width="520"
+    alt="The Earth drawn in white lines on black, turning and shrinking frame by frame as Apollo 11 coasts away from it">
+</p>
+<p align="center"><em>The Earth from Apollo 11's command module, 22 to 27 hours after launch, drawn by the recreation.</em></p>
+
 Working recreations of the software that planned and flew the Apollo missions, each shown next to the NASA documents
 it was rebuilt from.
 
@@ -108,7 +114,10 @@ bun scripts/extract-figures.ts                            # figure crops from th
 bun scripts/digitize-figure.ts                            # labelled bodies and star dots
 bun scripts/digitize-limb.ts && bun scripts/digitize-globe.ts && bun scripts/digitize-arcs.ts
 bun scripts/build-site-data.ts                            # star directions for the site
+bun scripts/readme-animation.ts                           # the animation at the top of this README
 ```
+
+The last script also needs `rsvg-convert` (librsvg) and `ffmpeg`.
 
 ## Deploying
 

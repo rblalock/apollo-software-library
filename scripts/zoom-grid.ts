@@ -3,9 +3,11 @@
  * zoomed crop centred on (cx, cy) with a 5 px grid (every 10 px darker, labelled every 20 px in scan pixels).
  */
 import { execFileSync } from 'node:child_process';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname } from 'node:path';
 
 const [scan, cxs, cys, halfs = '60', scales = '6', out = 'tmp/zoom.png'] = process.argv.slice(2);
+mkdirSync(dirname(out), { recursive: true });
 const cx = Math.round(Number(cxs)), cy = Math.round(Number(cys)), half = Number(halfs), k = Number(scales);
 const x0 = cx - half, y0 = cy - half, size = 2 * half;
 const png = execFileSync('magick', [scan!, '-crop', `${size}x${size}+${x0}+${y0}`, '+repage', '-filter', 'point', '-resize', `${size * k}x${size * k}`, 'png:-']);
