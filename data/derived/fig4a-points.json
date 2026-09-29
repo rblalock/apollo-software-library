@@ -1,0 +1,110 @@
+{
+  "provenance": {
+    "sources": [
+      {
+        "url": "https://ntrs.nasa.gov/api/citations/19720017950/downloads/19720017950.pdf",
+        "retrieved": "2026-09-29",
+        "sha256": "a839dacb1b3990f770fcff85a3c62a7e9a32564b1ae54bec36cf17043a8cd5ea"
+      }
+    ],
+    "method": "tn-d-6853.pdf PDF p. 10 rendered at 300 dpi (pdftoppm) and cropped (scripts/extract-figures.ts, data/manual/figures/fig4a.json). The frame is registered from its ±50° border lines; each labeled glyph is snapped to the nearest detected dark blob from a hand-read approximate position, or measured by eye on a 4× zoom where it touches the frame or reticle (method: manual). Unlabeled plotter dots are detected as small filled discs (isRoundDot).",
+    "script": "scripts/digitize-figure.ts",
+    "generated": "2026-09-29"
+  },
+  "image": {
+    "path": "data/derived/scans/tnd6853-fig4a.png",
+    "widthPx": 1100,
+    "heightPx": 930
+  },
+  "frame": {
+    "leftX": 151.6392272154557,
+    "rightX": 958.1235521235521,
+    "topY": 49.322554567502024,
+    "bottomY": 802.6482542991141
+  },
+  "extentDeg": 50,
+  "points": [
+    {
+      "id": "Menkar",
+      "kind": "navStar",
+      "px": [
+        441,
+        46
+      ],
+      "xDeg": -14.12071954188091,
+      "yDeg": 50.441051535701725,
+      "method": "manual"
+    },
+    {
+      "id": "Saturn",
+      "kind": "planet",
+      "px": [
+        533.68,
+        86.96
+      ],
+      "xDeg": -2.6283087018845492,
+      "yDeg": 45.004197427853185,
+      "method": "blob",
+      "area": 187
+    },
+    {
+      "id": "Earth",
+      "kind": "earth",
+      "px": [
+        566.95,
+        307.45
+      ],
+      "xDeg": 1.4967655449263972,
+      "yDeg": 15.734868940507809,
+      "method": "blob",
+      "area": 253
+    },
+    {
+      "id": "Alpheratz",
+      "kind": "navStar",
+      "px": [
+        767.98,
+        281.8
+      ],
+      "xDeg": 26.423266450284103,
+      "yDeg": 19.140356706366106,
+      "method": "blob",
+      "area": 157
+    },
+    {
+      "id": "Diphda",
+      "kind": "navStar",
+      "px": [
+        386.25,
+        360.27
+      ],
+      "xDeg": -20.909632042784683,
+      "yDeg": 8.72301013811056,
+      "method": "blob",
+      "area": 165
+    },
+    {
+      "id": "Fomalhaut",
+      "kind": "navStar",
+      "px": [
+        377,
+        569
+      ],
+      "xDeg": -22.056397647874252,
+      "yDeg": -18.984430720688792,
+      "method": "manual"
+    },
+    {
+      "id": "Enif",
+      "kind": "navStar",
+      "px": [
+        737,
+        586
+      ],
+      "xDeg": 22.58179169833828,
+      "yDeg": -21.241090755791348,
+      "method": "manual"
+    }
+  ],
+  "dots": []
+}

@@ -1,0 +1,18 @@
+{
+  "_comment": "Digitizing config for TN D-6853 Fig 4b (AOT left front detent, 2 h before lunar lift-off). bodies: approxPx snaps to the nearest blob within 20 px; manualPx is used as-is for glyphs touching lines (4x zoom).",
+  "id": "fig4b",
+  "scan": "tnd6853-fig4b.png",
+  "source": {
+    "file": "tn-d-6853.pdf",
+    "page": 11,
+    "dpi": 300,
+    "crop": {
+      "x": 180,
+      "y": 350,
+      "w": 1000,
+      "h": 900
+    }
+  },
+  "extentDeg": 50,
+  "bodies": {}
+}

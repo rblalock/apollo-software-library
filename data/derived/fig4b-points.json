@@ -1,0 +1,37 @@
+{
+  "provenance": {
+    "sources": [
+      {
+        "url": "https://ntrs.nasa.gov/api/citations/19720017950/downloads/19720017950.pdf",
+        "retrieved": "2026-09-29",
+        "sha256": "a839dacb1b3990f770fcff85a3c62a7e9a32564b1ae54bec36cf17043a8cd5ea"
+      }
+    ],
+    "method": "tn-d-6853.pdf PDF p. 11 rendered at 300 dpi (pdftoppm) and cropped (scripts/extract-figures.ts, data/manual/figures/fig4b.json). The frame is registered from its ±50° border lines; each labeled glyph is snapped to the nearest detected dark blob from a hand-read approximate position, or measured by eye on a 4× zoom where it touches the frame or reticle (method: manual). Unlabeled plotter dots are detected as small filled discs (isRoundDot).",
+    "script": "scripts/digitize-figure.ts",
+    "generated": "2026-09-29"
+  },
+  "image": {
+    "path": "data/derived/scans/tnd6853-fig4b.png",
+    "widthPx": 1000,
+    "heightPx": 900
+  },
+  "frame": {
+    "leftX": 128.30313014827018,
+    "rightX": 933.5252699784018,
+    "topY": 48.823100936524455,
+    "bottomY": 817.2386172006745
+  },
+  "extentDeg": 50,
+  "points": [],
+  "dots": [
+    {
+      "px": [
+        266.5,
+        729.64
+      ],
+      "xDeg": -32.83742298977477,
+      "yDeg": -38.600097818617996
+    }
+  ]
+}

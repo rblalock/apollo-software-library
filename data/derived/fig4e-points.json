@@ -1,0 +1,157 @@
+{
+  "provenance": {
+    "sources": [
+      {
+        "url": "https://ntrs.nasa.gov/api/citations/19720017950/downloads/19720017950.pdf",
+        "retrieved": "2026-09-29",
+        "sha256": "a839dacb1b3990f770fcff85a3c62a7e9a32564b1ae54bec36cf17043a8cd5ea"
+      }
+    ],
+    "method": "tn-d-6853.pdf PDF p. 11 rendered at 300 dpi (pdftoppm) and cropped (scripts/extract-figures.ts, data/manual/figures/fig4e.json). The frame is registered from its ±50° border lines; each labeled glyph is snapped to the nearest detected dark blob from a hand-read approximate position, or measured by eye on a 4× zoom where it touches the frame or reticle (method: manual). Unlabeled plotter dots are detected as small filled discs (isRoundDot).",
+    "script": "scripts/digitize-figure.ts",
+    "generated": "2026-09-29"
+  },
+  "image": {
+    "path": "data/derived/scans/tnd6853-fig4e.png",
+    "widthPx": 1000,
+    "heightPx": 920
+  },
+  "frame": {
+    "leftX": 124.07782101167315,
+    "rightX": 918.5201612903226,
+    "topY": 48.59271523178808,
+    "bottomY": 815.1472868217054
+  },
+  "extentDeg": 50,
+  "points": [],
+  "dots": [
+    {
+      "px": [
+        543.05,
+        104.24
+      ],
+      "xDeg": 2.7380578548538423,
+      "yDeg": 42.7401288082627
+    },
+    {
+      "px": [
+        263.74,
+        161.23
+      ],
+      "xDeg": -32.420270387026775,
+      "yDeg": 35.30638761153451
+    },
+    {
+      "px": [
+        862.45,
+        180.24
+      ],
+      "xDeg": 42.94203738915303,
+      "yDeg": 32.82563572235392
+    },
+    {
+      "px": [
+        608.27,
+        253.18
+      ],
+      "xDeg": 10.947331884114853,
+      "yDeg": 23.31086663231765
+    },
+    {
+      "px": [
+        621.64,
+        288.76
+      ],
+      "xDeg": 12.630230370488178,
+      "yDeg": 18.668744201869437
+    },
+    {
+      "px": [
+        764.28,
+        380.41
+      ],
+      "xDeg": 30.585361304613684,
+      "yDeg": 6.7131221342476906
+    },
+    {
+      "px": [
+        679.1,
+        428.38
+      ],
+      "xDeg": 19.86259936808176,
+      "yDeg": 0.4548194625830533
+    },
+    {
+      "px": [
+        825.23,
+        511.89
+      ],
+      "xDeg": 38.257513497420916,
+      "yDeg": -10.438971065841585
+    },
+    {
+      "px": [
+        795.88,
+        517.47
+      ],
+      "xDeg": 34.56253189263202,
+      "yDeg": -11.16723780913295
+    },
+    {
+      "px": [
+        390.37,
+        592.8
+      ],
+      "xDeg": -16.480196381746545,
+      "yDeg": -20.99393897546875
+    },
+    {
+      "px": [
+        613.5,
+        610.11
+      ],
+      "xDeg": 11.605752132579283,
+      "yDeg": -23.2522401783702
+    },
+    {
+      "px": [
+        658.38,
+        651.64
+      ],
+      "xDeg": 17.254572833762325,
+      "yDeg": -28.66936950800485
+    },
+    {
+      "px": [
+        401.76,
+        653.76
+      ],
+      "xDeg": -15.04631352184962,
+      "yDeg": -28.94701996171942
+    },
+    {
+      "px": [
+        243.35,
+        697.26
+      ],
+      "xDeg": -34.98667896445546,
+      "yDeg": -34.62147494897857
+    },
+    {
+      "px": [
+        478.08,
+        704.34
+      ],
+      "xDeg": -5.440677012349184,
+      "yDeg": -35.544993301653136
+    },
+    {
+      "px": [
+        477.06,
+        766.38
+      ],
+      "xDeg": -5.5681448192000715,
+      "yDeg": -43.63808634196607
+    }
+  ]
+}

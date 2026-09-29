@@ -14,6 +14,12 @@ export const APOLLO_11 = {
       [0.00595964, -0.39058739, 0.92054658],
       [0.77263288, -0.58260827, -0.2522024],
     ] as Mat3,
+    /** 69-FM-197 Table II(c), PDF p. 38 (read from the page image). */
+    landingSite: [
+      [0.7800517, 0.5765539, 0.24311512],
+      [0.00374215, -0.39283134, 0.91960294],
+      [0.62570309, -0.71642806, -0.3085863],
+    ] as Mat3,
   },
 } as const;
 
@@ -43,3 +49,19 @@ export const FIG_3C_SPEC: ViewSpec = { ...FIG_3A_SPEC, get: '125:15:00', gimbals
  * printed angles are confirmed to 0.3° by the same fit). Not independent evidence: inferred from this figure.
  */
 export const FIG_3C_SIGN_CORRECTED_SPEC: ViewSpec = { ...FIG_3C_SPEC, gimbals: { inner: -89.1, middle: 0, outer: 0 } };
+
+/**
+ * TN D-6853 Fig 4 = 69-FM-197 Fig 10.0-2: AOT views "2 hours after lunar landing". Planned touchdown =
+ * PDI 102:35:40 + 692 s burn (69-FM-197 Table I) = 102:47:12, so 104:47:12 GET.
+ */
+export const FIG_4_GET = '104:47:12';
+
+/**
+ * LM surface attitude (reference → LM body), fitted on TN D-6853 Fig 4(a) only (test/fig4-attitude.test.ts):
+ * fit RMS 0.34°, +X 1.4° from the site vertical, +Z heading 269.3°. Panels (b)–(f) are predicted from it.
+ */
+export const FIG_4_LM_BODY_FROM_REF: Mat3 = [
+  [0.78584447, 0.56898518, 0.24228976],
+  [-0.00125511, -0.39031751, 0.92067946],
+  [0.6184229, -0.72381497, -0.30601472],
+];

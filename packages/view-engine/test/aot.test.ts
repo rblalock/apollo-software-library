@@ -47,3 +47,18 @@ describe('Moon-fixed frame and landing-site frame', () => {
     expect(toDeg(angleBetween(a, b))).toBeGreaterThan(0.3); // ~30 years of precession
   });
 });
+
+import { lmAttitudeFromAotFit, mxm as mm, rotX, rotY, rotZ } from '../src/index';
+
+describe('lmAttitudeFromAotFit', () => {
+  it('recovers the LM attitude from a detent\'s plot axes expressed in the reference frame', () => {
+    const bodyFromRef = mm(rotX(0.3), mm(rotY(-1.2), rotZ(2.1)));
+    const refFromBody = [[bodyFromRef[0][0], bodyFromRef[1][0], bodyFromRef[2][0]], [bodyFromRef[0][1], bodyFromRef[1][1], bodyFromRef[2][1]], [bodyFromRef[0][2], bodyFromRef[1][2], bodyFromRef[2][2]]] as const;
+    for (const az of Object.values(AOT_DETENTS)) {
+      const b = aotPlotAxes(az);
+      const refAxes = { ex: mxv(refFromBody, b.ex), ey: mxv(refFromBody, b.ey), ez: mxv(refFromBody, b.ez) };
+      const got = lmAttitudeFromAotFit(refAxes, az);
+      for (let i = 0; i < 3; i++) for (let k = 0; k < 3; k++) expect(got[i]![k]).toBeCloseTo(bodyFromRef[i]![k]!, 12);
+    }
+  });
+});

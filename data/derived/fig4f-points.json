@@ -1,0 +1,93 @@
+{
+  "provenance": {
+    "sources": [
+      {
+        "url": "https://ntrs.nasa.gov/api/citations/19720017950/downloads/19720017950.pdf",
+        "retrieved": "2026-09-29",
+        "sha256": "a839dacb1b3990f770fcff85a3c62a7e9a32564b1ae54bec36cf17043a8cd5ea"
+      }
+    ],
+    "method": "tn-d-6853.pdf PDF p. 12 rendered at 300 dpi (pdftoppm) and cropped (scripts/extract-figures.ts, data/manual/figures/fig4f.json). The frame is registered from its ±50° border lines; each labeled glyph is snapped to the nearest detected dark blob from a hand-read approximate position, or measured by eye on a 4× zoom where it touches the frame or reticle (method: manual). Unlabeled plotter dots are detected as small filled discs (isRoundDot).",
+    "script": "scripts/digitize-figure.ts",
+    "generated": "2026-09-29"
+  },
+  "image": {
+    "path": "data/derived/scans/tnd6853-fig4f.png",
+    "widthPx": 1000,
+    "heightPx": 900
+  },
+  "frame": {
+    "leftX": 149.95975232198143,
+    "rightX": 952.5193347193347,
+    "topY": 43.32322357019064,
+    "bottomY": 799.0685959271168
+  },
+  "extentDeg": 50,
+  "points": [],
+  "dots": [
+    {
+      "px": [
+        478.5,
+        346.5
+      ],
+      "xDeg": -9.063444648355606,
+      "yDeg": 9.883740275603841
+    },
+    {
+      "px": [
+        694.42,
+        394
+      ],
+      "xDeg": 17.841099853499685,
+      "yDeg": 3.598554585102974
+    },
+    {
+      "px": [
+        283.46,
+        479.49
+      ],
+      "xDeg": -33.366243932344034,
+      "yDeg": -7.713309438923609
+    },
+    {
+      "px": [
+        930.91,
+        520.22
+      ],
+      "xDeg": 47.30746192136483,
+      "yDeg": -13.103462220831197
+    },
+    {
+      "px": [
+        285.7,
+        544.64
+      ],
+      "xDeg": -33.087003149842474,
+      "yDeg": -16.33414430373088
+    },
+    {
+      "px": [
+        639.85,
+        552.36
+      ],
+      "xDeg": 11.041471687237035,
+      "yDeg": -17.35553343900564
+    },
+    {
+      "px": [
+        334.22,
+        559.59
+      ],
+      "xDeg": -27.04143582479823,
+      "yDeg": -18.312384621112002
+    },
+    {
+      "px": [
+        457.22,
+        645.3
+      ],
+      "xDeg": -11.715560527777505,
+      "yDeg": -29.653888189983945
+    }
+  ]
+}
