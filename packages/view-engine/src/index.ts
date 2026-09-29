@@ -8,3 +8,5 @@ export * from './missions/apollo11';
 export * from './projection/projection';
 export * from './frames/frames';
 export * from './ephemeris/ephemeris';
+export * from './scene/types';
+export * from './scene/scene';
