@@ -1,0 +1,144 @@
+{
+  "_comment": "Digitizing config for TN D-6853 Fig 1 (view at TLI burn, Apollo 11), CM window view, 100\u00b0 field. bodies: approxPx snaps to the nearest blob within 20 px; manualPx is used as-is for glyphs touching lines. outlineVerticesPx: corners of the commander's window outlines (left and right eye), read on 3\u00d7 gridded zooms (scripts/zoom-grid.ts).",
+  "id": "fig1",
+  "scan": "tnd6853-fig1.png",
+  "source": {
+    "file": "tn-d-6853.pdf",
+    "page": 9,
+    "dpi": 300,
+    "crop": {
+      "x": 230,
+      "y": 1700,
+      "w": 950,
+      "h": 860
+    }
+  },
+  "extentDeg": 50,
+  "bodies": {
+    "Dnoces": {
+      "kind": "star",
+      "approxPx": [
+        731.8,
+        272.4
+      ]
+    },
+    "Capella": {
+      "kind": "star",
+      "approxPx": [
+        671.6,
+        567.1
+      ]
+    },
+    "Mirfak": {
+      "kind": "star",
+      "approxPx": [
+        744.5,
+        694.8
+      ]
+    },
+    "Aldebaran": {
+      "kind": "star",
+      "approxPx": [
+        436.1,
+        667.4
+      ]
+    },
+    "Venus": {
+      "kind": "planet",
+      "approxPx": [
+        462.5,
+        631.5
+      ]
+    },
+    "Procyon": {
+      "kind": "star",
+      "approxPx": [
+        362.2,
+        309.4
+      ]
+    },
+    "Sun": {
+      "kind": "sun",
+      "manualPx": [
+        499.0,
+        294.7
+      ],
+      "note": "The Sun glyph merges with the window outline; centre of its round hole read on an 8\u00d7 zoom."
+    },
+    "Sirius": {
+      "kind": "star",
+      "approxPx": [
+        171.9,
+        400.5
+      ],
+      "note": "Label placement is ambiguous; the dot is the one nearest the position predicted by the stars-only fit of the unambiguous labels."
+    },
+    "Rigel": {
+      "kind": "star",
+      "approxPx": [
+        231.2,
+        589.8
+      ],
+      "note": "Label placement is ambiguous; the dot is the one nearest the position predicted by the stars-only fit of the unambiguous labels."
+    }
+  },
+  "arcs": {
+    "horizon": {
+      "seed": [
+        -5,
+        25.2
+      ],
+      "xRange": [
+        -49,
+        49
+      ],
+      "yRange": [
+        20,
+        48.5
+      ],
+      "maxGap": 30
+    },
+    "terminator": {
+      "seed": [
+        -5,
+        47.1
+      ],
+      "xRange": [
+        -26,
+        6
+      ],
+      "yRange": [
+        44.5,
+        49.3
+      ],
+      "edge": "bottom",
+      "maxJumpPx": 3
+    }
+  },
+  "outlineVerticesPx": {
+    "left-eye top-left": [
+      441.7,
+      125.0
+    ],
+    "left-eye top-right": [
+      471.7,
+      124.0
+    ],
+    "right-eye top-left": [
+      520.0,
+      126.0
+    ],
+    "right-eye top-right": [
+      550.0,
+      122.7
+    ],
+    "left-eye bottom": [
+      380.0,
+      391.7
+    ],
+    "right-eye bottom": [
+      432.7,
+      391.0
+    ]
+  }
+}

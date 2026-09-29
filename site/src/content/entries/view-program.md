@@ -14,7 +14,7 @@ sources:
   - { label: "Comanche055, the Apollo 11 command module software (Virtual AGC)", url: "https://github.com/virtualagc/virtualagc/tree/master/Comanche055" }
 film: { label: "“View from a Spacecraft”, MSC computer-generated film (16:41)", url: "https://www.youtube.com/watch?v=O8Hv4R_kHn4" }
 documents: [tn-d-6853, 69-fm-197, 69-fm-107, a11-mission-report, a11-press-kit-1, a11-press-kit-2]
-exhibits: [fig-3a, fig-3b, fig-3c, fig-4, fig-6, fig-7, lm-model]
+exhibits: [fig-1-2, fig-3a, fig-3b, fig-3c, fig-4, fig-6, fig-7, lm-model]
 ---
 
 ## What it was

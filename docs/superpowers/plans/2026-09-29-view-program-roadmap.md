@@ -62,10 +62,10 @@
 
 ## Item 3: CM windows and maneuver views
 
-- [ ] 3.1 **Digitize Figs 1, 2 and 9:** stars, the window outline polygons, the horizon, and the terminator.
-- [ ] 3.2 **Window polygons:** in the CM body frame for the left and right eye. Consistency test across figures.
-- [ ] 3.3 **Scenes:** attitude fitted from stars; Earth horizon and terminator predicted. Golden within 2°.
-- [ ] 3.4 **Exhibits, ledger and commit.**
+- [x] 3.1 **Digitize Figs 1, 2 and 9:** stars, the window outline polygons, the horizon, and the terminator.
+- [x] 3.2 **Window polygons:** in the CM body frame for the left and right eye. Consistency test across figures.
+- [x] 3.3 **Scenes:** attitude fitted from stars; Earth horizon and terminator predicted. Golden within 2°.
+- [x] 3.4 **Exhibits, ledger and commit.**
 
 ## Item 4: LM descent
 

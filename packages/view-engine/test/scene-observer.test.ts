@@ -47,3 +47,13 @@ describe('scene seen from a spacecraft position', () => {
     expect(b.primitives).toEqual(a.primitives);
   });
 });
+
+describe('occultation of disc bodies', () => {
+  it('hides the Moon behind a nearer Earth and keeps it in front of the Sun', () => {
+    // An observer 500 km above the Earth, looking so that the Moon's direction lies inside the Earth's disc.
+    const moon = moonState(utc).r, toMoon = unit(moon);
+    const observer = scale(toMoon, -(6378.137 + 500)); // the Earth sits between the observer and the Moon
+    const s: ViewSpec = { ...FIG_3B_SPEC, bodies: ['earth', 'moon', 'sun'], observerPositionKm: observer, extentDeg: 180 };
+    expect(buildScene(s, { stars: [] }).placed.map((b) => b.id)).not.toContain('moon');
+  });
+});

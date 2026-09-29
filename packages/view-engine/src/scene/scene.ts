@@ -1,4 +1,4 @@
-import { mxv } from '../math/mat';
+import { mxv, type Mat3 } from '../math/mat';
 import { add, angleBetween, cross, norm, scale, toDeg, toRad, unit, type Vec3 } from '../math/vec';
 import type { ResolvedStar } from '../catalog/resolve';
 import { precessionMatrix } from '../catalog/precession';
@@ -113,25 +113,30 @@ const kindOf = (b: BodyName): PlacedBody['kind'] => (b === 'earth' || b === 'sun
 export function buildScene(spec: ViewSpec, data: SceneData): DisplayList {
   const utc = getToUtc(spec.rangeZeroUtc, spec.get);
   const inst = spec.instrument;
-  const toOptics = inst.kind === 'sct' ? referenceToOptics(spec.refsmmat, spec.gimbals) : inst.lmBodyFromRef;
-  const axes = inst.kind === 'sct' ? sctPlotAxes(inst.shaftDeg, inst.trunnionDeg) : aotPlotAxes(inst.detentDeg);
+  const IDENTITY: Mat3 = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+  const toOptics = inst.kind === 'sct' ? referenceToOptics(spec.refsmmat, spec.gimbals) : inst.kind === 'aot' ? inst.lmBodyFromRef : IDENTITY;
+  const axes = inst.kind === 'sct' ? sctPlotAxes(inst.shaftDeg, inst.trunnionDeg) : inst.kind === 'aot' ? aotPlotAxes(inst.detentDeg) : inst.axes;
   const e = spec.extentDeg;
   const inside = (p: PlotPoint) =>
     Number.isFinite(p.x) && Number.isFinite(p.y) && Math.abs(p.x) <= e && Math.abs(p.y) <= e;
-  const primitives: Primitive[] = [...frame(e), ...(inst.kind === 'sct' ? sctReticle() : aotReticle(inst.detentDeg))];
+  const reticle = inst.kind === 'sct' ? sctReticle() : inst.kind === 'aot' ? aotReticle(inst.detentDeg) : [];
+  const outlines: Primitive[] = (spec.outlines ?? []).map((points) => ({ kind: 'polyline', points, closed: true }));
+  const primitives: Primitive[] = [...frame(e), ...reticle, ...outlines];
   const placed: PlacedBody[] = [];
 
   // Where each body is: from the observer body's centre, or from the spacecraft position when one is given.
   const pos = spec.observerPositionKm;
   const P = precessionMatrix(spec.referenceEpochJd);
-  const geometry = (body: BodyName): { direction: Vec3; radiusDeg: number } => {
-    if (!pos) return { direction: mxv(toOptics, bodyDirection(body, spec.observer, utc, spec.referenceEpochJd)), radiusDeg: bodyAngularRadiusDeg(body, spec.observer, utc) };
+  const geometry = (body: BodyName): { body: BodyName; direction: Vec3; radiusDeg: number; distanceKm: number } => {
+    if (!pos) return { body, direction: mxv(toOptics, bodyDirection(body, spec.observer, utc, spec.referenceEpochJd)), radiusDeg: bodyAngularRadiusDeg(body, spec.observer, utc), distanceKm: Infinity };
     const v = bodyVectorFromPointKm(body, pos, utc);
-    return { direction: mxv(toOptics, unit(mxv(P, v))), radiusDeg: toDeg(Math.asin(Math.min(1, BODY_RADIUS_KM[body] / norm(v)))) };
+    return { body, direction: mxv(toOptics, unit(mxv(P, v))), radiusDeg: toDeg(Math.asin(Math.min(1, BODY_RADIUS_KM[body] / norm(v)))), distanceKm: norm(v) };
   };
   const drawn = spec.bodies.filter((b) => pos || b !== spec.observer);
   const occulters = pos ? drawn.filter((b) => b === 'earth' || b === 'moon').map(geometry) : [];
-  const occulted = (d: Vec3) => occulters.some((o) => toDeg(angleBetween(d, o.direction)) < o.radiusDeg);
+  /** Hidden behind a nearer Earth or Moon (stars are infinitely far). */
+  const occulted = (d: Vec3, self?: BodyName, distanceKm = Infinity) =>
+    occulters.some((o) => o.body !== self && o.distanceKm < distanceKm && toDeg(angleBetween(d, o.direction)) < o.radiusDeg);
 
   for (const s of data.stars) {
     const direction = mxv(toOptics, s.direction);
@@ -149,9 +154,9 @@ export function buildScene(spec: ViewSpec, data: SceneData): DisplayList {
   }
 
   for (const body of drawn) {
-    const { direction, radiusDeg } = geometry(body);
+    const { direction, radiusDeg, distanceKm } = geometry(body);
     const isDisc = body === 'earth' || body === 'sun' || body === 'moon';
-    if (!isDisc && occulted(direction)) continue;
+    if (occulted(direction, body, distanceKm)) continue;
     const p = projectAzimuthalEquidistant(direction, axes);
     if (isDisc && radiusDeg >= LIMB_MIN_RADIUS_DEG) {
       primitives.push(...limb(direction, radiusDeg, axes, e));

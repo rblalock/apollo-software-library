@@ -1,5 +1,5 @@
 import {
-  APOLLO_11, buildScene, createMissionEphemeris, formatGet, parseGet, type EventTable, type GimbalAngles, type VehicleId, FIG_3A_SPEC, resolveVerifiedCatalog, type VerifiedCatalogFile, FIG_3B_SPEC, FIG_3C_SIGN_CORRECTED_SPEC, fig4Spec, fitPlotAxes, impliedSctAngles,
+  APOLLO_11, buildScene, createMissionEphemeris, formatGet, getToUtc, parseGet, stateToEarthEvent, type EventTable, type GimbalAngles, type VehicleId, FIG_3A_SPEC, resolveVerifiedCatalog, type VerifiedCatalogFile, FIG_3B_SPEC, FIG_3C_SIGN_CORRECTED_SPEC, fig4Spec, fitPlotAxes, impliedSctAngles,
   resolveCatalog, type Agc37File, type BscFile, type DisplayList, type Primitive, type RtccFile, type Underlay, type ViewSpec,
 } from '@asl/view-engine';
 import bsc from '../../../data/derived/bsc45.json';
@@ -16,6 +16,9 @@ import p4d from '../../../data/derived/fig4d-points.json';
 import p4e from '../../../data/derived/fig4e-points.json';
 import p4f from '../../../data/derived/fig4f-points.json';
 import events from '../../../data/manual/a11-events.json';
+import p1 from '../../../data/derived/fig1-points.json';
+import p2 from '../../../data/derived/fig2-points.json';
+import cmWindow from '../../../data/derived/cm-window-outline.json';
 
 export const TOLERANCE = { rmsDeg: 1.0, maxDeg: 2.0 } as const;
 
@@ -55,9 +58,42 @@ const fig = (id: string, label: string, spec: ViewSpec, points: PointsFile, atti
   ({ id, label, spec, points, scanHref: `/scans/tnd6853-${id}.png`, attitudeNote, observer });
 
 const SCT_PRINTED = 'Gimbal angles as printed on the figure.';
+
+/** GET (s) where the reconstructed CSM altitude equals the figure's printed altitude (stat. mi.). */
+function atAltitude(from: string, to: string, statMi: number): number {
+  const alt = (t: number) => (stateToEarthEvent(mission.state('csm', t)!, getToUtc(APOLLO_11.rangeZeroUtc, t)).altNmi * 1.852) / 1.609344;
+  let a = parseGet(from), b = parseGet(to);
+  const rising = alt(b) > alt(a);
+  for (let i = 0; i < 60; i++) { const m = (a + b) / 2; if ((alt(m) < statMi) === rising) a = m; else b = m; }
+  return a;
+}
+
+/** A CM window view (TN D-6853 Figs 1–2): time from the printed altitude, attitude fitted from the labelled stars. */
+function windowSpec(points: PointsFile, from: string, to: string, statMi: number): { spec: ViewSpec; note: string } {
+  const t = atAltitude(from, to, statMi);
+  const fit = fitPlotAxes(points.points.filter((p) => p.kind === 'star').map((p) => ({ id: p.id, x: p.xDeg, y: p.yDeg, direction: stars.find((s) => s.name === p.id)!.direction })));
+  const outline = (poly: number[][]) => poly.map(([x, y]) => [x!, y!] as const);
+  return {
+    spec: {
+      ...FIG_3A_SPEC,
+      get: `${formatGet(t)}${(t % 1).toFixed(1).slice(1)}`,
+      observer: 'earth',
+      observerPositionKm: mission.state('csm', t)!.r,
+      gimbals: { inner: 0, middle: 0, outer: 0 },
+      instrument: { kind: 'fixed', axes: fit.axes },
+      bodies: ['earth', 'sun', 'moon', 'venus', 'mars', 'jupiter', 'saturn'],
+      headerLeft: [`Altitude = ${statMi} stat. mi.`, 'Field of view = 100°'],
+      outlines: [outline(cmWindow.leftEye), outline(cmWindow.rightEye)],
+    },
+    note: `Time: when the reconstructed altitude is the printed ${statMi} stat. mi. Attitude not printed: fitted from the ${fit.residuals.length} labelled stars (RMS ${fit.rmsDeg.toFixed(2)}°).`,
+  };
+}
+const FIG1 = windowSpec(p1, '2:44:17', '2:50:03', 192), FIG2 = windowSpec(p2, '194:49:13', '195:03:05', 302);
 const AOT_NOTE = 'LM surface attitude fitted on panel (a) only and frozen; this panel is predicted with no further fitting.';
 
 export const FIGURES: Record<string, FigureConfig> = {
+  fig1: { ...fig('fig1', 'Figure 1 · TLI', FIG1.spec, p1, FIG1.note), observer: undefined },
+  fig2: { ...fig('fig2', 'Figure 2 · Entry', FIG2.spec, p2, FIG2.note), observer: undefined },
   fig3a: fig('fig3a', 'Figure 3a', FIG_3A_SPEC, p3a, SCT_PRINTED, 'csm'),
   fig3b: fig('fig3b', 'Figure 3b', FIG_3B_SPEC, p3b, SCT_PRINTED, 'csm'),
   fig3c: fig('fig3c', 'Figure 3c', FIG_3C_SIGN_CORRECTED_SPEC, p3c,
