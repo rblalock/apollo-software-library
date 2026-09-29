@@ -1,0 +1,133 @@
+{
+  "provenance": {
+    "sources": [
+      {
+        "url": "https://ntrs.nasa.gov/api/citations/19720017950/downloads/19720017950.pdf",
+        "retrieved": "2026-09-29",
+        "sha256": "a839dacb1b3990f770fcff85a3c62a7e9a32564b1ae54bec36cf17043a8cd5ea"
+      }
+    ],
+    "method": "tn-d-6853.pdf PDF p. 11 rendered at 300 dpi (pdftoppm) and cropped (scripts/extract-figures.ts, data/manual/figures/fig4b.json). The frame is registered from its ±50° border lines; each labeled glyph is snapped to the nearest detected dark blob from a hand-read approximate position, or measured by eye on a 4× zoom where it touches the frame or reticle (method: manual). Unlabeled plotter dots are detected as small filled discs (isRoundDot).",
+    "script": "scripts/digitize-figure.ts",
+    "generated": "2026-09-29"
+  },
+  "image": {
+    "path": "data/derived/scans/tnd6853-fig4b.png",
+    "widthPx": 1000,
+    "heightPx": 900
+  },
+  "frame": {
+    "leftX": 128.30313014827018,
+    "rightX": 933.5252699784018,
+    "topY": 48.823100936524455,
+    "bottomY": 817.2386172006745
+  },
+  "extentDeg": 50,
+  "points": [
+    {
+      "id": "Earth",
+      "kind": "earth",
+      "px": [
+        444.98,
+        133.83
+      ],
+      "xDeg": -10.671501707725788,
+      "yDeg": 38.937845168577454,
+      "method": "blob",
+      "area": 265
+    },
+    {
+      "id": "Saturn",
+      "kind": "planet",
+      "px": [
+        230.93,
+        268.38
+      ],
+      "xDeg": -37.25506396670122,
+      "yDeg": 21.42788178736658,
+      "method": "blob",
+      "area": 181
+    },
+    {
+      "id": "Menkar",
+      "kind": "navStar",
+      "px": [
+        231.82,
+        366.41
+      ],
+      "xDeg": -37.144850198521965,
+      "yDeg": 8.669456802648696,
+      "method": "blob",
+      "area": 179
+    },
+    {
+      "id": "Diphda",
+      "kind": "navStar",
+      "px": [
+        549.38,
+        281.67
+      ],
+      "xDeg": 2.293146189408091,
+      "yDeg": 19.69774506040013,
+      "method": "blob",
+      "area": 182
+    },
+    {
+      "id": "Fomalhaut",
+      "kind": "navStar",
+      "px": [
+        765.93,
+        258.53
+      ],
+      "xDeg": 29.186129219934017,
+      "yDeg": 22.709812036617837,
+      "method": "blob",
+      "area": 179
+    },
+    {
+      "id": "Acamar",
+      "kind": "navStar",
+      "px": [
+        517.73,
+        567.65
+      ],
+      "xDeg": -1.6375451830839793,
+      "yDeg": -17.518717012613706,
+      "method": "blob",
+      "area": 173
+    },
+    {
+      "id": "Achernar",
+      "kind": "navStar",
+      "px": [
+        698,
+        560
+      ],
+      "xDeg": 20.750273951969604,
+      "yDeg": -16.523500403621952,
+      "method": "manual"
+    },
+    {
+      "id": "Rigel",
+      "kind": "navStar",
+      "px": [
+        177.98,
+        658.3
+      ],
+      "xDeg": -43.83103383664267,
+      "yDeg": -29.315908741836907,
+      "method": "blob",
+      "area": 174
+    }
+  ],
+  "dots": [
+    {
+      "px": [
+        266.5,
+        729.64
+      ],
+      "xDeg": -32.83742298977477,
+      "yDeg": -38.600097818617996
+    }
+  ]
+}

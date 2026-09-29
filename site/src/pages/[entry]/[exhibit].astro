@@ -1,10 +1,17 @@
 ---
-import { getEntry, render } from 'astro:content';
+import { getCollection, getEntry, render, type CollectionEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import Fig3aExhibit from '../../components/fig3a/Fig3aExhibit';
+import FigureExhibit from '../../components/figure/FigureExhibit';
 
-const exhibit = await getEntry('exhibits', 'fig-3a');
-if (!exhibit) throw new Error('exhibit fig-3a is missing');
+export async function getStaticPaths() {
+  const exhibits = await getCollection('exhibits');
+  return exhibits.map((exhibit) => ({ params: { entry: exhibit.data.entry, exhibit: exhibit.id }, props: { exhibit } }));
+}
+
+interface Props { exhibit: CollectionEntry<'exhibits'> }
+const { exhibit } = Astro.props;
+const entry = await getEntry('entries', exhibit.data.entry);
+if (!entry) throw new Error(`exhibit ${exhibit.id}: unknown entry ${exhibit.data.entry}`);
 const { Content } = await render(exhibit);
 const refs = await Promise.all(exhibit.data.figureRefs.map(async (r) => {
   const doc = await getEntry(r.document);
@@ -15,12 +22,12 @@ const refs = await Promise.all(exhibit.data.figureRefs.map(async (r) => {
 }));
 ---
 <Base title={exhibit.data.title} description={exhibit.data.summary}>
-  <p class="font-mono text-xs uppercase tracking-widest text-stone-500"><a class="hover:underline" href="/view-program/">MSC View Program</a> / Exhibit</p>
+  <p class="font-mono text-xs uppercase tracking-widest text-stone-500"><a class="hover:underline" href={`/${entry.id}/`}>{entry.data.title}</a> / Exhibit</p>
   <h1 class="mt-2 max-w-4xl text-3xl font-semibold tracking-tight">{exhibit.data.title}</h1>
   <p class="mt-3 max-w-3xl text-stone-700 dark:text-stone-300">{exhibit.data.summary}</p>
   <ul class="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm">
     {refs.map((r) => <li><a class="underline" href={r.href}>{r.text}</a></li>)}
   </ul>
-  <div class="mt-8"><Fig3aExhibit client:load /></div>
+  <div class="mt-8"><FigureExhibit client:load figureIds={exhibit.data.figures} /></div>
   <article class="prose-lite mt-12"><Content /></article>
 </Base>

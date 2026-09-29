@@ -1,0 +1,75 @@
+{
+  "_comment": "Digitizing config for TN D-6853 Fig 3b. bodies: pixel positions (in the scan) of each labeled glyph; approxPx snaps to the nearest detected blob within 20 px, manualPx is used as-is for glyphs touching the frame line or reticle (measured on a 4x zoom, about ±0.2°).",
+  "id": "fig3b",
+  "scan": "tnd6853-fig3b.png",
+  "source": {
+    "file": "tn-d-6853.pdf",
+    "page": 10,
+    "dpi": 300,
+    "crop": {
+      "x": 1195,
+      "y": 215,
+      "w": 1080,
+      "h": 1040
+    }
+  },
+  "extentDeg": 50,
+  "bodies": {
+    "Menkar": {
+      "kind": "navStar",
+      "approxPx": [
+        445,
+        341
+      ]
+    },
+    "Saturn": {
+      "kind": "planet",
+      "approxPx": [
+        529,
+        381
+      ]
+    },
+    "Earth": {
+      "kind": "earth",
+      "approxPx": [
+        565,
+        517
+      ]
+    },
+    "Navi": {
+      "kind": "navStar",
+      "manualPx": [
+        950,
+        410
+      ]
+    },
+    "Alpheratz": {
+      "kind": "navStar",
+      "approxPx": [
+        753,
+        571
+      ]
+    },
+    "Diphda": {
+      "kind": "navStar",
+      "approxPx": [
+        380,
+        648
+      ]
+    },
+    "Fomalhaut": {
+      "kind": "navStar",
+      "approxPx": [
+        361,
+        848
+      ]
+    },
+    "Enif": {
+      "kind": "navStar",
+      "approxPx": [
+        736,
+        869
+      ]
+    }
+  }
+}

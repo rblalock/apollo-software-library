@@ -1,0 +1,96 @@
+{
+  "_comment": "Digitizing config for TN D-6853 Fig 4d (AOT rear detent, 2 h before lunar lift-off). bodies: approxPx snaps to the nearest blob within 20 px; manualPx is used as-is for glyphs touching lines (4x zoom).",
+  "id": "fig4d",
+  "scan": "tnd6853-fig4d.png",
+  "source": {
+    "file": "tn-d-6853.pdf",
+    "page": 11,
+    "dpi": 300,
+    "crop": {
+      "x": 180,
+      "y": 1460,
+      "w": 1000,
+      "h": 920
+    }
+  },
+  "extentDeg": 50,
+  "bodies": {
+    "Sun": {
+      "kind": "sun",
+      "approxPx": [
+        516,
+        177
+      ]
+    },
+    "Procyon": {
+      "kind": "navStar",
+      "approxPx": [
+        383,
+        209
+      ]
+    },
+    "Dnoces": {
+      "kind": "navStar",
+      "approxPx": [
+        767,
+        173
+      ]
+    },
+    "Sirius": {
+      "kind": "navStar",
+      "approxPx": [
+        197,
+        319
+      ]
+    },
+    "Rigel": {
+      "kind": "navStar",
+      "approxPx": [
+        269,
+        497
+      ]
+    },
+    "Venus": {
+      "kind": "planet",
+      "approxPx": [
+        501,
+        520
+      ]
+    },
+    "Capella": {
+      "kind": "navStar",
+      "approxPx": [
+        703,
+        457
+      ]
+    },
+    "Aldebaran": {
+      "kind": "navStar",
+      "approxPx": [
+        477,
+        551
+      ]
+    },
+    "Mirfak": {
+      "kind": "navStar",
+      "approxPx": [
+        765,
+        591
+      ]
+    },
+    "Menkar": {
+      "kind": "navStar",
+      "approxPx": [
+        413,
+        743
+      ]
+    },
+    "Saturn": {
+      "kind": "planet",
+      "approxPx": [
+        503,
+        791
+      ]
+    }
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "provenance": {
+    "sources": [
+      {
+        "url": "https://ntrs.nasa.gov/api/citations/19720017950/downloads/19720017950.pdf",
+        "retrieved": "2026-09-29",
+        "sha256": "a839dacb1b3990f770fcff85a3c62a7e9a32564b1ae54bec36cf17043a8cd5ea"
+      }
+    ],
+    "method": "tn-d-6853.pdf PDF p. 11 rendered at 300 dpi (pdftoppm) and cropped (scripts/extract-figures.ts, data/manual/figures/fig4d.json). The frame is registered from its ±50° border lines; each labeled glyph is snapped to the nearest detected dark blob from a hand-read approximate position, or measured by eye on a 4× zoom where it touches the frame or reticle (method: manual). Unlabeled plotter dots are detected as small filled discs (isRoundDot).",
+    "script": "scripts/digitize-figure.ts",
+    "generated": "2026-09-29"
+  },
+  "image": {
+    "path": "data/derived/scans/tnd6853-fig4d.png",
+    "widthPx": 1000,
+    "heightPx": 920
+  },
+  "frame": {
+    "leftX": 123.12780748663101,
+    "rightX": 920.829255319149,
+    "topY": 67.64093137254902,
+    "bottomY": 827.0851851851852
+  },
+  "extentDeg": 50,
+  "points": [
+    {
+      "id": "Sun",
+      "kind": "sun",
+      "px": [
+        517.18,
+        179.88
+      ],
+      "xDeg": -0.6013544621373086,
+      "yDeg": 35.22084654663206,
+      "method": "blob",
+      "area": 1212
+    },
+    {
+      "id": "Procyon",
+      "kind": "navStar",
+      "px": [
+        383.76,
+        208.33
+      ],
+      "xDeg": -17.32679573783132,
+      "yDeg": 31.47526500174319,
+      "method": "blob",
+      "area": 181
+    },
+    {
+      "id": "Dnoces",
+      "kind": "navStar",
+      "px": [
+        768.01,
+        174.48
+      ],
+      "xDeg": 30.842873343401337,
+      "yDeg": 35.93137747495944,
+      "method": "blob",
+      "area": 159
+    },
+    {
+      "id": "Sirius",
+      "kind": "navStar",
+      "px": [
+        197.3,
+        318.8
+      ],
+      "xDeg": -40.70143888826105,
+      "yDeg": 16.928570811279727,
+      "method": "blob",
+      "area": 195
+    },
+    {
+      "id": "Rigel",
+      "kind": "navStar",
+      "px": [
+        269.57,
+        498.36
+      ],
+      "xDeg": -31.642017840011206,
+      "yDeg": -6.714715033091764,
+      "method": "blob",
+      "area": 165
+    },
+    {
+      "id": "Venus",
+      "kind": "planet",
+      "px": [
+        501,
+        519.51
+      ],
+      "xDeg": -2.629872549422089,
+      "yDeg": -9.500336841280998,
+      "method": "blob",
+      "area": 156
+    },
+    {
+      "id": "Capella",
+      "kind": "navStar",
+      "px": [
+        703.42,
+        458.59
+      ],
+      "xDeg": 22.74537912524943,
+      "yDeg": -1.4779809926512542,
+      "method": "blob",
+      "area": 160
+    },
+    {
+      "id": "Aldebaran",
+      "kind": "navStar",
+      "px": [
+        477.52,
+        552.17
+      ],
+      "xDeg": -5.57343926611054,
+      "yDeg": -13.80111898706516,
+      "method": "blob",
+      "area": 183
+    },
+    {
+      "id": "Mirfak",
+      "kind": "navStar",
+      "px": [
+        766.15,
+        591.9
+      ],
+      "xDeg": 30.609011439566046,
+      "yDeg": -19.03193565498907,
+      "method": "blob",
+      "area": 170
+    },
+    {
+      "id": "Menkar",
+      "kind": "navStar",
+      "px": [
+        413.74,
+        743.61
+      ],
+      "xDeg": -13.5686813458302,
+      "yDeg": -39.008179200623715,
+      "method": "blob",
+      "area": 166
+    },
+    {
+      "id": "Saturn",
+      "kind": "planet",
+      "px": [
+        502.47,
+        791.68
+      ],
+      "xDeg": -2.445654230762294,
+      "yDeg": -45.33839933896569,
+      "method": "blob",
+      "area": 164
+    }
+  ],
+  "dots": [
+    {
+      "px": [
+        145.75,
+        167.61
+      ],
+      "xDeg": -47.164077791906095,
+      "yDeg": 36.83622028535156
+    },
+    {
+      "px": [
+        462.86,
+        331.93
+      ],
+      "xDeg": -7.411703765317533,
+      "yDeg": 15.199120563894468
+    },
+    {
+      "px": [
+        186.6,
+        368.91
+      ],
+      "xDeg": -42.04311428970913,
+      "yDeg": 10.329995636285602
+    },
+    {
+      "px": [
+        627.58,
+        399.85
+      ],
+      "xDeg": 13.238355021810477,
+      "yDeg": 6.2561151380095055
+    },
+    {
+      "px": [
+        689.49,
+        401.55
+      ],
+      "xDeg": 20.99882801250297,
+      "yDeg": 6.031911360819201
+    },
+    {
+      "px": [
+        390.74,
+        411.87
+      ],
+      "xDeg": -16.452053837839408,
+      "yDeg": 4.673539661476418
+    },
+    {
+      "px": [
+        255.53,
+        434.05
+      ],
+      "xDeg": -33.40161896327639,
+      "yDeg": 1.752561149645274
+    },
+    {
+      "px": [
+        562.37,
+        455.76
+      ],
+      "xDeg": 5.063661007296979,
+      "yDeg": -1.1052930529311382
+    },
+    {
+      "px": [
+        192.86,
+        467.29
+      ],
+      "xDeg": -41.25871771199895,
+      "yDeg": -2.623320396043489
+    },
+    {
+      "px": [
+        384.68,
+        469.93
+      ],
+      "xDeg": -17.211699467312606,
+      "yDeg": -2.971580489732183
+    },
+    {
+      "px": [
+        170.33,
+        478.42
+      ],
+      "xDeg": -44.08285643582031,
+      "yDeg": -4.089568680886259
+    },
+    {
+      "px": [
+        604.32,
+        498.99
+      ],
+      "xDeg": 10.322341625534833,
+      "yDeg": -6.797550725893807
+    },
+    {
+      "px": [
+        297.01,
+        510.04
+      ],
+      "xDeg": -28.20163275170407,
+      "yDeg": -8.253145283130593
+    },
+    {
+      "px": [
+        675.19,
+        577.25
+      ],
+      "xDeg": 19.206841085136887,
+      "yDeg": -17.102442531040936
+    },
+    {
+      "px": [
+        612.8,
+        600.99
+      ],
+      "xDeg": 11.385395982906438,
+      "yDeg": -20.228424616627663
+    },
+    {
+      "px": [
+        555.5,
+        628.75
+      ],
+      "xDeg": 4.202257459628939,
+      "yDeg": -23.88416803610224
+    },
+    {
+      "px": [
+        761.39,
+        722.06
+      ],
+      "xDeg": 30.012616830173556,
+      "yDeg": -36.17143396727052
+    },
+    {
+      "px": [
+        611.49,
+        794.68
+      ],
+      "xDeg": 11.220686630496594,
+      "yDeg": -45.73311280361281
+    }
+  ]
+}

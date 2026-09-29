@@ -7,8 +7,8 @@
         "sha256": "a839dacb1b3990f770fcff85a3c62a7e9a32564b1ae54bec36cf17043a8cd5ea"
       }
     ],
-    "method": "TN D-6853 PDF p. 10 rendered at 300 dpi (pdftoppm) and cropped (scripts/extract-figures.ts). The frame is registered from its ±50° border lines; each labeled glyph is snapped to the nearest detected dark blob from a hand-read approximate position (data/manual/fig3a-names.json); glyphs touching the frame line or the reticle (Sirius, Navi, Venus, Saturn) are measured by eye on a 4× zoom (method: manual).",
-    "script": "scripts/digitize-fig3a.ts",
+    "method": "tn-d-6853.pdf PDF p. 10 rendered at 300 dpi (pdftoppm) and cropped (scripts/extract-figures.ts, data/manual/figures/fig3a.json). The frame is registered from its ±50° border lines; each labeled glyph is snapped to the nearest detected dark blob from a hand-read approximate position, or measured by eye on a 4× zoom where it touches the frame or reticle (method: manual). Unlabeled plotter dots are detected as small filled discs (isRoundDot).",
+    "script": "scripts/digitize-figure.ts",
     "generated": "2026-09-29"
   },
   "image": {
@@ -163,6 +163,192 @@
       "yDeg": -38.279512102110914,
       "method": "blob",
       "area": 182
+    }
+  ],
+  "dots": [
+    {
+      "px": [
+        710.17,
+        204.36
+      ],
+      "xDeg": 16.05748328599647,
+      "yDeg": 46.07600966425782
+    },
+    {
+      "px": [
+        438.7,
+        215.14
+      ],
+      "xDeg": -17.26585698837696,
+      "yDeg": 44.66368027826991
+    },
+    {
+      "px": [
+        780.33,
+        215.96
+      ],
+      "xDeg": 24.669439811841514,
+      "yDeg": 44.555735022801315
+    },
+    {
+      "px": [
+        201.31,
+        221.75
+      ],
+      "xDeg": -46.406841421240664,
+      "yDeg": 43.796879876857126
+    },
+    {
+      "px": [
+        565.94,
+        235.58
+      ],
+      "xDeg": -1.6471823615783947,
+      "yDeg": 41.984346889230764
+    },
+    {
+      "px": [
+        632,
+        254
+      ],
+      "xDeg": 6.461780850352881,
+      "yDeg": 39.57089589734413
+    },
+    {
+      "px": [
+        288.4,
+        261.93
+      ],
+      "xDeg": -35.715479593921636,
+      "yDeg": 38.531689673269234
+    },
+    {
+      "px": [
+        376.06,
+        273.69
+      ],
+      "xDeg": -24.955727343541543,
+      "yDeg": 36.991314092795335
+    },
+    {
+      "px": [
+        436.07,
+        273.29
+      ],
+      "xDeg": -17.588724186945264,
+      "yDeg": 37.04318679646478
+    },
+    {
+      "px": [
+        326.1,
+        277.1
+      ],
+      "xDeg": -31.08824150154873,
+      "yDeg": 36.54409658458016
+    },
+    {
+      "px": [
+        226.9,
+        315.1
+      ],
+      "xDeg": -43.26489822720106,
+      "yDeg": 31.564642593216018
+    },
+    {
+      "px": [
+        344.1,
+        327.1
+      ],
+      "xDeg": -28.87903632674415,
+      "yDeg": 29.99253739052398
+    },
+    {
+      "px": [
+        204.23,
+        332.11
+      ],
+      "xDeg": -46.04843043340584,
+      "yDeg": 29.335146514058156
+    },
+    {
+      "px": [
+        680.23,
+        402.89
+      ],
+      "xDeg": 12.3824649289825,
+      "yDeg": 20.060555078260894
+    },
+    {
+      "px": [
+        962.41,
+        526.05
+      ],
+      "xDeg": 47.020692020035725,
+      "yDeg": 3.921499672854999
+    },
+    {
+      "px": [
+        811.25,
+        546.64
+      ],
+      "xDeg": 28.464663886100837,
+      "yDeg": 1.2233560208076355
+    },
+    {
+      "px": [
+        963.84,
+        586.07
+      ],
+      "xDeg": 47.196168985872745,
+      "yDeg": -3.9431672715504504
+    },
+    {
+      "px": [
+        665.03,
+        596.4
+      ],
+      "xDeg": 10.515961285904162,
+      "yDeg": -5.296246321165903
+    },
+    {
+      "px": [
+        213.59,
+        602.92
+      ],
+      "xDeg": -44.89833679245707,
+      "yDeg": -6.150833141426233
+    },
+    {
+      "px": [
+        689.25,
+        811.15
+      ],
+      "xDeg": 13.489744393495542,
+      "yDeg": -33.43663550024962
+    },
+    {
+      "px": [
+        858.45,
+        854.73
+      ],
+      "xDeg": 34.258482980078554,
+      "yDeg": -39.14768437722975
+    },
+    {
+      "px": [
+        193.52,
+        902.88
+      ],
+      "xDeg": -47.362466997660576,
+      "yDeg": -45.456781342359136
+    },
+    {
+      "px": [
+        758.22,
+        918.08
+      ],
+      "xDeg": 21.955816297119796,
+      "yDeg": -47.44943054384201
     }
   ]
 }

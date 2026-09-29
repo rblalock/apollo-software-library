@@ -7,6 +7,7 @@ figureRefs:
   - { document: 69-fm-197, anchor: fig-9-3-8 }
   - { document: 69-fm-197, anchor: refsmmat }
   - { document: 69-fm-197, anchor: rtcc-catalogue }
+figures: [fig3a]
 ---
 
 ## How this was made

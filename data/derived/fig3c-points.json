@@ -1,0 +1,360 @@
+{
+  "provenance": {
+    "sources": [
+      {
+        "url": "https://ntrs.nasa.gov/api/citations/19720017950/downloads/19720017950.pdf",
+        "retrieved": "2026-09-29",
+        "sha256": "a839dacb1b3990f770fcff85a3c62a7e9a32564b1ae54bec36cf17043a8cd5ea"
+      }
+    ],
+    "method": "tn-d-6853.pdf PDF p. 10 rendered at 300 dpi (pdftoppm) and cropped (scripts/extract-figures.ts, data/manual/figures/fig3c.json). The frame is registered from its ±50° border lines; each labeled glyph is snapped to the nearest detected dark blob from a hand-read approximate position, or measured by eye on a 4× zoom where it touches the frame or reticle (method: manual). Unlabeled plotter dots are detected as small filled discs (isRoundDot).",
+    "script": "scripts/digitize-figure.ts",
+    "generated": "2026-09-29"
+  },
+  "image": {
+    "path": "data/derived/scans/tnd6853-fig3c.png",
+    "widthPx": 1080,
+    "heightPx": 1060
+  },
+  "frame": {
+    "leftX": 160.39567233384852,
+    "rightX": 961.8655720882504,
+    "topY": 196.39318885448915,
+    "bottomY": 950.70892494929
+  },
+  "extentDeg": 50,
+  "points": [
+    {
+      "id": "Dabih",
+      "kind": "navStar",
+      "px": [
+        602.82,
+        280.57
+      ],
+      "xDeg": 5.201599408552106,
+      "yDeg": 38.8404502665234,
+      "method": "blob",
+      "area": 161
+    },
+    {
+      "id": "Altair",
+      "kind": "navStar",
+      "px": [
+        811.13,
+        325.62
+      ],
+      "xDeg": 31.192385764426533,
+      "yDeg": 32.868101534466135,
+      "method": "blob",
+      "area": 156
+    },
+    {
+      "id": "Peacock",
+      "kind": "navStar",
+      "px": [
+        259.72,
+        382.84
+      ],
+      "xDeg": -37.60762005329627,
+      "yDeg": 25.28300794726238,
+      "method": "blob",
+      "area": 166
+    },
+    {
+      "id": "Nunki",
+      "kind": "navStar",
+      "px": [
+        530.33,
+        442.05
+      ],
+      "xDeg": -3.84260081222682,
+      "yDeg": 17.433240206102944,
+      "method": "blob",
+      "area": 162
+    },
+    {
+      "id": "Atria",
+      "kind": "navStar",
+      "px": [
+        186.12,
+        595.42
+      ],
+      "xDeg": -46.79047518901438,
+      "yDeg": -2.899523515041807,
+      "method": "blob",
+      "area": 168
+    },
+    {
+      "id": "Rasalhague",
+      "kind": "navStar",
+      "px": [
+        847.28,
+        593.24
+      ],
+      "xDeg": 35.70368164762874,
+      "yDeg": -2.6107276041430723,
+      "method": "blob",
+      "area": 172
+    },
+    {
+      "id": "Antares",
+      "kind": "navStar",
+      "px": [
+        520.28,
+        688.04
+      ],
+      "xDeg": -5.096452320227542,
+      "yDeg": -15.177824132121046,
+      "method": "blob",
+      "area": 176
+    },
+    {
+      "id": "Mars",
+      "kind": "planet",
+      "px": [
+        530.06,
+        740
+      ],
+      "xDeg": -3.8767261453913022,
+      "yDeg": -22.06564991677682,
+      "method": "blob",
+      "area": 234
+    },
+    {
+      "id": "Alpheratz",
+      "kind": "navStar",
+      "actually": "Alphecca",
+      "note": "Labeled 'Alpheratz' on both 69-FM-197 Fig 9.3-8(c) and TN D-6853 Fig 3c, but every pairwise separation involving it is off by 30–90° while all other pairs agree to 0.2°; a free fit of the other nine stars places Alphecca (nav star 26, α CrB) 0.11° from this glyph.",
+      "px": [
+        939.83,
+        827.72
+      ],
+      "xDeg": 47.25001888527754,
+      "yDeg": -33.69568239160155,
+      "method": "blob",
+      "area": 166
+    },
+    {
+      "id": "Menkent",
+      "kind": "navStar",
+      "px": [
+        360.08,
+        876.74
+      ],
+      "xDeg": -25.085017075047794,
+      "yDeg": -40.19335374393019,
+      "method": "blob",
+      "area": 159
+    }
+  ],
+  "dots": [
+    {
+      "px": [
+        261.3,
+        234.86
+      ],
+      "xDeg": -37.410428639382644,
+      "yDeg": 44.89979140438604
+    },
+    {
+      "px": [
+        499.48,
+        433.88
+      ],
+      "xDeg": -7.692262700713641,
+      "yDeg": 18.516695050833263
+    },
+    {
+      "px": [
+        468.49,
+        499.62
+      ],
+      "xDeg": -11.558496284919563,
+      "yDeg": 9.800653089756217
+    },
+    {
+      "px": [
+        505.14,
+        502.06
+      ],
+      "xDeg": -6.986130525839883,
+      "yDeg": 9.478193006615022
+    },
+    {
+      "px": [
+        429.63,
+        563.3
+      ],
+      "xDeg": -16.406956697243793,
+      "yDeg": 1.359547701748248
+    },
+    {
+      "px": [
+        396.73,
+        570.2
+      ],
+      "xDeg": -20.511972929749838,
+      "yDeg": 0.44425122551975704
+    },
+    {
+      "px": [
+        296.37,
+        577.76
+      ],
+      "xDeg": -33.03420299636359,
+      "yDeg": -0.5576028384385552
+    },
+    {
+      "px": [
+        445.1,
+        579.24
+      ],
+      "xDeg": -14.476944114723686,
+      "yDeg": -0.7540051452714209
+    },
+    {
+      "px": [
+        614.13,
+        627.56
+      ],
+      "xDeg": 6.612148229795011,
+      "yDeg": -7.160322993887853
+    },
+    {
+      "px": [
+        506.24,
+        675.51
+      ],
+      "xDeg": -6.848744067352982,
+      "yDeg": -13.516304232577156
+    },
+    {
+      "px": [
+        647.37,
+        692.62
+      ],
+      "xDeg": 10.759677312706906,
+      "yDeg": -15.784989721201484
+    },
+    {
+      "px": [
+        906.72,
+        723.56
+      ],
+      "xDeg": 43.11963517060258,
+      "yDeg": -19.886355003016206
+    },
+    {
+      "px": [
+        203.47,
+        725.27
+      ],
+      "xDeg": -44.624960004193234,
+      "yDeg": -20.114116123787454
+    },
+    {
+      "px": [
+        510.09,
+        739.85
+      ],
+      "xDeg": -6.367803411219072,
+      "yDeg": -22.046510034434903
+    },
+    {
+      "px": [
+        378.65,
+        742.31
+      ],
+      "xDeg": -22.768243981086233,
+      "yDeg": -22.372785694729416
+    },
+    {
+      "px": [
+        186.49,
+        754.92
+      ],
+      "xDeg": -46.74454309995593,
+      "yDeg": -24.044575943778653
+    },
+    {
+      "px": [
+        343.27,
+        782.89
+      ],
+      "xDeg": -27.182137429623815,
+      "yDeg": -27.752218870680593
+    },
+    {
+      "px": [
+        300.67,
+        786.24
+      ],
+      "xDeg": -32.49828292044379,
+      "yDeg": -28.19675139522336
+    },
+    {
+      "px": [
+        770.34,
+        807.12
+      ],
+      "xDeg": 26.1034735198687,
+      "yDeg": -30.964137823765043
+    },
+    {
+      "px": [
+        214.21,
+        815.38
+      ],
+      "xDeg": -43.28588076036144,
+      "yDeg": -32.059120644966356
+    },
+    {
+      "px": [
+        335.87,
+        815.8
+      ],
+      "xDeg": -28.106352542174253,
+      "yDeg": -32.11505892111802
+    },
+    {
+      "px": [
+        626.41,
+        840.74
+      ],
+      "xDeg": 8.144383614950279,
+      "yDeg": -35.42179667689889
+    },
+    {
+      "px": [
+        556.2,
+        873.78
+      ],
+      "xDeg": -0.615525772272747,
+      "yDeg": -39.801006995014134
+    },
+    {
+      "px": [
+        190.5,
+        891.5
+      ],
+      "xDeg": -46.243860477433216,
+      "yDeg": -42.15064433683659
+    },
+    {
+      "px": [
+        929.73,
+        921.01
+      ],
+      "xDeg": 45.99008030484664,
+      "yDeg": -46.063195222461744
+    },
+    {
+      "px": [
+        314.59,
+        930.74
+      ],
+      "xDeg": -30.760484915528586,
+      "yDeg": -47.35313997167658
+    }
+  ]
+}

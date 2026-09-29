@@ -1,0 +1,82 @@
+{
+  "_comment": "Digitizing config for TN D-6853 Fig 4e (AOT right rear detent, 2 h before lunar lift-off). bodies: approxPx snaps to the nearest blob within 20 px; manualPx is used as-is for glyphs touching lines (4x zoom).",
+  "id": "fig4e",
+  "scan": "tnd6853-fig4e.png",
+  "source": {
+    "file": "tn-d-6853.pdf",
+    "page": 11,
+    "dpi": 300,
+    "crop": {
+      "x": 1210,
+      "y": 1460,
+      "w": 1000,
+      "h": 920
+    }
+  },
+  "extentDeg": 50,
+  "bodies": {
+    "Polaris": {
+      "kind": "navStar",
+      "manualPx": [
+        366,
+        242
+      ]
+    },
+    "Navi": {
+      "kind": "navStar",
+      "manualPx": [
+        585,
+        296
+      ]
+    },
+    "Alpheratz": {
+      "kind": "navStar",
+      "approxPx": [
+        844,
+        295
+      ]
+    },
+    "Mirfak": {
+      "kind": "navStar",
+      "approxPx": [
+        567,
+        473
+      ]
+    },
+    "Dnoces": {
+      "kind": "navStar",
+      "approxPx": [
+        153,
+        520
+      ]
+    },
+    "Capella": {
+      "kind": "navStar",
+      "manualPx": [
+        448,
+        571
+      ]
+    },
+    "Saturn": {
+      "kind": "planet",
+      "approxPx": [
+        837,
+        609
+      ]
+    },
+    "Venus": {
+      "kind": "planet",
+      "approxPx": [
+        563,
+        744
+      ]
+    },
+    "Aldebaran": {
+      "kind": "navStar",
+      "approxPx": [
+        609,
+        753
+      ]
+    }
+  }
+}

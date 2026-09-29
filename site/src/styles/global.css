@@ -10,3 +10,5 @@
 .prose-lite li + li { margin-top: 0.35rem; }
 .prose-lite a { text-decoration: underline; text-underline-offset: 2px; }
 .prose-lite code { font-family: ui-monospace, monospace; font-size: 0.9em; }
+.prose-lite table { margin-top: 1rem; border-collapse: collapse; font-size: 0.9rem; }
+.prose-lite th, .prose-lite td { border-bottom: 1px solid color-mix(in oklab, currentColor 20%, transparent); padding: 0.3rem 0.9rem 0.3rem 0; text-align: left; }

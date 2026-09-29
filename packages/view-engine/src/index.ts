@@ -13,3 +13,5 @@ export * from './scene/scene';
 export * from './plotter/svg';
 export * from './fit/eigen';
 export * from './fit/fit';
+export * from './frames/aot';
+export * from './ephemeris/moonframe';

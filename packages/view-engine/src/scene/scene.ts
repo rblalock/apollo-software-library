@@ -2,6 +2,7 @@ import { mxv } from '../math/mat';
 import type { ResolvedStar } from '../catalog/resolve';
 import { BODY_LABEL, bodyAngularRadiusDeg, bodyDirection, type BodyName } from '../ephemeris/ephemeris';
 import { referenceToOptics, SCT_FIELD_OF_VIEW_DEG, sctPlotAxes } from '../frames/frames';
+import { AOT_FIELD_OF_VIEW_DEG, aotPlotAxes, aotReticleAngleDeg } from '../frames/aot';
 import { projectAzimuthalEquidistant, type PlotPoint } from '../projection/projection';
 import { getToUtc } from '../time/time';
 import type { DisplayList, Layer, PlacedBody, Primitive, ViewSpec } from './types';
@@ -53,6 +54,18 @@ function sctReticle(): Primitive[] {
   return out;
 }
 
+/** AOT field circle and reticle cross, the cross rotated with the image as on the 1969 figures. */
+function aotReticle(detentDeg: number): Primitive[] {
+  const r = AOT_FIELD_OF_VIEW_DEG / 2;
+  const circle = Array.from({ length: 180 }, (_, i) => {
+    const a = (i / 180) * 2 * Math.PI;
+    return [r * Math.cos(a), r * Math.sin(a)] as const;
+  });
+  const t = (aotReticleAngleDeg(detentDeg) * Math.PI) / 180;
+  const c = r * Math.cos(t), s = r * Math.sin(t);
+  return [{ kind: 'polyline', points: circle, closed: true }, line(-c, -s, c, s), line(s, -c, -s, c)];
+}
+
 function header(spec: ViewSpec): Primitive[] {
   const e = spec.extentDeg, g = spec.gimbals;
   const right = ['Gimbal angles', `I = ${g.inner.toFixed(1)}°`, `M = ${g.middle.toFixed(1)}°`, `O = ${g.outer.toFixed(1)}°`];
@@ -67,12 +80,13 @@ const kindOf = (b: BodyName): PlacedBody['kind'] => (b === 'earth' || b === 'sun
 
 export function buildScene(spec: ViewSpec, data: SceneData): DisplayList {
   const utc = getToUtc(spec.rangeZeroUtc, spec.get);
-  const toOptics = referenceToOptics(spec.refsmmat, spec.gimbals);
-  const axes = sctPlotAxes(spec.instrument.shaftDeg, spec.instrument.trunnionDeg);
+  const inst = spec.instrument;
+  const toOptics = inst.kind === 'sct' ? referenceToOptics(spec.refsmmat, spec.gimbals) : inst.lmBodyFromRef;
+  const axes = inst.kind === 'sct' ? sctPlotAxes(inst.shaftDeg, inst.trunnionDeg) : aotPlotAxes(inst.detentDeg);
   const e = spec.extentDeg;
   const inside = (p: PlotPoint) =>
     Number.isFinite(p.x) && Number.isFinite(p.y) && Math.abs(p.x) <= e && Math.abs(p.y) <= e;
-  const primitives: Primitive[] = [...frame(e), ...sctReticle()];
+  const primitives: Primitive[] = [...frame(e), ...(inst.kind === 'sct' ? sctReticle() : aotReticle(inst.detentDeg))];
   const placed: PlacedBody[] = [];
 
   for (const s of data.stars) {
@@ -103,7 +117,7 @@ export function buildScene(spec: ViewSpec, data: SceneData): DisplayList {
     placed.push({ id: body, label: BODY_LABEL[body], kind: kindOf(body), x: p.x, y: p.y, direction });
   }
 
-  primitives.push(...header(spec));
+  if (inst.kind === 'sct') primitives.push(...header(spec));
   const notes = spec.observer === 'moon'
     ? ['The observer is the Moon’s center: the spacecraft’s orbital offset (< 0.3° for Earth) and lunar occlusion are not modeled.']
     : [];
