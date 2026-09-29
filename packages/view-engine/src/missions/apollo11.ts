@@ -30,3 +30,16 @@ export const FIG_3A_SPEC: ViewSpec = {
   bodies: ['earth', 'sun', 'venus', 'mars', 'jupiter', 'saturn'],
   headerLeft: ['Lunar lift-off REFSMMAT'],
 };
+
+/** TN D-6853 Figure 3b = 69-FM-197 Figure 9.3-8(b): SCT view, rev 30, 125:00:00 GET. */
+export const FIG_3B_SPEC: ViewSpec = { ...FIG_3A_SPEC, get: '125:00:00', gimbals: { inner: 17.86, middle: 0, outer: 0 } };
+
+/** TN D-6853 Figure 3c = 69-FM-197 Figure 9.3-8(c): SCT view, rev 30, 125:15:00 GET. */
+export const FIG_3C_SPEC: ViewSpec = { ...FIG_3A_SPEC, get: '125:15:00', gimbals: { inner: 89.1, middle: 0, outer: 0 } };
+
+/**
+ * Fig 3c with the inner gimbal's sign corrected (−89.10°). Both 69-FM-197 and TN D-6853 print I = +89.10°,
+ * but a free fit of the figure's own stars implies I = −88.5°, M ≈ O ≈ 0 under the same REFSMMAT (3a and 3b's
+ * printed angles are confirmed to 0.3° by the same fit). Not independent evidence: inferred from this figure.
+ */
+export const FIG_3C_SIGN_CORRECTED_SPEC: ViewSpec = { ...FIG_3C_SPEC, gimbals: { inner: -89.1, middle: 0, outer: 0 } };

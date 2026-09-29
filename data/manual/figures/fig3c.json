@@ -1,0 +1,91 @@
+{
+  "_comment": "Digitizing config for TN D-6853 Fig 3c. bodies: pixel positions (in the scan) of each labeled glyph; approxPx snaps to the nearest detected blob within 20 px, manualPx is used as-is for glyphs touching the frame line or reticle (measured on a 4x zoom, about ±0.2°).",
+  "id": "fig3c",
+  "scan": "tnd6853-fig3c.png",
+  "source": {
+    "file": "tn-d-6853.pdf",
+    "page": 10,
+    "dpi": 300,
+    "crop": {
+      "x": 150,
+      "y": 1380,
+      "w": 1080,
+      "h": 1060
+    }
+  },
+  "extentDeg": 50,
+  "bodies": {
+    "Dabih": {
+      "kind": "navStar",
+      "approxPx": [
+        603,
+        280
+      ]
+    },
+    "Altair": {
+      "kind": "navStar",
+      "approxPx": [
+        811,
+        327
+      ]
+    },
+    "Peacock": {
+      "kind": "navStar",
+      "approxPx": [
+        261,
+        383
+      ]
+    },
+    "Nunki": {
+      "kind": "navStar",
+      "approxPx": [
+        531,
+        440
+      ]
+    },
+    "Atria": {
+      "kind": "navStar",
+      "approxPx": [
+        187,
+        593
+      ]
+    },
+    "Rasalhague": {
+      "kind": "navStar",
+      "approxPx": [
+        847,
+        591
+      ]
+    },
+    "Antares": {
+      "kind": "navStar",
+      "approxPx": [
+        520,
+        688
+      ]
+    },
+    "Mars": {
+      "kind": "planet",
+      "approxPx": [
+        528,
+        740
+      ]
+    },
+    "Alpheratz": {
+      "kind": "navStar",
+      "approxPx": [
+        940,
+        827
+      ],
+      "actually": "Alphecca",
+      "note": "Labeled 'Alpheratz' on both 69-FM-197 Fig 9.3-8(c) and TN D-6853 Fig 3c, but every pairwise separation involving it is off by 30–90° while all other pairs agree to 0.2°; a free fit of the other nine stars places Alphecca (nav star 26, α CrB) 0.11° from this glyph."
+    },
+    "Menkent": {
+      "kind": "navStar",
+      "approxPx": [
+        360,
+        876
+      ]
+    }
+  }
+}

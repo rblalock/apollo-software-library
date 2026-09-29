@@ -1,6 +1,8 @@
 import { readdirSync, readFileSync } from 'node:fs';
 
-export type BodyEntry = { kind: string; approxPx: [number, number] } | { kind: string; manualPx: [number, number] };
+/** `actually` names the true body when the published label is wrong (with the evidence in `note`). */
+type BodyMeta = { kind: string; actually?: string; note?: string };
+export type BodyEntry = (BodyMeta & { approxPx: [number, number] }) | (BodyMeta & { manualPx: [number, number] });
 
 export interface FigureConfig {
   id: string;
