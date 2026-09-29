@@ -3,7 +3,7 @@
 Working recreations of the software that planned and flew the Apollo missions, each shown next to the NASA documents
 it was rebuilt from.
 
-**Live site: LIVE_URL**
+**Live site: [apollo-software-library.vercel.app](https://apollo-software-library.vercel.app)**
 
 The first entry is the **view program**. During the Apollo missions, analysts at NASA's Manned Spacecraft Center
 (MSC) in Houston used it to draw what the crews would see from the spacecraft: the Earth and Moon in the window, the stars

@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/rblalock/apollo-software-library.git"
   },
-  "homepage": "https://github.com/rblalock/apollo-software-library#readme",
+  "homepage": "https://apollo-software-library.vercel.app",
   "type": "module",
   "workspaces": [
     "packages/*",
