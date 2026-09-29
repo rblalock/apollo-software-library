@@ -84,13 +84,13 @@
 
 ## Item 8: Design and hosting preparation
 
-- [ ] 8.1 **Design system:** tokens, typography and layout, applied across pages.
+- [x] 8.1 **Design system:** tokens, typography and layout, applied across pages.
 - [x] 8.2 **Plot labels:** collision-avoiding label placement; planet glyphs as on the originals.
-- [ ] 8.3 **Exhibit input fixes:** source links for every input; the "Inputs (1969)" and residual-scope wording.
+- [x] 8.3 **Exhibit input fixes:** source links for every input; the "Inputs (1969)" and residual-scope wording.
 - [x] 8.4 **Build-time catalog resolution:** remove `bsc45.json` from the client bundle.
-- [ ] 8.5 **Accessibility pass;** a typecheck command for `scripts/`.
-- [ ] 8.6 **Hosting preparation:** static-host config and README deploy notes (no deploy).
-- [ ] 8.7 **Ledger and commit.**
+- [x] 8.5 **Accessibility pass;** a typecheck command for `scripts/`.
+- [x] 8.6 **Hosting preparation:** static-host config and README deploy notes (no deploy).
+- [x] 8.7 **Ledger and commit.**
 
 ## Item 9: Outreach drafts
 

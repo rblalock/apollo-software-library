@@ -11,7 +11,8 @@
     "typecheck": "tsc -p packages/view-engine --noEmit",
     "dev": "bun scripts/sync-public.ts && cd site && bun run dev",
     "build": "bun scripts/sync-public.ts && cd site && bun run build",
-    "check:site": "cd site && bun run check"
+    "check:site": "cd site && bun run check",
+    "typecheck:scripts": "tsc -p scripts --noEmit"
   },
   "devDependencies": {
     "@types/bun": "^1.4.2",

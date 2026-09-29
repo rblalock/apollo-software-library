@@ -47,12 +47,13 @@ export function InputsPanel({ figure, utc, recovered, tryIt }: Props) {
   return (
     <aside className="space-y-6 text-sm">
       <section>
-        <h2 className="font-mono text-xs uppercase tracking-widest text-stone-500">Inputs</h2>
+        <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Inputs</h2>
         <dl className="mt-2 space-y-3">
           <div>
             <dt className="font-medium">Time shown</dt>
             <dd className="font-mono">{utc.toISOString().replace('.000Z', 'Z')}</dd>
-            <dd className="text-stone-500">Range zero {APOLLO_11.rangeZeroUtc}</dd>
+            <dd className="text-muted">Range zero {APOLLO_11.rangeZeroUtc}</dd>
+            <dd>Printed on <a className="underline" href={docLink(figure.printedOn.doc, figure.printedOn.page)}>{figure.printedOn.label}</a></dd>
           </div>
           <div>
             <dt className="font-medium">{attitudeTitle}</dt>
@@ -61,7 +62,7 @@ export function InputsPanel({ figure, utc, recovered, tryIt }: Props) {
                 {matrix.map((row, i) => <tr key={i}>{row.map((v, j) => <td key={j} className="pr-3 text-right">{v.toFixed(8)}</td>)}</tr>)}
               </tbody></table>
             </dd>
-            <dd className="text-stone-500">{figure.attitudeNote}</dd>
+            <dd className="text-muted">{figure.attitudeNote}</dd>
             {inst.kind !== 'fixed' && <dd><a className="underline" href={docLink('69-fm-197', 38)}>69-FM-197, Table II (REFSMMATs)</a></dd>}
           </div>
           <div>
@@ -69,7 +70,7 @@ export function InputsPanel({ figure, utc, recovered, tryIt }: Props) {
             {inst.kind === 'sct' ? (
               <>
                 <dd>CSM scanning telescope: 60° field, shaft 0°, trunnion 0°.</dd>
-                {recovered && <dd className="text-stone-500">A free fit of the scan recovers shaft {recovered.shaftDeg.toFixed(1)}°, trunnion {recovered.trunnionDeg.toFixed(1)}°.</dd>}
+                {recovered && <dd className="text-muted">A free fit of the scan recovers shaft {recovered.shaftDeg.toFixed(1)}°, trunnion {recovered.trunnionDeg.toFixed(1)}°.</dd>}
               </>
             ) : inst.kind === 'aot' ? (
               <dd>LM alignment optical telescope, detent at {inst.detentDeg}° azimuth, 45° from the LM +X axis; 60° field. The image turns with the telescope head (−{inst.detentDeg}°), as the drawn reticle shows.</dd>
@@ -90,7 +91,7 @@ export function InputsPanel({ figure, utc, recovered, tryIt }: Props) {
       </section>
       {tryIt && (
         <section className="space-y-3 rounded border border-stone-300 p-4 dark:border-stone-700">
-          <h2 className="font-mono text-xs uppercase tracking-widest text-stone-500">Try it</h2>
+          <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Try it</h2>
           <label className="block">
             GET (hhh:mm:ss)
             <input

@@ -3,6 +3,13 @@ import '../styles/global.css';
 
 interface Props { title: string; description?: string }
 const { title, description = 'Working recreations of Apollo-era software, each with its history and primary sources.' } = Astro.props;
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/', label: 'Library' },
+  { href: '/view-program/', label: 'View program' },
+  { href: '/documents/', label: 'Sources' },
+];
+const current = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
 ---
 <!doctype html>
 <html lang="en">
@@ -13,17 +20,24 @@ const { title, description = 'Working recreations of Apollo-era software, each w
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>{title} · Apollo Software Library</title>
   </head>
-  <body class="min-h-screen bg-stone-50 text-stone-900 antialiased dark:bg-stone-950 dark:text-stone-100">
-    <header class="border-b border-stone-300 dark:border-stone-800">
-      <nav class="mx-auto flex max-w-6xl items-baseline justify-between px-4 py-4">
-        <a href="/" class="font-mono text-sm uppercase tracking-widest">Apollo Software Library</a>
+  <body class="min-h-screen bg-paper font-sans text-ink antialiased">
+    <a href="#main" class="sr-only rounded bg-ink px-3 py-2 text-paper focus:not-sr-only focus:absolute focus:left-4 focus:top-4">Skip to content</a>
+    <header class="border-b border-rule">
+      <nav class="mx-auto flex max-w-6xl flex-wrap items-baseline justify-between gap-4 px-4 py-4" aria-label="Site">
+        <a href="/" class="font-mono text-sm font-medium uppercase tracking-widest">Apollo Software Library</a>
+        <ul class="flex gap-5 font-mono text-xs uppercase tracking-wider">
+          {nav.map((n) => (
+            <li><a href={n.href} class:list={['hover:underline', current(n.href) && 'text-accent']} aria-current={current(n.href) ? 'page' : undefined}>{n.label}</a></li>
+          ))}
+        </ul>
       </nav>
     </header>
-    <main class="mx-auto max-w-6xl px-4 py-10">
+    <main id="main" class="mx-auto max-w-6xl px-4 py-10">
       <slot />
     </main>
-    <footer class="mx-auto max-w-6xl px-4 py-10 text-sm text-stone-500">
-      Primary sources are NASA public-domain documents. Each recreation is labeled by how close it is to the original.
+    <footer class="mx-auto max-w-6xl border-t border-rule px-4 py-8 text-sm text-muted">
+      <p>Primary sources are NASA public-domain documents. This is an independent recreation, not affiliated with NASA.</p>
+      <p class="mt-1">Every recreation says how close it is to the original, and every difference from the 1969–72 output is measured and recorded.</p>
     </footer>
   </body>
 </html>

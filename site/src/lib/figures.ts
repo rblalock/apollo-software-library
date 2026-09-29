@@ -56,10 +56,23 @@ export interface FigureConfig {
   scanHref: string;
   /** How the attitude was obtained, shown in the inputs panel. */
   attitudeNote: string;
+  /** The page the figure (and its printed inputs) comes from. */
+  printedOn: { doc: string; page: number; label: string };
 }
 
+const PRINTED: Record<string, FigureConfig['printedOn']> = {
+  fig1: { doc: 'tn-d-6853', page: 9, label: 'TN D-6853, Figure 1' }, fig2: { doc: 'tn-d-6853', page: 9, label: 'TN D-6853, Figure 2' },
+  fig3a: { doc: 'tn-d-6853', page: 10, label: 'TN D-6853, Figure 3(a)' }, fig3b: { doc: 'tn-d-6853', page: 10, label: 'TN D-6853, Figure 3(b)' },
+  fig3c: { doc: 'tn-d-6853', page: 10, label: 'TN D-6853, Figure 3(c)' }, fig4a: { doc: 'tn-d-6853', page: 10, label: 'TN D-6853, Figure 4(a)' },
+  fig4b: { doc: 'tn-d-6853', page: 11, label: 'TN D-6853, Figure 4(b)' }, fig4c: { doc: 'tn-d-6853', page: 11, label: 'TN D-6853, Figure 4(c)' },
+  fig4d: { doc: 'tn-d-6853', page: 11, label: 'TN D-6853, Figure 4(d)' }, fig4e: { doc: 'tn-d-6853', page: 11, label: 'TN D-6853, Figure 4(e)' },
+  fig4f: { doc: 'tn-d-6853', page: 12, label: 'TN D-6853, Figure 4(f)' },
+  pdiA: { doc: '69-fm-197', page: 131, label: '69-FM-197, Figure 6.2.2-1(a)' }, pdiE: { doc: '69-fm-197', page: 135, label: '69-FM-197, Figure 6.2.2-1(e)' },
+  pdiJ: { doc: '69-fm-197', page: 140, label: '69-FM-197, Figure 6.2.2-1(j)' }, pdiP: { doc: '69-fm-197', page: 146, label: '69-FM-197, Figure 6.2.2-1(p)' },
+};
+
 const fig = (id: string, label: string, spec: ViewSpec, points: PointsFile, attitudeNote: string, observer?: VehicleId, scan = `tnd6853-${id}.png`): FigureConfig =>
-  ({ id, label, spec, points, scanHref: `/scans/${scan}`, attitudeNote, observer });
+  ({ id, label, spec, points, scanHref: `/scans/${scan}`, attitudeNote, observer, printedOn: PRINTED[id]! });
 
 const SCT_PRINTED = 'Gimbal angles as printed on the figure.';
 

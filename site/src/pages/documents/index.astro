@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const docs = (await getCollection('documents')).sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+<Base title="Sources" description="The primary documents behind the recreations, with page anchors used by the exhibits.">
+  <h1 class="text-3xl font-semibold tracking-tight">Sources</h1>
+  <p class="mt-3 max-w-3xl text-muted">
+    Every input and every comparison in the library comes from these documents. Each is a NASA public-domain
+    publication, kept here as downloaded (with its checksum in the repository).
+  </p>
+  <ul class="mt-10 space-y-8">
+    {docs.map((d) => (
+      <li class="max-w-4xl border-t border-rule pt-6">
+        <p class="font-mono text-xs uppercase tracking-widest text-muted">{d.data.reportNumber} · {d.data.date} · {d.data.pageCount} pages</p>
+        <h2 class="mt-1 text-xl font-semibold"><a class="hover:underline" href={`/documents/${d.id}/`}>{d.data.title}</a></h2>
+        <p class="mt-1 text-sm text-muted">{d.data.authors.join(', ')} · <a class="underline" href={d.data.sourceUrl}>original source</a></p>
+        <ul class="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+          {Object.entries(d.data.anchors).map(([, a]) => (
+            <li><a class="underline" href={`/documents/${d.id}/?page=${a.page}`}>{a.label}</a></li>
+          ))}
+        </ul>
+      </li>
+    ))}
+  </ul>
+</Base>

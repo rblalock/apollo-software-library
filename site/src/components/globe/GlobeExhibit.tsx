@@ -63,15 +63,15 @@ export default function GlobeExhibit({ panelIds }: { panelIds: string[] }) {
       </div>
       <aside className="space-y-5 text-sm">
         <div>
-          <h2 className="font-mono text-xs uppercase tracking-widest text-stone-500">Inputs</h2>
+          <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Inputs</h2>
           <dl className="mt-2 space-y-2">
-            <div><dt className="text-stone-500">Observer</dt><dd>The command module, from the Apollo 11 Mission Report's trajectory table, propagated to the time shown.</dd></div>
-            <div><dt className="text-stone-500">Looking at</dt><dd>The {panel.body === 'earth' ? 'Earth' : 'Moon'}'s centre, {2 * panel.extentDeg}° field.</dd></div>
-            <div><dt className="text-stone-500">Plot "up"</dt><dd>The spacecraft's direction of travel, a rule recovered from Fig 6(a).</dd></div>
+            <div><dt className="text-muted">Observer</dt><dd>The command module, from the Apollo 11 Mission Report's trajectory table, propagated to the time shown.</dd></div>
+            <div><dt className="text-muted">Looking at</dt><dd>The {panel.body === 'earth' ? 'Earth' : 'Moon'}'s centre, {2 * panel.extentDeg}° field.</dd></div>
+            <div><dt className="text-muted">Plot "up"</dt><dd>The spacecraft's direction of travel, a rule recovered from Fig 6(a).</dd></div>
           </dl>
         </div>
         <form className="space-y-2 rounded border border-stone-300 p-4 dark:border-stone-700" onSubmit={(e) => e.preventDefault()}>
-          <h2 className="font-mono text-xs uppercase tracking-widest text-stone-500">Try it</h2>
+          <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Try it</h2>
           <label className="block">GET (hhh:mm:ss)
             <input className="mt-1 w-full rounded border border-stone-400 bg-transparent px-2 py-1 font-mono dark:border-stone-600"
               value={getText} onChange={(e) => onGet(e.target.value)} aria-invalid={getError !== null} aria-describedby={getError ? 'globe-get-error' : undefined} />
