@@ -1,5 +1,5 @@
 import { mxm, transpose, type Mat3 } from '../math/mat';
-import { cross, dot, scale, sub, toRad, unit, type Vec3 } from '../math/vec';
+import { add, cross, dot, scale, sub, toRad, unit, type Vec3 } from '../math/vec';
 import type { PlotAxes } from '../projection/projection';
 
 /**
@@ -18,15 +18,22 @@ export function aotLineOfSight(azimuthDeg: number): Vec3 {
 }
 
 /**
- * AOT plot axes in LM body axes: boresight = line of sight, up = LM +X (away from the surface: "the lunar
- * surface can be seen at the extreme center bottom of each of the views", 69-FM-197 §3.13), as seen.
+ * AOT plot axes in LM body axes, as seen. At the front detent, up = LM +X (away from the surface). The AOT is
+ * a rotating-head periscope, so turning the head to a detent rotates the image by the detent azimuth; the sign
+ * (−azimuth) is fixed by the reticle crosses the 1969 program drew in each detent's view (TN D-6853 Fig 4,
+ * measured in scripts/test/fig4-reticle.test.ts).
  */
 export function aotPlotAxes(azimuthDeg: number): PlotAxes {
   const ez = aotLineOfSight(azimuthDeg);
   const x: Vec3 = [1, 0, 0];
-  const ey = unit(sub(x, scale(ez, dot(x, ez))));
+  const upX = unit(sub(x, scale(ez, dot(x, ez))));
+  const roll = toRad(-azimuthDeg);
+  const ey = add(scale(upX, Math.cos(roll)), scale(cross(ez, upX), Math.sin(roll)));
   return { ex: cross(ez, ey), ey, ez };
 }
+
+/** Plot-frame angle (degrees CCW from +x) of the AOT reticle's first cross line for a detent. */
+export const aotReticleAngleDeg = (azimuthDeg: number): number => -azimuthDeg;
 
 /**
  * LM attitude (reference → body) from plot axes fitted for one detent (axes expressed in the reference frame):

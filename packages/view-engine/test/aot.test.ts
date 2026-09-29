@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { RotationAxis, Body } from 'astronomy-engine';
 import {
   AOT_DETENTS, angleBetween, aotLineOfSight, aotPlotAxes, besselianEpochToJd, bodyDirection, cross, dot, J2000_JD,
-  moonFixedToJ2000, mxv, norm, orthonormalityError, siteFrame, toDeg,
+  moonFixedToJ2000, mxv, norm, orthonormalityError, scale, siteFrame, sub, toDeg, unit, type Vec3,
 } from '../src/index';
 
 describe('LM alignment optical telescope (AOT)', () => {
@@ -16,10 +16,18 @@ describe('LM alignment optical telescope (AOT)', () => {
     expect(aotLineOfSight(AOT_DETENTS.front)[2]).toBeCloseTo(Math.SQRT1_2, 12); // front looks forward (+Z)
     expect(aotLineOfSight(AOT_DETENTS.rightFront)[1]).toBeGreaterThan(0); // right is +Y
   });
-  it('plots each detent with up toward LM +X (the surface at the bottom) and as-seen handedness', () => {
+  it('plots the front detent with up toward LM +X (the surface at the bottom), as seen', () => {
+    const a = aotPlotAxes(AOT_DETENTS.front);
+    expect(dot(a.ey, [1, 0, 0])).toBeCloseTo(Math.SQRT1_2, 12);
+    expect(dot(cross(a.ez, a.ey), a.ex)).toBeCloseTo(1, 12);
+  });
+  it('rotates the image by −(detent azimuth) about the line of sight (rotating-head periscope; sign from the drawn reticles)', () => {
     for (const az of Object.values(AOT_DETENTS)) {
       const a = aotPlotAxes(az);
-      expect(dot(a.ey, [1, 0, 0])).toBeGreaterThan(0.7);
+      const x: Vec3 = [1, 0, 0];
+      const upX = unit(sub(x, scale(a.ez, dot(x, a.ez)))); // "+X projected" = the unrotated up
+      const roll = toDeg(Math.atan2(dot(cross(upX, a.ey), a.ez), dot(upX, a.ey)));
+      expect(((roll + az + 540) % 360) - 180).toBeCloseTo(0, 9);
       expect(dot(a.ey, a.ez)).toBeCloseTo(0, 12);
       expect(dot(cross(a.ez, a.ey), a.ex)).toBeCloseTo(1, 12);
     }

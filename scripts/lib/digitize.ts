@@ -90,3 +90,27 @@ export function snapToBlob(blobs: Blob[], approx: readonly [number, number], max
 export function isRoundDot(b: Blob): boolean {
   return b.area >= 50 && b.area <= 90 && b.w <= 11 && b.h <= 11 && Math.abs(b.w - b.h) <= 1 && b.area / (b.w * b.h) >= 0.7;
 }
+
+/**
+ * Orientation of a reticle cross drawn through the plot origin: the two angles (degrees CCW from plot +x, in
+ * [0, 180)) with the most ink integrated along the line between 5° and 27° from the origin on both sides.
+ */
+export function crossAngles(img: GrayImage, frame: Frame, extentDeg = 50): [number, number] {
+  const sx = (frame.rightX - frame.leftX) / (2 * extentDeg), sy = (frame.bottomY - frame.topY) / (2 * extentDeg);
+  const cx = (frame.leftX + frame.rightX) / 2, cy = (frame.topY + frame.bottomY) / 2;
+  const ink = (deg: number) => {
+    const t = (deg * Math.PI) / 180;
+    let s = 0;
+    for (let r = 5; r <= 27; r += 0.1) {
+      for (const sgn of [1, -1]) {
+        const x = Math.round(cx + sgn * r * Math.cos(t) * sx), y = Math.round(cy - sgn * r * Math.sin(t) * sy);
+        s += 255 - img.data[y * img.width + x]!;
+      }
+    }
+    return s;
+  };
+  const ranked = Array.from({ length: 1800 }, (_, i) => [i / 10, ink(i / 10)] as const).sort((a, b) => b[1] - a[1]);
+  const first = ranked[0]![0];
+  const apart = (a: number) => { const d = Math.abs(a - first) % 180; return Math.min(d, 180 - d) > 20; };
+  return [first, ranked.find(([a]) => apart(a))![0]];
+}

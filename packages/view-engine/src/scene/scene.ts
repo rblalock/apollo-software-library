@@ -2,7 +2,7 @@ import { mxv } from '../math/mat';
 import type { ResolvedStar } from '../catalog/resolve';
 import { BODY_LABEL, bodyAngularRadiusDeg, bodyDirection, type BodyName } from '../ephemeris/ephemeris';
 import { referenceToOptics, SCT_FIELD_OF_VIEW_DEG, sctPlotAxes } from '../frames/frames';
-import { AOT_FIELD_OF_VIEW_DEG, aotPlotAxes } from '../frames/aot';
+import { AOT_FIELD_OF_VIEW_DEG, aotPlotAxes, aotReticleAngleDeg } from '../frames/aot';
 import { projectAzimuthalEquidistant, type PlotPoint } from '../projection/projection';
 import { getToUtc } from '../time/time';
 import type { DisplayList, Layer, PlacedBody, Primitive, ViewSpec } from './types';
@@ -54,14 +54,16 @@ function sctReticle(): Primitive[] {
   return out;
 }
 
-/** AOT field circle and reticle cross (drawn along the plot axes; the 1969 figures rotate it per detent). */
-function aotReticle(): Primitive[] {
+/** AOT field circle and reticle cross, the cross rotated with the image as on the 1969 figures. */
+function aotReticle(detentDeg: number): Primitive[] {
   const r = AOT_FIELD_OF_VIEW_DEG / 2;
   const circle = Array.from({ length: 180 }, (_, i) => {
     const a = (i / 180) * 2 * Math.PI;
     return [r * Math.cos(a), r * Math.sin(a)] as const;
   });
-  return [{ kind: 'polyline', points: circle, closed: true }, line(0, -r, 0, r), line(-r, 0, r, 0)];
+  const t = (aotReticleAngleDeg(detentDeg) * Math.PI) / 180;
+  const c = r * Math.cos(t), s = r * Math.sin(t);
+  return [{ kind: 'polyline', points: circle, closed: true }, line(-c, -s, c, s), line(s, -c, -s, c)];
 }
 
 function header(spec: ViewSpec): Primitive[] {
@@ -84,7 +86,7 @@ export function buildScene(spec: ViewSpec, data: SceneData): DisplayList {
   const e = spec.extentDeg;
   const inside = (p: PlotPoint) =>
     Number.isFinite(p.x) && Number.isFinite(p.y) && Math.abs(p.x) <= e && Math.abs(p.y) <= e;
-  const primitives: Primitive[] = [...frame(e), ...(inst.kind === 'sct' ? sctReticle() : aotReticle())];
+  const primitives: Primitive[] = [...frame(e), ...(inst.kind === 'sct' ? sctReticle() : aotReticle(inst.detentDeg))];
   const placed: PlacedBody[] = [];
 
   for (const s of data.stars) {

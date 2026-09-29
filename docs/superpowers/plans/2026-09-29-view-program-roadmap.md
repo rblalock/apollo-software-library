@@ -27,7 +27,7 @@
   - Unit tests: detent directions are 45° from +X and 60° apart, and the local frame is orthonormal with +X up.
 - [x] 1.5 **Fig 4 digitizing:** six panels from TN D-6853 (PDF pp. 10–12), with name maps.
 - [x] 1.6 **Attitude fit on panel (a):** solve for the LM attitude and the AOT plot convention from panel (a) only. Record the result, check plausibility (+X within 5° of vertical; yaw compared with the ALSJ value), and freeze it into `FIG_4_LM_ATTITUDE`.
-- [ ] 1.7 **Fig 4 golden:** panels (b)–(f) predicted with zero further parameters.
+- [x] 1.7 **Fig 4 golden:** panels (b)–(f) predicted with zero further parameters.
 - [ ] 1.8 **Figure exhibit:** generalize `Fig3aExhibit` into `FigureExhibit` with a config; add pages for Fig 3b, 3c and 4, plus exhibit Markdown and entry links. Build and check in the browser.
 - [ ] 1.9 **Ledger and commit.**
 
