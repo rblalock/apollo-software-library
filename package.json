@@ -1,0 +1,15 @@
+{
+  "name": "apollo-software-library",
+  "private": true,
+  "type": "module",
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p packages/view-engine --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.2"
+  }
+}
