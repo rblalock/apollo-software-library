@@ -18,8 +18,8 @@
 
 ## Item 1: Figs 3b, 3c, the dot check, and AOT (Fig 4)
 
-- [ ] 1.1 **Dot-check golden (Fig 3a):** `scripts/lib/digitize.ts` exposes the round-dot blobs. Test `golden-fig3a-dots.test.ts`: every in-frame RTCC star has a scan dot within 1.0°, and every round scan dot has a star within 1.0°, apart from listed exclusions. Data: `fig3a-dots.json` from `digitize-fig3a.ts`.
-- [ ] 1.2 **Generalize digitizing:** `scripts/digitize-figure.ts <id>`, driven by `data/manual/figures/<id>.json` (source page, crop, name map). Migrate Fig 3a and keep its outputs identical (test).
+- [x] 1.1 **Dot-check golden (Fig 3a):** `scripts/lib/digitize.ts` exposes the round-dot blobs. Test `golden-fig3a-dots.test.ts`: every in-frame RTCC star has a scan dot within 1.0°, and every round scan dot has a star within 1.0°, apart from listed exclusions. Data: `fig3a-dots.json` from `digitize-fig3a.ts`.
+- [x] 1.2 **Generalize digitizing:** `scripts/digitize-figure.ts <id>`, driven by `data/manual/figures/<id>.json` (source page, crop, name map). Migrate Fig 3a and keep its outputs identical (test).
 - [ ] 1.3 **Figs 3b and 3c:** add crops, name maps and points. Add `FIG_3B_SPEC` and `FIG_3C_SPEC`. Golden tests are zero-parameter.
 - [ ] 1.4 **AOT geometry:**
   - `frames/aot.ts`: detent line of sight in the LM body frame, plot axes, a 60° field.

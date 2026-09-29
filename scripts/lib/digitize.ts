@@ -85,3 +85,8 @@ export function snapToBlob(blobs: Blob[], approx: readonly [number, number], max
   if (!best || bestD > maxDistPx) throw new Error(`no blob within ${maxDistPx}px of (${approx.join(', ')})`);
   return best;
 }
+
+/** A plotter star dot: a small filled disc (≈9–10 px at 300 dpi), not a letter, period, glyph or disc body. */
+export function isRoundDot(b: Blob): boolean {
+  return b.area >= 50 && b.area <= 90 && b.w <= 11 && b.h <= 11 && Math.abs(b.w - b.h) <= 1 && b.area / (b.w * b.h) >= 0.7;
+}

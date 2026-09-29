@@ -1,0 +1,103 @@
+{
+  "_comment": "Digitizing config for TN D-6853 Fig 3a. bodies: pixel positions (in the scan) of each labeled glyph; approxPx snaps to the nearest detected blob within 20 px, manualPx is used as-is for glyphs touching the frame line or reticle (measured on a 4x zoom, about ±0.2°).",
+  "id": "fig3a",
+  "scan": "tnd6853-fig3a.png",
+  "source": {
+    "file": "tn-d-6853.pdf",
+    "page": 10,
+    "dpi": 300,
+    "crop": {
+      "x": 150,
+      "y": 215,
+      "w": 1080,
+      "h": 1040
+    }
+  },
+  "extentDeg": 50,
+  "bodies": {
+    "Sirius": {
+      "kind": "navStar",
+      "manualPx": [
+        208,
+        176
+      ]
+    },
+    "Rigel": {
+      "kind": "navStar",
+      "approxPx": [
+        317,
+        320
+      ]
+    },
+    "Capella": {
+      "kind": "navStar",
+      "approxPx": [
+        787,
+        275
+      ]
+    },
+    "Aldebaran": {
+      "kind": "navStar",
+      "approxPx": [
+        536,
+        349
+      ]
+    },
+    "Venus": {
+      "kind": "planet",
+      "manualPx": [
+        564,
+        311
+      ]
+    },
+    "Mirfak": {
+      "kind": "navStar",
+      "approxPx": [
+        836,
+        421
+      ]
+    },
+    "Menkar": {
+      "kind": "navStar",
+      "approxPx": [
+        480,
+        543
+      ]
+    },
+    "Saturn": {
+      "kind": "planet",
+      "manualPx": [
+        564,
+        588
+      ]
+    },
+    "Navi": {
+      "kind": "navStar",
+      "manualPx": [
+        985,
+        550
+      ]
+    },
+    "Earth": {
+      "kind": "earth",
+      "approxPx": [
+        599,
+        729
+      ]
+    },
+    "Alpheratz": {
+      "kind": "navStar",
+      "approxPx": [
+        797,
+        759
+      ]
+    },
+    "Diphda": {
+      "kind": "navStar",
+      "approxPx": [
+        393,
+        848
+      ]
+    }
+  }
+}

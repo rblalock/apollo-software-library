@@ -1,18 +1,18 @@
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, readdirSync } from 'node:fs';
+import { mkdirSync, readdirSync, rmSync } from 'node:fs';
+import { loadFigureConfigs } from './lib/figures';
 import { crop, readGray, writeGray } from './lib/png';
 
-/** Crop boxes are in 300-dpi page pixels; they must include the whole ±50° frame plus its tick labels. */
-const FIGURES = [
-  { id: 'tnd6853-fig3a', pdf: 'data/sources/tn-d-6853.pdf', page: 10, crop: { x: 150, y: 215, w: 1080, h: 1040 } },
-];
-
+// Crop boxes (data/manual/figures/*.json) are in page pixels at the given dpi; each must contain one whole panel
+// frame plus its tick labels and headers.
 mkdirSync('tmp/extract', { recursive: true });
 mkdirSync('data/derived/scans', { recursive: true });
-for (const f of FIGURES) {
+for (const f of loadFigureConfigs(process.argv.slice(2))) {
   const prefix = `tmp/extract/${f.id}`;
-  execFileSync('pdftoppm', ['-r', '300', '-gray', '-png', '-f', String(f.page), '-l', String(f.page), f.pdf, prefix]);
+  for (const old of readdirSync('tmp/extract').filter((n) => n.startsWith(`${f.id}-`))) rmSync(`tmp/extract/${old}`);
+  execFileSync('pdftoppm', ['-r', String(f.source.dpi), '-gray', '-png', '-f', String(f.source.page), '-l', String(f.source.page), `data/sources/${f.source.file}`, prefix]);
   const page = readdirSync('tmp/extract').find((n) => n.startsWith(`${f.id}-`))!;
-  writeGray(`data/derived/scans/${f.id}.png`, crop(readGray(`tmp/extract/${page}`), f.crop.x, f.crop.y, f.crop.w, f.crop.h));
-  console.log(`${f.id}.png written`);
+  const c = f.source.crop;
+  writeGray(`data/derived/scans/${f.scan}`, crop(readGray(`tmp/extract/${page}`), c.x, c.y, c.w, c.h));
+  console.log(`${f.scan} written`);
 }

@@ -34,3 +34,18 @@ describe('digitize', () => {
     expect(p.yDeg).toBeCloseTo(0, 9);
   });
 });
+
+import { isRoundDot } from '../lib/digitize';
+
+describe('isRoundDot', () => {
+  it('accepts the plotter dots (≈9–10 px filled discs at 300 dpi)', () => {
+    expect(isRoundDot({ cx: 0, cy: 0, area: 70, w: 9, h: 9 })).toBe(true);
+    expect(isRoundDot({ cx: 0, cy: 0, area: 73, w: 10, h: 10 })).toBe(true);
+  });
+  it('rejects letters, periods, glyphs and the Earth disc', () => {
+    expect(isRoundDot({ cx: 0, cy: 0, area: 100, w: 10, h: 15 })).toBe(false); // letter
+    expect(isRoundDot({ cx: 0, cy: 0, area: 12, w: 4, h: 4 })).toBe(false); // period
+    expect(isRoundDot({ cx: 0, cy: 0, area: 190, w: 22, h: 21 })).toBe(false); // nav-star asterisk
+    expect(isRoundDot({ cx: 0, cy: 0, area: 307, w: 20, h: 20 })).toBe(false); // Earth
+  });
+});
