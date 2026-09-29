@@ -2,12 +2,15 @@ import { APOLLO_11, type GimbalAngles } from '@asl/view-engine';
 
 const docLink = (id: string, page: number) => `/documents/${id}/?page=${page}`;
 
+type GimbalKey = keyof GimbalAngles;
+
 interface Props {
   getText: string;
   getError: string | null;
   onGetText: (text: string) => void;
-  gimbals: GimbalAngles;
-  onGimbals: (g: GimbalAngles) => void;
+  gimbalDrafts: Record<GimbalKey, string>;
+  gimbalErrors: Partial<Record<GimbalKey, string>>;
+  onGimbalDraft: (key: GimbalKey, text: string) => void;
   onReset: () => void;
   utc: Date;
   recovered: { shaftDeg: number; trunnionDeg: number };
@@ -16,19 +19,24 @@ interface Props {
 
 export function InputsPanel(p: Props) {
   const m = APOLLO_11.refsmmat.lunarLiftoff;
-  const gimbalInput = (key: keyof GimbalAngles, label: string) => (
-    <label className="flex items-center justify-between gap-3">
-      <span>{label}</span>
-      <input
-        type="number" step={0.1} min={-360} max={360} value={p.gimbals[key]}
-        onChange={(e) => {
-          const v = Number(e.target.value);
-          if (e.target.value !== '' && Number.isFinite(v)) p.onGimbals({ ...p.gimbals, [key]: v });
-        }}
-        className="w-24 rounded border border-stone-400 bg-transparent px-2 py-1 text-right font-mono dark:border-stone-600"
-      />
-    </label>
-  );
+  const gimbalInput = (key: GimbalKey, label: string) => {
+    const error = p.gimbalErrors[key];
+    const errorId = `gimbal-${key}-error`;
+    return (
+      <div>
+        <label className="flex items-center justify-between gap-3">
+          <span>{label}</span>
+          <input
+            type="text" inputMode="decimal" value={p.gimbalDrafts[key]}
+            onChange={(e) => p.onGimbalDraft(key, e.target.value)}
+            aria-invalid={error !== undefined} aria-describedby={error ? errorId : undefined}
+            className="w-24 rounded border border-stone-400 bg-transparent px-2 py-1 text-right font-mono dark:border-stone-600"
+          />
+        </label>
+        {error && <p id={errorId} role="alert" className="mt-1 text-amber-700 dark:text-amber-400">{error}. Showing the last valid angle.</p>}
+      </div>
+    );
+  };
   return (
     <aside className="space-y-6 text-sm">
       <section>

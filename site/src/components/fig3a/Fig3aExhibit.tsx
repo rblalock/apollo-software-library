@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { buildScene, FIG_3A_SPEC, InvalidGetError, parseGet, renderSvg, type GimbalAngles } from '@asl/view-engine';
 import { baseline, baselineResiduals, recovered, residualArrows, scanUnderlay, stars, TOLERANCE } from '../../lib/fig3a';
+import { parseAngleDraft } from '../../lib/inputs';
 import { InputsPanel } from './InputsPanel';
 import { ResidualsTable } from './ResidualsTable';
 
@@ -28,7 +29,11 @@ function Segmented<T extends string>(props: { label: string; value: T; options: 
   );
 }
 
+type GimbalKey = keyof GimbalAngles;
+const GIMBAL_KEYS: GimbalKey[] = ['inner', 'middle', 'outer'];
+const GIMBAL_RANGE = { min: -360, max: 360 };
 const sameGimbals = (a: GimbalAngles, b: GimbalAngles) => a.inner === b.inner && a.middle === b.middle && a.outer === b.outer;
+const draftsOf = (g: GimbalAngles): Record<GimbalKey, string> => ({ inner: String(g.inner), middle: String(g.middle), outer: String(g.outer) });
 
 export default function Fig3aExhibit() {
   const [mode, setMode] = useState<Mode>('recreation');
@@ -39,6 +44,8 @@ export default function Fig3aExhibit() {
   const [validGet, setValidGet] = useState(FIG_3A_SPEC.get);
   const [getError, setGetError] = useState<string | null>(null);
   const [gimbals, setGimbals] = useState<GimbalAngles>(FIG_3A_SPEC.gimbals);
+  const [gimbalDrafts, setGimbalDrafts] = useState(draftsOf(FIG_3A_SPEC.gimbals));
+  const [gimbalErrors, setGimbalErrors] = useState<Partial<Record<GimbalKey, string>>>({});
 
   const onGetText = (text: string) => {
     setGetText(text);
@@ -50,9 +57,27 @@ export default function Fig3aExhibit() {
       setGetError(e instanceof InvalidGetError ? e.message : String(e));
     }
   };
-  const reset = () => { onGetText(FIG_3A_SPEC.get); setGimbals(FIG_3A_SPEC.gimbals); };
+  const onGimbalDraft = (key: GimbalKey, text: string) => {
+    setGimbalDrafts((d) => ({ ...d, [key]: text }));
+    const parsed = parseAngleDraft(text, GIMBAL_RANGE);
+    if (parsed.ok) {
+      setGimbals((g) => ({ ...g, [key]: parsed.value }));
+      setGimbalErrors(({ [key]: _cleared, ...rest }) => rest);
+    } else {
+      setGimbalErrors((e) => ({ ...e, [key]: parsed.error }));
+    }
+  };
+  const reset = () => {
+    onGetText(FIG_3A_SPEC.get);
+    setGimbals(FIG_3A_SPEC.gimbals);
+    setGimbalDrafts(draftsOf(FIG_3A_SPEC.gimbals));
+    setGimbalErrors({});
+  };
 
   const isBaseline = validGet === FIG_3A_SPEC.get && sameGimbals(gimbals, FIG_3A_SPEC.gimbals);
+  const baselineDrafts = draftsOf(FIG_3A_SPEC.gimbals);
+  const inputsAtBaseline = isBaseline && getText === FIG_3A_SPEC.get && getError === null
+    && GIMBAL_KEYS.every((k) => gimbalDrafts[k] === baselineDrafts[k]) && Object.keys(gimbalErrors).length === 0;
   const dl = useMemo(
     () => (isBaseline ? baseline : buildScene({ ...FIG_3A_SPEC, get: validGet, gimbals }, { stars })),
     [isBaseline, validGet, gimbals],
@@ -97,8 +122,8 @@ export default function Fig3aExhibit() {
       </div>
       <InputsPanel
         getText={getText} getError={getError} onGetText={onGetText}
-        gimbals={gimbals} onGimbals={setGimbals} onReset={reset}
-        utc={dl.utc} recovered={recovered} isBaseline={isBaseline}
+        gimbalDrafts={gimbalDrafts} gimbalErrors={gimbalErrors} onGimbalDraft={onGimbalDraft} onReset={reset}
+        utc={dl.utc} recovered={recovered} isBaseline={inputsAtBaseline}
       />
       <div className="lg:col-span-2">
         <ResidualsTable {...baselineResiduals} tolerance={TOLERANCE} />
