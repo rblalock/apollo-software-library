@@ -66,8 +66,10 @@ export default function FilmExhibit() {
       <Segmented label="Reel" value={reelId} onChange={selectReel} options={REELS.map((r) => [r.id, r.label] as const)} />
       <p className="max-w-3xl text-sm text-stone-700 dark:text-stone-300">{reel.description}</p>
       <div className="relative mx-auto max-w-3xl overflow-hidden rounded border border-stone-300 dark:border-stone-700">
+        {/* Server and browser JavaScript engines can round a borderline visibility or clipping test differently in the
+            last bit, so the server's first frame may differ by one sample point; it is kept until the next change. */}
         <div className="[&>svg]:block [&>svg]:h-auto [&>svg]:w-full"
-          dangerouslySetInnerHTML={{ __html: frame.svg }} />
+          suppressHydrationWarning dangerouslySetInnerHTML={{ __html: frame.svg }} />
         {grain && style === 'microfilm' && <Grain />}
       </div>
       <div className="mx-auto flex max-w-3xl flex-wrap items-center gap-3">

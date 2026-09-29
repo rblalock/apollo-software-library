@@ -120,7 +120,7 @@ export default function FigureExhibit({ figureIds }: { figureIds: string[] }) {
         ) : (
           <div
             className="overflow-hidden rounded border border-stone-300 dark:border-stone-700 [&>svg]:block [&>svg]:h-auto [&>svg]:w-full"
-            dangerouslySetInnerHTML={{ __html: svg }}
+            suppressHydrationWarning dangerouslySetInnerHTML={{ __html: svg }}
           />
         )}
         {mode === 'overlay' && (isBaseline

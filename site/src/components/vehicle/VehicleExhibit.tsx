@@ -68,7 +68,7 @@ export default function VehicleExhibit() {
           </button>
         </div>
         <div className="overflow-hidden rounded border border-stone-300 dark:border-stone-700 [&>svg]:block [&>svg]:h-auto [&>svg]:w-full"
-          dangerouslySetInnerHTML={{ __html: svg }} />
+          suppressHydrationWarning dangerouslySetInnerHTML={{ __html: svg }} />
         <p className="font-mono text-xs text-muted">{segments} visible edge segments</p>
       </div>
       <aside className="space-y-5">

@@ -55,7 +55,7 @@ export default function GlobeExhibit({ panelIds }: { panelIds: string[] }) {
         )}
         {svg && (
           <div className="overflow-hidden rounded border border-stone-300 dark:border-stone-700 [&>svg]:block [&>svg]:h-auto [&>svg]:w-full"
-            dangerouslySetInnerHTML={{ __html: svg }} />
+            suppressHydrationWarning dangerouslySetInnerHTML={{ __html: svg }} />
         )}
         {mode === 'overlay' && !atPrinted && (
           <p className="text-sm text-amber-700 dark:text-amber-400">The time differs from the figure's, so the overlay no longer lines up. Reset to compare.</p>
