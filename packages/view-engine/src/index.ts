@@ -7,3 +7,4 @@ export * from './catalog/resolve';
 export * from './missions/apollo11';
 export * from './projection/projection';
 export * from './frames/frames';
+export * from './ephemeris/ephemeris';
