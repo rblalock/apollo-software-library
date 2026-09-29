@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react';
 import { buildScene, InvalidGetError, parseGet, renderSvg, type GimbalAngles } from '@asl/view-engine';
-import { baselineScene, CATALOGS, FIGURES, recoveredSct, residualArrows, residuals, scanUnderlay, TOLERANCE, type CatalogId } from '../../lib/figures';
+import { baselineScene, CATALOGS, displaySpec, FIGURES, observerNote, recoveredSct, residualArrows, residuals, scanUnderlay, TOLERANCE, type CatalogId } from '../../lib/figures';
 import { parseAngleDraft } from '../../lib/inputs';
+import { Segmented } from '../ui/Segmented';
 import { InputsPanel } from './InputsPanel';
 import { ResidualsTable } from './ResidualsTable';
 
@@ -12,27 +13,6 @@ const GIMBAL_KEYS: GimbalKey[] = ['inner', 'middle', 'outer'];
 const GIMBAL_RANGE = { min: -360, max: 360 };
 const draftsOf = (g: GimbalAngles): Record<GimbalKey, string> => ({ inner: String(g.inner), middle: String(g.middle), outer: String(g.outer) });
 const sameGimbals = (a: GimbalAngles, b: GimbalAngles) => a.inner === b.inner && a.middle === b.middle && a.outer === b.outer;
-
-function Segmented<T extends string>(props: { label: string; value: T; options: ReadonlyArray<readonly [T, string]>; onChange: (v: T) => void }) {
-  return (
-    <fieldset className="flex flex-wrap items-center gap-2">
-      <legend className="sr-only">{props.label}</legend>
-      {props.options.map(([v, text]) => (
-        <label
-          key={v}
-          className={`cursor-pointer rounded border px-3 py-1 font-mono text-xs uppercase tracking-wide has-[:focus-visible]:outline-2 ${
-            props.value === v
-              ? 'border-stone-900 bg-stone-900 text-stone-50 dark:border-stone-100 dark:bg-stone-100 dark:text-stone-900'
-              : 'border-stone-400 dark:border-stone-600'
-          }`}
-        >
-          <input type="radio" className="sr-only" name={props.label} value={v} checked={props.value === v} onChange={() => props.onChange(v)} />
-          {text}
-        </label>
-      ))}
-    </fieldset>
-  );
-}
 
 export default function FigureExhibit({ figureIds }: { figureIds: string[] }) {
   const [figureId, setFigureId] = useState(figureIds[0]!);
@@ -81,9 +61,10 @@ export default function FigureExhibit({ figureIds }: { figureIds: string[] }) {
   const figureResiduals = useMemo(() => residuals(figure), [figure]);
   const recovered = useMemo(() => recoveredSct(figure), [figure]);
   const dl = useMemo(
-    () => (isBaseline && catalog === 'rtcc' ? baseline : buildScene({ ...spec, get: validGet, gimbals }, { stars: CATALOGS[catalog].stars })),
-    [isBaseline, catalog, baseline, spec, validGet, gimbals],
+    () => (isBaseline && catalog === 'rtcc' ? baseline : buildScene(displaySpec(figure, { get: validGet, gimbals }), { stars: CATALOGS[catalog].stars })),
+    [isBaseline, catalog, baseline, figure, validGet, gimbals],
   );
+  const whereFrom = useMemo(() => observerNote(figure, validGet), [figure, validGet]);
   const svg = useMemo(() => {
     const arrows = mode === 'overlay' && isBaseline ? residualArrows(figureResiduals.rows) : [];
     return renderSvg({ ...dl, primitives: [...dl.primitives, ...arrows] }, {
@@ -133,7 +114,7 @@ export default function FigureExhibit({ figureIds }: { figureIds: string[] }) {
         {mode === 'overlay' && (isBaseline
           ? <p className="text-sm text-stone-600 dark:text-stone-400">Orange arrows run from each body's position on the 1972 scan toward its recomputed position, magnified ×5.</p>
           : <p className="text-sm text-amber-700 dark:text-amber-400">The inputs differ from the figure's, so the overlay no longer lines up. Reset to compare.</p>)}
-        {dl.notes.map((n) => <p key={n} className="text-sm text-stone-600 dark:text-stone-400">{n}</p>)}
+        {[...dl.notes, ...(whereFrom ? [whereFrom] : [])].map((n) => <p key={n} className="text-sm text-stone-600 dark:text-stone-400">{n}</p>)}
       </div>
       <InputsPanel figure={figure} utc={dl.utc} recovered={recovered} tryIt={tryIt} />
       <div className="lg:col-span-2">

@@ -1,5 +1,5 @@
 import { add, dot, scale, sub, type Vec3 } from '../math/vec';
-import { axesFromBoresight, projectGnomonic } from '../projection/projection';
+import { axesFromBoresight, clipToSquare, projectGnomonic } from '../projection/projection';
 import type { Primitive } from '../scene/types';
 import { visibleSegments } from './hiddenline';
 import type { Part } from './solids';
@@ -11,20 +11,6 @@ export interface VehicleCamera {
   up: Vec3;
   /** Half-width of the square frame, in the gnomonic plot's degree units. */
   extentDeg: number;
-}
-
-/** Liang–Barsky clip of a 2-D segment to the square |x|, |y| ≤ e. */
-function clipSquare(a: [number, number], b: [number, number], e: number): [[number, number], [number, number]] | null {
-  let t0 = 0, t1 = 1;
-  const dx = b[0] - a[0], dy = b[1] - a[1];
-  for (const [p, q] of [[-dx, a[0] + e], [dx, e - a[0]], [-dy, a[1] + e], [dy, e - a[1]]] as const) {
-    if (p === 0) { if (q < 0) return null; continue; }
-    const t = q / p;
-    if (p < 0) t0 = Math.max(t0, t); else t1 = Math.min(t1, t);
-    if (t0 > t1) return null;
-  }
-  const at = (t: number): [number, number] => [a[0] + t * dx, a[1] + t * dy];
-  return [at(t0), at(t1)];
 }
 
 /**
@@ -43,7 +29,7 @@ export function vehiclePrimitives(parts: Part[], cam: VehicleCamera): Primitive[
     if (za < near) a = cut(a, b, za, zb);
     else if (zb < near) b = cut(b, a, zb, za);
     const pa = projectGnomonic(a, axes)!, pb = projectGnomonic(b, axes)!;
-    const c = clipSquare([pa.x, pa.y], [pb.x, pb.y], cam.extentDeg);
+    const c = clipToSquare([pa.x, pa.y], [pb.x, pb.y], cam.extentDeg);
     if (c) out.push({ kind: 'polyline', points: c, closed: false });
   }
   return out;

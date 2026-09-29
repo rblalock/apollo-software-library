@@ -40,3 +40,17 @@ export function projectGnomonic(v: Vec3, axes: PlotAxes): PlotPoint | null {
   if (z <= 0) return null;
   return { x: toDeg(dot(v, axes.ex) / z), y: toDeg(dot(v, axes.ey) / z) };
 }
+
+/** Liang–Barsky clip of a plot segment to the square |x|, |y| ≤ e; null when it misses. */
+export function clipToSquare(a: readonly [number, number], b: readonly [number, number], e: number): [[number, number], [number, number]] | null {
+  let t0 = 0, t1 = 1;
+  const dx = b[0] - a[0], dy = b[1] - a[1];
+  for (const [p, q] of [[-dx, a[0] + e], [dx, e - a[0]], [-dy, a[1] + e], [dy, e - a[1]]] as const) {
+    if (p === 0) { if (q < 0) return null; continue; }
+    const t = q / p;
+    if (p < 0) t0 = Math.max(t0, t); else t1 = Math.min(t1, t);
+    if (t0 > t1) return null;
+  }
+  const at = (t: number): [number, number] => [a[0] + t * dx, a[1] + t * dy];
+  return [at(t0), at(t1)];
+}

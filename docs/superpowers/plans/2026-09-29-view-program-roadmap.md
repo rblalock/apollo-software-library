@@ -48,7 +48,7 @@
 - [x] 5.4 **Validation golden:** TN D-6853 Figs 6–7 R_E/V_i and h_M within 1%; later Mission Report events within 1%.
 - [x] 5.5 **Multi-vehicle state service:** `missionState(get) → { csm, lm?, sivb? }` positions.
 - [x] 5.6 **Hidden-line solids:** `vehicles/solids.ts` (LM, S-IVB) and `vehicles/hiddenline.ts`. Tests: cube and occluded-edge cases.
-- [ ] 5.7 **Exhibit:** a rotating LM hidden-line view, plus Fig 3b's Moon limb from the CSM position (update its limitation note).
+- [x] 5.7 **Exhibit:** a rotating LM hidden-line view, plus Fig 3b's Moon limb from the CSM position (update its limitation note).
 - [ ] 5.8 **Ledger and commit.**
 
 ## Item 2: Earth and Moon

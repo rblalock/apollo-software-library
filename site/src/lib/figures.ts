@@ -1,5 +1,5 @@
 import {
-  APOLLO_11, buildScene, FIG_3A_SPEC, resolveVerifiedCatalog, type VerifiedCatalogFile, FIG_3B_SPEC, FIG_3C_SIGN_CORRECTED_SPEC, fig4Spec, fitPlotAxes, impliedSctAngles,
+  APOLLO_11, buildScene, createMissionEphemeris, formatGet, parseGet, type EventTable, type GimbalAngles, type VehicleId, FIG_3A_SPEC, resolveVerifiedCatalog, type VerifiedCatalogFile, FIG_3B_SPEC, FIG_3C_SIGN_CORRECTED_SPEC, fig4Spec, fitPlotAxes, impliedSctAngles,
   resolveCatalog, type Agc37File, type BscFile, type DisplayList, type Primitive, type RtccFile, type Underlay, type ViewSpec,
 } from '@asl/view-engine';
 import bsc from '../../../data/derived/bsc45.json';
@@ -15,6 +15,7 @@ import p4c from '../../../data/derived/fig4c-points.json';
 import p4d from '../../../data/derived/fig4d-points.json';
 import p4e from '../../../data/derived/fig4e-points.json';
 import p4f from '../../../data/derived/fig4f-points.json';
+import events from '../../../data/manual/a11-events.json';
 
 export const TOLERANCE = { rmsDeg: 1.0, maxDeg: 2.0 } as const;
 
@@ -34,8 +35,13 @@ interface PointsFile {
   points: Array<{ id: string; kind: string; actually?: string; note?: string; xDeg: number; yDeg: number }>;
 }
 
+/** Vehicle states from the Apollo 11 Mission Report's trajectory table (engine: createMissionEphemeris). */
+export const mission = createMissionEphemeris(events as EventTable, APOLLO_11.rangeZeroUtc);
+
 export interface FigureConfig {
   id: string;
+  /** The spacecraft the view is drawn from, when its reconstructed position is used for display. */
+  observer?: VehicleId;
   /** Short panel label, e.g. "(a) Front detent". */
   label: string;
   spec: ViewSpec;
@@ -45,17 +51,17 @@ export interface FigureConfig {
   attitudeNote: string;
 }
 
-const fig = (id: string, label: string, spec: ViewSpec, points: PointsFile, attitudeNote: string): FigureConfig =>
-  ({ id, label, spec, points, scanHref: `/scans/tnd6853-${id}.png`, attitudeNote });
+const fig = (id: string, label: string, spec: ViewSpec, points: PointsFile, attitudeNote: string, observer?: VehicleId): FigureConfig =>
+  ({ id, label, spec, points, scanHref: `/scans/tnd6853-${id}.png`, attitudeNote, observer });
 
 const SCT_PRINTED = 'Gimbal angles as printed on the figure.';
 const AOT_NOTE = 'LM surface attitude fitted on panel (a) only and frozen; this panel is predicted with no further fitting.';
 
 export const FIGURES: Record<string, FigureConfig> = {
-  fig3a: fig('fig3a', 'Figure 3a', FIG_3A_SPEC, p3a, SCT_PRINTED),
-  fig3b: fig('fig3b', 'Figure 3b', FIG_3B_SPEC, p3b, SCT_PRINTED),
+  fig3a: fig('fig3a', 'Figure 3a', FIG_3A_SPEC, p3a, SCT_PRINTED, 'csm'),
+  fig3b: fig('fig3b', 'Figure 3b', FIG_3B_SPEC, p3b, SCT_PRINTED, 'csm'),
   fig3c: fig('fig3c', 'Figure 3c', FIG_3C_SIGN_CORRECTED_SPEC, p3c,
-    'Inner gimbal sign corrected to −89.10° (both documents print +89.10°, which points the telescope the opposite way). Inferred from this figure\'s own stars, so the fit below is a consistency check, not independent validation.'),
+    'Inner gimbal sign corrected to −89.10° (both documents print +89.10°, which points the telescope the opposite way). Inferred from this figure\'s own stars, so the fit below is a consistency check, not independent validation.', 'csm'),
   fig4a: fig('fig4a', '(a) Front', fig4Spec('front'), p4a, 'LM surface attitude fitted on this panel (a); it calibrates panels (b)–(f).'),
   fig4b: fig('fig4b', '(b) Left front', fig4Spec('leftFront'), p4b, AOT_NOTE),
   fig4c: fig('fig4c', '(c) Left rear', fig4Spec('leftRear'), p4c, AOT_NOTE),
@@ -113,4 +119,27 @@ export function recoveredSct(f: FigureConfig): { shaftDeg: number; trunnionDeg: 
   return impliedSctAngles(fitPlotAxes(pts).axes);
 }
 
-export const baselineScene = (f: FigureConfig): DisplayList => buildScene(f.spec, { stars });
+/**
+ * The spec a figure is displayed with: the reader's GET and gimbals, seen from the spacecraft's reconstructed
+ * position when the figure names one and a state exists at that time (so the Moon's limb is drawn and stars
+ * behind it are hidden). The golden residuals keep the registered Moon-centre spec.
+ */
+export function displaySpec(f: FigureConfig, over: { get?: string; gimbals?: GimbalAngles } = {}): ViewSpec {
+  const spec = { ...f.spec, ...over };
+  const state = f.observer ? mission.state(f.observer, parseGet(spec.get)) : null;
+  if (!state) return spec;
+  return { ...spec, observerPositionKm: state.r, bodies: spec.bodies.includes('moon') ? spec.bodies : [...spec.bodies, 'moon'] };
+}
+
+/** One line saying where the displayed observer position comes from. */
+export function observerNote(f: FigureConfig, get: string): string | null {
+  if (!f.observer) return null;
+  const t = parseGet(get), s = mission.state(f.observer, t);
+  if (!s) return `No ${f.observer.toUpperCase()} state at ${get}: drawn from the Moon's centre.`;
+  if (!s.anchor) return null;
+  const row = (events as EventTable).events.find((e) => e.id === s.anchor);
+  const dt = row ? t - parseGet(row.get) : 0;
+  return `${f.observer.toUpperCase()} position: ${row ? `Mission Report Table 7-II "${row.label}" (${row.get}), propagated ${dt < 0 ? 'back ' : ''}${formatGet(Math.abs(dt))}` : s.anchor}.`;
+}
+
+export const baselineScene = (f: FigureConfig): DisplayList => buildScene(displaySpec(f), { stars });

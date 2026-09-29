@@ -25,9 +25,11 @@ const exhibits = defineCollection({
     entry: z.string(),
     summary: z.string(),
     figureRefs: z.array(z.object({ document: reference('documents'), anchor: z.string() })),
+    /** 'figure' = a 1969 figure recomputed and compared (needs `figures`); 'vehicle' = the hidden-line models. */
+    component: z.enum(['figure', 'vehicle']).default('figure'),
     /** Figure ids from site/src/lib/figures.ts shown by the exhibit (several = a panel switch). */
-    figures: z.array(z.string()).min(1),
-  }),
+    figures: z.array(z.string()).default([]),
+  }).refine((d) => d.component !== 'figure' || d.figures.length > 0, { message: 'a figure exhibit needs at least one figure id', path: ['figures'] }),
 });
 
 const entries = defineCollection({

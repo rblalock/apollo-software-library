@@ -1,9 +1,13 @@
 import { mxv } from '../math/mat';
+import { add, angleBetween, cross, norm, scale, toDeg, toRad, unit, type Vec3 } from '../math/vec';
 import type { ResolvedStar } from '../catalog/resolve';
-import { BODY_LABEL, bodyAngularRadiusDeg, bodyDirection, type BodyName } from '../ephemeris/ephemeris';
+import { precessionMatrix } from '../catalog/precession';
+import {
+  BODY_LABEL, BODY_RADIUS_KM, bodyAngularRadiusDeg, bodyDirection, bodyVectorFromPointKm, type BodyName,
+} from '../ephemeris/ephemeris';
 import { referenceToOptics, SCT_FIELD_OF_VIEW_DEG, sctPlotAxes } from '../frames/frames';
 import { AOT_FIELD_OF_VIEW_DEG, aotPlotAxes, aotReticleAngleDeg } from '../frames/aot';
-import { projectAzimuthalEquidistant, type PlotPoint } from '../projection/projection';
+import { clipToSquare, projectAzimuthalEquidistant, type PlotAxes, type PlotPoint } from '../projection/projection';
 import { getToUtc } from '../time/time';
 import type { DisplayList, Layer, PlacedBody, Primitive, ViewSpec } from './types';
 
@@ -76,6 +80,34 @@ function header(spec: ViewSpec): Primitive[] {
   ];
 }
 
+/** Bodies drawn as a limb (the small circle of their angular radius) rather than a disc glyph. */
+const LIMB_MIN_RADIUS_DEG = 3;
+
+/** The limb of a body of angular radius `radiusDeg` about optics direction `d`, as frame-clipped polylines. */
+function limb(d: Vec3, radiusDeg: number, axes: PlotAxes, e: number): Primitive[] {
+  const u = unit(cross(d, Math.abs(d[0]) < 0.9 ? [1, 0, 0] : [0, 1, 0])), v = cross(d, u);
+  const rho = toRad(radiusDeg), n = 1440;
+  const at = (i: number) => {
+    const phi = (2 * Math.PI * i) / n;
+    const p = projectAzimuthalEquidistant(add(scale(d, Math.cos(rho)), scale(add(scale(u, Math.cos(phi)), scale(v, Math.sin(phi))), Math.sin(rho))), axes);
+    return [p.x, p.y] as const;
+  };
+  const runs: [number, number][][] = [];
+  let prev = at(0), open = false;
+  for (let i = 1; i <= n; i++) {
+    const cur = at(i);
+    // Near the boresight's antipode the projection tears; such chords never belong to the drawn limb.
+    const c = Math.hypot(cur[0] - prev[0], cur[1] - prev[1]) < 10 ? clipToSquare(prev, cur, e) : null;
+    if (c) {
+      const run = runs.at(-1);
+      if (open && run) run.push(c[1]); else runs.push([c[0], c[1]]);
+      open = c[1][0] === cur[0] && c[1][1] === cur[1];
+    } else open = false;
+    prev = cur;
+  }
+  return runs.map((points) => ({ kind: 'polyline', points, closed: false }));
+}
+
 const kindOf = (b: BodyName): PlacedBody['kind'] => (b === 'earth' || b === 'sun' || b === 'moon' ? b : 'planet');
 
 export function buildScene(spec: ViewSpec, data: SceneData): DisplayList {
@@ -89,8 +121,21 @@ export function buildScene(spec: ViewSpec, data: SceneData): DisplayList {
   const primitives: Primitive[] = [...frame(e), ...(inst.kind === 'sct' ? sctReticle() : aotReticle(inst.detentDeg))];
   const placed: PlacedBody[] = [];
 
+  // Where each body is: from the observer body's centre, or from the spacecraft position when one is given.
+  const pos = spec.observerPositionKm;
+  const P = precessionMatrix(spec.referenceEpochJd);
+  const geometry = (body: BodyName): { direction: Vec3; radiusDeg: number } => {
+    if (!pos) return { direction: mxv(toOptics, bodyDirection(body, spec.observer, utc, spec.referenceEpochJd)), radiusDeg: bodyAngularRadiusDeg(body, spec.observer, utc) };
+    const v = bodyVectorFromPointKm(body, pos, utc);
+    return { direction: mxv(toOptics, unit(mxv(P, v))), radiusDeg: toDeg(Math.asin(Math.min(1, BODY_RADIUS_KM[body] / norm(v)))) };
+  };
+  const drawn = spec.bodies.filter((b) => pos || b !== spec.observer);
+  const occulters = pos ? drawn.filter((b) => b === 'earth' || b === 'moon').map(geometry) : [];
+  const occulted = (d: Vec3) => occulters.some((o) => toDeg(angleBetween(d, o.direction)) < o.radiusDeg);
+
   for (const s of data.stars) {
     const direction = mxv(toOptics, s.direction);
+    if (occulted(direction)) continue;
     const p = projectAzimuthalEquidistant(direction, axes);
     if (!inside(p)) continue;
     if (s.navStar !== null) {
@@ -103,13 +148,18 @@ export function buildScene(spec: ViewSpec, data: SceneData): DisplayList {
     }
   }
 
-  for (const body of spec.bodies) {
-    if (body === spec.observer) continue;
-    const direction = mxv(toOptics, bodyDirection(body, spec.observer, utc, spec.referenceEpochJd));
-    const p = projectAzimuthalEquidistant(direction, axes);
-    if (!inside(p)) continue;
+  for (const body of drawn) {
+    const { direction, radiusDeg } = geometry(body);
     const isDisc = body === 'earth' || body === 'sun' || body === 'moon';
-    const r = isDisc ? Math.max(bodyAngularRadiusDeg(body, spec.observer, utc), 0.9) : 0.6;
+    if (!isDisc && occulted(direction)) continue;
+    const p = projectAzimuthalEquidistant(direction, axes);
+    if (isDisc && radiusDeg >= LIMB_MIN_RADIUS_DEG) {
+      primitives.push(...limb(direction, radiusDeg, axes, e));
+      if (inside(p)) placed.push({ id: body, label: BODY_LABEL[body], kind: kindOf(body), x: p.x, y: p.y, direction });
+      continue;
+    }
+    if (!inside(p)) continue;
+    const r = isDisc ? Math.max(radiusDeg, 0.9) : 0.6;
     primitives.push(
       { kind: 'disc', x: p.x, y: p.y, r, filled: body === 'earth' },
       text(p.x + r + 0.8, p.y - r - 1.2, BODY_LABEL[body], 'start', 'annotation', { boxed: !isDisc }),
@@ -118,8 +168,10 @@ export function buildScene(spec: ViewSpec, data: SceneData): DisplayList {
   }
 
   if (inst.kind === 'sct') primitives.push(...header(spec));
-  const notes = spec.observer === 'moon'
-    ? ['The observer is the Moon’s center: the spacecraft’s orbital offset (< 0.3° for Earth) and lunar occlusion are not modeled.']
-    : [];
+  const notes = pos
+    ? ['Seen from the spacecraft’s reconstructed position: bodies include parallax, and stars behind the Earth or Moon are hidden.']
+    : spec.observer === 'moon'
+      ? ['The observer is the Moon’s center: the spacecraft’s orbital offset (< 0.3° for Earth) and lunar occlusion are not modeled.']
+      : [];
   return { extentDeg: e, utc, primitives, placed, notes };
 }

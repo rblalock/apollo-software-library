@@ -16,5 +16,7 @@ Recomputed with nothing fitted, its eight labeled bodies land within **0.52° RM
 
 ## Limits
 
-- The Moon's limb crosses the top of the original: the command module was in lunar orbit. The recreation does not draw the Moon yet, because that needs the spacecraft's position (a later exhibit). Stars behind the Moon are drawn here but not on the original.
+- **The Moon.** The Moon's limb crosses the top of the original, hatched as the night side. The recreation draws it from the command module's reconstructed position: the Mission Report's docking state propagated back three hours, 58 nautical miles above the far side. From there the Moon is 70.3° in radius and its limb crosses the field almost straight, at Y ≈ +31°.
+- **The 1969 limb is drawn differently.** On the original the limb is a clean circle (fitted to the scan to 0.16°) of radius 37.8°, centred 72.8° from the telescope's axis. No point on the real orbit gives a Moon that small: it would take an altitude near 1,100 km. The limb test registered before measuring allowed 1.0° RMS; it measures 8.8°. The rule the 1969 program used to draw the horizon is not recovered, and nothing was adjusted to hide the difference.
+- Because the true horizon is lower, Menkar sits 1.3° behind the Moon in the recreation although the 1969 plot shows it. The residuals table still measures Menkar, because it uses the Moon's center as the observer, as registered for these tests.
 - The 1969 plotter drew Navi slightly past the frame edge. The recreation clips at the frame, so Navi appears in the residuals table but not on the plot.
