@@ -1,0 +1,44 @@
+import type { ResidualRow } from '../../lib/fig3a';
+
+interface Props { rows: ResidualRow[]; rmsDeg: number; maxDeg: number; tolerance: { rmsDeg: number; maxDeg: number } }
+
+const f = (n: number) => (Number.isFinite(n) ? n.toFixed(2) : 'n/a');
+
+export function ResidualsTable({ rows, rmsDeg, maxDeg, tolerance }: Props) {
+  const met = rmsDeg <= tolerance.rmsDeg && maxDeg <= tolerance.maxDeg;
+  return (
+    <section aria-labelledby="residuals-heading">
+      <h2 id="residuals-heading" className="font-mono text-xs uppercase tracking-widest text-stone-500">
+        Residuals: recreation vs. 1972 scan
+      </h2>
+      <div className="mt-2 overflow-x-auto">
+        <table className="w-full text-sm tabular-nums">
+          <thead>
+            <tr className="border-b border-stone-300 text-left dark:border-stone-700">
+              <th className="py-1 pr-4 font-medium">Body</th>
+              <th className="pr-4 font-medium">Scan x, y (°)</th>
+              <th className="pr-4 font-medium">Recreation x, y (°)</th>
+              <th className="pr-4 font-medium">Δ (°)</th>
+              <th className="font-medium">Within {tolerance.maxDeg}°</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={r.id} className="border-b border-stone-200 dark:border-stone-800">
+                <td className="py-1 pr-4">{r.id}</td>
+                <td className="pr-4 font-mono">{f(r.scanX)}, {f(r.scanY)}</td>
+                <td className="pr-4 font-mono">{f(r.modelX)}, {f(r.modelY)}</td>
+                <td className="pr-4 font-mono">{f(r.dist)}</td>
+                <td>{r.pass ? 'Yes' : 'No'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="mt-3 text-sm">
+        RMS <span className="font-mono">{rmsDeg.toFixed(2)}°</span>, max <span className="font-mono">{maxDeg.toFixed(2)}°</span>.
+        Acceptance is RMS ≤ {tolerance.rmsDeg}° and max ≤ {tolerance.maxDeg}°: <strong>{met ? 'met' : 'not met'}</strong>.
+      </p>
+    </section>
+  );
+}
