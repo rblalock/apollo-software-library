@@ -1,0 +1,98 @@
+{
+  "_comment": "69-FM-197 Fig 6.2.2-1(p), docking window 8:06 into the descent burn (planned PDI 102:35:40). 100\u00b0 field.",
+  "id": "pdi-p",
+  "scan": "69fm197-pdi-p.png",
+  "source": {
+    "file": "69-fm-197.pdf",
+    "page": 146,
+    "dpi": 300,
+    "crop": {
+      "x": 1620,
+      "y": 390,
+      "w": 1280,
+      "h": 1330
+    }
+  },
+  "extentDeg": 50,
+  "tfi": "8:06",
+  "bodies": {
+    "Procyon": {
+      "kind": "star",
+      "approxPx": [
+        425.3,
+        218.8
+      ]
+    },
+    "Dnoces": {
+      "kind": "star",
+      "approxPx": [
+        1005.4,
+        177.5
+      ]
+    },
+    "Sirius": {
+      "kind": "star",
+      "approxPx": [
+        156.9,
+        398.4
+      ]
+    },
+    "Rigel": {
+      "kind": "star",
+      "approxPx": [
+        272.5,
+        652.3
+      ]
+    },
+    "Capella": {
+      "kind": "star",
+      "approxPx": [
+        896,
+        596.6
+      ]
+    },
+    "Mirfak": {
+      "kind": "star",
+      "approxPx": [
+        984.7,
+        803
+      ]
+    },
+    "Menkar": {
+      "kind": "star",
+      "approxPx": [
+        479,
+        1009.5
+      ]
+    },
+    "Aldebaran": {
+      "kind": "star",
+      "approxPx": [
+        567.7,
+        728.7
+      ]
+    },
+    "Venus": {
+      "kind": "planet",
+      "approxPx": [
+        600.7,
+        677.1
+      ]
+    },
+    "Saturn": {
+      "kind": "planet",
+      "approxPx": [
+        602.8,
+        1079.7
+      ]
+    },
+    "Sun": {
+      "kind": "sun",
+      "manualPx": [
+        624,
+        182
+      ],
+      "note": "Centre of the Sun glyph (ray ring) from its extent on a 5\u00d7 zoom."
+    }
+  }
+}

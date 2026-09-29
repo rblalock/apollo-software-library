@@ -25,3 +25,4 @@ export * from './vehicles/models';
 export * from './vehicles/view';
 export * from './globe/globe';
 export * from './globe/bodies';
+export * from './trajectory/descent';

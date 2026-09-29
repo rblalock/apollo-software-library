@@ -47,6 +47,10 @@
       "fig1-2": {
         "page": 9,
         "label": "Figures 1 and 2 – Views at TLI burn and at entry (printed p. 4)"
+      },
+      "fig5": {
+        "page": 12,
+        "label": "Figure 5 – Views during the descent phase (printed p. 7)"
       }
     }
   },
@@ -85,6 +89,14 @@
       "fig-10-0-2": {
         "page": 304,
         "label": "Figure 10.0-2 – AOT views 2 hours after lunar landing (printed p. 286)"
+      },
+      "pdi-frames": {
+        "page": 131,
+        "label": "Figure 6.2.2-1 – PDI burn, descent frames (printed pp. 113–138)"
+      },
+      "descent-profile": {
+        "page": 121,
+        "label": "Figure 6.2.0-1(b) – Powered descent profile (printed p. 103)"
       }
     }
   },

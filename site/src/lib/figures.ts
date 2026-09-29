@@ -1,5 +1,5 @@
 import {
-  APOLLO_11, buildScene, createMissionEphemeris, formatGet, getToUtc, parseGet, stateToEarthEvent, type EventTable, type GimbalAngles, type VehicleId, FIG_3A_SPEC, resolveVerifiedCatalog, type VerifiedCatalogFile, FIG_3B_SPEC, FIG_3C_SIGN_CORRECTED_SPEC, fig4Spec, fitPlotAxes, impliedSctAngles,
+  APOLLO_11, buildScene, createMissionEphemeris, descentPosition, formatGet, type DescentProfile, getToUtc, parseGet, stateToEarthEvent, type EventTable, type GimbalAngles, type VehicleId, FIG_3A_SPEC, resolveVerifiedCatalog, type VerifiedCatalogFile, FIG_3B_SPEC, FIG_3C_SIGN_CORRECTED_SPEC, fig4Spec, fitPlotAxes, impliedSctAngles,
   resolveCatalog, type Agc37File, type BscFile, type DisplayList, type Primitive, type RtccFile, type Underlay, type ViewSpec,
 } from '@asl/view-engine';
 import bsc from '../../../data/derived/bsc45.json';
@@ -19,6 +19,12 @@ import events from '../../../data/manual/a11-events.json';
 import p1 from '../../../data/derived/fig1-points.json';
 import p2 from '../../../data/derived/fig2-points.json';
 import cmWindow from '../../../data/derived/cm-window-outline.json';
+import lmDocking from '../../../data/derived/lm-docking-window.json';
+import descentProfile from '../../../data/manual/a11-descent-profile.json';
+import pdiA from '../../../data/derived/pdi-a-points.json';
+import pdiE from '../../../data/derived/pdi-e-points.json';
+import pdiJ from '../../../data/derived/pdi-j-points.json';
+import pdiP from '../../../data/derived/pdi-p-points.json';
 
 export const TOLERANCE = { rmsDeg: 1.0, maxDeg: 2.0 } as const;
 
@@ -54,8 +60,8 @@ export interface FigureConfig {
   attitudeNote: string;
 }
 
-const fig = (id: string, label: string, spec: ViewSpec, points: PointsFile, attitudeNote: string, observer?: VehicleId): FigureConfig =>
-  ({ id, label, spec, points, scanHref: `/scans/tnd6853-${id}.png`, attitudeNote, observer });
+const fig = (id: string, label: string, spec: ViewSpec, points: PointsFile, attitudeNote: string, observer?: VehicleId, scan = `tnd6853-${id}.png`): FigureConfig =>
+  ({ id, label, spec, points, scanHref: `/scans/${scan}`, attitudeNote, observer });
 
 const SCT_PRINTED = 'Gimbal angles as printed on the figure.';
 
@@ -89,9 +95,37 @@ function windowSpec(points: PointsFile, from: string, to: string, statMi: number
   };
 }
 const FIG1 = windowSpec(p1, '2:44:17', '2:50:03', 192), FIG2 = windowSpec(p2, '194:49:13', '195:03:05', 302);
+
+/** An LM docking-window frame of the powered descent (69-FM-197 Fig 6.2.2-1), at the planned PDI + `tfiS`. */
+function descentSpec(points: PointsFile, tfiS: number): { spec: ViewSpec; note: string } {
+  const t = parseGet(descentProfile.pdiGet) + tfiS;
+  const pdi = (events as EventTable).events.find((e) => e.id === 'pdi')!;
+  const lm = descentPosition(descentProfile as DescentProfile, { latDeg: 0.6875, lonDeg: 23.4333 }, { latDeg: pdi.latDeg, lonDeg: pdi.lonDeg }, APOLLO_11.rangeZeroUtc, t);
+  const fit = fitPlotAxes(points.points.filter((p) => p.kind === 'star').map((p) => ({ id: p.id, x: p.xDeg, y: p.yDeg, direction: stars.find((s) => s.name === p.id)!.direction })));
+  const line = (poly: number[][]) => poly.map(([x, y]) => [x!, y!] as const);
+  return {
+    spec: {
+      ...FIG_3A_SPEC,
+      get: formatGet(t),
+      observer: 'moon',
+      observerPositionKm: lm,
+      gimbals: { inner: 0, middle: 0, outer: 0 },
+      instrument: { kind: 'fixed', axes: fit.axes },
+      bodies: ['moon', 'earth', 'sun', 'venus', 'mars', 'jupiter', 'saturn'],
+      headerLeft: [`${Math.floor(tfiS / 60)} min ${tfiS % 60} s into the descent burn`, 'Field of view = 100°'],
+      outlines: [line(lmDocking.outline), ...lmDocking.scribe.map(line)],
+    },
+    note: `Time: the planned PDI (102:35:40) + ${tfiS} s; the LM on the note's planned descent profile. Attitude not printed: fitted from the ${fit.residuals.length} labelled stars (RMS ${fit.rmsDeg.toFixed(2)}°).`,
+  };
+}
+const PDI = { a: descentSpec(pdiA, 0), e: descentSpec(pdiE, 126), j: descentSpec(pdiJ, 326), p: descentSpec(pdiP, 486) };
 const AOT_NOTE = 'LM surface attitude fitted on panel (a) only and frozen; this panel is predicted with no further fitting.';
 
 export const FIGURES: Record<string, FigureConfig> = {
+  pdiA: fig('pdiA', '(a) Begin burn', PDI.a.spec, pdiA, PDI.a.note, undefined, '69fm197-pdi-a.png'),
+  pdiE: fig('pdiE', '(e) 2:06', PDI.e.spec, pdiE, PDI.e.note, undefined, '69fm197-pdi-e.png'),
+  pdiJ: fig('pdiJ', '(j) 5:26', PDI.j.spec, pdiJ, PDI.j.note, undefined, '69fm197-pdi-j.png'),
+  pdiP: fig('pdiP', '(p) 8:06', PDI.p.spec, pdiP, PDI.p.note, undefined, '69fm197-pdi-p.png'),
   fig1: { ...fig('fig1', 'Figure 1 · TLI', FIG1.spec, p1, FIG1.note), observer: undefined },
   fig2: { ...fig('fig2', 'Figure 2 · Entry', FIG2.spec, p2, FIG2.note), observer: undefined },
   fig3a: fig('fig3a', 'Figure 3a', FIG_3A_SPEC, p3a, SCT_PRINTED, 'csm'),
