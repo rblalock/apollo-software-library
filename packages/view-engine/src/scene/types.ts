@@ -7,8 +7,13 @@ export interface ViewSpec {
   rangeZeroUtc: string;
   /** Ground elapsed time, "hhh:mm:ss". */
   get: string;
-  /** 'moon' = the Moon's center (lunar orbit); the spacecraft's offset is not modeled. */
+  /** 'moon' = the Moon's center (lunar orbit); the spacecraft's offset is not modeled unless `observerPositionKm` is set. */
   observer: Observer;
+  /**
+   * The spacecraft's geocentric J2000 position (km). When set, bodies are seen from it: parallax, the Earth and
+   * Moon drawn at their true angular size (as a limb when large), and stars and planets behind them hidden.
+   */
+  observerPositionKm?: Vec3;
   referenceEpochJd: number;
   refsmmat: Mat3;
   gimbals: GimbalAngles;

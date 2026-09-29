@@ -1,0 +1,728 @@
+{
+  "_comment": "Apollo 11 Mission Report (MSC-00171, Nov 1969), Table 7-II 'Trajectory parameters', PDF p. 117 of data/sources/a11-mission-report.pdf, transcribed from the page image (the text layer is unreadable). Definitions per Table 7-I: geodetic (Earth) or selenographic (Moon) latitude; longitude east +; altitude in nautical miles above the oblate Earth or above the radius of Landing Site 2; space-fixed velocity ft/s; space-fixed flight-path angle and heading (deg east of north) relative to the body-centered local horizontal. 'vehicles' lists which vehicles each row describes (the stack while docked). Blotted or inconsistent cells are marked 'reading' or 'unusable'.",
+  "events": [
+    {
+      "id": "sivb-ignition",
+      "label": "S-IVB second ignition",
+      "body": "earth",
+      "get": "2:44:16.2",
+      "latDeg": -5.03,
+      "lonDeg": 172.55,
+      "altNmi": 105.8,
+      "speedFps": 25562,
+      "fpaDeg": 0.02,
+      "headingDeg": 57.78,
+      "vehicles": [
+        "sivb",
+        "csm",
+        "lm"
+      ]
+    },
+    {
+      "id": "sivb-cutoff",
+      "label": "S-IVB second cutoff",
+      "body": "earth",
+      "get": "2:50:03.2",
+      "latDeg": 9.52,
+      "lonDeg": -165.61,
+      "altNmi": 173.3,
+      "speedFps": 35567,
+      "fpaDeg": 6.91,
+      "headingDeg": 59.93,
+      "vehicles": [
+        "sivb",
+        "csm",
+        "lm"
+      ]
+    },
+    {
+      "id": "tli",
+      "label": "Translunar injection",
+      "body": "earth",
+      "get": "2:50:13.2",
+      "latDeg": 9.98,
+      "lonDeg": -164.84,
+      "altNmi": 180.6,
+      "speedFps": 35546,
+      "fpaDeg": 7.37,
+      "headingDeg": 60.07,
+      "vehicles": [
+        "sivb",
+        "csm",
+        "lm"
+      ]
+    },
+    {
+      "id": "csm-sivb-separation",
+      "label": "Command module/S-IVB separation",
+      "body": "earth",
+      "get": "3:17:04.6",
+      "latDeg": 31.16,
+      "lonDeg": -88.76,
+      "altNmi": 4110.9,
+      "speedFps": 24456.8,
+      "fpaDeg": 46.24,
+      "headingDeg": 95.1,
+      "vehicles": [
+        "sivb",
+        "csm",
+        "lm"
+      ]
+    },
+    {
+      "id": "docking-1",
+      "label": "Docking",
+      "body": "earth",
+      "get": "3:24:03.1",
+      "latDeg": 30.18,
+      "lonDeg": -81.71,
+      "altNmi": 5317.6,
+      "speedFps": 22662.5,
+      "fpaDeg": 44.94,
+      "headingDeg": 99.57,
+      "vehicles": [
+        "sivb",
+        "csm",
+        "lm"
+      ],
+      "unusable": "Flight-path angle printed 44.94; propagated from both TLI and the separation-maneuver cutoff it is 49.94 while the other five cells agree to 0.01% (a 4/9 misprint). Kept as printed, not used as an anchor."
+    },
+    {
+      "id": "ejection",
+      "label": "Spacecraft/S-IVB separation (ejection)",
+      "body": "earth",
+      "get": "4:16:59.1",
+      "latDeg": 23.18,
+      "lonDeg": -67.7,
+      "altNmi": 3506.5,
+      "speedFps": 16060.8,
+      "fpaDeg": 62.01,
+      "headingDeg": 110.9,
+      "vehicles": [
+        "sivb",
+        "csm",
+        "lm"
+      ],
+      "unusable": "Altitude printed '3 506.5' n.mi; propagated from TLI it is 13 504.8 while the other cells agree (the leading '1' is missing). A speed digit is blotted. Kept as printed, not used as an anchor."
+    },
+    {
+      "id": "evasive-ignition",
+      "label": "Separation maneuver, ignition",
+      "body": "earth",
+      "get": "4:40:01.8",
+      "latDeg": 21.16,
+      "lonDeg": -68.46,
+      "altNmi": 16620.8,
+      "speedFps": 14680.0,
+      "fpaDeg": 64.3,
+      "headingDeg": 113.73,
+      "vehicles": [
+        "sivb",
+        "csm",
+        "lm"
+      ]
+    },
+    {
+      "id": "evasive-cutoff",
+      "label": "Separation maneuver, cutoff",
+      "body": "earth",
+      "get": "4:40:04.7",
+      "latDeg": 21.16,
+      "lonDeg": -68.46,
+      "altNmi": 16627.3,
+      "speedFps": 14663.0,
+      "fpaDeg": 64.25,
+      "headingDeg": 113.74,
+      "vehicles": [
+        "csm",
+        "lm"
+      ]
+    },
+    {
+      "id": "mcc1-ignition",
+      "label": "First midcourse correction, ignition",
+      "body": "earth",
+      "get": "26:44:58.7",
+      "latDeg": 5.99,
+      "lonDeg": -11.16,
+      "altNmi": 109475.3,
+      "speedFps": 5025.0,
+      "fpaDeg": 77.05,
+      "headingDeg": 120.86,
+      "vehicles": [
+        "csm",
+        "lm"
+      ]
+    },
+    {
+      "id": "mcc1-cutoff",
+      "label": "First midcourse correction, cutoff",
+      "body": "earth",
+      "get": "26:45:01.8",
+      "latDeg": 6.0,
+      "lonDeg": -11.17,
+      "altNmi": 109477.2,
+      "speedFps": 5010.0,
+      "fpaDeg": 76.88,
+      "headingDeg": 120.87,
+      "vehicles": [
+        "csm",
+        "lm"
+      ]
+    },
+    {
+      "id": "loi-ignition",
+      "label": "Lunar orbit insertion, ignition",
+      "body": "moon",
+      "get": "75:49:50.4",
+      "latDeg": -1.57,
+      "lonDeg": -169.58,
+      "altNmi": 86.7,
+      "speedFps": 8250.0,
+      "fpaDeg": -9.99,
+      "headingDeg": -62.8,
+      "vehicles": [
+        "csm",
+        "lm"
+      ]
+    },
+    {
+      "id": "loi-cutoff",
+      "label": "Lunar orbit insertion, cutoff",
+      "body": "moon",
+      "get": "75:55:48.0",
+      "latDeg": 0.16,
+      "lonDeg": 167.13,
+      "altNmi": 60.1,
+      "speedFps": 5479.0,
+      "fpaDeg": -0.2,
+      "headingDeg": -66.89,
+      "vehicles": [
+        "csm",
+        "lm"
+      ]
+    },
+    {
+      "id": "loc-ignition",
+      "label": "Lunar orbit circularization, ignition",
+      "body": "moon",
+      "get": "80:11:36.8",
+      "latDeg": -0.02,
+      "lonDeg": 170.09,
+      "altNmi": 61.8,
+      "speedFps": 5477.3,
+      "fpaDeg": -0.49,
+      "headingDeg": -66.55,
+      "vehicles": [
+        "csm",
+        "lm"
+      ]
+    },
+    {
+      "id": "loc-cutoff",
+      "label": "Lunar orbit circularization, cutoff",
+      "body": "moon",
+      "get": "80:11:53.5",
+      "latDeg": -0.02,
+      "lonDeg": 169.16,
+      "altNmi": 61.6,
+      "speedFps": 5338.3,
+      "fpaDeg": 0.32,
+      "headingDeg": -66.77,
+      "vehicles": [
+        "csm",
+        "lm"
+      ]
+    },
+    {
+      "id": "undocking",
+      "label": "Undocking",
+      "body": "moon",
+      "get": "100:12:00.0",
+      "latDeg": 1.11,
+      "lonDeg": 116.21,
+      "altNmi": 62.9,
+      "speedFps": 5333.8,
+      "fpaDeg": 0.16,
+      "headingDeg": -89.13,
+      "vehicles": [
+        "csm",
+        "lm"
+      ],
+      "unusable": "Heading printed -89.13; propagated from LOI circularization cutoff the heading is -73.45, and an orbit with that heading error would reach 14° latitude within 28 min (the next rows are at 1°). Position, speed and flight-path angle agree. Kept as printed, not used as an anchor."
+    },
+    {
+      "id": "csm-separation-ignition",
+      "label": "Separation, ignition",
+      "body": "moon",
+      "get": "100:39:52.9",
+      "latDeg": 0.99,
+      "lonDeg": 31.86,
+      "altNmi": 62.7,
+      "speedFps": 5332.7,
+      "fpaDeg": -0.13,
+      "headingDeg": -106.89,
+      "vehicles": [
+        "csm"
+      ]
+    },
+    {
+      "id": "csm-separation-cutoff",
+      "label": "Separation, cutoff",
+      "body": "moon",
+      "get": "100:40:01.9",
+      "latDeg": 1.05,
+      "lonDeg": 31.41,
+      "altNmi": 62.5,
+      "speedFps": 5332.2,
+      "fpaDeg": -0.16,
+      "headingDeg": -106.9,
+      "vehicles": [
+        "csm"
+      ]
+    },
+    {
+      "id": "doi-ignition",
+      "label": "Descent orbit insertion, ignition",
+      "body": "moon",
+      "get": "101:36:14.0",
+      "latDeg": -1.12,
+      "lonDeg": -140.2,
+      "altNmi": 56.4,
+      "speedFps": 5364.9,
+      "fpaDeg": 0.1,
+      "headingDeg": -75.7,
+      "vehicles": [
+        "lm"
+      ]
+    },
+    {
+      "id": "doi-cutoff",
+      "label": "Descent orbit insertion, cutoff",
+      "body": "moon",
+      "get": "101:36:44.0",
+      "latDeg": -1.16,
+      "lonDeg": -141.88,
+      "altNmi": 57.8,
+      "speedFps": 5284.9,
+      "fpaDeg": -0.06,
+      "headingDeg": -75.19,
+      "vehicles": [
+        "lm"
+      ]
+    },
+    {
+      "id": "pdi",
+      "label": "Powered descent initiation",
+      "body": "moon",
+      "get": "102:33:05.0",
+      "latDeg": 1.02,
+      "lonDeg": 39.39,
+      "altNmi": 6.4,
+      "speedFps": 5564.9,
+      "fpaDeg": 0.03,
+      "headingDeg": -104.23,
+      "vehicles": [
+        "lm"
+      ],
+      "reading": "Heading printed '-10?.23' with the third digit broken; read as -104.23. Propagated from DOI cutoff: -104.19."
+    },
+    {
+      "id": "ascent-cutoff",
+      "label": "Lunar orbit engine cutoff (ascent insertion)",
+      "body": "moon",
+      "get": "124:29:15.7",
+      "latDeg": 0.73,
+      "lonDeg": 12.99,
+      "altNmi": 10.0,
+      "speedFps": 5537.9,
+      "fpaDeg": 0.28,
+      "headingDeg": -108.15,
+      "vehicles": [
+        "lm"
+      ],
+      "reading": "Latitude's leading digit and the heading's third digit are blotted; read as 0.73 and -108.15."
+    },
+    {
+      "id": "csi-ignition",
+      "label": "Coelliptic sequence initiation, ignition",
+      "body": "moon",
+      "get": "125:19:35.0",
+      "latDeg": -0.98,
+      "lonDeg": -147.12,
+      "altNmi": 47.4,
+      "speedFps": 5328.1,
+      "fpaDeg": 0.11,
+      "headingDeg": -77.98,
+      "vehicles": [
+        "lm"
+      ],
+      "reading": "Latitude's leading digit and the heading's last digit are blotted; read as 0.98S and -77.98. Propagated from ascent cutoff: -0.99, -77.91."
+    },
+    {
+      "id": "csi-cutoff",
+      "label": "Coelliptic sequence initiation, cutoff",
+      "body": "moon",
+      "get": "125:20:22.0",
+      "latDeg": -0.91,
+      "lonDeg": -149.57,
+      "altNmi": 48.4,
+      "speedFps": 5376.6,
+      "fpaDeg": 0.09,
+      "headingDeg": -76.98,
+      "vehicles": [
+        "lm"
+      ]
+    },
+    {
+      "id": "tpi-ignition",
+      "label": "Terminal phase initiation, ignition",
+      "body": "moon",
+      "get": "127:03:51.8",
+      "latDeg": -1.17,
+      "lonDeg": -110.28,
+      "altNmi": 44.1,
+      "speedFps": 5391.5,
+      "fpaDeg": -0.16,
+      "headingDeg": -93.16,
+      "vehicles": [
+        "lm"
+      ]
+    },
+    {
+      "id": "tpi-cutoff",
+      "label": "Terminal phase initiation, cutoff",
+      "body": "moon",
+      "get": "127:04:14.5",
+      "latDeg": -1.17,
+      "lonDeg": -111.46,
+      "altNmi": 44.0,
+      "speedFps": 5413.2,
+      "fpaDeg": -0.03,
+      "headingDeg": -92.65,
+      "vehicles": [
+        "lm"
+      ]
+    },
+    {
+      "id": "tpf",
+      "label": "Terminal phase finalize",
+      "body": "moon",
+      "get": "127:46:09.8",
+      "latDeg": 0.8,
+      "lonDeg": 118.61,
+      "altNmi": 7.6,
+      "speedFps": 5339.7,
+      "fpaDeg": 0.42,
+      "headingDeg": -70.45,
+      "vehicles": [
+        "lm"
+      ],
+      "unusable": "Altitude printed '7.6' n.mi; propagated from TPI cutoff it is 57.9 while the other cells agree (a leading '5' is missing). The latitude's digits are blotted. Kept as printed, not used as an anchor."
+    },
+    {
+      "id": "docking-2",
+      "label": "Docking",
+      "body": "moon",
+      "get": "128:03:00.0",
+      "latDeg": 1.18,
+      "lonDeg": 67.31,
+      "altNmi": 60.6,
+      "speedFps": 5341.5,
+      "fpaDeg": 0.16,
+      "headingDeg": -87.63,
+      "vehicles": [
+        "csm",
+        "lm"
+      ]
+    },
+    {
+      "id": "ascent-stage-jettison",
+      "label": "Ascent stage jettison",
+      "body": "moon",
+      "get": "130:09:31.2",
+      "latDeg": 1.1,
+      "lonDeg": 41.85,
+      "altNmi": 61.6,
+      "speedFps": 5335.9,
+      "fpaDeg": 0.15,
+      "headingDeg": -97.81,
+      "vehicles": [
+        "csm",
+        "lm"
+      ]
+    },
+    {
+      "id": "final-separation-ignition",
+      "label": "Final separation, ignition",
+      "body": "moon",
+      "get": "130:30:01.0",
+      "latDeg": 0.08,
+      "lonDeg": -20.19,
+      "altNmi": 62.7,
+      "speedFps": 5330.1,
+      "fpaDeg": -0.05,
+      "headingDeg": -52.86,
+      "vehicles": [
+        "csm"
+      ],
+      "unusable": "Heading printed -52.86 (third digit blotted); propagated from docking and from ascent-stage jettison it is -112.8 while position and speed agree. Kept as printed, not used as an anchor."
+    },
+    {
+      "id": "final-separation-cutoff",
+      "label": "Final separation, cutoff",
+      "body": "moon",
+      "get": "130:30:08.1",
+      "latDeg": 0.19,
+      "lonDeg": -20.58,
+      "altNmi": 62.7,
+      "speedFps": 5326.9,
+      "fpaDeg": -0.02,
+      "headingDeg": -52.73,
+      "vehicles": [
+        "csm"
+      ],
+      "unusable": "Heading printed -52.73; propagated from ascent-stage jettison it is -112.8 while position and speed agree. Kept as printed, not used as an anchor."
+    },
+    {
+      "id": "tei-ignition",
+      "label": "Transearth injection, ignition",
+      "body": "moon",
+      "get": "135:23:42.3",
+      "latDeg": -0.16,
+      "lonDeg": 164.02,
+      "altNmi": 52.4,
+      "speedFps": 5376.0,
+      "fpaDeg": -0.03,
+      "headingDeg": -62.77,
+      "vehicles": [
+        "csm"
+      ],
+      "unusable": "Heading printed -62.77 matches the post-burn transearth plane (TEI cutoff -62.60), not the parking orbit it was fired from (-67.9 propagated from ascent-stage jettison). Kept as printed, not used as an anchor."
+    },
+    {
+      "id": "tei-cutoff",
+      "label": "Transearth injection, cutoff",
+      "body": "moon",
+      "get": "135:26:13.7",
+      "latDeg": 0.5,
+      "lonDeg": 154.02,
+      "altNmi": 58.1,
+      "speedFps": 8589.0,
+      "fpaDeg": 5.13,
+      "headingDeg": -62.6,
+      "vehicles": [
+        "csm"
+      ],
+      "reading": "Heading's third digit blotted; read as -62.60."
+    },
+    {
+      "id": "mcc2-ignition",
+      "label": "Second midcourse correction, ignition",
+      "body": "earth",
+      "get": "150:29:57.4",
+      "latDeg": -13.16,
+      "lonDeg": -37.79,
+      "altNmi": 169087.2,
+      "speedFps": 4075.0,
+      "fpaDeg": -80.34,
+      "headingDeg": 129.3,
+      "vehicles": [
+        "csm"
+      ]
+    },
+    {
+      "id": "mcc2-cutoff",
+      "label": "Second midcourse correction, cutoff",
+      "body": "earth",
+      "get": "150:30:07.4",
+      "latDeg": -13.16,
+      "lonDeg": -37.83,
+      "altNmi": 169080.6,
+      "speedFps": 4074.0,
+      "fpaDeg": -80.41,
+      "headingDeg": 129.3,
+      "vehicles": [
+        "csm"
+      ]
+    },
+    {
+      "id": "cm-sm-separation",
+      "label": "Command module/service module separation",
+      "body": "earth",
+      "get": "194:49:12.7",
+      "latDeg": -35.09,
+      "lonDeg": 122.54,
+      "altNmi": 1778.3,
+      "speedFps": 29615.5,
+      "fpaDeg": -35.26,
+      "headingDeg": 69.27,
+      "vehicles": [
+        "csm"
+      ]
+    }
+  ],
+  "maneuvers": {
+    "_comment": "Burn intervals that break a vehicle's coast arcs. Times from Table 7-II except where 'source' says otherwise (Table 3-I sequence of events; Table 9.6-V LM maneuver summary). Impulsive entries have ignition = cutoff.",
+    "list": [
+      {
+        "id": "tli-burn",
+        "vehicles": [
+          "sivb",
+          "csm",
+          "lm"
+        ],
+        "ignition": "2:44:16.2",
+        "cutoff": "2:50:03.2"
+      },
+      {
+        "id": "evasive",
+        "vehicles": [
+          "csm",
+          "lm"
+        ],
+        "ignition": "4:40:01.8",
+        "cutoff": "4:40:04.7"
+      },
+      {
+        "id": "mcc1",
+        "vehicles": [
+          "csm",
+          "lm"
+        ],
+        "ignition": "26:44:58.7",
+        "cutoff": "26:45:01.8"
+      },
+      {
+        "id": "loi",
+        "vehicles": [
+          "csm",
+          "lm"
+        ],
+        "ignition": "75:49:50.4",
+        "cutoff": "75:55:48.0"
+      },
+      {
+        "id": "loc",
+        "vehicles": [
+          "csm",
+          "lm"
+        ],
+        "ignition": "80:11:36.8",
+        "cutoff": "80:11:53.5"
+      },
+      {
+        "id": "csm-separation",
+        "vehicles": [
+          "csm"
+        ],
+        "ignition": "100:39:52.9",
+        "cutoff": "100:40:01.9"
+      },
+      {
+        "id": "doi",
+        "vehicles": [
+          "lm"
+        ],
+        "ignition": "101:36:14.0",
+        "cutoff": "101:36:44.0"
+      },
+      {
+        "id": "powered-descent",
+        "vehicles": [
+          "lm"
+        ],
+        "ignition": "102:33:05.0",
+        "cutoff": "102:45:39.9",
+        "powered": true,
+        "source": "Landing time: Table 3-I."
+      },
+      {
+        "id": "ascent",
+        "vehicles": [
+          "lm"
+        ],
+        "ignition": "124:22:00.8",
+        "cutoff": "124:29:15.7",
+        "powered": true,
+        "source": "Lift-off time: Table 3-I."
+      },
+      {
+        "id": "csi",
+        "vehicles": [
+          "lm"
+        ],
+        "ignition": "125:19:35.0",
+        "cutoff": "125:20:22.0"
+      },
+      {
+        "id": "cdh",
+        "vehicles": [
+          "lm"
+        ],
+        "ignition": "126:17:49.6",
+        "cutoff": "126:18:29.2",
+        "source": "Not in Table 7-II; times from Table 9.6-V (LM maneuver summary)."
+      },
+      {
+        "id": "tpi",
+        "vehicles": [
+          "lm"
+        ],
+        "ignition": "127:03:51.8",
+        "cutoff": "127:04:14.5"
+      },
+      {
+        "id": "tpf",
+        "vehicles": [
+          "lm"
+        ],
+        "ignition": "127:46:09.8",
+        "cutoff": "127:46:09.8",
+        "source": "Braking treated as impulsive at the TPF time; the LM then flies formation with the CSM until docking (see ledger: Item 5.5)."
+      },
+      {
+        "id": "final-separation",
+        "vehicles": [
+          "csm"
+        ],
+        "ignition": "130:30:01.0",
+        "cutoff": "130:30:08.1",
+        "coastThrough": true,
+        "source": "2.2 ft/s over 7.2 s (Mission Report maneuver summary). Both of its rows are unusable, so the following arc is propagated through it from ascent-stage jettison: at most ~12 km (0.4° at the Moon) by TEI."
+      },
+      {
+        "id": "tei",
+        "vehicles": [
+          "csm"
+        ],
+        "ignition": "135:23:42.3",
+        "cutoff": "135:26:13.7"
+      },
+      {
+        "id": "mcc2",
+        "vehicles": [
+          "csm"
+        ],
+        "ignition": "150:29:57.4",
+        "cutoff": "150:30:07.4"
+      }
+    ]
+  },
+  "surface": {
+    "vehicle": "lm",
+    "from": "102:45:39.9",
+    "to": "124:22:00.8",
+    "latDeg": 0.6875,
+    "lonDeg": 23.4333,
+    "source": "Mission Report §5 and §3: actual landing point 0°41'15\" N, 23°26' E (Lunar Map ORB-II-6(100)); landing and lift-off times from Table 3-I. Radius: Landing Site 2 (Table 7-I reference)."
+  },
+  "window": {
+    "from": "0:11:49.3",
+    "to": "195:03:05.7",
+    "vehicleEnd": {
+      "sivb": "4:40:01.8"
+    },
+    "source": "Earth parking orbit insertion (§7) to entry interface (Table 3-I). The S-IVB is followed only until the spacecraft's separation maneuver; its later LOX-dump maneuvers are not tabulated."
+  }
+}

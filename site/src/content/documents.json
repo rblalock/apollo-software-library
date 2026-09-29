@@ -93,5 +93,71 @@
         "label": "Table I – Star identification catalogue (1,078 stars)"
       }
     }
+  },
+  {
+    "id": "a11-mission-report",
+    "title": "Apollo 11 Mission Report",
+    "reportNumber": "MSC-00171",
+    "date": "November 1969",
+    "authors": [
+      "Mission Evaluation Team, MSC"
+    ],
+    "pdf": "/docs/a11-mission-report.pdf",
+    "sourceUrl": "https://www.ibiblio.org/apollo/Documents/A11_MissionReport.pdf",
+    "pageCount": 359,
+    "anchors": {
+      "table-7-i": {
+        "page": 116,
+        "label": "Table 7-I – Definition of trajectory and orbital parameters (printed p. 7-8)"
+      },
+      "table-7-ii": {
+        "page": 117,
+        "label": "Table 7-II – Trajectory parameters (printed p. 7-9)"
+      }
+    }
+  },
+  {
+    "id": "a11-press-kit-1",
+    "title": "Apollo 11 Lunar Landing Mission Press Kit, Part 1",
+    "reportNumber": "NASA Release 69-83K",
+    "date": "6 July 1969",
+    "authors": [
+      "NASA Office of Public Affairs"
+    ],
+    "pdf": "/docs/a11-press-kit-1.pdf",
+    "sourceUrl": "https://www.ibiblio.org/apollo/Documents/APOLLO11pt1.pdf",
+    "pageCount": 106,
+    "anchors": {
+      "sla": {
+        "page": 94,
+        "label": "Spacecraft-LM adapter structure"
+      },
+      "lm-structures": {
+        "page": 102,
+        "label": "Lunar module structures and weight; ascent stage"
+      }
+    }
+  },
+  {
+    "id": "a11-press-kit-2",
+    "title": "Apollo 11 Lunar Landing Mission Press Kit, Part 2",
+    "reportNumber": "NASA Release 69-83K",
+    "date": "6 July 1969",
+    "authors": [
+      "NASA Office of Public Affairs"
+    ],
+    "pdf": "/docs/a11-press-kit-2.pdf",
+    "sourceUrl": "https://www.ibiblio.org/apollo/Documents/APOLLO11pt2.pdf",
+    "pageCount": 150,
+    "anchors": {
+      "descent-stage": {
+        "page": 3,
+        "label": "Descent stage, landing gear and footpads"
+      },
+      "s-ivb": {
+        "page": 13,
+        "label": "S-IVB stage and instrument unit"
+      }
+    }
   }
 ]

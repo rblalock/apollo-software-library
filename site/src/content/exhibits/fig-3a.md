@@ -21,7 +21,7 @@ figures: [fig3a]
 
 ## Limits
 
-- The observer is the Moon's center, not the command module in its 60-nautical-mile orbit. That moves Earth by under 0.3°. The Moon itself is not drawn, which is harmless here because the telescope is pointed away from it.
+- The plot is drawn from the command module's reconstructed position: the Apollo 11 Mission Report's trajectory table, propagated from the nearest tabulated state (the note under the plot says which). From there the Moon is 131° from the telescope's axis, well out of view, as on the original. The residuals table uses the Moon's center as the observer, as registered for the validation; the difference moves Earth by under 0.3°.
 - The −0 to −50 scale along the reticle's vertical line is drawn as it appears on the figures. Neither document explains it.
 - The program drew the 37 navigation-star names on the microfilm itself (TN D-6853, appendix), so they are always shown; the 1972 print re-lettered them. Planet and Earth names, the header and the axis titles were added to the published figures, and the **Labels** switch shows or hides that layer. The boxes around planet names follow the 1969 note's version of this figure (69-FM-197 Fig 9.3-8); the 1972 print has none.
 - Venus sits 1.6° from its printed position, the largest difference. The offset lies along Venus's own daily motion, which suggests the 1969 program's planetary ephemeris rather than the geometry.

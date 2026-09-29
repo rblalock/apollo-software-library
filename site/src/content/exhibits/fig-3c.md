@@ -21,4 +21,4 @@ The recreation shown here uses **I = −89.10°** with the corrected label. Its 
 
 ## Limits
 
-- Stars behind the Moon are not hidden (see Fig 3b).
+- The plot is drawn from the command module's reconstructed position (see Fig 3a). The Moon is 163° from the telescope's axis here, out of view.

@@ -16,11 +16,35 @@
     "bytes": 7946096
   },
   {
+    "file": "a11-mission-report.pdf",
+    "title": "Apollo 11 Mission Report, MSC-00171 (NASA Manned Spacecraft Center, November 1969)",
+    "url": "https://www.ibiblio.org/apollo/Documents/A11_MissionReport.pdf",
+    "retrieved": "2026-09-29",
+    "sha256": "5b9d033c7b9dd604220f439cddc8a53ad08e3e9c43c83f7342d7e61ef32a1baa",
+    "bytes": 11835694
+  },
+  {
     "file": "69-fm-107.pdf",
     "title": "MSC IN 69-FM-107, Views from the Spacecraft During Apollo 10 (Mission F) (22 April 1969)",
     "url": "https://web.archive.org/web/20250615183849id_/https://www.nasa.gov/wp-content/uploads/static/history/afj/ap10fj/pdf/a10-views-from-sc-1969-05-18-launch-19690422.pdf",
     "retrieved": "2026-09-29",
     "sha256": "58fbb495f6431ea8e8f0088fa7b8cdae5966ecf62c6b2646a6c4439fadcb515f",
     "bytes": 4250030
+  },
+  {
+    "file": "a11-press-kit-1.pdf",
+    "title": "Apollo 11 Lunar Landing Mission Press Kit, Part 1 (NASA Release 69-83K, 6 July 1969)",
+    "url": "https://www.ibiblio.org/apollo/Documents/APOLLO11pt1.pdf",
+    "retrieved": "2026-09-29",
+    "sha256": "f59c7da267240ab1d3f73eeb4e65d57c2061a1bc3beac61eeaebef5217b021ed",
+    "bytes": 3077096
+  },
+  {
+    "file": "a11-press-kit-2.pdf",
+    "title": "Apollo 11 Lunar Landing Mission Press Kit, Part 2 (NASA Release 69-83K, 6 July 1969)",
+    "url": "https://www.ibiblio.org/apollo/Documents/APOLLO11pt2.pdf",
+    "retrieved": "2026-09-29",
+    "sha256": "0cd2cde5cedc85312c145f5a28e48a236951e4f7ee3666908b057183e9db8904",
+    "bytes": 4819131
   }
 ]

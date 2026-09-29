@@ -37,3 +37,11 @@ export function bodyDirection(body: BodyName, observer: Observer, utc: Date, epo
 export function bodyAngularRadiusDeg(body: BodyName, observer: Observer, utc: Date): number {
   return toDeg(Math.asin(RADIUS_KM[body] / (norm(bodyVectorJ2000Au(body, observer, utc)) * AU_KM)));
 }
+
+/** Point → body vector in km, J2000 (EQJ), for a geocentric J2000 point in km. */
+export function bodyVectorFromPointKm(body: BodyName, pointKm: Vec3, utc: Date): Vec3 {
+  const g = geocentric(body, utc);
+  return [g[0] * AU_KM - pointKm[0], g[1] * AU_KM - pointKm[1], g[2] * AU_KM - pointKm[2]];
+}
+
+export const BODY_RADIUS_KM: Readonly<Record<BodyName, number>> = RADIUS_KM;
