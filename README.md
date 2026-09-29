@@ -115,9 +115,10 @@ bun scripts/digitize-figure.ts                            # labelled bodies and 
 bun scripts/digitize-limb.ts && bun scripts/digitize-globe.ts && bun scripts/digitize-arcs.ts
 bun scripts/build-site-data.ts                            # star directions for the site
 bun scripts/readme-animation.ts                           # the animation at the top of this README
+bun scripts/og-image.ts                                   # the link-preview image, site/public/og.png
 ```
 
-The last script also needs `rsvg-convert` (librsvg) and `ffmpeg`.
+The last two scripts also need `rsvg-convert` (librsvg), and the animation needs `ffmpeg`.
 
 ## Deploying
 
