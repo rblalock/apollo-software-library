@@ -70,10 +70,10 @@
 ## Item 4: LM descent
 
 - [x] 4.1 **Descent data:** reconstruct the Apollo 11 PDI trajectory from the Mission Report; landing site constants.
-- [x] 4.2 **LM windows and LPD:** geometry from 69-FM-197 Fig 6.2.1-1 and TN Fig 5.
-- [x] 4.3 **Craters:** a crater set around the landing site, with provenance; drawn as perspective ellipses.
+- [ ] 4.2 **LM windows and LPD:** *(partial: docking-window outline and scribe done; front windows and LPD deferred — ledger Item 4 scope ruling)* geometry from 69-FM-197 Fig 6.2.1-1 and TN Fig 5.
+- [ ] 4.3 **Craters:** *(deferred — ledger Item 4 scope ruling)* a crater set around the landing site, with provenance; drawn as perspective ellipses.
 - [x] 4.4 **Digitize the note's timed PDI frames:** the horizon's LPD reading, Earth and stars.
-- [x] 4.5 **Golden:** LPD horizon within 3°; Earth and stars within 2°.
+- [x] 4.5 **Golden:** LPD horizon within 3°; Earth and stars within 2°. *(run as: Sun within 2° — pass; docking-window horizon — recorded miss; the LPD reading deferred)*
 - [x] 4.6 **Exhibit (sequence), ledger and commit.**
 
 ## Item 6: Film and printer plots
